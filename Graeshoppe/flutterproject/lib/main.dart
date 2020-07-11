@@ -1,16 +1,6 @@
 import 'package:flutter/material.dart';
+import './basket.dart';
 
 void main() {
-  runApp(
-    MaterialApp(
-      title: "Basket",
-      home: Scaffold(
-        body: Container(
-            child: Center(
-          child: Text("Basket"),
-        ),
-        ),
-      ),
-    ),
-  );
+  runApp(Basket());
 }
