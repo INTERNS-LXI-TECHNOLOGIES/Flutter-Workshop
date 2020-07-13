@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutterproject/widgets/basicWidget.dart';
+import 'package:flutterproject/widgets/multichildlayout.dart';
 
 class Basket extends StatelessWidget {
   @override
@@ -7,7 +7,7 @@ class Basket extends StatelessWidget {
     return MaterialApp(
       title: "Basket",
       home: Scaffold(
-        body: Center(child: BasicWidget()),
+        body: Center(child: Multichildlayout()),
       ),
     );
   }
