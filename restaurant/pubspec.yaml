@@ -50,6 +50,8 @@ flutter:
     - assets/favicon.png
     - assets/pizza.png
     - assets/pizza2.jpg
+    - assets/chickenhut.jpg
+    - assets/PAPA.jpg
     
 
   # An image asset can refer to one or more resolution-specific "variants", see
