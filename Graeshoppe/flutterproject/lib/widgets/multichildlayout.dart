@@ -7,35 +7,44 @@ class Multichildlayout extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height * .4,
       color: Colors.white,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        verticalDirection: VerticalDirection.up,
+      child: ListView(
+        // mainAxisAlignment: MainAxisAlignment.center,
+        // crossAxisAlignment: CrossAxisAlignment.stretch,
+        // verticalDirection: VerticalDirection.up,
         children: <Widget>[
           Container(
-            width: 80,
-            height: 80,
-            color: Colors.green,
+            width: 300,
+            height: 50,
+            color: Colors.white,
             child: Center(
-              child: Text(" one "),
+              child: Text(
+                " DELIVERY ",
+                style: TextStyle(color: Colors.blue[600]),
+              ),
             ),
           ),
-          Container(
-            width: 80,
-            height: 80,
-            color: Colors.red,
-            child: Center(
-              child: Text(" two "),
-            ),
+          Divider(
+            color: Colors.blue[600],
+            thickness: 4.5,
+            indent: 7,
+            endIndent: 7,
           ),
-          Container(
-            width: 80,
-            height: 80,
-            color: Colors.yellow,
-            child: Center(
-              child: Text(" three "),
-            ),
-          ),
+          Column(
+            children: <Widget>[
+              Container(
+                margin: EdgeInsets.all(5),
+                width: 400,
+                height: 50,
+                color: Colors.cyan[300],
+              ),
+              Container(
+                margin: EdgeInsets.all(5),
+                width: 400,
+                height: 50,
+                color: Colors.cyan[300],
+              )
+            ],
+          )
         ],
       ),
     );
