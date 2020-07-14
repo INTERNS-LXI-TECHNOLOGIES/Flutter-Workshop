@@ -11,6 +11,7 @@ class Basket extends StatelessWidget {
           appBar: AppBar(
             leading: IconButton(
               icon: Icon(Icons.arrow_back, color: Colors.black),
+              onPressed: null,
             ),
             title: Text(
               "Basket",
