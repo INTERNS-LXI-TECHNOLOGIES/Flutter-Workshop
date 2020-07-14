@@ -7,10 +7,10 @@ class Multichildlayout extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
       color: Colors.grey,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        textDirection: TextDirection.rtl,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        verticalDirection: VerticalDirection.up,
         children: <Widget>[
           Container(
             width: 80,
@@ -33,7 +33,7 @@ class Multichildlayout extends StatelessWidget {
             height: 80,
             color: Colors.yellow,
             child: Center(
-              child: Text(" f "),
+              child: Text(" three "),
             ),
           ),
         ],

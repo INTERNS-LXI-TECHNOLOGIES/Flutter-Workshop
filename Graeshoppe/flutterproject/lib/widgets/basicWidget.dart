@@ -4,27 +4,35 @@ class BasicWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width * .5,
-      height: MediaQuery.of(context).size.height,
-      margin: EdgeInsets.all(50),
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.width * .6,
+      margin: EdgeInsets.only(top: 50),
       padding: EdgeInsets.all(20),
       decoration: BoxDecoration(
-          color: Colors.blue,
-          border: Border.all(
-            color: Colors.red,
-            width: 10,
+        color: Colors.grey,
+      ),
+      child: ListView(
+        children: <Widget>[
+          Container(
+            child: Center(
+              child: Text(" Order Total(2 Items) "),
+            ),
           ),
-          borderRadius: BorderRadius.circular(4),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey,
-              spreadRadius: 10,
-              blurRadius: 5,
-              offset: Offset(10, 10),
-            )
-          ]),
-      child: Center(
-        child: Text("Basket"),
+          const SizedBox(height: 20),
+          RaisedButton(
+            onPressed: () {},
+            color: Colors.lightBlue,
+            child: const Text('CONTINUE', style: TextStyle(fontSize: 17)),
+          ),
+          const SizedBox(height: 5),
+          RaisedButton(
+            onPressed: () {},
+            color: Colors.white,
+            child: const Text(
+                'If you or someone you were ordering for has a food allergy or intolerance, click here ',
+                style: TextStyle(fontSize: 14, color: Colors.lightBlueAccent)),
+          ),
+        ],
       ),
     );
   }
