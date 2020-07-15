@@ -1,3 +1,4 @@
+import 'package:customerApp/src/purchase.dart';
 import 'package:flutter/material.dart';
 import './src/addComplaint.dart';
 
@@ -12,6 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       routes: {
         '/addComplaint': (context) => AddComplaint(),
+        '/purchase': (context) => Purchase(),
       },
       title: 'Esquire CustomerApp',
       home: HomePage(),
@@ -33,6 +35,10 @@ DemoInfo(
 'Register Complaint',
 '/addComplaint',
 ),
+ DemoInfo ('Purchase Product',
+  '/purchase'),
+  DemoInfo ('Tickets',
+      '/tickets'),
 ];
 
 
