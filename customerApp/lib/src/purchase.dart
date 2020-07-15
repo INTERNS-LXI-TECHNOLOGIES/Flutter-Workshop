@@ -1,9 +1,9 @@
+import 'package:customerApp/widget/customForm.dart';
 import 'package:flutter/material.dart';
 
-class Purchase extends StatelessWidget{
+class Purchase extends StatelessWidget {
   @override
-   Widget build(BuildContext context) {
-    // TODO: implement build
+  Widget build(BuildContext context) {
     return Scaffold(
 
     );
