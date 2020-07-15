@@ -13,8 +13,78 @@ class Checkout extends StatelessWidget {
           ),
           title: Text(
             "Checkout",
+            style: TextStyle(color: Colors.white),
           ),
           backgroundColor: Colors.blue[800],
+        ),
+        body: ListView(
+          children: <Widget>[
+            Container(
+              width: 500,
+              height: 35,
+              margin: EdgeInsets.only(top: 25, left: 25),
+              child: Text(
+                "Selected Address :Jishnuj ",
+                style: TextStyle(
+                  fontSize: 18,
+                ),
+              ),
+            ),
+            Divider(),
+            FlatButton(
+                onPressed: () {},
+                child: Container(
+                  width: 500,
+                  height: 35,
+                  margin: EdgeInsets.only(top: 10, left: 10),
+                  child: Text(
+                    "Add Address",
+                    style: TextStyle(fontSize: 18),
+                  ),
+                )),
+            Divider(),
+            Container(
+              width: 500,
+              height: 60,
+              margin: EdgeInsets.only(top: 25, left: 25, right: 25),
+              child: Text(
+                "Leave a note for the restaurant with anything they need to know (e.g. the doorbell doesn't work). Do not include any details about allergy.",
+                style: TextStyle(fontSize: 18, color: Colors.grey[500]),
+              ),
+            ),
+            Container(
+              width: 500,
+              height: 20,
+              margin: EdgeInsets.only(top: 25, left: 40, right: 40),
+              child: Text(
+                "Note:",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+            ),
+            Container(
+              width: 500,
+              height: 60,
+              margin: EdgeInsets.only(top: 5, left: 40, right: 40),
+              child: Text(
+                "E.g. the doorbell doesn't work. Do not include any details about allergy.",
+                style: TextStyle(fontSize: 18, color: Colors.grey[500]),
+              ),
+            ),
+            Divider(),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: RaisedButton(
+                onPressed: () {},
+                child: Text(
+                  "CHECKOUT",
+                  style: TextStyle(fontSize: 20),
+                ),
+                color: Colors.blue,
+                textColor: Colors.white,
+                elevation: 5,
+              ),
+            )
+          ],
         ),
       ),
     );
