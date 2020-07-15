@@ -4,8 +4,14 @@ class Page1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        child: BackButton(
-      color: Colors.black,
-    ));
+      child: Column(
+        children: <Widget>[
+          FloatingActionButton(
+            child: Text("back"),
+          ),
+          Text("haai"),
+        ],
+      ),
+    );
   }
 }
