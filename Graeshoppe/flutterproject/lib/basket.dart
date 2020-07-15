@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutterproject/widgets/basicWidget.dart';
-import 'package:flutterproject/widgets/multichildlayout.dart';
+import 'package:flutterproject/widgets/orderDetailsLayout.dart';
+import 'package:flutterproject/widgets/deliveryDetailsLayout.dart';
 
 class Basket extends StatelessWidget {
   @override
@@ -33,11 +33,11 @@ class Basket extends StatelessWidget {
                 padding: EdgeInsets.only(left: 10),
                 child: Text(
                   "Chicken Hut",
-                  style: TextStyle(fontSize: 20),
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
               ),
-              BasicWidget(),
-              Multichildlayout(),
+              OrderDetailsLayout(),
+              DeliveryDetailsLayout(),
             ],
           )),
     );

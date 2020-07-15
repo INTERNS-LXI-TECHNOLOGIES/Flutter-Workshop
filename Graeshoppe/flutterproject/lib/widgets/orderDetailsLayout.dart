@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 // import 'package:intl/intl.dart';
 
-class BasicWidget extends StatelessWidget {
+class OrderDetailsLayout extends StatelessWidget {
   // String formatter = new NumberFormat.simpleCurrency(locale: 'eu').format(453);
   @override
   Widget build(BuildContext context) {
