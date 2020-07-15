@@ -8,7 +8,7 @@ class BasicWidget extends StatelessWidget {
     return Container(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.width * .6,
-      margin: EdgeInsets.only(top: 50),
+      // margin: EdgeInsets.only(top: 40),
       padding: EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: Colors.grey,
