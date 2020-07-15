@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,9 +16,18 @@ class MyApp extends StatelessWidget {
           visualDensity: VisualDensity.adaptivePlatformDensity,
            
       ),
+            
+        
+ 
+       home: MyHomePage(title: 'Profile'),
      
-      home: MyHomePage(title: 'Profile'),
+        
+    
+     
+     
     );
+   
+    
   }
 }
 
@@ -31,13 +41,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-     _counter++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +49,8 @@ class _MyHomePageState extends State<MyHomePage> {
       title: Row(
           children: <Widget>[
             Icon(Icons.format_align_justify),
-            Text(widget.title)
+            Text(widget.title),
+            Icon(Icons.power_settings_new)
           ],
         ),
 
@@ -62,18 +66,29 @@ class _MyHomePageState extends State<MyHomePage> {
               'Store Name : four Star'
               'Oder id : GR-1040',
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
+            
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ),
-      );
+      
+bottomNavigationBar: BottomNavigationBar( items: <BottomNavigationBarItem>[
+            
+            BottomNavigationBarItem(
+              icon: Icon(Icons.format_align_left),
+              title: Text('')
+           ),
+           BottomNavigationBarItem(
+              icon: Icon(Icons.access_alarms),
+              title: Text('')
+           ),
+           BottomNavigationBarItem(
+              icon: Icon(Icons.access_alarms),
+              title: Text('')
+           )
+           ],
+),
+      
+ );
+ 
   }
 }
