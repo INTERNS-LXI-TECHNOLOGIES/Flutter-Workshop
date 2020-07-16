@@ -130,12 +130,39 @@ class LoginPage extends StatelessWidget {
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-      title: Text('Home Page'),
-      ),
-      body: Text('this is home page'),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        drawer: Drawer(
+          child: ListView(
+            children: [
+              DrawerHeader(
+                child: Text('E^2 App'),
+                decoration: BoxDecoration(
+                  color: Colors.orange
+                ),
+              ),
+              ListTile(
+                title: Text('first'),
+                onTap: (){
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('second'),
+                onTap: (){
+                Navigator.pop(context);
+                },
+              )
+            ],
+          ),
+        ),
+        appBar: AppBar(
+        title: Text('Home Page'),
+        ),
+        body: Text('this is home page'),
 
+      ),
     );
   }
 
@@ -143,12 +170,14 @@ class HomePage extends StatelessWidget {
 class CreateUser extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-      title: Text('registration Page'),
-      ),
-      body: Center(
-        child: Text('loading.......! '),
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+        title: Text('registration Page'),
+        ),
+        body: Center(
+          child: Text('loading.......! '),
+        ),
       ),
     );
   }
