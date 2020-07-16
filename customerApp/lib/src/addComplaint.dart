@@ -1,47 +1,72 @@
 import 'package:customerApp/widget/customForm.dart';
 import 'package:flutter/material.dart';
 
-class AddComplaint extends StatelessWidget {
-  static const String _title = ' Complaint Register ';
-  final _formKey = GlobalKey<FormState>();
-
+class FormScreen extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: _title,
-      home: Scaffold(
-        appBar: AppBar(title: const Text(_title)),
-        body: MyStatefulWidget(),
+  State<StatefulWidget> createState() {
+    return FormScreenState();
+  }
+}
 
-      ),
+class FormScreenState extends State<FormScreen> {
+  String name;
+//  String email;
+//  String password;
+//  String phoneNumber;
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
+  Widget buildName() {
+    return TextFormField(
+      decoration: InputDecoration(labelText: "Product name"),
+//      validator: (String value)(
+//         if(value.isEmpty)(
+//        return "Name is required"
+//      )
+//      )
     );
   }
-}
 
-class MyStatefulWidget extends StatefulWidget {
-  MyStatefulWidget({Key key}) : super(key: key);
-
-  @override
-  _MyStatefulWidgetState createState() => _MyStatefulWidgetState();
-}
-
-class _MyStatefulWidgetState extends State<MyStatefulWidget> {
-  @override
-  Widget build(BuildContext context) {
-    return CustomForm();
+  Widget buildEmail() {
+    return TextFormField(
+        decoration: InputDecoration(labelText: "what's the Issue ?"),
+    );
   }
-}
 
-class ProductWidget extends StatefulWidget {
-  ProductWidget({Key key}) : super(key: key);
+  Widget buildPassWord() {
+    return TextFormField(
+        decoration: InputDecoration(labelText: "enter serial number"),
+    );
+  }
 
-  @override
-  _MyStatefulWidgetState createState() => _MyStatefulWidgetState();
-}
+  Widget buildNumber() {
+    return TextFormField(
+        decoration: InputDecoration(labelText: "Service centre near your place"),
+    );
+  }
 
-class _ProductWidgetState extends State<ProductWidget> {
-  @override
   Widget build(BuildContext context) {
-    return ProductForm();
+    return Scaffold(
+      appBar: AppBar(title: Text("Register customer Issue")),
+      body: Container(
+        margin: EdgeInsets.all(25),
+        child: Form(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              buildName(),
+              buildEmail(),
+              buildNumber(),
+              buildPassWord(),
+              SizedBox(height:3,),
+              RaisedButton(
+                child: Text(
+                  "Generate Ticket", style: TextStyle(color: Colors.red, fontSize: 16),),
+                onPressed: () => (Text("Done")),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
