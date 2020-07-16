@@ -1,3 +1,4 @@
+import 'package:customerApp/widget/customForm.dart';
 import 'package:flutter/material.dart';
 
 class AddComplaint extends StatelessWidget {
@@ -11,11 +12,12 @@ class AddComplaint extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(title: const Text(_title)),
         body: MyStatefulWidget(),
+
       ),
     );
-
   }
 }
+
 class MyStatefulWidget extends StatefulWidget {
   MyStatefulWidget({Key key}) : super(key: key);
 
@@ -24,42 +26,22 @@ class MyStatefulWidget extends StatefulWidget {
 }
 
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
-  final _formKey = GlobalKey<FormState>();
-
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          TextFormField(
-            decoration: const InputDecoration(
-              hintText: 'tell us your problem',
-            ),
-            validator: (value) {
-              if (value.isEmpty) {
-                return 'Please enter the issue';
-              }
-              return null;
-            },
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16.0),
-            child: RaisedButton(
-              onPressed: () {
-                // Validate will return true if the form is valid, or false if
-                // the form is invalid.
-                if (_formKey.currentState.validate()) {
-                  // Process data.
-                }
-              },
-              child: Text('Submit'),
-            ),
-          ),
-        ],
-      ),
-    );
+    return CustomForm();
   }
 }
 
+class ProductWidget extends StatefulWidget {
+  ProductWidget({Key key}) : super(key: key);
+
+  @override
+  _MyStatefulWidgetState createState() => _MyStatefulWidgetState();
+}
+
+class _ProductWidgetState extends State<ProductWidget> {
+  @override
+  Widget build(BuildContext context) {
+    return ProductForm();
+  }
+}
