@@ -63,7 +63,7 @@ class Checkout extends StatelessWidget {
             ),
             Container(
               width: 500,
-              height: 60,
+              height: 100,
               margin: EdgeInsets.only(top: 5, left: 40, right: 40),
               child: Text(
                 "E.g. the doorbell doesn't work. Do not include any details about allergy.",
@@ -71,8 +71,27 @@ class Checkout extends StatelessWidget {
               ),
             ),
             Divider(),
-            Align(
-              alignment: Alignment.bottomCenter,
+            BottomSection(),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class BottomSection extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height * .42,
+        alignment: Alignment.bottomCenter,
+        child: Row(
+          children: <Widget>[
+            // Expanded(child: Divider()),
+            Container(
+              margin: EdgeInsets.only(left: 10),
+              width: 400,
               child: RaisedButton(
                 onPressed: () {},
                 child: Text(
@@ -83,10 +102,8 @@ class Checkout extends StatelessWidget {
                 textColor: Colors.white,
                 elevation: 5,
               ),
-            )
+            ),
           ],
-        ),
-      ),
-    );
+        ));
   }
 }
