@@ -115,14 +115,38 @@ class _PaymentModeState extends State<PaymentMode> {
           unselectedItemColor: Colors.grey[700],
           showSelectedLabels: false,
           showUnselectedLabels: false,
-          items: const <BottomNavigationBarItem>[
+          items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(Icons.sort),
               title: Text("sort"),
               backgroundColor: Colors.white,
             ),
             BottomNavigationBarItem(
-                icon: Icon(Icons.shopping_basket),
+                icon: Stack(
+                  children: <Widget>[
+                    Icon(Icons.shopping_basket),
+                    Positioned(
+                        top: 0.0,
+                        right: 1.0,
+                        child: Container(
+                          width: 100,
+                          padding: EdgeInsets.all(1),
+                          decoration: BoxDecoration(
+                            color: Colors.blue,
+                            borderRadius: BorderRadius.circular(6),
+                          ),
+                          constraints: BoxConstraints(
+                            minWidth: 15,
+                            maxWidth: 15,
+                          ),
+                          child: Text(
+                            '2',
+                            style: TextStyle(color: Colors.white, fontSize: 10),
+                            textAlign: TextAlign.center,
+                          ),
+                        )),
+                  ],
+                ),
                 title: Text("Shopping Basket")),
             BottomNavigationBarItem(
                 icon: Icon(Icons.person), title: Text("Person")),
