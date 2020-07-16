@@ -84,15 +84,14 @@ class BottomSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height * .42,
+        height: MediaQuery.of(context).size.height * .43,
         alignment: Alignment.bottomCenter,
         child: Row(
           children: <Widget>[
-            // Expanded(child: Divider()),
             Container(
               margin: EdgeInsets.only(left: 10),
               width: 400,
-              child: RaisedButton(
+              child: FlatButton(
                 onPressed: () {},
                 child: Text(
                   "CHECKOUT",
@@ -100,7 +99,7 @@ class BottomSection extends StatelessWidget {
                 ),
                 color: Colors.blue,
                 textColor: Colors.white,
-                elevation: 5,
+                // elevation: 5,
               ),
             ),
           ],
