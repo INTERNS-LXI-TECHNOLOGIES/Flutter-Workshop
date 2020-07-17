@@ -10,6 +10,7 @@ class FormScreen extends StatefulWidget {
 
 class FormScreenState extends State<FormScreen> {
   String name;
+
 //  String email;
 //  String password;
 //  String phoneNumber;
@@ -18,29 +19,31 @@ class FormScreenState extends State<FormScreen> {
   Widget buildName() {
     return TextFormField(
       decoration: InputDecoration(labelText: "Product name"),
-//      validator: (String value)(
-//         if(value.isEmpty)(
-//        return "Name is required"
-//      )
-//      )
+      // ignore: missing_return
+      validator: (String value) {
+        if (value.isEmpty) return 'please enter Product Name';
+      },
+      onSaved: (String value) {
+        name = value;
+      },
     );
   }
 
   Widget buildEmail() {
     return TextFormField(
-        decoration: InputDecoration(labelText: "what's the Issue ?"),
+      decoration: InputDecoration(labelText: "what's the Issue ?"),
     );
   }
 
   Widget buildPassWord() {
     return TextFormField(
-        decoration: InputDecoration(labelText: "enter serial number"),
+      decoration: InputDecoration(labelText: "enter serial number"),
     );
   }
 
   Widget buildNumber() {
     return TextFormField(
-        decoration: InputDecoration(labelText: "Service centre near your place"),
+      decoration: InputDecoration(labelText: "Service centre near your place"),
     );
   }
 
@@ -50,6 +53,7 @@ class FormScreenState extends State<FormScreen> {
       body: Container(
         margin: EdgeInsets.all(25),
         child: Form(
+          key: formKey,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -57,16 +61,41 @@ class FormScreenState extends State<FormScreen> {
               buildEmail(),
               buildNumber(),
               buildPassWord(),
-              SizedBox(height:3,),
+              SizedBox(
+                height: 3,
+              ),
               RaisedButton(
-                child: Text(
-                  "Generate Ticket", style: TextStyle(color: Colors.red, fontSize: 16),),
-                onPressed: () => (Text("Done")),
-              )
+                  child: Text(
+                    "Generate Ticket",
+                    style: TextStyle(color: Colors.red, fontSize: 16),
+                  ),
+                  onPressed: () {
+                    if (!formKey.currentState.validate()) {
+                       return showAlertDialog(context);
+
+                    } else
+                      // ignore: unnecessary_statements
+                      () {
+                        showAlertDialog(context);
+//                        formKey.currentState.save();
+//                        print(name);
+                      };
+
+                    // formKey.currentState.save()
+                  })
             ],
           ),
         ),
       ),
     );
   }
+}
+showAlertDialog(BuildContext context) {
+  // Create button
+  Widget okButton = FlatButton(
+    child: Text("OK"),
+    onPressed: () {
+      Navigator.of(context).pop();
+    },
+  );
 }
