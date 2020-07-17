@@ -1,5 +1,7 @@
 
 
+import 'dart:core';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -143,9 +145,9 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               ListTile(
-                title: Text('first'),
+                title: Text('create user'),
                 onTap: (){
-                  Navigator.pop(context);
+                  Navigator.pushNamed(context, "createUser");
                 },
               ),
               ListTile(
@@ -167,20 +169,145 @@ class HomePage extends StatelessWidget {
   }
 
 }
-class CreateUser extends StatelessWidget {
+class CreateUser extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return createNewUser();
+  }
+}
+
+class createNewUser extends State<CreateUser> {
+  String userName;
+  String password;
+  String email;
+  String location;
+  String number;
+
+  final GlobalKey<FormState> formKey= GlobalKey<FormState>();
+
+  Widget buildUserName(){
+
+    return TextFormField(
+      decoration: InputDecoration(
+        labelText: 'Username'
+      ),
+      validator:(String value) {
+        if(value.isEmpty){
+          return "Username is required";
+        }
+        return null;
+      },
+      onSaved: (String value){
+        userName = value;
+      },
+    );
+  }
+  Widget buildPassword(){
+    return TextFormField(
+      decoration: InputDecoration(
+          labelText: 'Password'
+      ),
+      validator:(String value) {
+        if(value.isEmpty){
+          return "Password is required";
+        }
+        return null;
+      },
+      onSaved: (String value){
+        password = value;
+      },
+    );
+
+  }
+  Widget buildEmail(){
+    return TextFormField(
+      decoration: InputDecoration(
+          labelText: 'Email'
+      ),
+      validator:(String value) {
+        if(value.isEmpty){
+          return "Email is required";
+        }
+        return null;
+      },
+      onSaved: (String value){
+        email = value;
+      },
+    );
+
+  }
+  Widget buildLocation(){
+    return TextFormField(
+      decoration: InputDecoration(
+          labelText: 'Location'
+      ),
+      validator:(String value) {
+        if(value.isEmpty){
+          return "Location is required";
+        }
+        return null;
+      },
+      onSaved: (String value){
+        location = value;
+      },
+    );
+
+  }
+  Widget buildNumber(){
+    return TextFormField(
+      decoration: InputDecoration(
+          labelText: 'Number'
+      ),
+      validator:(String value) {
+        if(value.isEmpty){
+          return "Number is required";
+        }
+        return null;
+      },
+      onSaved: (String value){
+        number = value;
+      },
+    );
+
+  }
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-        title: Text('registration Page'),
-        ),
-        body: Center(
-          child: Text('loading.......! '),
-        ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('REGISTER')
+      ),
+      body: Container(
+        margin: EdgeInsets.all(24),
+        child:  Form(
+          key: formKey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                buildUserName(),
+                buildPassword(),
+                buildEmail(),
+                buildLocation(),
+                buildNumber(),
+                SizedBox(
+                  height: 100,
+                ),
+                RaisedButton(onPressed: (){
+                    if(!formKey.currentState.validate()){
+                      return;
+                    }
+                    formKey.currentState.save();
+                  },
+                  child: Text('submit', style: TextStyle(
+                    color: Colors.blue, fontSize: 16)
+                  ),
+                )
+              ],
+            )),
       ),
     );
   }
+
 }
 
 
