@@ -5,20 +5,6 @@ class Basket extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Basket",
-      home: BasketMode(),
-    );
-  }
-}
-
-class BasketMode extends StatefulWidget {
-  @override
-  _BasketState createState() => _BasketState();
-}
-
-class _BasketState extends State<BasketMode> {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
       home: Scaffold(
           appBar: AppBar(
             leading: IconButton(
@@ -48,15 +34,76 @@ class _BasketState extends State<BasketMode> {
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
               ),
-              OrderDetailsLayout(),
-              DeliveryDetailsLayout(),
+              OrderDetails(),
+              DeliveryItem(),
             ],
           )),
     );
   }
 }
 
-class DeliveryDetailsLayout extends StatelessWidget {
+class OrderDetails extends StatefulWidget {
+  @override
+  _OrderDetailsState createState() => _OrderDetailsState();
+}
+
+class _OrderDetailsState extends State<OrderDetails> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.width * .6,
+      padding: EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: Colors.grey,
+      ),
+      child: ListView(
+        children: <Widget>[
+          Container(
+            child: Center(
+              child: Text(
+                " Order Total(2 Items) ",
+                style: TextStyle(fontSize: 28),
+              ),
+            ),
+          ),
+          const SizedBox(
+            height: 70,
+            child: Center(
+                child: Text(
+              " €45.3 ",
+              style: TextStyle(fontSize: 30),
+            )),
+          ),
+          RaisedButton(
+            onPressed: () {},
+            color: Colors.lightBlue[800],
+            child: const Text('CONTINUE',
+                style: TextStyle(fontSize: 17, color: Colors.white)),
+          ),
+          RaisedButton(
+            onPressed: () {},
+            color: Colors.white,
+            padding: EdgeInsets.all(13),
+            child: Row(
+              children: <Widget>[
+                Icon(Icons.info, color: Colors.blue),
+                Expanded(
+                  child: Text(
+                      'If you or someone you were ordering for has a food allergy or intolerance, click here ',
+                      style: TextStyle(
+                          fontSize: 17.4, color: Colors.lightBlueAccent)),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class DeliveryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -90,6 +137,44 @@ class DeliveryDetailsLayout extends StatelessWidget {
             ],
           ),
           itemPrice(0.0, 45.3),
+        ],
+      ),
+    );
+  }
+
+  // item box
+  Container deliveryItem(String item, int amount, double price) {
+    return Container(
+      margin: EdgeInsets.all(5),
+      width: 400,
+      height: 60,
+      decoration: BoxDecoration(
+        color: Colors.cyan[300],
+        borderRadius: BorderRadius.circular(4),
+      ),
+      child: Row(
+        children: <Widget>[
+          Container(
+            width: 100,
+            margin: EdgeInsets.only(left: 10, top: 10),
+            child: Column(
+              children: <Widget>[
+                Text(
+                  item, // food item
+                  style: TextStyle(color: Colors.white),
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 3, left: 0),
+                  child: Text(
+                    '€' + price.toString(), // price of food item
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                  ),
+                )
+              ],
+            ),
+          ),
+          CounterItem(),
         ],
       ),
     );
@@ -147,118 +232,39 @@ class DeliveryDetailsLayout extends StatelessWidget {
       ),
     );
   }
-
-  // item box
-  Container deliveryItem(String item, int amount, double price) {
-    return Container(
-      margin: EdgeInsets.all(5),
-      width: 400,
-      height: 60,
-      decoration: BoxDecoration(
-        color: Colors.cyan[300],
-        borderRadius: BorderRadius.circular(4),
-      ),
-      child: Row(
-        children: <Widget>[
-          Container(
-            width: 100,
-            margin: EdgeInsets.only(left: 10, top: 10),
-            child: Column(
-              children: <Widget>[
-                Text(
-                  item, // food item
-                  style: TextStyle(color: Colors.white),
-                ),
-                Container(
-                  margin: EdgeInsets.only(top: 3, left: 0),
-                  child: Text(
-                    '€' + price.toString(), // price of food item
-                    style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.bold),
-                  ),
-                )
-              ],
-            ),
-          ),
-          Container(
-            width: 150,
-            height: 35,
-            margin: EdgeInsets.only(left: 100),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(14),
-            ),
-            child: Row(
-              children: <Widget>[
-                Flexible(
-                    child:
-                        IconButton(icon: Icon(Icons.remove), onPressed: null)),
-                Container(
-                    width: 50,
-                    child: Center(
-                      child: Text(amount.toString()), // amount of food item
-                    )),
-                Flexible(
-                    child: IconButton(icon: Icon(Icons.add), onPressed: null)),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
 }
 
-class OrderDetailsLayout extends StatelessWidget {
+class CounterItem extends StatefulWidget {
+  @override
+  _CounterItemState createState() => new _CounterItemState();
+}
+
+class _CounterItemState extends State<CounterItem> {
+  int _itemCount = 0;
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.width * .6,
-      padding: EdgeInsets.all(20),
+      // title: new Text(widget.title),
+      width: 150,
+      height: 35,
+      margin: EdgeInsets.only(left: 100),
+      padding: EdgeInsets.only(left: 20),
       decoration: BoxDecoration(
-        color: Colors.grey,
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(14),
       ),
-      child: ListView(
+      child: Row(
         children: <Widget>[
-          Container(
-            child: Center(
-              child: Text(
-                " Order Total(2 Items) ",
-                style: TextStyle(fontSize: 28),
-              ),
-            ),
-          ),
-          const SizedBox(
-            height: 70,
-            child: Center(
-                child: Text(
-              " €45.3 ",
-              style: TextStyle(fontSize: 30),
-            )),
-          ),
-          RaisedButton(
-            onPressed: () {},
-            color: Colors.lightBlue[800],
-            child: const Text('CONTINUE',
-                style: TextStyle(fontSize: 17, color: Colors.white)),
-          ),
-          RaisedButton(
-            onPressed: () {},
-            color: Colors.white,
-            padding: EdgeInsets.all(13),
-            child: Row(
-              children: <Widget>[
-                Icon(Icons.info, color: Colors.blue),
-                Expanded(
-                  child: Text(
-                      'If you or someone you were ordering for has a food allergy or intolerance, click here ',
-                      style: TextStyle(
-                          fontSize: 17.4, color: Colors.lightBlueAccent)),
-                ),
-              ],
-            ),
-          ),
+          _itemCount != 0
+              ? IconButton(
+                  icon: Icon(Icons.remove),
+                  onPressed: () => setState(() => _itemCount--),
+                )
+              : Container(),
+          Text(_itemCount.toString()),
+          IconButton(
+              icon: Icon(Icons.add),
+              onPressed: () => setState(() => _itemCount++))
         ],
       ),
     );
