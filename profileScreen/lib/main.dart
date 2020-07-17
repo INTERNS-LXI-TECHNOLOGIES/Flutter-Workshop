@@ -1,3 +1,4 @@
+//import 'dart:html';
 
 import 'package:flutter/material.dart';
 
@@ -11,21 +12,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-       
         primarySwatch: Colors.blue,
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-           
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-            
-        
- 
-       home: MyHomePage(title: 'Profile'),
+      home: MyHomePage(title: 'Profile'),
     );
-   }
-
+  }
 }
-
-
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
@@ -34,201 +27,220 @@ class MyHomePage extends StatefulWidget {
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
-
-   
-
-
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        
-      title: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            //  Image.asset("assets/download.jpg"),
-         
-            Icon(Icons.dehaze),
-            Text(widget.title),
-            Icon(Icons.power_settings_new)
-          ],
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Icon(
+                Icons.dehaze,
+                color: Colors.grey,
+              ),
+              Text(widget.title, style: TextStyle(color: Colors.grey)
+
+                  //style: Color.red,
+
+                  ),
+              Icon(
+                Icons.power_settings_new,
+                color: Colors.grey,
+              )
+            ],
+          ),
         ),
+        body: Center(
+          child: Column(
+            children: <Widget>[
+              Row(
+                children: <Widget>[
+                  Image.asset('assets/images.png'),
+                  // Container(
 
-      ),
-       body: Center(
-     child: Column(
-      children: <Widget>[
-      Row(children: <Widget>[
-         
-      Container(
-        
-        width: 200,
-        height: 200,
-        color: Colors.red,
-        
-      ),
-      Container(
-        
-       child: Text('test'
-       'test@gmail.com')
-        
-      )
-    ],
-    ), 
+                  //   width: 200,
+                  //   height: 200,
+                  //   color: Colors.red,
 
-   Row(
-    children: <Widget>[
-      Expanded(flex: 6,
-     child: Container(
-        
-        width: 700,
-        height: 40,
-        color: Colors.blue,
-        child: IconButton(icon:  Icon(Icons.dehaze), onPressed: null)
-      ),
-    ),
-    ],
-   ),
+                  // ),
+                  Container(child: Text('test \n test@gmail.com'))
+                ],
+              ),
 
+              Row(
+                children: <Widget>[
+                  Expanded(
+                    flex: 6,
+                    child: Container(
+                        width: 700,
+                        height: 40,
+                        color: Colors.blue,
+                        child: Align(
+                            alignment: Alignment.centerRight,
+                            child: IconButton(
+                                icon: Icon(
+                                  Icons.edit,
+                                  color: Colors.white,
+                                ),
+                                onPressed: null))),
+                  ),
+                ],
+              ),
 
-    Row(
-       mainAxisAlignment: MainAxisAlignment.end,
-      children: <Widget>[
-      
-        Expanded(flex: 6,
-      child: Container(
-        
-        width: 200,
-        height: 50,
-       child: Text('FAVOURITES')
-        
-      ),
-      ),
-      Expanded(flex: 6,
-      child: Container(
-         width: 200,
-        height: 50,
-       child: Text('HISTORY')
-        
-      ),
-      ),
-    ],
-    ), 
-    Row(
-       mainAxisAlignment: MainAxisAlignment.end,
-      children: <Widget>[
-     
-        Expanded(flex: 6,
-          
-      child: Container(
-        
-        width: 200,
-        height: 50,
-       child: Text('FAVOURITES')
-        
-      ),
-      ),
-      Expanded(flex: 6,
-      child: Container(
-         width: 200,
-        height: 100,
-       child: Text('Date 09/05/2019 12:43 PM'
-              'Grand Total 35.0'
-              'Oder status payment-processed'
-              'Store Name : four Star'
-              'Oder id : GR-1040')
-        
-      ),
-      ),
-    ],
-    ), 
-     Row(
-       mainAxisAlignment: MainAxisAlignment.end,
-      children: <Widget>[
-     
-        Expanded(flex: 6,
-          
-      child: Container(
-        
-        width: 200,
-        height: 50,
-       child: Text('FAVOURITES')
-        
-      ),
-      ),
-      Expanded(flex: 6,
-      child: Container(
-         width: 200,
-        height: 100,
-       child: Text('Date 09/05/2019 12:43 PM'
-              'Grand Total 35.0'
-              'Oder status payment-processed'
-              'Store Name : four Star'
-              'Oder id : GR-1040')
-        
-      ),
-      ),
-    ],
-    ), 
-     Row(
-       mainAxisAlignment: MainAxisAlignment.end,
-      children: <Widget>[
-     
-        Expanded(flex: 6,
-          
-      child: Container(
-        
-        width: 200,
-        height: 50,
-       child: Text('FAVOURITES')
-        
-      ),
-      ),
-      Expanded(flex: 6,
-      child: Container(
-         width: 200,
-        height: 100,
-       child: Text('Date 09/05/2019 12:43 PM'
-              'Grand Total 35.0'
-              'Oder status payment-processed'
-              'Store Name : four Star'
-              'Oder id : GR-1040')
-        
-      ),
-      ),
-    ],
-    ), 
-    ],
-    ),
-    ),
-        
-      
-bottomNavigationBar: BottomNavigationBar( items: <BottomNavigationBarItem>[
-            
+// Row(
+//   children: <Widget>[
+
+//       TabBar(
+//        tabs:[
+//          Tab(text: 'a'),
+//          Tab(text: 'b'),
+//       ],),
+//   ]
+// ),
+
+              DefaultTabController(
+                length: 2,
+                child: TabBar(
+                  tabs: [
+                    Tab(
+                      child: Text(
+                        'FAVOURITES',
+                        style: TextStyle(color: Colors.grey),
+                      ),
+                    ),
+                    Tab(
+                      child: Text(
+                        'HISTORY',
+                        style: TextStyle(color: Colors.grey),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              // Row(
+              //    mainAxisAlignment: MainAxisAlignment.center,
+              //   children: <Widget>[
+              //     TabBar(
+
+              //   // child: Container(
+
+              // //  bottom : TabBar(),
+              //     width: 200,
+              //     height: 50,
+              //     tabs:[
+              //    Tab(
+              //      Text(
+              //      'FAVOURITES',
+              //      textAlign: TextAlign.center,
+              //      ))
+              //     ]
+
+              //   ),
+
+              //   Expanded(flex: 6,
+              //   child: Container(
+
+              //      width: 200,
+              //     height: 50,
+              //    child: Text(
+              //      'HISTORY',
+              //      textAlign: TextAlign.center,)
+
+              //   ),
+              //   ),
+              // ],
+              // ),
+              Row(
+                children: <Widget>[
+                  Image.asset(
+                    'assets/img.png',
+                    width: 200,
+                    height: 50,
+                  ),
+
+                  // Expanded(flex: 6,
+
+                  // child: Container(
+
+                  //   width: 200,
+                  //   height: 50,
+                  //  child: Text('FAVOURITES')
+
+                  // ),
+                  // ),
+                  Expanded(
+                    flex: 6,
+                    child: Container(
+                        width: 200,
+                        height: 100,
+                        child: Text('Date 09/05/2019 12:43 PM'
+                            'Grand Total 35.0'
+                            'Oder status payment-processed'
+                            'Store Name : four Star \n der id : GR-1040')),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  Image.asset(
+                    'assets/img.png',
+                    width: 200,
+                    height: 50,
+                  ),
+                  Expanded(
+                    flex: 6,
+                    child: Container(
+                        width: 200,
+                        height: 100,
+                        child: Text('Date 09/05/2019 12:43 PM'
+                            'Grand Total 35.0'
+                            'Oder status payment-processed'
+                            'Store Name : four Star \n Oder id : GR-1040')),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Image.asset(
+                    'assets/img.png',
+                    width: 200,
+                    height: 50,
+                  ),
+                  Expanded(
+                    flex: 6,
+                    child: Container(
+                        width: 200,
+                        height: 100,
+                        child: Text('Date 09/05/2019 12:43 PM'
+                            'Grand Total 35.0'
+                            'Oder status payment-processed'
+                            'Store Name : four Star \n Oder id : GR-1040')),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-              icon: Icon(Icons.format_align_left),
-              title: Text('')
-           ),
-           BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_basket),
-              title: Text('')
-           ),
-           BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              title: Text('')
-           )
-           ],
-           
-)
-      // appBar: AppBar(
-      //   title: Text('Flutter Flat Button Example'),
-      // ),
-      
- );
- 
+                icon: Icon(Icons.format_align_left), title: Text('')),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.shopping_basket), title: Text('')),
+            BottomNavigationBarItem(icon: Icon(Icons.person), title: Text(''))
+          ],
+        )
+        // appBar: AppBar(
+        //   title: Text('Flutter Flat Button Example'),
+        // ),
+
+        );
   }
 }
