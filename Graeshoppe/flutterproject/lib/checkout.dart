@@ -5,6 +5,20 @@ class Checkout extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Checkout",
+      home: CheckoutMode(),
+    );
+  }
+}
+
+class CheckoutMode extends StatefulWidget {
+  @override
+  _CheckoutState createState() => _CheckoutState();
+}
+
+class _CheckoutState extends State<CheckoutMode> {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
           leading: IconButton(
@@ -71,38 +85,31 @@ class Checkout extends StatelessWidget {
               ),
             ),
             Divider(),
-            BottomSection(),
+            Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height * .43,
+                alignment: Alignment.bottomCenter,
+                child: Row(
+                  children: <Widget>[
+                    Container(
+                      margin: EdgeInsets.only(left: 10),
+                      width: 400,
+                      child: FlatButton(
+                        onPressed: () {},
+                        child: Text(
+                          "CHECKOUT",
+                          style: TextStyle(fontSize: 20),
+                        ),
+                        color: Colors.blue,
+                        textColor: Colors.white,
+                        // elevation: 5,
+                      ),
+                    ),
+                  ],
+                )),
           ],
         ),
       ),
     );
-  }
-}
-
-class BottomSection extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height * .43,
-        alignment: Alignment.bottomCenter,
-        child: Row(
-          children: <Widget>[
-            Container(
-              margin: EdgeInsets.only(left: 10),
-              width: 400,
-              child: FlatButton(
-                onPressed: () {},
-                child: Text(
-                  "CHECKOUT",
-                  style: TextStyle(fontSize: 20),
-                ),
-                color: Colors.blue,
-                textColor: Colors.white,
-                // elevation: 5,
-              ),
-            ),
-          ],
-        ));
   }
 }

@@ -5,6 +5,20 @@ class Basket extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Basket",
+      home: BasketMode(),
+    );
+  }
+}
+
+class BasketMode extends StatefulWidget {
+  @override
+  _BasketState createState() => _BasketState();
+}
+
+class _BasketState extends State<BasketMode> {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
       home: Scaffold(
           appBar: AppBar(
             leading: IconButton(
