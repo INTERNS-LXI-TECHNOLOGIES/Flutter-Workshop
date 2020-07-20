@@ -57,174 +57,75 @@ class _MyHomePageState extends State<MyHomePage> {
         body: Center(
           child: Column(
             children: <Widget>[
-              Row(
-                children: <Widget>[
-                  Image.asset('assets/images.png'),
-                  // Container(
-
-                  //   width: 200,
-                  //   height: 200,
-                  //   color: Colors.red,
-
-                  // ),
-                  Container(child: Text('test \n test@gmail.com'))
-                ],
-              ),
-
-              Row(
-                children: <Widget>[
-                  Expanded(
-                    flex: 6,
-                    child: Container(
-                        width: 700,
-                        height: 40,
-                        color: Colors.blue,
-                        child: Align(
-                            alignment: Alignment.centerRight,
-                            child: IconButton(
-                                icon: Icon(
-                                  Icons.edit,
-                                  color: Colors.white,
-                                ),
-                                onPressed: null))),
-                  ),
-                ],
-              ),
-
-// Row(
-//   children: <Widget>[
-
-//       TabBar(
-//        tabs:[
-//          Tab(text: 'a'),
-//          Tab(text: 'b'),
-//       ],),
-//   ]
-// ),
-
-              DefaultTabController(
-                length: 2,
-                child: TabBar(
-                  tabs: [
-                    Tab(
-                      child: Text(
-                        'FAVOURITES',
-                        style: TextStyle(color: Colors.grey),
-                      ),
+              Flexible(
+                fit: FlexFit.loose,
+                child: Row(
+                  children: <Widget>[
+                    Flexible(
+                      fit: FlexFit.loose,
+                      child: Image.asset('assets/images.png'),
                     ),
-                    Tab(
-                      child: Text(
-                        'HISTORY',
-                        style: TextStyle(color: Colors.grey),
-                      ),
+                    Flexible(
+                        fit: FlexFit.loose,
+                        child:
+                            Container(child: Text('test \n test@gmail.com'))),
+                  ],
+                ),
+              ),
+              Flexible(
+                fit: FlexFit.loose,
+                child: Row(
+                  children: <Widget>[
+                    Flexible(
+                      flex: 6,
+                      fit: FlexFit.loose,
+                      child: Container(
+                          width: 700,
+                          height: 40,
+                          color: Colors.blue,
+                          child: Align(
+                              alignment: Alignment.centerRight,
+                              child: IconButton(
+                                  icon: Icon(
+                                    Icons.edit,
+                                    color: Colors.white,
+                                  ),
+                                  onPressed: null))),
                     ),
                   ],
                 ),
               ),
-
-              // Row(
-              //    mainAxisAlignment: MainAxisAlignment.center,
-              //   children: <Widget>[
-              //     TabBar(
-
-              //   // child: Container(
-
-              // //  bottom : TabBar(),
-              //     width: 200,
-              //     height: 50,
-              //     tabs:[
-              //    Tab(
-              //      Text(
-              //      'FAVOURITES',
-              //      textAlign: TextAlign.center,
-              //      ))
-              //     ]
-
-              //   ),
-
-              //   Expanded(flex: 6,
-              //   child: Container(
-
-              //      width: 200,
-              //     height: 50,
-              //    child: Text(
-              //      'HISTORY',
-              //      textAlign: TextAlign.center,)
-
-              //   ),
-              //   ),
-              // ],
-              // ),
-              Row(
-                children: <Widget>[
-                  Image.asset(
-                    'assets/img.png',
-                    width: 200,
-                    height: 50,
+              Flexible(
+                fit: FlexFit.loose,
+                child: DefaultTabController(
+                  length: 2,
+                  child: TabBar(
+                    tabs: [
+                      Flexible(
+                        fit: FlexFit.loose,
+                        child: Tab(
+                          child: Text(
+                            'FAVOURITES',
+                            style: TextStyle(color: Colors.grey),
+                          ),
+                        ),
+                      ),
+                      Flexible(
+                        fit: FlexFit.loose,
+                        child: Tab(
+                          child: Text(
+                            'HISTORY',
+                            style: TextStyle(color: Colors.grey),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-
-                  // Expanded(flex: 6,
-
-                  // child: Container(
-
-                  //   width: 200,
-                  //   height: 50,
-                  //  child: Text('FAVOURITES')
-
-                  // ),
-                  // ),
-                  Expanded(
-                    flex: 6,
-                    child: Container(
-                        width: 200,
-                        height: 100,
-                        child: Text('Date 09/05/2019 12:43 PM'
-                            'Grand Total 35.0'
-                            'Oder status payment-processed'
-                            'Store Name : four Star \n der id : GR-1040')),
-                  ),
-                ],
+                ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: <Widget>[
-                  Image.asset(
-                    'assets/img.png',
-                    width: 200,
-                    height: 50,
-                  ),
-                  Expanded(
-                    flex: 6,
-                    child: Container(
-                        width: 200,
-                        height: 100,
-                        child: Text('Date 09/05/2019 12:43 PM'
-                            'Grand Total 35.0'
-                            'Oder status payment-processed'
-                            'Store Name : four Star \n Oder id : GR-1040')),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  Image.asset(
-                    'assets/img.png',
-                    width: 200,
-                    height: 50,
-                  ),
-                  Expanded(
-                    flex: 6,
-                    child: Container(
-                        width: 200,
-                        height: 100,
-                        child: Text('Date 09/05/2019 12:43 PM'
-                            'Grand Total 35.0'
-                            'Oder status payment-processed'
-                            'Store Name : four Star \n Oder id : GR-1040')),
-                  ),
-                ],
-              ),
+              getHistory(),
+              getHistory(),
+              getHistory()
             ],
           ),
         ),
@@ -242,5 +143,33 @@ class _MyHomePageState extends State<MyHomePage> {
         // ),
 
         );
+  }
+
+  Widget getHistory() {
+    return Flexible(
+      child: Row(
+        //mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          Expanded(
+            flex:5,
+                      child: Image.asset(
+              'assets/img.png',
+              width: 200,
+              height: 50,
+            ),
+          ),
+          Expanded(
+            flex: 7,
+                      child: Container(
+                width: 200,
+                height: 100,
+                child: Text('Date: 09/05/2019 12:43 PM\n'
+                    'Grand Total: 35.0\n'
+                    'Oder status: payment-processed\n'
+                    'Store Name : four Star \nOrder id : GR-1040')),
+          ),
+        ],
+      ),
+    );
   }
 }
