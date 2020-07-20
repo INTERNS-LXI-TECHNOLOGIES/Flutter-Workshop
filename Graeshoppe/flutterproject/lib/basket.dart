@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutterproject/checkout.dart';
 
 class Basket extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Basket",
+      routes: <String, WidgetBuilder>{
+        "/checkout": (BuildContext context) => Checkout(),
+        //add more routes here
+      },
       home: Scaffold(
           appBar: AppBar(
             leading: IconButton(
@@ -76,7 +81,9 @@ class _OrderDetailsState extends State<OrderDetails> {
             )),
           ),
           RaisedButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).pushNamed("/checkout");
+            },
             color: Colors.lightBlue[800],
             child: const Text('CONTINUE',
                 style: TextStyle(fontSize: 17, color: Colors.white)),
