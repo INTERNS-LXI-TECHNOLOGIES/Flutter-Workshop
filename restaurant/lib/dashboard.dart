@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:badges/badges.dart';
 import 'package:restaurant/models/activity_model.dart';
+import 'package:restaurant/models/restaurant_model.dart';
+import 'package:restaurant/restaurant_page.dart';
+
 
 class Dashboard extends StatefulWidget {
   @override
@@ -9,7 +12,7 @@ class Dashboard extends StatefulWidget {
 
 class _DashboardState extends State<Dashboard> {
   List<String> details = [];
-   Text _buildRatingStars(int rating) {
+  Text _buildRatingStars(int rating) {
     String stars = '';
     for (int i = 0; i < rating; i++) {
       stars += '⭐ ';
@@ -17,26 +20,31 @@ class _DashboardState extends State<Dashboard> {
     stars.trim();
     return Text(stars);
   }
+List<Restaurant> restaurants=[
+  Restaurant(name: 'Chicken Hut'),
+Restaurant(name: 'Papa Entis'),
+Restaurant(name: 'Wang'),
+];
   List<Activity> activities = [
-     Activity(
+    Activity(
       imageUrl: 'assets/chickenhut.jpg',
       name: 'Chicken Hut',
       type: 'kebab,pizza',
       startTimes: ['9:00 am', '11:00 am'],
       delivery: 'delivery from 10:50 AM',
-      rating: 5,
+      rating: 4,
       spend: 'Min Spend ₹3',
     ),
-     Activity(
+    Activity(
       imageUrl: 'assets/PAPA.jpg',
       name: 'Papa Enthis',
       type: '',
       startTimes: ['9:00 am', '11:00 am'],
       delivery: 'delivery from 10:50 AM',
-      rating: 5,
+      rating: 3,
       spend: 'Min Spend ₹3',
     ),
-     Activity(
+    Activity(
       imageUrl: 'assets/wang.jpg',
       name: 'Mr Wang',
       type: '',
@@ -45,7 +53,6 @@ class _DashboardState extends State<Dashboard> {
       rating: 5,
       spend: 'Min Spend ₹5',
     ),
-    
   ];
   @override
   Widget build(BuildContext context) {
@@ -145,105 +152,143 @@ class _DashboardState extends State<Dashboard> {
                   Activity activity = activities[index];
                   return Stack(
                     children: <Widget>[
-            //          Banner(
-            // message: "closed",
-            // location: BannerLocation.topEnd,
-            // color: Colors.red,),
-                    ClipRRect(
-                      child: Banner(
-            message: "closed",
-            location: BannerLocation.topEnd,
-            color: Colors.red,
-                                              child: Container(
-                          margin: EdgeInsets.fromLTRB(40.0, 5.0, 20.0,0),
-                          height: 170.0,
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(20.0)),
-                          child: Padding(
-                            padding: const EdgeInsets.fromLTRB(100.0,20.0,20.0,0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Row(
-                                  mainAxisAlignment:  MainAxisAlignment.spaceBetween,
+                      ClipRRect(
+                        child: Banner(
+                          message: "closed",
+                          location: BannerLocation.topEnd,
+                          color: Colors.red,
+                          child: GestureDetector(
+                            onTap: () => Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => RestaurantPage()),),//restaurant page class comes here
+                            child: Container(
+                              margin: EdgeInsets.fromLTRB(40.0, 5.0, 20.0, 0),
+                              height: 220.0,
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(20.0)),
+                              child: Padding(
+                                padding: const EdgeInsets.fromLTRB(
+                                    100.0, 20.0, 20.0, 0),
+                                child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
-                                    Text(activity.name,
-                                    style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold),),
-                                  ],
-                                ),
-                                Text(activity.type,
-                                 style: TextStyle(color:Colors.grey,fontSize: 13.0,fontWeight: FontWeight.w500),),
-                                SizedBox(height: 10.0),
-                                Row(children: <Widget>[//delivery
-                                Text(activity.delivery,
-                                 style: TextStyle(color:Colors.grey,fontSize: 13.0,fontWeight: FontWeight.w500),
-                                )
-                                ],),
-                                SizedBox(height: 10.0),
-                                Row(children: <Widget>[//spend
-                                  Text(activity.spend,
-                                  style: TextStyle(color:Colors.grey,fontSize: 13.0,fontWeight: FontWeight.w500),
-                                  )
-                                ],),
-                                SizedBox(height: 10.0),
-                               Row(children: <Widget>[
-                                 Container(
-                                 color: Colors.yellow[600],
-                                child: Text(
-                                "Free delivery",
-                                style: TextStyle(color:Colors.white,fontSize: 13.0,fontWeight: FontWeight.bold),
-                                 )
-                                 ),
-                                ],),
-                                //  SizedBox(height: 10.0),
-                                //  Row(children: <Widget>[
-                                //  _buildRatingStars(activity.rating),
-                                // ],),
-                                SizedBox(height: 10.0),
-                                Row(
-                                  children: <Widget>[
-                                    Container(//starttime
-                                    width: 70.0,
-                                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(5.0)),
-                                    
-                                    child:Text(
-                                      activity.startTimes[0],
-                                      style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold)
-                                    )),
-                                    SizedBox(width: 10.0),
-                                    Container(//endtime
-                                    width: 70.0,
-                                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(5.0)),
-                                    
-                                    child:Text(
-                                      activity.startTimes[1],
-                                      style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold)
-                                    )
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: <Widget>[
+                                        Text(
+                                          activity.name,
+                                          style: TextStyle(
+                                              fontSize: 15.0,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ],
+                                    ),
+                                    Text(
+                                      activity.type,
+                                      style: TextStyle(
+                                          color: Colors.grey,
+                                          fontSize: 13.0,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                    SizedBox(height: 10.0),
+                                    Row(
+                                      children: <Widget>[
+                                        //delivery
+                                        Text(
+                                          activity.delivery,
+                                          style: TextStyle(
+                                              color: Colors.grey,
+                                              fontSize: 13.0,
+                                              fontWeight: FontWeight.w500),
+                                        )
+                                      ],
+                                    ),
+                                    SizedBox(height: 10.0),
+                                    Row(
+                                      children: <Widget>[
+                                        //spend
+                                        Text(
+                                          activity.spend,
+                                          style: TextStyle(
+                                              color: Colors.grey,
+                                              fontSize: 13.0,
+                                              fontWeight: FontWeight.w500),
+                                        )
+                                      ],
+                                    ),
+                                    SizedBox(height: 10.0),
+                                    Row(
+                                      children: <Widget>[
+                                        Container(
+                                            color: Colors.yellow[600],
+                                            child: Text(
+                                              "Free delivery",
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 13.0,
+                                                  fontWeight: FontWeight.bold),
+                                            )),
+                                      ],
+                                    ),
+                                    SizedBox(height: 10.0),
+                                    Row(
+                                      children: <Widget>[
+                                        _buildRatingStars(activity.rating),
+                                      ],
+                                    ),
+                                    SizedBox(height: 10.0),
+                                    Row(
+                                      children: <Widget>[
+                                        Container(
+                                            //starttime
+                                            width: 70.0,
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(5.0)),
+                                            child: Text(activity.startTimes[0],
+                                                style: TextStyle(
+                                                    fontSize: 15.0,
+                                                    fontWeight:
+                                                        FontWeight.bold))),
+                                        SizedBox(width: 10.0),
+                                        Container(
+                                            //endtime
+                                            width: 70.0,
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(5.0)),
+                                            child: Text(activity.startTimes[1],
+                                                style: TextStyle(
+                                                    fontSize: 15.0,
+                                                    fontWeight:
+                                                        FontWeight.bold))),
+                                      ],
                                     ),
                                   ],
                                 ),
-                               
-                              ],
+                              ),
                             ),
                           ),
                         ),
                       ),
-                      ),
                       Positioned(
-                        left:20.0,
-                        top:15.0,
-                        bottom:15.0,
-                        child:ClipRRect(
-                          borderRadius:BorderRadius.circular(10.0),
-                          child: Image(width:110.0,image: AssetImage(activity.imageUrl),
-                          fit: BoxFit.cover,
-                          ),
-                          )
-                        )
+                          left: 20.0,
+                          top: 15.0,
+                          bottom: 15.0,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(10.0),
+                            child: Image(
+                              width: 110.0,
+                              image: AssetImage(activity.imageUrl),
+                              fit: BoxFit.cover,
+                            ),
+                          ))
                     ],
                   );
                 }))
