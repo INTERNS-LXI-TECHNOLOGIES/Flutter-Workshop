@@ -1,4 +1,3 @@
-import 'package:customerApp/widget/customForm.dart';
 import 'package:flutter/material.dart';
 
 class FormScreen extends StatefulWidget {
@@ -11,9 +10,7 @@ class FormScreen extends StatefulWidget {
 class FormScreenState extends State<FormScreen> {
   String name;
 
-//  String email;
-//  String password;
-//  String phoneNumber;
+
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   Widget buildName() {
@@ -49,7 +46,7 @@ class FormScreenState extends State<FormScreen> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Register customer Issue")),
+      appBar: AppBar(title: Text(" Customer Service Register ")),
       body: Container(
         margin: EdgeInsets.all(25),
         child: Form(
@@ -70,18 +67,15 @@ class FormScreenState extends State<FormScreen> {
                     style: TextStyle(color: Colors.red, fontSize: 16),
                   ),
                   onPressed: () {
-                    if (!formKey.currentState.validate()) {
-                       return showAlertDialog(context);
-
-                    } else
-                      // ignore: unnecessary_statements
-                      () {
-                        showAlertDialog(context);
-//                        formKey.currentState.save();
-//                        print(name);
-                      };
-
-                    // formKey.currentState.save()
+//                    if (!formKey.currentState.validate()) {
+                      showDialog(
+                          context: context,
+                          child: new AlertDialog(
+                            title: new Text(
+                                "Congrats !!! your ticket has been Generated !"),
+                          ));
+                  //  }
+                    // ignore: unnecessary_statements
                   })
             ],
           ),
@@ -89,13 +83,4 @@ class FormScreenState extends State<FormScreen> {
       ),
     );
   }
-}
-showAlertDialog(BuildContext context) {
-  // Create button
-  Widget okButton = FlatButton(
-    child: Text("OK"),
-    onPressed: () {
-      Navigator.of(context).pop();
-    },
-  );
 }

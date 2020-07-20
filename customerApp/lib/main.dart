@@ -1,4 +1,5 @@
 import 'package:customerApp/src/purchase.dart';
+import 'package:customerApp/src/tickets.dart';
 import 'package:flutter/material.dart';
 import './src/addComplaint.dart';
 
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/addComplaint': (context) => FormScreen(),
         '/purchase': (context) => Purchase(),
+        '/tickets': (context) => Tickets(),
       },
       title: 'Esquire CustomerApp',
       home: HomePage(),
