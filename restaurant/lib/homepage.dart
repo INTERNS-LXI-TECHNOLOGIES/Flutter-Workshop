@@ -29,10 +29,10 @@ class _HomeState extends State<Home> {
             BottomNavigationBarItem(
               icon: Icon(Icons.sort),
               backgroundColor: Colors.white,
-              title: Text(''),
+              title: SizedBox.shrink(),
             ),
             BottomNavigationBarItem(
-               title: new Text(''),
+               title: SizedBox.shrink(),
             icon:  Badge(
              badgeColor: Colors.blue,
       badgeContent: Text('0',style: TextStyle(color: Colors.white),),
@@ -42,12 +42,12 @@ class _HomeState extends State<Home> {
             BottomNavigationBarItem(
               icon: Icon(Icons.person),
               backgroundColor: Colors.white,
-              title: Text(''),
+              title: SizedBox.shrink(),
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.filter_list),
               backgroundColor: Colors.white,
-              title: Text(''),
+              title: SizedBox.shrink(),
             ),
           ],
            onTap: (index) {
