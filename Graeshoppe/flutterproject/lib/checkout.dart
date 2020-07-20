@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutterproject/payment.dart';
 
+var globalContext;
+
 class Checkout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    globalContext = context;
     return MaterialApp(
       routes: <String, WidgetBuilder>{
         "/payment": (BuildContext context) => Payment(),
@@ -28,7 +31,7 @@ class _CheckoutState extends State<CheckoutMode> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () {
-            Navigator.of(context).pop();
+            Navigator.pop(globalContext);
           },
         ),
         title: Text(
@@ -93,7 +96,7 @@ class _CheckoutState extends State<CheckoutMode> {
           Divider(),
           Container(
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * .43,
+              height: MediaQuery.of(context).size.height * .38,
               alignment: Alignment.bottomCenter,
               child: Row(
                 children: <Widget>[

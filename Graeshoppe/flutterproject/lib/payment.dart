@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutterproject/order.dart';
 
+var globalContext;
+
 class Payment extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    globalContext = context;
     return MaterialApp(
       routes: <String, WidgetBuilder>{
         "/order": (BuildContext context) => Order(),
@@ -32,7 +35,7 @@ class _PaymentModeState extends State<PaymentMode> {
             color: Colors.black,
           ),
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.pop(globalContext);
           },
         ),
         backgroundColor: Colors.white,
@@ -116,51 +119,6 @@ class _PaymentModeState extends State<PaymentMode> {
               // elevation: 5,
             ),
           ),
-        ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        selectedItemColor: Colors.blue,
-        unselectedItemColor: Colors.grey[700],
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.sort),
-            title: Text("sort"),
-            backgroundColor: Colors.white,
-          ),
-          BottomNavigationBarItem(
-              icon: Stack(
-                children: <Widget>[
-                  Icon(Icons.shopping_basket),
-                  Positioned(
-                      top: 0.0,
-                      right: 1.0,
-                      child: Container(
-                        width: 100,
-                        padding: EdgeInsets.all(1),
-                        decoration: BoxDecoration(
-                          color: Colors.blue,
-                          borderRadius: BorderRadius.circular(6),
-                        ),
-                        constraints: BoxConstraints(
-                          minWidth: 15,
-                          maxWidth: 15,
-                        ),
-                        child: Text(
-                          '2',
-                          style: TextStyle(color: Colors.white, fontSize: 10),
-                          textAlign: TextAlign.center,
-                        ),
-                      )),
-                ],
-              ),
-              title: Text("Shopping Basket")),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.person), title: Text("Person")),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.filter_list), title: Text("Filter List")),
         ],
       ),
     );
