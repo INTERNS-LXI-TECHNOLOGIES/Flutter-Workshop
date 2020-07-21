@@ -1,27 +1,40 @@
 import 'package:flutter/material.dart';
 
-class DropdownButtonHint extends StatelessWidget {
-  final List<String> _dropdownValues = [
-    "Mobile",
-    "TV",
-    "Tablet",
-    "Laptop",
-    "Speaker"
-  ]; //The list of values we want on the dropdown
+class DropdownButtonHint extends StatefulWidget {
+  DropdownButtonHint({Key key}) : super(key: key);
+
+  @override
+  _MyStatefulWidgetState createState() => _MyStatefulWidgetState();
+}
+
+class _MyStatefulWidgetState extends State<DropdownButtonHint> {
+  String dropdownValue ;
 
   @override
   Widget build(BuildContext context) {
-    return DropdownButton(
-      items: _dropdownValues
-          .map((value) => DropdownMenuItem(
-                child: Text(value),
-                value: value,
-              ))
-          .toList(),
-      onChanged: (String value) {},
-      isExpanded: false,
-      hint: Text('choose Category'),
-      
+    return DropdownButton<String>(
+      value: dropdownValue,
+      hint: Text('Choose Category'),
+      icon: Icon(Icons.arrow_downward),
+      iconSize: 24,
+      elevation: 16,
+      style: TextStyle(color: Colors.deepPurple),
+      underline: Container(
+        height: 2,
+        color: Colors.deepPurpleAccent,
+      ),
+      onChanged: (String newValue) {
+        setState(() {
+          dropdownValue = newValue;
+        });
+      },
+      items: <String>['Tv', 'Mobile', 'Watch', 'Speaker','Laptop']
+          .map<DropdownMenuItem<String>>((String value) {
+        return DropdownMenuItem<String>(
+          value: value,
+          child: Text(value),
+        );
+      }).toList(),
     );
   }
 }
