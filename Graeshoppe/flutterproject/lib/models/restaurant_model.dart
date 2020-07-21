@@ -1,9 +1,9 @@
 import 'dart:ffi';
 
-class Restaurant {
+class RestaurantName {
   String name;
 
-  Restaurant({
+  RestaurantName({
     this.name,
   });
 }
