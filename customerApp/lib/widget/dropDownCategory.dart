@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class DropdownButtonHint extends StatefulWidget {
-  DropdownButtonHint({Key key}) : super(key: key);
+class DropdownCategory extends StatefulWidget {
+  DropdownCategory({Key key}) : super(key: key);
 
   @override
   _MyStatefulWidgetState createState() => _MyStatefulWidgetState();
 }
 
-class _MyStatefulWidgetState extends State<DropdownButtonHint> {
+class _MyStatefulWidgetState extends State<DropdownCategory> {
   String dropdownValue ;
 
   @override

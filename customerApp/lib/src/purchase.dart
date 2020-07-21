@@ -1,4 +1,5 @@
-import 'package:customerApp/widget/dropDown.dart';
+import 'package:customerApp/widget/dropDownCategory.dart';
+import 'package:customerApp/widget/dropDownSort.dart';
 import 'package:flutter/material.dart';
 
 class Purchase extends StatefulWidget {
@@ -37,8 +38,17 @@ class FormScreenState extends State<Purchase> {
                         borderRadius: BorderRadius.all(Radius.circular(25.0)))),
               ),
             ),
-            Center(
-                child: DropdownButtonHint()
+            Container(
+              child: Row(
+                children: <Widget>[Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: DropdownSort(),
+                ),
+                Padding(
+                  padding:  const EdgeInsets.all(8.0),
+                  child: DropdownCategory(),
+                )],
+              ),
             ),
           ],
         ),
