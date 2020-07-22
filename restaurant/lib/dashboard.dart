@@ -29,6 +29,7 @@ Restaurant(name: 'Wang'),
     Activity(
       imageUrl: 'assets/chickenhut.jpg',
       name: 'Chicken Hut',
+      
       type: 'kebab,pizza',
       startTimes: ['9:00 am', '11:00 am'],
       delivery: 'delivery from 10:50 AM',
