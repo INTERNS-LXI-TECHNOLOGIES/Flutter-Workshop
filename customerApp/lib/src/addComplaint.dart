@@ -67,14 +67,14 @@ class FormScreenState extends State<FormScreen> {
                     style: TextStyle(color: Colors.red, fontSize: 16),
                   ),
                   onPressed: () {
-//                    if (!formKey.currentState.validate()) {
+                    if (!formKey.currentState.validate()) {
                       showDialog(
                           context: context,
                           child: new AlertDialog(
                             title: new Text(
                                 "Congrats !!! your ticket has been Generated !"),
                           ));
-                  //  }
+                    }
                     // ignore: unnecessary_statements
                   })
             ],

@@ -12,9 +12,9 @@ class Purchase extends StatefulWidget {
 class FormScreenState extends State<Purchase> {
   TextEditingController editingController = TextEditingController();
 
-//  Widget build(BuildContext context) {
-//    return Scaffold(appBar: AppBar(title: Text(" Customer Service Register ")));
-//  }
+  ListView buildListView() {
+    Text('ffffffffffff');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,17 +39,30 @@ class FormScreenState extends State<Purchase> {
               ),
             ),
             Container(
-              child: Row(
-                children: <Widget>[Padding(
+              child: Row(children: <Widget>[
+                Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: DropdownSort(),
                 ),
                 Padding(
-                  padding:  const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(8.0),
                   child: DropdownCategory(),
-                )],
+                ),
+
+              ]),
+            ),
+            Container(
+              child: Column(
+                children: <Widget>[
+                  (Center(
+                      child: Text(
+                    'Available products ',
+                    style: TextStyle(fontSize: 20, color: Colors.teal),
+                  ))),
+                ],
               ),
             ),
+            //buildListView()
           ],
         ),
       ),

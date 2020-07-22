@@ -30,13 +30,14 @@ class DemoInfo {
   final String demoTitle;
   final String demoRoute;
 
-  DemoInfo(this.demoTitle, this.demoRoute)
+  DemoInfo(this.demoTitle, this.demoRoute,  )
       : assert(demoTitle != null),
         assert(demoRoute != null);
 }
 
 List<DemoInfo> demoList = [
 DemoInfo(
+ 
 'Register Complaint',
 '/addComplaint',
 ),
