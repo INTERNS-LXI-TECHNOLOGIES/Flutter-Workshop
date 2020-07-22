@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutterproject/checkout.dart';
+import 'package:flutterproject/pages/checkout.dart';
 
 class Basket extends StatelessWidget {
   @override

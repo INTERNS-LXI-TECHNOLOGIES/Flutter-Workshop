@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:badges/badges.dart';
-import 'package:flutterproject/basket.dart';
-import 'package:flutterproject/filter.dart';
-import 'package:flutterproject/profile.dart';
-import 'dashboard.dart';
+import 'package:flutterproject/pages/basket.dart';
+import 'package:flutterproject/pages/filter.dart';
+import 'package:flutterproject/pages/profile.dart';
+import 'package:flutterproject/pages/dashboard.dart';
 
 class Home extends StatelessWidget {
   @override

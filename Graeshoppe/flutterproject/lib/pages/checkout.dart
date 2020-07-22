@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutterproject/payment.dart';
+import 'package:flutterproject/pages/payment.dart';
 
 var globalContext;
 

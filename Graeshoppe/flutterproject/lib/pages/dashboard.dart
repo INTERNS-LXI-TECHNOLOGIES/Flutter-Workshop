@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:badges/badges.dart';
 import 'package:flutterproject/models/activity_model.dart';
-import 'package:flutterproject/restaurant_page.dart';
+import 'package:flutterproject/pages/restaurant_page.dart';
 
 class Dashboard extends StatefulWidget {
   @override
@@ -19,11 +19,6 @@ class _DashboardState extends State<Dashboard> {
     return Text(stars);
   }
 
-  // List<RestaurantName> restaurants = [
-  //   RestaurantName(name: 'Chicken Hut'),
-  //   RestaurantName(name: 'Papa Entis'),
-  //   RestaurantName(name: 'Wang'),
-  // ];
   List<Activity> activities = [
     Activity(
       imageUrl: 'assets/chickenhut.jpg',

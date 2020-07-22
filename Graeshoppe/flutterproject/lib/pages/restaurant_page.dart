@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import './product_list.dart';
-import './review.dart';
+import 'package:flutterproject/product_list.dart';
+import 'package:flutterproject/review.dart';
 
 class Restaurant extends StatefulWidget {
   @override
