@@ -1,5 +1,7 @@
 import 'package:customerApp/widget/dropDownCategory.dart';
 import 'package:customerApp/widget/dropDownSort.dart';
+import 'package:customerApp/widget/listProducts.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Purchase extends StatefulWidget {
@@ -11,10 +13,6 @@ class Purchase extends StatefulWidget {
 
 class FormScreenState extends State<Purchase> {
   TextEditingController editingController = TextEditingController();
-
-  ListView buildListView() {
-    Text('ffffffffffff');
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +46,6 @@ class FormScreenState extends State<Purchase> {
                   padding: const EdgeInsets.all(8.0),
                   child: DropdownCategory(),
                 ),
-
               ]),
             ),
             Container(
@@ -59,6 +56,13 @@ class FormScreenState extends State<Purchase> {
                     'Available products ',
                     style: TextStyle(fontSize: 20, color: Colors.teal),
                   ))),
+                  Center(
+//                      child:Image(
+//                        image: NetworkImage('https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTlE0OGdi8AFM4UoslDh_RdNYTdtD4NTQIZsQ&usqp=CAU'),
+//                  
+//                      ),
+                  child: Image.asset("assets/laptop.jpg"),
+                  )
                 ],
               ),
             ),

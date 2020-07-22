@@ -1,5 +1,6 @@
 import 'package:customerApp/src/purchase.dart';
 import 'package:customerApp/src/tickets.dart';
+import 'package:customerApp/widget/listProducts.dart';
 import 'package:flutter/material.dart';
 import './src/addComplaint.dart';
 
@@ -12,9 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        primarySwatch: Colors.teal
-      ),
+      theme: ThemeData(primarySwatch: Colors.teal),
       routes: {
         '/addComplaint': (context) => FormScreen(),
         '/purchase': (context) => Purchase(),
@@ -22,6 +21,8 @@ class MyApp extends StatelessWidget {
       },
       title: 'Esquire CustomerApp',
       home: HomePage(),
+      
+//home: ListProduct(),
     );
   }
 }
@@ -30,23 +31,21 @@ class DemoInfo {
   final String demoTitle;
   final String demoRoute;
 
-  DemoInfo(this.demoTitle, this.demoRoute,  )
-      : assert(demoTitle != null),
+  DemoInfo(
+    this.demoTitle,
+    this.demoRoute,
+  )   : assert(demoTitle != null),
         assert(demoRoute != null);
 }
 
 List<DemoInfo> demoList = [
-DemoInfo(
- 
-'Register Complaint',
-'/addComplaint',
-),
- DemoInfo ('Purchase Product',
-  '/purchase'),
-  DemoInfo ('Tickets',
-      '/tickets'),
+  DemoInfo(
+    'Register Complaint',
+    '/addComplaint',
+  ),
+  DemoInfo('Purchase Product', '/purchase'),
+  DemoInfo('Tickets', '/tickets'),
 ];
-
 
 class HomePage extends StatelessWidget {
   @override
@@ -61,6 +60,7 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+
 class DemoTile extends StatelessWidget {
   final DemoInfo demoInfo;
 

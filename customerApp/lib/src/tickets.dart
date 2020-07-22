@@ -7,18 +7,18 @@ class Tickets extends StatefulWidget {
   }
 }
 
-class TicketState  extends State<Tickets>
-{
+class TicketState extends State<Tickets> {
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-      title: Text("Tickets Corner"),
-    )
-    );
+      body: Center(
+        child: Image(
+          image: NetworkImage('https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Lion_waiting_in_Namibia.jpg/220px-Lion_waiting_in_Namibia.jpg'),
+        ),
+      ),
+         );
   }
-  Widget buildSearch(){
-    return Scaffold(
 
-    );
+  Widget buildSearch() {
+    return Scaffold();
   }
 }
