@@ -1,39 +1,77 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'main.dart';
 
-class HomePage extends StatelessWidget {
+import 'bottomNavigation.dart';
+import 'bodyHome.dart';
+
+import 'menuDrawer.dart';
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  static int indexNo=0;
   @override
   Widget build(BuildContext context) {
+    final screenSize = MediaQuery
+        .of(context)
+        .size;
+    final tabs = [
+      BodyHome(),
+      Center(child: Text("products"),),
+      Center(child: Text("Tockens"),),
+      Center(child: Text("Alerts"),),
+
+    ];
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        drawer: Drawer(
-          child: ListView(
-            children: [
-              DrawerHeader(
-                child: Text('E^2 App'),
-                decoration: BoxDecoration(color: Colors.orange),
-              ),
-              ListTile(
-                title: Text('create user'),
-                onTap: () {
-                  Navigator.pushNamed(context, "createUser");
-                },
-              ),
-              ListTile(
-                title: Text('second'),
-                onTap: () {
-                  Navigator.pop(context);
-                },
-              )
-            ],
+          drawer: new MenuDrawer(),
+          bottomNavigationBar: buildTabNav(),
+          appBar: AppBar(
+            title: Text('ESquare App'),
           ),
-        ),
-        appBar: AppBar(
-          title: Text('Home Page'),
-        ),
-        body: Text('this is home page'),
+          body: tabs[indexNo]
+
       ),
+    );
+  }
+  BottomNavigationBar buildTabNav (){
+    return BottomNavigationBar(
+      currentIndex: indexNo,
+      items: [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home),
+          title: Text("home"),
+          backgroundColor: Colors.orange[500],
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.add_shopping_cart),
+          title: Text("products"),
+          backgroundColor: Colors.orange[500],
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.assignment),
+          title: Text("tickets"),
+          backgroundColor: Colors.orange[500],
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.add_alert),
+          title: Text("alert"),
+          backgroundColor: Colors.orange,
+        )
+      ],
+      onTap: (index){
+        setState(() {
+          indexNo=index;
+        });
+      },
+      type: BottomNavigationBarType.fixed,
+      backgroundColor: Colors.transparent,
     );
   }
 }

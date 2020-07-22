@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sample/welcome.dart';
 import 'main.dart';
 
 class ConfirmationPage extends StatefulWidget {
@@ -77,7 +78,8 @@ class _ConfirmationPageState extends State<ConfirmationPage> {
                         return;
                       }
 //                      formKey.currentState.save();
-                      Navigator.pushNamed(context, "homePage");
+                      Navigator.push(context, new MaterialPageRoute(
+                          builder: (context) => WelcomePage()));
                       return null;
                       
                     },
