@@ -51,17 +51,36 @@ class FormScreenState extends State<Purchase> {
             Container(
               child: Column(
                 children: <Widget>[
-                  (Center(
+                  Center(
                       child: Text(
                     'Available products ',
                     style: TextStyle(fontSize: 20, color: Colors.teal),
-                  ))),
+                  )),
+//
                   Center(
-//                      child:Image(
-//                        image: NetworkImage('https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTlE0OGdi8AFM4UoslDh_RdNYTdtD4NTQIZsQ&usqp=CAU'),
-//                  
-//                      ),
-                  child: Image.asset("assets/laptop.jpg"),
+                    child: Image.asset(
+                      'assets/images/laptop.jpg',
+//                      width: 50,
+                     height: 100,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  Center(
+                    child: Image.asset(
+                      'assets/images/redmi.jpg',
+//                      width: 50,
+                    height: 100,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  //SizedBox(width: 100, height: 100,),
+                  Center(
+                    child: Image.asset(
+                      'assets/images/headPhone.jpg',
+//                      width: 50,
+                      height: 100,
+                      fit: BoxFit.cover,
+                    ),
                   )
                 ],
               ),
