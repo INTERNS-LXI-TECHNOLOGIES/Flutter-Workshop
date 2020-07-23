@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sample/homePage.dart';
 import 'main.dart';
 
 class WelcomePage extends StatelessWidget {
@@ -41,7 +42,8 @@ class WelcomePage extends StatelessWidget {
             child: RaisedButton(
               child: Text("Okay"),
               onPressed: (){
-                Navigator.pushNamed(context, "homePage");            
+                Navigator.push(context, new MaterialPageRoute(
+                    builder: (context) => HomePage()));
                 }
             ),
           )

@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:sample/src/purchase.dart';
 import 'main.dart';
-
+import 'bodyProducts.dart';
 import 'bottomNavigation.dart';
 import 'bodyHome.dart';
 
@@ -21,7 +22,7 @@ class _HomePageState extends State<HomePage> {
         .size;
     final tabs = [
       BodyHome(),
-      Center(child: Text("products"),),
+      Purchase(),
       Center(child: Text("Tockens"),),
       Center(child: Text("Alerts"),),
 

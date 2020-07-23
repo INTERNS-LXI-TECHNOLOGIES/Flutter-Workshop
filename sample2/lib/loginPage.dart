@@ -89,11 +89,18 @@ class LoginPage extends StatelessWidget {
                         height: 50,
                       ),
                       FlatButton(
+                          onPressed: null,
+                          child: Text(
+                            'Forgot password',
+                            style:
+                            TextStyle(color: Color.fromRGBO(143, 148, 251, 1)),
+                          )),
+                      FlatButton(
                           onPressed: () {
                             Navigator.pushNamed(context, "createUser");
                           },
                           child: Text(
-                            'Forgot password',
+                            'new user? Register ->',
                             style:
                             TextStyle(color: Color.fromRGBO(143, 148, 251, 1)),
                           ))
