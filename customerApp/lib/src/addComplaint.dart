@@ -10,7 +10,6 @@ class FormScreen extends StatefulWidget {
 class FormScreenState extends State<FormScreen> {
   String name;
 
-
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   Widget buildName() {
@@ -26,21 +25,42 @@ class FormScreenState extends State<FormScreen> {
     );
   }
 
-  Widget buildEmail() {
+  Widget buildIssue() {
     return TextFormField(
       decoration: InputDecoration(labelText: "what's the Issue ?"),
+      // ignore: missing_return
+      validator: (String value) {
+        if (value.isEmpty) return 'please tell the Issue';
+      },
+      onSaved: (String value) {
+        name = value;
+      },
     );
   }
 
-  Widget buildPassWord() {
+  Widget buildSerial() {
     return TextFormField(
       decoration: InputDecoration(labelText: "enter serial number"),
+      // ignore: missing_return
+      validator: (String value) {
+        if (value.isEmpty) return 'please enter serial NO:';
+      },
+      onSaved: (String value) {
+        name = value;
+      },
     );
   }
 
-  Widget buildNumber() {
+  Widget buildService() {
     return TextFormField(
       decoration: InputDecoration(labelText: "Service centre near your place"),
+      // ignore: missing_return
+      validator: (String value) {
+        if (value.isEmpty) return 'please enter service centre near';
+      },
+      onSaved: (String value) {
+        name = value;
+      },
     );
   }
 
@@ -55,9 +75,9 @@ class FormScreenState extends State<FormScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               buildName(),
-              buildEmail(),
-              buildNumber(),
-              buildPassWord(),
+              buildIssue(),
+              buildSerial(),
+              buildService(),
               SizedBox(
                 height: 3,
               ),
@@ -68,14 +88,18 @@ class FormScreenState extends State<FormScreen> {
                   ),
                   onPressed: () {
                     if (!formKey.currentState.validate()) {
-                      showDialog(
-                          context: context,
-                          child: new AlertDialog(
-                            title: new Text(
-                                "Congrats !!! your ticket has been Generated !"),
-                          ));
+
+                      return;
                     }
-                    // ignore: unnecessary_statements
+                    else if (formKey.currentState.validate())
+                      {
+                        showDialog(
+                            context: context,
+                            child: new AlertDialog(
+                              title: new Text(
+                                  "Congrats !!! your ticket has been Generated !"),
+                            ));
+                      }
                   })
             ],
           ),
@@ -83,4 +107,5 @@ class FormScreenState extends State<FormScreen> {
       ),
     );
   }
+
 }

@@ -53,15 +53,15 @@ class FormScreenState extends State<Purchase> {
                 children: <Widget>[
                   Center(
                       child: Text(
-                    'Available products ',
-                    style: TextStyle(fontSize: 20, color: Colors.teal),
-                  )),
+                        'Available products ',
+                        style: TextStyle(fontSize: 20, color: Colors.teal),
+                      )),
 //
                   Center(
                     child: Image.asset(
                       'assets/images/laptop.jpg',
 //                      width: 50,
-                     height: 100,
+                      height: 100,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -69,7 +69,7 @@ class FormScreenState extends State<Purchase> {
                     child: Image.asset(
                       'assets/images/redmi.jpg',
 //                      width: 50,
-                    height: 100,
+                      height: 100,
                       fit: BoxFit.cover,
                     ),
                   ),
