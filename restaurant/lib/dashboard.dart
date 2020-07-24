@@ -97,11 +97,14 @@ Restaurant(name: 'Wang'),
       body: Column(children: <Widget>[
         Row(
           children: <Widget>[
-            Image.asset(
-              'assets/iritty.jpg',
-              width: 360,
-              height: 140,
-              fit: BoxFit.cover,
+            Container(
+              width:MediaQuery.of(context).size.width * 1,
+              child: Image.asset(
+                'assets/iritty.jpg',
+                width: 360,
+                height: 140,
+                fit: BoxFit.cover,
+              ),
             ),
           ],
         ),
@@ -111,9 +114,10 @@ Restaurant(name: 'Wang'),
               Column(children: <Widget>[
                 Container(
                   margin: const EdgeInsets.fromLTRB(0, 5, 0, 0),
+                  width: MediaQuery.of(context).size.width * 0.49,
                   child: Image.asset(
                     'assets/pizza.png',
-                    width: 175,
+                    // width: 175,
                     height: 80,
                     fit: BoxFit.cover,
                   ),
@@ -122,9 +126,10 @@ Restaurant(name: 'Wang'),
               Column(children: <Widget>[
                 Container(
                   margin: const EdgeInsets.fromLTRB(0, 5, 0, 0),
+                  width: MediaQuery.of(context).size.width * 0.49,
                   child: Image.asset(
                     'assets/pizza2.jpg',
-                    width: 175,
+                    // width: 175,
                     height: 80,
                     fit: BoxFit.cover,
                   ),
@@ -135,9 +140,18 @@ Restaurant(name: 'Wang'),
           Container(
             margin: const EdgeInsets.fromLTRB(0, 5, 0, 0),
             padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+             width: MediaQuery.of(context).size.width * 0.5,
             color: Colors.grey[200],
             child:
-                Text('Whats Nearby                               AthirkadRd'),
+                Text('Whats Nearby'),
+          ),
+           Container(
+            margin: const EdgeInsets.fromLTRB(0, 5, 0, 0),
+            width: MediaQuery.of(context).size.width * 0.4,
+            padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+            color: Colors.grey[200],
+            child:
+                Text('AthirkadRd'),
           ),
           Container(
               margin: const EdgeInsets.fromLTRB(0, 5, 0, 0),
