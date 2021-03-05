@@ -1,10 +1,16 @@
+/* program to read 5 Studentsdeatils and perform following functions
+1. Search
+2. Total marks
+3. Percentage
+4. Display All
+
 import 'dart:io';
 class Students
 {
 	var arr=new List();
 	void studentsDetails()
 	{
-		for(i=0; i<2; i++)
+		for(i=0; i<5; i++)
 		{
 		print('Enter the Student's Name');
 		String name=stdin.readLineSync();
@@ -27,5 +33,15 @@ class Students
 		print(arr);
 
 	}
+	void searchArray()
+	{
+		print('Enter the Name of Student you want to search');
+		String name= stdin.readLineSync(); 
+		 if(arr.contains(name))
+	{
+        print('$name is available');
+    }
+     else {
+        print('$name is not Available');
 
 }
