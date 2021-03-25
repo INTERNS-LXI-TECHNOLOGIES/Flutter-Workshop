@@ -1,7 +1,4 @@
-package com.Lxisoft.CarRacing;
-import java.util.*;
-
-public class  Car
+class  Car
 {
 	Scanner scanner=new Scanner(System.in);
 	ArrayList<String>  car= new ArrayList<>();
