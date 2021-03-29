@@ -1,30 +1,33 @@
 import 'dart:io';
 
-class Doors
+class Door
 {
 	int noDoors;
 	int seats;
-	var doors= new List();
+	//var doors= new List();
 
-	void tyreDetails()
+	void doorDetails()
 	{
 		print('Enter the Details of Doors : ');
 
-		print('Enter The NUmber OF Doors : ');
+		print('Enter The Number OF Doors : ');
 		noDoors=int.parse(stdin.readLineSync());
-		doors.add(tryeSize);
+		//doors.add(noDoors);
 
 		print('Enter The Number Of Seats Available : ');
 		seats=int.parse(stdin.readLineSync());
-		doors.add(seats);
+		//doors.add(seats);
 
 
 
 	}
 
-	void doorDetailsPrint()
+	void printDoorDetails()
 	{
-		print('Details Of The Door :  ');
-		print(doors);
+		print('Details Of The Door and Seating of vehicle : ');
+		print('Number of Doors : ${noDoors}');
+		print('Type of Door : ${doorType}');
+		print('Number of seats Available :${seats}');
+
 	}
 }

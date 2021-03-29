@@ -1,7 +1,7 @@
 import 'dart:io';
 class Car
 {
-	var cardetails= new List();
+	//var cardetails= new List();
 	String carName;
 	int carModel;
 	String rcName;
@@ -14,21 +14,21 @@ class Car
 
 		print('Enter The Name Of Car : ');
 		carName=stdin.readLineSync();
-		cardetails.add(carName);
+		//cardetails.add(carName);
 
 		print('Enter The Model Of Car : ');
 		carModel=int.parse(stdin.readLineSync());
-		cardetails.add(carModel);
+		//cardetails.add(carModel);
 
 		print('Enter The RC Details : ');
 
 		print('Enter The Name Of RC Owner :');
 		rcName= stdin.readLineSync();
-		cardetails.add(rcName);
+		//cardetails.add(rcName);
 
 		print ('Enter Adress Of RC Owner');
 		rcAdress=stdin.readLineSync();
-		cardetails.add(rcAdress);
+		//cardetails.add(rcAdress);
 		
 		
 
@@ -36,6 +36,11 @@ class Car
 	}
 	void printRcDetails()
 	{
-		print(cardetails);
+		print('Details of the Given Car is Follows: ');
+		print('Name of the car : ${carName}');
+		print('Model of the Car : ${carModel}');
+		print('Name of RC Owner : ${rcName}');
+		print('Adress of RC owner: ${rcAdress}');
+		
 	}
 }
