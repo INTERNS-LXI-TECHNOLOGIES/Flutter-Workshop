@@ -4,6 +4,7 @@ class Door
 {
 	int noDoors;
 	int seats;
+	String doorType;
 	//var doors= new List();
 
 	void doorDetails()
@@ -13,6 +14,10 @@ class Door
 		print('Enter The Number OF Doors : ');
 		noDoors=int.parse(stdin.readLineSync());
 		//doors.add(noDoors);
+
+		print('Enter The Type Of Door : ');
+		doorType=stdin.readLineSync();
+
 
 		print('Enter The Number Of Seats Available : ');
 		seats=int.parse(stdin.readLineSync());
