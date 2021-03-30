@@ -3,7 +3,7 @@
 import 'dart:io';
 class Car
 {
-	var cardetails= new List();
+	//var cardetails= new List();
 	String carName;
 	int carModel;
 	String rcName;
@@ -16,21 +16,21 @@ class Car
 
 		print('Enter The Name Of Car : ');
 		carName=stdin.readLineSync();
-		cardetails.add(carName);
+		//cardetails.add(carName);
 
 		print('Enter The Model Of Car : ');
 		carModel=int.parse(stdin.readLineSync());
-		cardetails.add(carModel);
+		//cardetails.add(carModel);
 
 		print('Enter The RC Details : ');
 
 		print('Enter The Name Of RC Owner :');
 		rcName= stdin.readLineSync();
-		cardetails.add(rcName);
+		//cardetails.add(rcName);
 
 		print ('Enter Adress Of RC Owner');
 		rcAdress=stdin.readLineSync();
-		cardetails.add(rcAdress);
+		//cardetails.add(rcAdress);
 		
 		
 
@@ -38,30 +38,36 @@ class Car
 	}
 	void printRcDetails()
 	{
-		print(cardetails);
+		print('Details of the Given Car is Follows: ');
+		print('Name of the car : ${carName}');
+		print('Model of the Car : ${carModel}');
+		print('Name of RC Owner : ${rcName}');
+		print('Adress of RC owner: ${rcAdress}');
 	}
 }
 class Engine
 {
 	String engineCC;
 	String engineType;
-	var engine= new List();
+	//var engine= new List();
 
 	void engineDetails()
 	{
 		print('Enter The Engine Details : ');
 		print('Enter The Engine CC : ');
 		engineCC=stdin.readLineSync();
-		engine.add(engineCC);
+		//engine.add(engineCC);
 
 		print('Enter The Type Of Engine : ');
 		engineType=stdin.readLineSync();
-		engine.add(engineType);
+		//engine.add(engineType);
 	}
 
-	void engineDetailsPrint()
+	void printEngineDetails()
 	{
-		print(engine);
+		print('Engine Details Are Following . ');
+		print('Engine CC is : ${engineCC}');
+		print('Engine Type is : ${engineType}');
 	}
 
 }
@@ -71,7 +77,7 @@ class Tyre
 	String tyreSize;
 	String tName;
 
-	var tyre= new List();
+	// tyre= new List();
 
 	void tyreDetails()
 	{
@@ -79,69 +85,76 @@ class Tyre
 
 		print('Enter The Size OF Tyre : ');
 		tyreSize=stdin.readLineSync();
-		tyre.add(tyreSize);
+		//tyre.add(tyreSize);
 
 		print('Enter The Name Of Manufacture Of the Tyre : ');
 		tName=stdin.readLineSync();
-		tyre.add(tName);
+		//tyre.add(tName);
 
 
 
 	}
 
-	void tyreDetailsPrint()
+	void printTyreDetails()
 	{
 		print('Details Of The Tyre :  ');
-		print(tyre);
+		print('Tyre Manufactures name is : ${tName}');
+		print('Tyre Size is : ${tyreSize}');
+
 	}
 }
 
-class Doors
+class Door
 {
 	int noDoors;
 	int seats;
-	var doors= new List();
+	String doorType;
+	//var doors= new List();
 
 	void doorDetails()
 	{
 		print('Enter the Details of Doors : ');
 
-		print('Enter The NUmber OF Doors : ');
+		print('Enter The Number OF Doors : ');
 		noDoors=int.parse(stdin.readLineSync());
-		doors.add(noDoors);
+		//doors.add(noDoors);
+
+		print('Enter The Type Of Door : ');
+		doorType=stdin.readLineSync();
+
 
 		print('Enter The Number Of Seats Available : ');
 		seats=int.parse(stdin.readLineSync());
-		doors.add(seats);
+		//doors.add(seats);
 
 
 
 	}
 
-	void doorDetailsPrint()
+	void printDoorDetails()
 	{
-		print('Details Of The Door :  ');
-		print(doors);
+		print('Details Of The Door and Seating of vehicle : ');
+		print('Number of Doors : ${noDoors}');
+		print('Type of Door : ${doorType}');
+		print('Number of seats Available :${seats}');
+
 	}
 }
+
+
  void main()
 {
-  Car car = new Car();
-  Engine engine = new Engine();
-  Tyre tyre = new Tyre();
-  Doors doors = new Doors();
-
-  car.rcDetails();
-  engine.engineDetails();
-  tyre.tyreDetails();
-  doors.doorDetails();
-
-  print('Details of Car Rc is Following :');
-  car.printRcDetails();
-  print('Details of Car Engine is Following :');
-  engine.engineDetailsPrint();
-  print('Details of Car Tyre is Following :');
-  tyre.tyreDetailsPrint();
-  print('Details of Car Seating and Doors is Following :');
-  doors.doorDetailsPrint();
+    Car car = new Car();
+	Engine engine = new Engine();
+	Door door = new Door();
+	Tyre tyre = new Tyre();
+	car.rcDetails();
+	engine.engineDetails();
+	tyre.tyreDetails();
+	door.doorDetails();
+	//details of car
+	car.printRcDetails();
+	engine.printEngineDetails();
+	tyre.printTyreDetails();
+	door.printDoorDetails();
 }
