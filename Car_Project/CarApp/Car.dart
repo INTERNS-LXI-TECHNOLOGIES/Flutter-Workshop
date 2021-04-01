@@ -1,46 +1,48 @@
 import 'dart:io';
 class Car
 {
-	//var cardetails= new List();
 	String carName;
 	int carModel;
-	String rcName;
-	String rcAdress;
 
-	void rcDetails()
+	
+	void carDetails()
 	{
 		
       print('welcome Car Project');
 
 		print('Enter The Name Of Car : ');
 		carName=stdin.readLineSync();
-		//cardetails.add(carName);
 
 		print('Enter The Model Of Car : ');
 		carModel=int.parse(stdin.readLineSync());
-		//cardetails.add(carModel);
-
-		print('Enter The RC Details : ');
-
-		print('Enter The Name Of RC Owner :');
-		rcName= stdin.readLineSync();
-		//cardetails.add(rcName);
-
-		print ('Enter Adress Of RC Owner');
-		rcAdress=stdin.readLineSync();
-		//cardetails.add(rcAdress);
-		
-		
 
 
 	}
-	void printRcDetails()
+	void printCarDetails()
 	{
 		print('Details of the Given Car is Follows: ');
 		print('Name of the car : ${carName}');
 		print('Model of the Car : ${carModel}');
-		print('Name of RC Owner : ${rcName}');
-		print('Adress of RC owner: ${rcAdress}');
+	}
+
+	void mainMenu()
+	{
 		
+		RC rc = new RC();
+		Engine engine = new Engine();
+		Door door = new Door();
+		Tyre tyre = new Tyre();
+		this.carDetails();
+		rc.ownerInformation();
+		engine.engineDetails();
+		tyre.tyreDetails();
+		door.doorAndSeatingArrangement();
+		//details of car
+		this.printCarDetails();
+		rc.printOwnerInformation();
+		engine.printEngineDetails();
+		tyre.printTyreDetails();
+		door.printDoorAndSeatingArrangement();
+
 	}
 }

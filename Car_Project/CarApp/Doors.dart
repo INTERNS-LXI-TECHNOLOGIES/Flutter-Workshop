@@ -7,13 +7,13 @@ class Door
 	String doorType;
 	//var doors= new List();
 
-	void doorDetails()
+	void doorAndSeatingArrangement()
 	{
 		print('Enter the Details of Doors : ');
 
 		print('Enter The Number OF Doors : ');
 		noDoors=int.parse(stdin.readLineSync());
-		//doors.add(noDoors);
+		
 
 		print('Enter The Type Of Door : ');
 		doorType=stdin.readLineSync();
@@ -21,13 +21,13 @@ class Door
 
 		print('Enter The Number Of Seats Available : ');
 		seats=int.parse(stdin.readLineSync());
-		//doors.add(seats);
+
 
 
 
 	}
 
-	void printDoorDetails()
+	void printDoorAndSeatingArrangement()
 	{
 		print('Details Of The Door and Seating of vehicle : ');
 		print('Number of Doors : ${noDoors}');

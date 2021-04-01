@@ -6,19 +6,17 @@ class Engine
 	String engineType;
 	//var engine= new List();
 
-	void engineDetails()
+	void engineSpecs()
 	{
 		print('Enter The Engine Details : ');
 		print('Enter The Engine CC : ');
 		engineCC=stdin.readLineSync();
-		//engine.add(engineCC);
 
 		print('Enter The Type Of Engine : ');
 		engineType=stdin.readLineSync();
-		//engine.add(engineType);
 	}
 
-	void printEngineDetails()
+	void printEngineSpecs()
 	{
 		print('Engine Details Are Following . ');
 		print('Engine CC is : ${engineCC}');

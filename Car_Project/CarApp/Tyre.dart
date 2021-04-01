@@ -13,11 +13,10 @@ class Tyre
 
 		print('Enter The Size OF Tyre : ');
 		tyreSize=stdin.readLineSync();
-		//tyre.add(tyreSize);
 
 		print('Enter The Name Of Manufacture Of the Tyre : ');
 		tName=stdin.readLineSync();
-		//tyre.add(tName);
+
 
 
 
