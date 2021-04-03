@@ -32,17 +32,42 @@ class Car
 		Engine engine = new Engine();
 		Door door = new Door();
 		Tyre tyre = new Tyre();
-		this.carDetails();
-		rc.ownerInformation();
-		engine.engineDetails();
-		tyre.tyreDetails();
-		door.doorAndSeatingArrangement();
-		//details of car
-		this.printCarDetails();
-		rc.printOwnerInformation();
-		engine.printEngineDetails();
-		tyre.printTyreDetails();
-		door.printDoorAndSeatingArrangement();
 
+		print('Please Choose Any Option : ');
+		print('1 - Enter The Details Of vehicle : ');
+		print('2 - Print The Details Of Vehicle : ');
+		int options = int.parse(stdin.readLineSync());
+		if(options==1)
+		{
+			this.carDetails();
+			rc.ownerInformation();
+			engine.engineDetails();
+			tyre.tyreDetails();
+			door.doorAndSeatingArrangement();
+			print('You are SuccessFully Updated Your Details \n Thank you! ');
+			this.redirectingMenu();
+		}
+		else if(options==2)
+		{
+			//details of car
+			this.printCarDetails();
+			rc.printOwnerInformation();
+			engine.printEngineDetails();
+			tyre.printTyreDetails();
+			door.printDoorAndSeatingArrangement();
+
+		}
+		
+		else
+		{
+			print('You are Entered A wrong Input. Please Try Again ::: ');
+			this.redirectingMenu();
+		}
+
+	}
+
+	void redirectingMenu()
+	{
+		this.mainMenu();
 	}
 }
