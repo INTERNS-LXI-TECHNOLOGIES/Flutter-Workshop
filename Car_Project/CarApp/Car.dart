@@ -3,7 +3,10 @@ class Car
 {
 	String carName;
 	int carModel;
-
+	RC rc = new RC();
+		Engine engine = new Engine();
+		Door door = new Door();
+		Tyre tyre = new Tyre();
 	
 	void carDetails()
 	{
@@ -25,13 +28,10 @@ class Car
 		print('Model of the Car : ${carModel}');
 	}
 
-	void mainMenu()
+	void displayMainMenu()
 	{
 		
-		RC rc = new RC();
-		Engine engine = new Engine();
-		Door door = new Door();
-		Tyre tyre = new Tyre();
+		
 
 		print('Please Choose Any Option : ');
 		print('1 - Enter The Details Of vehicle : ');
