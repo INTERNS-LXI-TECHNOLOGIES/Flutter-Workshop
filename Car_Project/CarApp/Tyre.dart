@@ -5,8 +5,6 @@ class Tyre
 	String tyreSize;
 	String tName;
 
-	//var tyre= new List();
-
 	void tyreDetails()
 	{
 		print('Enter the Details of Tyre : ');
@@ -16,10 +14,6 @@ class Tyre
 
 		print('Enter The Name Of Manufacture Of the Tyre : ');
 		tName=stdin.readLineSync();
-
-
-
-
 	}
 
 	void printTyreDetails()

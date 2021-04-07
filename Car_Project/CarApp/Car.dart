@@ -3,10 +3,12 @@ class Car
 {
 	String carName;
 	int carModel;
-	RC rc = new RC();
-		Engine engine = new Engine();
-		Door door = new Door();
-		Tyre tyre = new Tyre();
+    String carManufacturer;
+  
+	RC rc =  RC();
+		Engine engine =  Engine();
+		Door door = Door();
+		Tyre tyre = Tyre();
 	
 	void carDetails()
 	{
@@ -18,6 +20,10 @@ class Car
 
 		print('Enter The Model Of Car : ');
 		carModel=int.parse(stdin.readLineSync());
+       
+      print('Enter The manufacture of Car : ');
+      carManufacturer=stdin.readLineSync();
+      
 
 
 	}
@@ -26,6 +32,7 @@ class Car
 		print('Details of the Given Car is Follows: ');
 		print('Name of the car : ${carName}');
 		print('Model of the Car : ${carModel}');
+        print('Model of the Car : ${carManufacturer}');
 	}
 
 	void displayMainMenu()
@@ -41,7 +48,7 @@ class Car
 		{
 			this.carDetails();
 			rc.ownerInformation();
-			engine.engineDetails();
+			engine.engineSpecs();
 			tyre.tyreDetails();
 			door.doorAndSeatingArrangement();
 			print('You are SuccessFully Updated Your Details \n Thank you! ');
@@ -52,9 +59,10 @@ class Car
 			//details of car
 			this.printCarDetails();
 			rc.printOwnerInformation();
-			engine.printEngineDetails();
+			engine.printEngineSpecs();
 			tyre.printTyreDetails();
 			door.printDoorAndSeatingArrangement();
+            this.redirectingMenu();
 
 		}
 		
@@ -68,6 +76,6 @@ class Car
 
 	void redirectingMenu()
 	{
-		this.mainMenu();
+		this.displayMainMenu();
 	}
 }

@@ -5,9 +5,6 @@ class TDD
 	void main()
 	{
 	Car car = new Car();
-	car.mainMenu();
-
-
-
+	car.diplayMainMenu();
 	}
 }

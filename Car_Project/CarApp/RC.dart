@@ -14,10 +14,6 @@ class RC
 
 		print ('Enter Adress Of RC Owner');
 		rcAdress=stdin.readLineSync();
-		
-		
-
-
 	}
 	void printOwnerInformation()
 	{
