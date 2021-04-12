@@ -45,10 +45,16 @@ class Car
 		if(choice==1)
 		{
 			this.carDetails();
+			e.engineDetails();
+			d.doorDetails();
+			t.tyreDetails();
 		}
 		else if(choice==2)
 		{
 			this.printDetails();
+			e.printEngineDetails();
+			d.printDoorDetails();
+			t.printTyreDetails();
 		}
 		
 		else
