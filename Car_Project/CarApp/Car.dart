@@ -1,14 +1,16 @@
 import 'dart:io';
 class Car
 {
-	String carName;
-	int carModel;
-    String carManufacturer;
+	String _carName;
+	int _carModel;
+    String _carManufacturer;
+
+    void set 
   
 	RC rc =  RC();
-		Engine engine =  Engine();
-		Door door = Door();
-		Tyre tyre = Tyre();
+	Engine engine =  Engine();
+	Door door = Door();
+	Tyre tyre = Tyre();
 	
 	void carDetails()
 	{

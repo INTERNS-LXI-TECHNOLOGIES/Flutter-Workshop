@@ -2,8 +2,16 @@ import 'dart:io';
 
 class Tyre
 {
-	String tyreSize;
-	String tName;
+	String _tyreSize;
+	String _tyreName;
+
+	void set tyreName(String tname) => _tyreName;
+	String get tname => _tyreName;
+
+	void set tyreSize(String Tyre) => _tyreSize;
+	String get tyreSize =>_tyreSize;
+	
+
 
 	void tyreDetails()
 	{

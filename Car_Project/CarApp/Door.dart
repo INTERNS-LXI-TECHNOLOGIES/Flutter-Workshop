@@ -2,10 +2,21 @@ import 'dart:io';
 
 class Door
 {
-	int noDoors;
-	int seats;
-	String doorType;
-	//var doors= new List();
+	int _noofDoors;
+	int _noofSeats;
+	String _doorType;
+
+
+	void set noDoors(int door) => _noofDoors;
+	int get noDoors => _noofDoors;
+
+	void set seat(int seat) => _noofSeats;
+	int get seat=> _noofSeats;
+
+	void set doorType(String doorType) => _doorType;
+	String get doorType => _doorType;
+
+
 
 	void doorAndSeatingArrangement()
 	{

@@ -2,8 +2,16 @@ import 'dart:io';
 
 class RC
 {
-	String rcName;
-	String rcAdress;
+	String _rcName;
+	String _rcAdress;
+
+	void set rcName (String rcName)=> _rcName;
+	String get rcName =>_rcName;
+
+	void set rcAdress(String rcAdress)=> _rcAdress;
+	String get rcAdress => _rcAdress;
+	
+
 
 	void ownerInformation()
 	{
