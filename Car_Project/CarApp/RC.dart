@@ -1,9 +1,19 @@
-import 'dart:io';
-
 class RC
 {
 	String _rcName;
 	String _rcAdress;
+	String _carName;
+	String _carModel;
+    String _carManufacturer;
+
+    void set carName(String carName)=> _carName;
+    String get carName =>_carName;
+
+    void set carModel(String carModel)=> _carModel;
+    String get carModel => _carModel;
+
+    void set carManufacturer(String carManufacturer)=> _carManufacturer;
+    String get carManufacturer => _carManufacturer;
 
 	void set rcName (String rcName)=> _rcName;
 	String get rcName =>_rcName;
@@ -11,23 +21,4 @@ class RC
 	void set rcAdress(String rcAdress)=> _rcAdress;
 	String get rcAdress => _rcAdress;
 	
-
-
-	void ownerInformation()
-	{
-		print('Enter The RC Details : ');
-
-		print('Enter The Name Of RC Owner :');
-		rcName= stdin.readLineSync();
-
-		print ('Enter Adress Of RC Owner');
-		rcAdress=stdin.readLineSync();
-	}
-	void printOwnerInformation()
-	{
-		print('Details of the Given Car Registration certificate is Follows: ');
-		print('Name of RC Owner : ${rcName}');
-		print('Adress of RC owner: ${rcAdress}');
-		
-	}
 }
