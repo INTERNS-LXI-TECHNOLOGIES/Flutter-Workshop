@@ -4,7 +4,7 @@ import 'dart:io';
 class Door
 {
 
-	void doorDetails()
+	void enterDoorDetails()
 	{
 		print('Enter the Details of Doors : ');
 

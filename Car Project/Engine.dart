@@ -2,7 +2,7 @@ import 'dart:io';
 class Engine 
 {
 
-  void engineDetails() 
+  void enterEngineDetails() 
   {
     print('Enter The Engine Details : ');
     print('Enter The Engine Number : ');

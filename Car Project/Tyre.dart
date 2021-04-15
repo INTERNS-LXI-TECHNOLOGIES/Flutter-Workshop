@@ -5,7 +5,7 @@ class Tyre
 	String tyreSize;
 	String tName;
 
-	void tyreDetails()
+	void enterTyreDetails()
 	{
 		print('Enter the Details of Tyre : ');
 

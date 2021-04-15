@@ -5,7 +5,7 @@ class Car
 		Door d = Door();
 		Tyre t = Tyre();
 	
-	void carDetails()
+	void enterCarDetails()
 	{
 		
       print('welcome Car Project');
@@ -14,7 +14,7 @@ class Car
 		String Name=stdin.readLineSync();
 
 		print('Enter The Model Of Car : ');
-		String model=int.parse(stdin.readLineSync());
+		String model=(stdin.readLineSync());
        
       print('Enter The CompanyName of Car : ');
       String companyname=stdin.readLineSync();
@@ -22,16 +22,16 @@ class Car
 
 
 	}
-	void printDetails()
+	void printCarDetails()
 	{
 		print('-------------------------------------');
 		print('Name of the CAR : ${name}');
-		print('CAR'S Model NAME: ${model}');
-        print('CAR's Company Name : ${companyname}');
+		print('CAR Model NAME: ${model}');
+        print('CAR Company Name : ${companyname}');
         print('-------------------------------------');
 	}
 
-	void aboutTheCar()
+	void enterandprintdetailsofCar()
 	{
 		
 		
@@ -44,14 +44,14 @@ class Car
 		int choice = int.parse(stdin.readLineSync());
 		if(choice==1)
 		{
-			this.carDetails();
-			e.engineDetails();
-			d.doorDetails();
-			t.tyreDetails();
+			this.enterCarDetails();
+			e.enterEngineDetails();
+			d.enterDoorDetails();
+			t.enterTyreDetails();
 		}
 		else if(choice==2)
 		{
-			this.printDetails();
+			this.printCarDetails();
 			e.printEngineDetails();
 			d.printDoorDetails();
 			t.printTyreDetails();
@@ -59,10 +59,10 @@ class Car
 		
 		else
 		{
-			print('Number didn't exist');
-			this.aboutTheCar();
+			print('Number didnot exist');
+			this.enterandprintdetailsofCar();
 		}
-
+		this.enterandprintdetailsofCar();
 	}
 
 }
