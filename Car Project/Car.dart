@@ -1,68 +1,49 @@
-import 'dart:io';
 class Car
 {
-		Engine e =  Engine();
-		Door d = Door();
-		Tyre t = Tyre();
-	
-	void enterCarDetails()
-	{
-		
-      print('welcome Car Project');
+    String _rcOwner;
+	String _ownerAddress;
+	String _carName;
+	String _carModel;
+    String _carmanufacturer;
+    String _engineNumber;
+    String _engineType;
+    String _doorNumber;
+    String _doorType;
+    String _tyreName;
+    String _tyreSize;
 
-		print('Enter The Name Of Car : ');
-		String Name=stdin.readLineSync();
+    void set carName(String carName)=> _carName;
+    String get CarName =>_carName;
 
-		print('Enter The Model Of Car : ');
-		String model=(stdin.readLineSync());
-       
-      print('Enter The CompanyName of Car : ');
-      String companyname=stdin.readLineSync();
-      
+    void set carModel(String carModel)=> _carModel;
+    String get carModel => _carcarModel;
+
+    void set carManufacturer(String carManufacturer)=> _carManufacturer;
+    String get carManufacturer => _carManufacturer;
+
+	void set rcOwner (String rcOwner)=> _rcOwner;
+	String get rcOwner =>_rcOwner;
+
+	void set OwnerAddress(String ownerAddress)=> _ownerAddress;
+	String get ownerAddress => _ownerAddress;
 
 
-	}
-	void printCarDetails()
-	{
-		print('-------------------------------------');
-		print('Name of the CAR : ${name}');
-		print('CAR Model NAME: ${model}');
-        print('CAR Company Name : ${companyname}');
-        print('-------------------------------------');
-	}
+    void set engineNumber(String engineNumber)=> _engineNumber;
+    String get engineNumber =>_engineNumber;
 
-	void enterandprintdetailsofCar()
-	{
-		
-		
+    void set engineType(String engineType)=> _engineType;
+    String get engineType => _engineType;
 
-		print('Please Choose Any Option : ');
-		print('-------------------------------------');
-		print('1 - Enter The Details Of vehicle : ');
-		print('2 - Print The Details Of Vehicle : ');
-		print('-------------------------------------');
-		int choice = int.parse(stdin.readLineSync());
-		if(choice==1)
-		{
-			this.enterCarDetails();
-			e.enterEngineDetails();
-			d.enterDoorDetails();
-			t.enterTyreDetails();
-		}
-		else if(choice==2)
-		{
-			this.printCarDetails();
-			e.printEngineDetails();
-			d.printDoorDetails();
-			t.printTyreDetails();
-		}
-		
-		else
-		{
-			print('Number didnot exist');
-			this.enterandprintdetailsofCar();
-		}
-		this.enterandprintdetailsofCar();
-	}
+    void set doorNumber(String doorNumber)=> _doorNumber;
+    String get doorNumber =>_doorNumber;
 
+    void set doorType(String doorType)=> _doorType;
+    String get doorType => _doorType;
+
+
+    void set tyreName(String name)=> _tyreName;
+    String get tyreName =>_tyreName;
+
+    void set tyreSize(String tyreSize)=> _tyreSize;
+    String get tyreSize => _tyreSize;
 }
