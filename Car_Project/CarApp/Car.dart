@@ -1,36 +1,35 @@
 class Car
 {
-	RC rc =  RC();
-	Engine engine =  Engine();
-	Door door = Door();
-	Tyre tyre = Tyre();
-	
-	
-
-    void printCarDetails()
+     void printRCDetails(String carName, String carModel, String carManufacturer, String rcName, String rcAdress,)
     {
     	print('Details of the Given Car is Follows: ');
-		print('Name of the car : 'rc.carName);
-		print('Model of the Car : 'rc.carModel);
-        print('Manufacturer of the Car : 'rc.carManufacturer);
+		print('Name of the car : ${carName}');
+		print('Model of the Car : ${carModel}');
+        print('Manufacturer of the Car : ${carManufacturer}');
 
         print('Details of the Given Car Registration certificate is Follows: ');
-		print('Name of RC Owner : 'rc.rcName);
-		print('Adress of RC owner: 'rc.rcAdress);
-        
-        print('Engine Details Are Following . ');
-    	print('Engine CC is : 'engine.engineCC);
-    	print('Engine Type is : 'engine.engineType);
+		print('Name of RC Owner : ${rcName}');
+		print('Adress of RC owner: ${rcAdress}');
+    }
 
+    void printEngineSpecifications(String engineCC, String engineType)
+    {        
+    	print('Engine Details Are Following . ');
+    	print('Engine CC is : ${engineCC}');
+    	print('Engine Type is : ${engineType}');
+	}
+	void printTyreDetails(String tyreName, String tyreSize)
+	{
     	print('Details Of The Tyre :  ');
-		print('Tyre Manufactures name is : 'tyre.tyreName);
-		print('Tyre Size is : 'tyre.tyreSize);
-
+		print('Tyre Manufactures name is : ${tyreName}');
+		print('Tyre Size is : ${tyreSize}');
+	}
+	void printDoorAndSeatArrangements(int doors, String doorType, int seats)
+	{
 		print('Details Of The Door and Seating of vehicle : ');
-		print('Number of Doors : 'door.noofDoors);
-		print('Type of Door : 'door.doorType);
-		print('Number of seats Available : 'door.noofSeats);
+		print('Number of Doors : ${doors}');
+		print('Type of Door : ${doorType}');
+		print('Number of seats Available : ${seats}');
     
-
     }
 }

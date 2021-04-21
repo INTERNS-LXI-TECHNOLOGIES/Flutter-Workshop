@@ -1,11 +1,14 @@
+class TDD{
+		
 void main()
-{
-	Car car = Car();
-	RC rc =  RC();
-	Engine engine =  Engine();
-	Door door = Door();
-	Tyre tyre = Tyre();    
-	print('Please Choose Any Option : ');
+	{
+		Car car = Car();
+		RC rc =  RC();
+		Engine engine =  Engine();
+		Door door = Door();
+		Tyre tyre = Tyre();
+
+		print('Please Choose Any Option : ');
 		print('1 - Enter The Details Of vehicle : ');
 		print('2 - Print The Details Of Vehicle : ');
 		int options = int.parse(stdin.readLineSync());
@@ -45,12 +48,16 @@ void main()
 
 			print('Enter The Name Of Manufacture Of the Tyre : ');
 			tyre.tyreName=stdin.readLineSync();
+
 		    main();
         }
 		else if(options==2)
 		{
 			//details of car
-			car.printCarDetails();
+			car.printRCDetails(rc.carName, rc.carModel, rc.carManufacturer,rc.rcName,rc.rcAdress);
+            car.printEngineSpecifications(engine.engineCC, engine.engineType);
+            car.printTyreDetails(tyre.tyreName, tyre.tyreSize);
+            car.printDoorAndSeatArrangements(door.noofDoors,door.doorType,door.noofSeats);
             main();
 
 		}
@@ -61,4 +68,5 @@ void main()
 			main();
 		}
 
+	}
 }
