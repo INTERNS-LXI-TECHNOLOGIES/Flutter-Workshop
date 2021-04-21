@@ -1,3 +1,4 @@
+import 'dart:io';
 class TDD{
 		
 void main()
@@ -8,12 +9,9 @@ void main()
 		Door door = Door();
 		Tyre tyre = Tyre();
 
-		print('Please Choose Any Option : ');
+		print('Welcome to Car Project: ')
+        print('Please Choose Any Option : ');
 		print('1 - Enter The Details Of vehicle : ');
-		print('2 - Print The Details Of Vehicle : ');
-		int options = int.parse(stdin.readLineSync());
-		if(options==1)
-		{
 			print('Enter The Details of Car : ');
 			print('Enter Name of the car : ');
 			rc.carName=stdin.readLineSync();
@@ -48,25 +46,13 @@ void main()
 
 			print('Enter The Name Of Manufacture Of the Tyre : ');
 			tyre.tyreName=stdin.readLineSync();
-
-		    main();
-        }
-		else if(options==2)
-		{
-			//details of car
-			car.printRCDetails(rc.carName, rc.carModel, rc.carManufacturer,rc.rcName,rc.rcAdress);
+//
+   //       String carName=${rc.carName}
+			car.printRCDetails(rc.carName, rc.carModel, rc.carManufacturer, rc.rcName, rc.rcAdress);
             car.printEngineSpecifications(engine.engineCC, engine.engineType);
             car.printTyreDetails(tyre.tyreName, tyre.tyreSize);
-            car.printDoorAndSeatArrangements(door.noofDoors,door.doorType,door.noofSeats);
-            main();
-
-		}
-		
-		else
-		{
-			print('You are Entered A wrong Input. Please Try Again ::: ');
-			main();
-		}
-
+          
+        }
+	
 	}
 }
