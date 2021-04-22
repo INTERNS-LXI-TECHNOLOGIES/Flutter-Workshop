@@ -1,49 +1,47 @@
-class Car
+class Car impliments Rc,Engine,Door,Tyre
 {
-    String _rcOwner;
-	String _ownerAddress;
-	String _carName;
-	String _carModel;
-    String _carmanufacturer;
-    String _engineNumber;
-    String _engineType;
-    String _doorNumber;
-    String _doorType;
-    String _tyreName;
-    String _tyreSize;
+    
+void printCarDetails()
+{
+	 print('-------------------------------------');
+    	print('Details of the Car');
+		print('Name of the car : 'rc.carName);
+		print('Model of the Car : 'rc.carModel);
+        print('Manufacturer of the Car : 'rc.carManufacturer);
+		print('-------------------------------------');
 
-    void set carName(String carName)=> _carName;
-    String get CarName =>_carName;
-
-    void set carModel(String carModel)=> _carModel;
-    String get carModel => _carcarModel;
-
-    void set carManufacturer(String carManufacturer)=> _carManufacturer;
-    String get carManufacturer => _carManufacturer;
-
-	void set rcOwner (String rcOwner)=> _rcOwner;
-	String get rcOwner =>_rcOwner;
-
-	void set OwnerAddress(String ownerAddress)=> _ownerAddress;
-	String get ownerAddress => _ownerAddress;
-
-
-    void set engineNumber(String engineNumber)=> _engineNumber;
-    String get engineNumber =>_engineNumber;
-
-    void set engineType(String engineType)=> _engineType;
-    String get engineType => _engineType;
-
-    void set doorNumber(String doorNumber)=> _doorNumber;
-    String get doorNumber =>_doorNumber;
-
-    void set doorType(String doorType)=> _doorType;
-    String get doorType => _doorType;
-
-
-    void set tyreName(String name)=> _tyreName;
-    String get tyreName =>_tyreName;
-
-    void set tyreSize(String tyreSize)=> _tyreSize;
-    String get tyreSize => _tyreSize;
+		print('-------------------------------------');
+        print('Details of the Car Rc ');
+		print('Name of RC Owner : 'rc.rcOwner);
+		print('Adress of RC owner: 'rc.ownerAddress);
+		print('-------------------------------------'); 
+		this.printEngineDetails(engine);   
+}
+void printEngineDetails()
+{
+        print('-------------------------------------');
+        print('Engine Details . ');
+    	print('Engine CC is : 'engine.engineNumber);
+    	print('Engine Type is : 'engine.engineType);
+		print('-------------------------------------');
+		this.printDoorDetails(door);
+}
+void printDoorDetails()
+{
+        print('-------------------------------------');
+    	print('Details Of The Tyre :  ');
+		print('Tyre Manufactures name is : 'tyre.tyreName);
+		print('Tyre Size is : 'tyre.tyreSize);
+		print('-------------------------------------');	
+		this.printTyreDetails(tyre);
+}
+		
+void printTyreDetails()
+{
+        print('-------------------------------------');
+		print('Details Of The Door and Seating of vehicle : ');
+		print('Number of Doors : 'door.doorNumber);
+		print('Type of Door : 'door.doorType);
+		print('-------------------------------------');
+}
 }
