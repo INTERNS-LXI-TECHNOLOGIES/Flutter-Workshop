@@ -55,10 +55,10 @@ void main()
 		else if(options==2)
 		{
 			//details of car
-			car.printRCDetails(rc.carName, rc.carModel, rc.carManufacturer,rc.rcName,rc.rcAdress);
-            car.printEngineSpecifications(engine.engineCC, engine.engineType);
-            car.printTyreDetails(tyre.tyreName, tyre.tyreSize);
-            car.printDoorAndSeatArrangements(door.noofDoors,door.doorType,door.noofSeats);
+			car.printRCDetails();
+            car.printEngineSpecifications();
+            car.printTyreDetails();
+            car.printDoorAndSeatArrangements();
             main();
 
 		}
