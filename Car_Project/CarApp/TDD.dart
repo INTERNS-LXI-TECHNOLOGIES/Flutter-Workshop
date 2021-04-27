@@ -50,17 +50,18 @@ void main()
 
 			print('Enter The Name Of Manufacture Of the Tyre : ');
 			tyre.tyreName=stdin.readLineSync();
-          car.setRC(rc);
-          car.setEngine(engine);
-          car.setTyre(tyre);
-          car.setDoor(door)
+
+            
 
 		    main();
         }
 		else if(options==2)
 		{
-			//details of car
-			
+		
+		  car.printRCDetails (rc);
+          car.printEngineSpecifications(engine);
+          car.printTyreDetails(tyre);
+          car.printDoorAndSeatArrangements(door);
           main();
 
 		}

@@ -1,35 +1,36 @@
 class Car
 {
-     void printRCDetails(Rc rc)
+     void printRCDetails(RC rc)
     {
     	print('Details of the Given Car is Follows: ');
-		print('Name of the car : ${carName}');
-		print('Model of the Car : ${carModel}');
-        print('Manufacturer of the Car : ${carManufacturer}');
+		print('Name of the car : ${rc.carName}');
+		print('Model of the Car : ${rc.carModel}');
+        print('Manufacturer of the Car : ${rc.carManufacturer}');
 
         print('Details of the Given Car Registration certificate is Follows: ');
-		print('Name of RC Owner : ${rcName}');
-		print('Adress of RC owner: ${rcAdress}');
+		print('Name of RC Owner : ${rc.rcName}');
+		print('Adress of RC owner: ${rc.rcAdress}');
     }
 
     void printEngineSpecifications(Engine engine)
     {        
     	print('Engine Details Are Following . ');
-    	print('Engine CC is : ${engineCC}');
-    	print('Engine Type is : ${engineType}');
+    	print('Engine CC is : ${engine.engineCC}');
+    	print('Engine Type is : ${engine.engineType}');
 	}
 	void printTyreDetails(Tyre tyre)
 	{
     	print('Details Of The Tyre :  ');
-		print('Tyre Manufactures name is : ${tyreName}');
-		print('Tyre Size is : ${tyreSize}');
+		print('Tyre Manufactures name is : ${tyre.tyreName}');
+		print('Tyre Size is : ${tyre.tyreSize}');
 	}
 	void printDoorAndSeatArrangements(Door door)
 	{
 		print('Details Of The Door and Seating of vehicle : ');
-		print('Number of Doors : ${doors}');
-		print('Type of Door : ${doorType}');
-		print('Number of seats Available : ${seats}');
+		print('Number of Doors : ${door.noofDoors}');
+		print('Type of Door : ${door.doorType}');
+		print('Number of seats Available : ${door.noofSeats}');
     
     }
+
 }
