@@ -4,7 +4,7 @@ void main()
 	Engine engine =  Engine(); 
 	Rc rc = Rc();
 	Door door = Door();
-	Tyre tyre = Tyre();  
+	Tyre tyre = Tyre(); 
 
 		print('1 - Enter The Details Of vehicle : ');
 		print('2 - Print The Details Of Vehicle : ');
@@ -52,7 +52,14 @@ void main()
         }
 	else if(choice==2)
 	{
-		car.printCarDetails();
+	    car.add(new Rc(rc));
+		car.add(new Engine(engine)); 
+		car.add(new Door(door));
+		car.add(new Tyre(tyre));
+		car.printCarDetails(rc);
+		car.printEngineDetails(engine);
+		car.printDoorDetails(door);
+		car.printTyreDetails(tyre);
         main();
     }	
 	else

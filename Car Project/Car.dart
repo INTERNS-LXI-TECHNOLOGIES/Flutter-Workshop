@@ -1,7 +1,6 @@
-class Car impliments Rc,Engine,Door,Tyre
-{
-    
-void printCarDetails()
+class Car implements Rc,Engine,Door,Tyre
+{  
+void printCarDetails(Rc rc)
 {
 	 print('-------------------------------------');
     	print('Details of the Car');
@@ -14,29 +13,26 @@ void printCarDetails()
         print('Details of the Car Rc ');
 		print('Name of RC Owner : 'rc.rcOwner);
 		print('Adress of RC owner: 'rc.ownerAddress);
-		print('-------------------------------------'); 
-		this.printEngineDetails(engine);   
+		print('-------------------------------------');   
 }
-void printEngineDetails()
+void printEngineDetails(Engine engine)
 {
         print('-------------------------------------');
         print('Engine Details . ');
     	print('Engine CC is : 'engine.engineNumber);
     	print('Engine Type is : 'engine.engineType);
 		print('-------------------------------------');
-		this.printDoorDetails(door);
 }
-void printDoorDetails()
+void printTyreDetails(Tyre tyre)
 {
         print('-------------------------------------');
     	print('Details Of The Tyre :  ');
 		print('Tyre Manufactures name is : 'tyre.tyreName);
 		print('Tyre Size is : 'tyre.tyreSize);
 		print('-------------------------------------');	
-		this.printTyreDetails(tyre);
 }
 		
-void printTyreDetails()
+void printDoorDetails(Door door)
 {
         print('-------------------------------------');
 		print('Details Of The Door and Seating of vehicle : ');
