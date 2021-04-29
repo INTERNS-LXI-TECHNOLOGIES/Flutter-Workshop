@@ -52,14 +52,11 @@ void main()
         }
 	else if(choice==2)
 	{
-	    car.add(new Rc(rc));
-		car.add(new Engine(engine)); 
-		car.add(new Door(door));
-		car.add(new Tyre(tyre));
-		car.printCarDetails(rc);
-		car.printEngineDetails(engine);
-		car.printDoorDetails(door);
-		car.printTyreDetails(tyre);
+	    car.set(rc);
+		car.set(engine); 
+		car.set(door);
+		car.set(tyre);
+		car.printCarDetails();
         main();
     }	
 	else
