@@ -57,11 +57,15 @@ void main()
         }
 		else if(options==2)
 		{
-		
-		  car.printRCDetails (rc);
-          car.printEngineSpecifications(engine);
-          car.printTyreDetails(tyre);
-          car.printDoorAndSeatArrangements(door);
+		car.setRC(rc);
+		car.setEngine(engine);
+		car.setTyre(tyre);
+		car.setDoor(door)
+
+		  car.printRCDetails ();
+          car.printEngineSpecifications();
+          car.printTyreDetails();
+          car.printDoorAndSeatArrangements();
           main();
 
 		}
