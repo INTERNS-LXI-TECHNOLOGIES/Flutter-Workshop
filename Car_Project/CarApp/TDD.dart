@@ -5,10 +5,6 @@ class TDD{
 void main()
 	{
 		Car car = Car();
-		RC rc =  RC();
-		Engine engine =  Engine();
-		Door door = Door();
-		Tyre tyre = Tyre();
 
 		print('Please Choose Any Option : ');
 		print('1 - Enter The Details Of vehicle : ');
@@ -18,38 +14,38 @@ void main()
 		{
 			print('Enter The Details of Car : ');
 			print('Enter Name of the car : ');
-			rc.carName=stdin.readLineSync();
+			car.carName=stdin.readLineSync();
 			print('Enter Model of the Car :');
-			rc.carModel=stdin.readLineSync();
+			car.carModel=stdin.readLineSync();
         	print('Enter Manufacture of the Car : ');
-        	rc.carManufacturer=stdin.readLineSync();
+        	car.carManufacturer=stdin.readLineSync();
 
         	print('Enter The RC Details : ');
 			print('Enter The Name Of RC Owner :');
-			rc.rcName= stdin.readLineSync();
+			car.rc.rcName= stdin.readLineSync();
 			print ('Enter Adress Of RC Owner');
-			rc.rcAdress=stdin.readLineSync();
+			car.rc.rcAdress=stdin.readLineSync();
 
 			print('Enter The Engine Details : ');
     		print('Enter The Engine CC : ');
-    		engine.engineCC = stdin.readLineSync();
+    		car.engine.engineCC = stdin.readLineSync();
     		print('Enter The Type Of Engine : ');
-    		engine.engineType = stdin.readLineSync();
+    		car.engine.engineType = stdin.readLineSync();
 
     		print('Enter the Details of Doors : ');
 			print('Enter The Number OF Doors : ');
-			door.noofDoors=int.parse(stdin.readLineSync());
+			car.door.noofDoors=int.parse(stdin.readLineSync());
 			print('Enter The Type Of Door : ');
-			door.doorType=stdin.readLineSync();
-			print('Enter The Number Of Seats Available : ');
-			door.noofSeats=int.parse(stdin.readLineSync());
+			car.door.doorType=stdin.readLineSync();
+		    print('Enter The Number Of Seats Available : ');
+			car.door.noofSeats=int.parse(stdin.readLineSync());
 
 			print('Enter the Details of Tyre : ');
 			print('Enter The Size OF Tyre : ');
-			tyre.tyreSize=stdin.readLineSync();
+			car.tyre.tyreSize=stdin.readLineSync();
 
 			print('Enter The Name Of Manufacture Of the Tyre : ');
-			tyre.tyreName=stdin.readLineSync();
+			car.tyre.tyreName=stdin.readLineSync();
 
             
 
@@ -57,15 +53,30 @@ void main()
         }
 		else if(options==2)
 		{
-		//car.setRC(rc);
-		//car.setEngine(engine);
-		//car.setTyre(tyre);
-		//car.setDoor(door)
+		
+    	print('Details of the Given Car is Follows: ');
+		print('Name of the car : '+ car.carName);
+		print('Model of the Car : '+ car.carModel);
+        print('Manufacturer of the Car : '+ car.carManufacturer);
 
-		  car.printRCDetails (rc);
-          car.printEngineSpecifications(engine);
-          car.printTyreDetails(tyre);
-          car.printDoorAndSeatArrangements(door);
+        print('Details of the Given Car Registration certificate is Follows: ');
+		print('Name of RC Owner : '+car.rc.rcName);
+		print('Adress of RC owner: '+car.rc.rcAdress);
+            
+    	print('Engine Details Are Following . ');
+    	print('Engine CC is : '+car.engine.engineCC);
+    	print('Engine Type is : '+car.engine.engineType);
+	
+    	print('Details Of The Tyre :  ');
+		print('Tyre Manufactures name is : '+car.tyre.tyreName);
+		print('Tyre Size is : '+car.tyre.tyreSize);
+	
+		print('Details Of The Door and Seating of vehicle : ');
+		print('Number of Doors : ${car.door.noofDoors}');
+		print('Type of Door : '+car.door.doorType);
+		print('Number of seats Available : ${car.door.noofSeats}');
+          
+          
           main();
 
 		}
