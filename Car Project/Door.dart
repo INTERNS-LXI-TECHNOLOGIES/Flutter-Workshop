@@ -10,4 +10,13 @@ interface Door
 
     void set doorType(String doorType)=> _doorType;
     String get doorType => _doorType;
+
+    void printDoorDetails()
+{
+        print('-------------------------------------');
+		print('Details Of The Door and Seating of vehicle : ');
+		print('Number of Doors : 'door.doorNumber);
+		print('Type of Door : 'door.doorType);
+		print('-------------------------------------');
+}
 }
