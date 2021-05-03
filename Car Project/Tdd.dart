@@ -5,7 +5,8 @@ void main()
 	Rc rc = Rc();
 	Door door = Door();
 	Tyre tyre = Tyre(); 
-
+   void enterCarDetails()
+   {
 		print('1 - Enter The Details Of vehicle : ');
 		print('2 - Print The Details Of Vehicle : ');
 		int choice = int.parse(stdin.readLineSync());
@@ -14,11 +15,11 @@ void main()
 		    print('-------------------------------------');
 			print('Enter The Details of Car : ');
 			print('Enter Name of the car : ');
-			rc.carName=stdin.readLineSync();
+			car.carName=stdin.readLineSync();
 			print('Enter Model of the Car :');
-			rc.carModel=stdin.readLineSync();
+			car.carModel=stdin.readLineSync();
         	print('Enter Manufacture of the Car : ');
-        	rc.carManufacturer=stdin.readLineSync();
+        	car.carManufacturer=stdin.readLineSync();
         	print('-------------------------------------');
             print('-------------------------------------');
         	print('Enter The RC Details : ');
@@ -48,20 +49,16 @@ void main()
 			print('Enter The Name Of Manufacture Of the Tyre : ');
 			tyre.tyreName=stdin.readLineSync();
 			print('-------------------------------------');
-		    main();
+			this.enterCarDetails();
         }
-	else if(choice==2)
-	{
-	    car.set(rc);
-		car.set(engine); 
-		car.set(door);
-		car.set(tyre);
+	    else if(choice==2)
+	   {
 		car.printCarDetails();
-        main();
-    }	
-	else
+       }	
+	  else
 		{
-			print('1 or 2 not this number. Please Try Again ::: ');
-			main();
+			print('1 or 2 not this number. Invalid Choice');
+			this.enterCarDetails();
 		}
+   }
 }
