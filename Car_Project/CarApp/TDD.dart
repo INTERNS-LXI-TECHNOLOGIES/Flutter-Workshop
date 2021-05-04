@@ -22,30 +22,30 @@ void main()
 
         	print('Enter The RC Details : ');
 			print('Enter The Name Of RC Owner :');
-			car.rc.rcName= stdin.readLineSync();
+			rc.rcName= stdin.readLineSync();
 			print ('Enter Adress Of RC Owner');
-			car.rc.rcAdress=stdin.readLineSync();
+			rc.rcAdress=stdin.readLineSync();
 
 			print('Enter The Engine Details : ');
     		print('Enter The Engine CC : ');
-    		car.engine.engineCC = stdin.readLineSync();
+    		engine.engineCC = stdin.readLineSync();
     		print('Enter The Type Of Engine : ');
-    		car.engine.engineType = stdin.readLineSync();
+    		engine.engineType = stdin.readLineSync();
 
     		print('Enter the Details of Doors : ');
 			print('Enter The Number OF Doors : ');
-			car.door.noofDoors=int.parse(stdin.readLineSync());
+			door.noofDoors=int.parse(stdin.readLineSync());
 			print('Enter The Type Of Door : ');
-			car.door.doorType=stdin.readLineSync();
+			door.doorType=stdin.readLineSync();
 		    print('Enter The Number Of Seats Available : ');
-			car.door.noofSeats=int.parse(stdin.readLineSync());
+			door.noofSeats=int.parse(stdin.readLineSync());
 
 			print('Enter the Details of Tyre : ');
 			print('Enter The Size OF Tyre : ');
-			car.tyre.tyreSize=stdin.readLineSync();
+			tyre.tyreSize=stdin.readLineSync();
 
 			print('Enter The Name Of Manufacture Of the Tyre : ');
-			car.tyre.tyreName=stdin.readLineSync();
+			tyre.tyreName=stdin.readLineSync();
 
             
 
