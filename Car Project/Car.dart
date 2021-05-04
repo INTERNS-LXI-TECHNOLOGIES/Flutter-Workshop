@@ -1,5 +1,9 @@
 class Car 
-{  
+{ 
+    Engine engine =  Engine(); 
+	Rc rc = Rc();
+	Door door = Door();
+	Tyre tyre = Tyre();  
     String _carName;
 	String _carModel;
     String _carmanufacturer;
