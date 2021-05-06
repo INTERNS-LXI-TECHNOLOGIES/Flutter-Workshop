@@ -1,14 +1,22 @@
-class Car
+  class Car
 {
-    RC rc = RC();
     Engine engine = Engine();
-    Door door = Door();
-    Tyre tyre = Tyre();
-
+	RC rc = RC();
+	Door door = Door();
+	Tyre tyre = Tyre();
     
     String _carName;
 	String _carModel;
     String _carManufacturer;
+    
+    
+
+
+    void setRC(RC rc)=>rc;
+    void setEngine(Engine engine)=> engine;
+    void setDoor (Door door)=> door;
+    void setTyre(Tyre tyre)=> tyre;
+
 
     void set carName(String carName)=> _carName;
     String get carName =>_carName;
@@ -18,5 +26,4 @@ class Car
 
     void set carManufacturer(String carManufacturer)=> _carManufacturer;
     String get carManufacturer => _carManufacturer; 
-    
 }

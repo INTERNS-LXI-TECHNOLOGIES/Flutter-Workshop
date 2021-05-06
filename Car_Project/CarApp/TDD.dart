@@ -5,12 +5,21 @@ class TDD{
 void main()
 	{
 		Car car = Car();
+		Engine engine = Engine();
+		RC rc = RC();
+		Door door = Door();
+		Tyre tyre = Tyre();
+
 
 		print('Please Choose Any Option : ');
 		print('1 - Enter The Details Of vehicle : ');
 		print('2 - Print The Details Of Vehicle : ');
 		int options = int.parse(stdin.readLineSync());
-		if(options==1)
+			
+  		
+  		
+  		
+  if(options==1)
 		{
 			print('Enter The Details of Car : ');
 			print('Enter Name of the car : ');
@@ -25,12 +34,14 @@ void main()
 			rc.rcName= stdin.readLineSync();
 			print ('Enter Adress Of RC Owner');
 			rc.rcAdress=stdin.readLineSync();
+			car.setRC(rc);
 
 			print('Enter The Engine Details : ');
     		print('Enter The Engine CC : ');
     		engine.engineCC = stdin.readLineSync();
     		print('Enter The Type Of Engine : ');
     		engine.engineType = stdin.readLineSync();
+    		car.setEngine(engine);
 
     		print('Enter the Details of Doors : ');
 			print('Enter The Number OF Doors : ');
@@ -39,13 +50,15 @@ void main()
 			door.doorType=stdin.readLineSync();
 		    print('Enter The Number Of Seats Available : ');
 			door.noofSeats=int.parse(stdin.readLineSync());
+			car.setDoor(door);
+
 
 			print('Enter the Details of Tyre : ');
 			print('Enter The Size OF Tyre : ');
 			tyre.tyreSize=stdin.readLineSync();
-
 			print('Enter The Name Of Manufacture Of the Tyre : ');
 			tyre.tyreName=stdin.readLineSync();
+			car.setTyre(tyre);
 
             
 
