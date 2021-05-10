@@ -1,9 +1,12 @@
-  class Car
+class Car
 {
     Engine engine = Engine();
 	RC rc = RC();
 	Door door = Door();
-	Tyre tyre = Tyre();
+	Tyre frontTyre1 = Tyre();
+	Tyre frontTyre2 = Tyre();
+	Tyre backTyre1 = Tyre();
+	Tyre backTyre2 = Tyre();
     
     String _carName;
 	String _carModel;
@@ -15,7 +18,11 @@
     void setRC(RC rc)=>rc;
     void setEngine(Engine engine)=> engine;
     void setDoor (Door door)=> door;
-    void setTyre(Tyre tyre)=> tyre;
+    void setFrontTyre1(Tyre frontTyre1)=> frontTyre1;
+    void setFrontTyre2(Tyre frontTyre2)=> frontTyre2;
+    void setBackTyre1(Tyre backTyre1)=> backTyre1;
+    void setBackTyre2(Tyre backTyre2)=> backTyre2;
+
 
 
     void set carName(String carName)=> _carName;
