@@ -85,28 +85,20 @@ class TDD {
       main();
     } else if (options == 2) {
       print('Details of the Given Car is Follows: ');
-      print('Name of the car : ');
-      print(car.carName);
-      print('Model of the Car : ');
-      print(car.carModel);
-      print('Manufacturer of the Car : ');
-      print(car.carManufacturer);
+      print('Name of the car : '+car.carName);
+      print('Model of the Car : '+car.carModel);
+      print('Manufacturer of the Car : '+car.carManufacturer);
 
       print('Details of the Given Car Registration certificate is Follows: ');
-      print('Name of RC Owner : ');
-      print(car.rc.rcName);
-      print('Adress of RC owner: ');
-      print(car.rc.rcAdress);
+      print('Name of RC Owner : '+car.rc.rcName);
+      print('Adress of RC owner: '+car.rc.rcAdress);
 
       print('Engine Details Are Following . ');
-      print('Engine CC is : ');
-      print(car.engine.engineCC);
-      print('Engine Type is : ');
-      print(car.engine.engineType);
+      print('Engine CC is : '+car.engine.engineCC);
+      print('Engine Type is : '+car.engine.engineType);
 
       print('Details Of The Front Left Tyre :  ');
-      print('Tyre Manufactures name is : ');
-      print(car.frontTyre1.tyreName);
+      print('Tyre Manufactures name is :' +car.frontTyre1.tyreName);
       print('Tyre Size is : ');
       print(car.frontTyre1.tyreSize);
 
