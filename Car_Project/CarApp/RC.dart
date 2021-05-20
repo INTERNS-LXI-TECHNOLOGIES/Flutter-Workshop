@@ -1,24 +1,22 @@
-class RC
-{
-	String _rcName;
-	String _rcAdress;
-	String _carName;
-	String _carModel;
-    String _carManufacturer;
+class RC {
+  String? _rcName;
+  String? _rcAdress;
+  String? _carName;
+  String? _carModel;
+  String? _carManufacturer;
 
-    void set carName(String carName)=> _carName;
-    String get carName =>_carName;
+  set carName(String carName) => _carName;
+  String get carName => _carName.toString();
 
-    void set carModel(String carModel)=> _carModel;
-    String get carModel => _carModel;
+  set carModel(String carModel) => _carModel;
+  String get carModel => _carModel.toString();
 
-    void set carManufacturer(String carManufacturer)=> _carManufacturer;
-    String get carManufacturer => _carManufacturer;
+  set carManufacturer(String carManufacturer) => _carManufacturer;
+  String get carManufacturer => _carManufacturer.toString();
 
-	void set rcName (String rcName)=> _rcName;
-	String get rcName =>_rcName;
+  set rcName(String rcName) => _rcName;
+  String get rcName => _rcName.toString();
 
-	void set rcAdress(String rcAdress)=> _rcAdress;
-	String get rcAdress => _rcAdress;
-	
+  set rcAdress(String rcAdress) => _rcAdress;
+  String get rcAdress => _rcAdress.toString();
 }

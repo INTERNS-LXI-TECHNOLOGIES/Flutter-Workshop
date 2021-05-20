@@ -1,22 +1,10 @@
-import 'dart:io';
-
 class Engine {
-  String engineCC;
-  String engineType;
-  //var engine= new List();
+  String? _engineCC;
+  String? _engineType;
 
-  void engineSpecs() {
-    print('Enter The Engine Details : ');
-    print('Enter The Engine CC : ');
-    engineCC = stdin.readLineSync();
+  set engineCC(String engineCC) => _engineCC;
+  String get engineCC => _engineCC.toString();
 
-    print('Enter The Type Of Engine : ');
-    engineType = stdin.readLineSync();
-  }
-
-  void printEngineSpecs() {
-    print('Engine Details Are Following . ');
-    print('Engine CC is : ${engineCC}');
-    print('Engine Type is : ${engineType}');
-  }
+  set engineType(String engineType) => _engineType;
+  String get engineType => _engineType.toString();
 }
