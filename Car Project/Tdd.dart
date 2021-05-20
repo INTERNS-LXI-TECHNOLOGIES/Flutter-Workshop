@@ -1,7 +1,11 @@
 import 'dart:io';
 	void main()
 {
-	Car car = Car(); 
+	Car car = Car(engine,rc,door,tyre); 
+	Engine engine =  Engine(); 
+	Rc rc = Rc();
+	Door door = Door();
+	Tyre tyre = Tyre();
 
    void enterCarDetails()
    {
@@ -22,30 +26,30 @@ import 'dart:io';
             print('-------------------------------------');
         	print('Enter The RC Details : ');
 			print('Enter The Name Of RC Owner :');
-			car.rcOwner= stdin.readLineSync();
+			rc.rcOwner= stdin.readLineSync();
 			print ('Enter Adress Of RC Owner');
-			car.ownerAddress=stdin.readLineSync();
+			rc.ownerAddress=stdin.readLineSync();
 			print('-------------------------------------');
 			print('-------------------------------------');
 			print('Enter The Engine Details : ');
     		print('Enter The Engine CC : ');
-    		car.engineNumber = stdin.readLineSync();
+    		engine.engineNumber = stdin.readLineSync();
     		print('Enter The Type Of Engine : ');
-    		car.engineType = stdin.readLineSync();
+    		engine.engineType = stdin.readLineSync();
     		print('-------------------------------------');
     		print('-------------------------------------');
     		print('Enter the Details of Doors : ');
 			print('Enter The Number OF Doors : ');
-			car.doorNumber=int.parse(stdin.readLineSync());
+			door.doorNumber=int.parse(stdin.readLineSync());
 			print('Enter The Type Of Door : ');
-			car.doorType=stdin.readLineSync();
+			door.doorType=stdin.readLineSync();
 			print('-------------------------------------');
 			print('-------------------------------------');
 			print('Enter the Details of Tyre : ');
 			print('Enter The Size OF Tyre : ');
-			car.tyreSize=stdin.readLineSync();
+			tyre.tyreSize=stdin.readLineSync();
 			print('Enter The Name Of Manufacture Of the Tyre : ');
-			car.tyreName=stdin.readLineSync();
+			tyre.tyreName=stdin.readLineSync();
 			print('-------------------------------------');
 			this.enterCarDetails();
         }
