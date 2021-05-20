@@ -17,7 +17,7 @@ void carDetails() {
   var tyre = Tyre();
   var tyres = [];
 
-  /// var tyre = Tyre();
+  // var tyre = Tyre();
   var frontTyre1 = Tyre();
   var frontTyre2 = Tyre();
   var backTyre1 = Tyre();
@@ -106,13 +106,13 @@ void carDetails() {
     print('Engine CC is : ' + car.engine.engineCC);
     print('Engine Type is : ' + car.engine.engineType);
 
-    for (int i = 0; i <= 3; i++) {
-      print('Details Of The Car :  ');
-      //print('Tyre Manufactures name is :' + car.frontTyre1.tyreName);
-      //print('Tyre Size is : ');
-      print(tyres.iterator);
+    //for (int i = 0; i <= 3; i++) {
+    //print('Details Of The Car :  ');
+    //print('Tyre Manufactures name is :' + car.frontTyre1.tyreName);
+    //print('Tyre Size is : ');
+    // print(tyres.iterator);
 
-      /*print('Details Of The Front Right Tyre :  ');
+    /*print('Details Of The Front Right Tyre :  ');
       print('Tyre Manufactures name is : ');
       print(car.frontTyre2.tyreName);
       print('Tyre Size is : ');
@@ -129,7 +129,7 @@ void carDetails() {
       print(car.backTyre2.tyreName);
       print('Tyre Size is : ');
       print(car.backTyre2.tyreSize);*/
-    }
+    //}
 
     print('Details Of The Door and Seating of vehicle : ');
     print('Number of Doors :' + car.door.noofDoors);
