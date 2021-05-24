@@ -2,7 +2,7 @@ import 'dart:io';
 import './Car.dart';
 import './Door.dart';
 import './Engine.dart';
-import './Tyre.dart';
+//import './Tyre.dart';
 import './RC.dart';
 
 void main() {
@@ -14,14 +14,14 @@ void carDetails() {
   var engine = Engine();
   var rc = RC();
   var door = Door();
-  var tyre = Tyre();
-  var tyres = [];
+  //var tyre = Tyre();
+  //var tyres = [];
 
   // var tyre = Tyre();
-  var frontTyre1 = Tyre();
-  var frontTyre2 = Tyre();
-  var backTyre1 = Tyre();
-  var backTyre2 = Tyre();
+  //var frontTyre1 = Tyre();
+  //var frontTyre2 = Tyre();
+  //var backTyre1 = Tyre();
+  //var backTyre2 = Tyre();
 
   print('Please Choose Any Option : ');
   print('1 - Enter The Details Of vehicle : ');
@@ -32,36 +32,36 @@ void carDetails() {
   if (options == 1) {
     print('Enter The Details of Car : ');
     print('Enter Name of the car : ');
-    car.carName = stdin.readLineSync.toString();
+    rc.carName = stdin.readLineSync().toString();
     print('Enter Model of the Car :');
-    car.carModel = stdin.readLineSync.toString();
+    rc.carModel = stdin.readLineSync().toString();
     print('Enter Manufacture of the Car : ');
-    car.carManufacturer = stdin.readLineSync.toString();
+    rc.carManufacturer = stdin.readLineSync().toString();
 
     print('Enter The RC Details : ');
     print('Enter The Name Of RC Owner :');
-    rc.rcName = stdin.readLineSync.toString();
+    rc.rcName = stdin.readLineSync().toString();
     print('Enter Adress Of RC Owner');
-    rc.rcAdress = stdin.readLineSync.toString();
+    rc.rcAdress = stdin.readLineSync().toString();
     car.setRegistrationCertificate(rc);
 
     print('Enter The Engine Details : ');
     print('Enter The Engine CC : ');
-    engine.engineCC = stdin.readLineSync.toString();
+    engine.engineCC = stdin.readLineSync().toString();
     print('Enter The Type Of Engine : ');
-    engine.engineType = stdin.readLineSync.toString();
+    engine.engineType = stdin.readLineSync().toString();
     car.setEngine(engine);
 
     print('Enter the Details of Doors : ');
     print('Enter The Number OF Doors : ');
-    door.noofDoors = stdin.readLineSync.toString();
+    door.noofDoors = stdin.readLineSync().toString();
     print('Enter The Type Of Door : ');
     door.doorType = stdin.readLineSync().toString();
     print('Enter The Number Of Seats Available : ');
     door.noofSeats = stdin.readLineSync().toString();
     car.setDoor(door);
 
-    for (var i = 0; i <= 3; i++) {
+    /*for (var i = 0; i <= 3; i++) {
       print('Enter the Details of Front Left Tyre : ');
       print('Enter The Size OF Front Left Tyre : ');
       tyre.tyreSize = stdin.readLineSync.toString();
@@ -89,14 +89,14 @@ void carDetails() {
       print('Enter The Name Of Manufacture Of the Tyre : ');
       backTyre2.tyreName = stdin.readLineSync.toString();
       tyres.add(backTyre2);
-    }
+    }*/
 
     main();
   } else if (options == 2) {
     print('Details of the Given Car is Follows: ');
-    print('Name of the car : ' + car.carName);
-    print('Model of the Car : ' + car.carModel);
-    print('Manufacturer of the Car : ' + car.carManufacturer);
+    print('Name of the car : ' + car.rc.carName);
+    print('Model of the Car : ' + car.rc.carModel);
+    print('Manufacturer of the Car : ' + car.rc.carManufacturer);
 
     print('Details of the Given Car Registration certificate is Follows: ');
     print('Name of RC Owner : ' + car.rc.rcName);

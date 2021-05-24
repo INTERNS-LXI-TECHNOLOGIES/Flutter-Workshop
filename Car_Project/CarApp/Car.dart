@@ -1,37 +1,29 @@
 //import './Car.dart';
 import './Door.dart';
 import './Engine.dart';
-import './Tyre.dart';
+//import './Tyre.dart';
 import './RC.dart';
 
 class Car {
-  Engine engine = Engine();
-  RC rc = RC();
-  Door door = Door();
+  var carEngine;
+  var carDoor;
+  //late String _carTyre;
+  var carRc;
+  // Engine engine = Engine();
+  // RC rc = RC();
+  // Door door = Door();
   /*Tyre frontTyre1 = Tyre();
   Tyre frontTyre2 = Tyre();
   Tyre backTyre1 = Tyre();
   Tyre backTyre2 = Tyre();*/
 
-  String? _carName;
-  String? _carModel;
-  String? _carManufacturer;
-
-  void setRegistrationCertificate(RC rc) => rc;
-  void setEngine(Engine engine) => engine;
-  void setDoor(Door door) => door;
-  /*
-  void setFrontTyre1(Tyre frontTyre1) => frontTyre1;
-  void setFrontTyre2(Tyre frontTyre2) => frontTyre2;
-  void setBackTyre1(Tyre backTyre1) => backTyre1;
-  void setBackTyre2(Tyre backTyre2) => backTyre2;*/
-
-  set carName(String carName) => _carName;
-  String get carName => _carName.toString();
-
-  set carModel(String carModel) => _carModel;
-  String get carModel => _carModel.toString();
-
-  set carManufacturer(String carManufacturer) => _carManufacturer;
-  String get carManufacturer => _carManufacturer.toString();
+  ///var _carName;
+  // var _carModel;
+  // var _carManufacturer;
+  var rc;
+  var door;
+  var engine;
+  void setRegistrationCertificate(RC rc) => this.carRc = rc;
+  void setEngine(Engine engine) => this.carEngine = engine;
+  void setDoor(Door door) => this.carDoor = door;
 }
