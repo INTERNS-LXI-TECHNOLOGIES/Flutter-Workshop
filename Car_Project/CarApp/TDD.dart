@@ -67,7 +67,7 @@ void carDetails() {
     car.setTyre(tyres);
     main();
   } else if (options == 2) {
-    car.printdetails();
+    car.printCarDetails();
     main();
   } else {
     print('You are Entered A wrong Input. Please Try Again ::: ');
