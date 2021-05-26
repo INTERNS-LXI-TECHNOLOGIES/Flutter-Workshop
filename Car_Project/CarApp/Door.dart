@@ -1,14 +1,14 @@
 class Door {
-  var _noofDoors;
-  var _noofSeats;
-  var _doorType;
+  String? _noofDoors;
+  String? _noofSeats;
+  String? _doorType;
 
   set noofDoors(String noofDoors) => _noofDoors = noofDoors;
-  String get noofDoors => _noofDoors;
+  String get noofDoors => _noofDoors.toString();
 
   set noofSeats(String noofseats) => _noofSeats = noofseats;
-  String get noofSeats => _noofSeats;
+  String get noofSeats => _noofSeats.toString();
 
   set doorType(String doorType) => _doorType = doorType;
-  String get doorType => _doorType;
+  String get doorType => _doorType.toString();
 }

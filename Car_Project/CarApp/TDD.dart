@@ -4,6 +4,7 @@ import './Door.dart';
 import './Engine.dart';
 //import './Tyre.dart';
 import './RC.dart';
+import 'Tyre.dart';
 
 void main() {
   carDetails();
@@ -14,14 +15,8 @@ void carDetails() {
   var engine = Engine();
   var rc = RC();
   var door = Door();
-  //var tyre = Tyre();
-  //var tyres = [];
-
-  // var tyre = Tyre();
-  //var frontTyre1 = Tyre();
-  //var frontTyre2 = Tyre();
-  //var backTyre1 = Tyre();
-  //var backTyre2 = Tyre();
+  var tyre = Tyre();
+  var tyres = <Tyre>[];
 
   print('Please Choose Any Option : ');
   print('1 - Enter The Details Of vehicle : ');
@@ -61,81 +56,18 @@ void carDetails() {
     door.noofSeats = stdin.readLineSync().toString();
     car.setDoor(door);
 
-    /*for (var i = 0; i <= 3; i++) {
-      print('Enter the Details of Front Left Tyre : ');
-      print('Enter The Size OF Front Left Tyre : ');
-      tyre.tyreSize = stdin.readLineSync.toString();
-      print('Enter The Name Of Manufacture Of the Tyre : ');
-      frontTyre1.tyreName = stdin.readLineSync.toString();
-      tyres.add(frontTyre1);
-
-      print('Enter the Details of Front Right Tyre : ');
-      print('Enter The Size OF Tyre : ');
-      frontTyre2.tyreSize = stdin.readLineSync.toString();
-      print('Enter The Name Of Manufacture Of the Tyre : ');
-      frontTyre2.tyreName = stdin.readLineSync.toString();
-      tyres.add(frontTyre2);
-
-      print('Enter the Details of Back Left Tyre : ');
-      print('Enter The Size OF Tyre : ');
-      backTyre1.tyreSize = stdin.readLineSync.toString();
-      print('Enter The Name Of Manufacture Of the Tyre : ');
-      backTyre1.tyreName = stdin.readLineSync.toString();
-      tyres.add(backTyre1);
-
-      print('Enter the Details of Back Right Tyre : ');
-      print('Enter The Size OF Tyre : ');
-      backTyre2.tyreSize = stdin.readLineSync.toString();
-      print('Enter The Name Of Manufacture Of the Tyre : ');
-      backTyre2.tyreName = stdin.readLineSync.toString();
-      tyres.add(backTyre2);
-    }*/
-
+    for (var i = 1; i <= 4; i++) {
+      print('Enter the Details of  Tyre : ');
+      print('Enter The Size OF Tyre $i: ');
+      tyre.tyreSize = stdin.readLineSync().toString();
+      print('Enter The Name Of Manufacture Of the Tyre $i: ');
+      tyre.tyreName = stdin.readLineSync().toString();
+      tyres.add(tyre);
+    }
+    car.setTyre(tyres);
     main();
   } else if (options == 2) {
-    print('Details of the Given Car is Follows: ');
-    print('Name of the car : ' + car.rc.carName);
-    print('Model of the Car : ' + car.rc.carModel);
-    print('Manufacturer of the Car : ' + car.rc.carManufacturer);
-
-    print('Details of the Given Car Registration certificate is Follows: ');
-    print('Name of RC Owner : ' + car.rc.rcName);
-    print('Adress of RC owner: ' + car.rc.rcAdress);
-
-    print('Engine Details Are Following . ');
-    print('Engine CC is : ' + car.engine.engineCC);
-    print('Engine Type is : ' + car.engine.engineType);
-
-    //for (int i = 0; i <= 3; i++) {
-    //print('Details Of The Car :  ');
-    //print('Tyre Manufactures name is :' + car.frontTyre1.tyreName);
-    //print('Tyre Size is : ');
-    // print(tyres.iterator);
-
-    /*print('Details Of The Front Right Tyre :  ');
-      print('Tyre Manufactures name is : ');
-      print(car.frontTyre2.tyreName);
-      print('Tyre Size is : ');
-      print(car.frontTyre2.tyreSize);
-
-      print('Details Of The Back Left Tyre :  ');
-      print('Tyre Manufactures name is : ');
-      print(car.backTyre1.tyreName);
-      print('Tyre Size is : ');
-      print(car.backTyre1.tyreSize);
-
-      print('Details Of The Back Right Tyre :  ');
-      print('Tyre Manufactures name is : ');
-      print(car.backTyre2.tyreName);
-      print('Tyre Size is : ');
-      print(car.backTyre2.tyreSize);*/
-    //}
-
-    print('Details Of The Door and Seating of vehicle : ');
-    print('Number of Doors :' + car.door.noofDoors);
-    print('Type of Door : ' + car.door.doorType);
-    print('Number of seats Available : ' + car.door.noofSeats);
-
+    car.printdetails();
     main();
   } else {
     print('You are Entered A wrong Input. Please Try Again ::: ');
