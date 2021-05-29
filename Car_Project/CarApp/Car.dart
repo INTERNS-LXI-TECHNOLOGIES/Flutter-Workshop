@@ -1,45 +1,45 @@
-//import './Car.dart';
 import './Door.dart';
 import './Engine.dart';
-//import './Tyre.dart';
+import './Tyre.dart';
 import './RC.dart';
 import 'Tyre.dart';
 
 class Car {
-//   var carRc;
-//   var carEngine;
-//   var carDoor;
+  String? _carName;
+  String? _carModel;
+  String? _carManufacturerName;
 
-  Engine carEngine = Engine();
-  RC carRc = RC();
-  Door carDoor = Door();
-  List<Tyre> tyres = <Tyre>[];
+  var carEngine;
+  var carRc;
+  var doors = <Door>[];
+  var tyres = <Tyre>[];
+  var carDoor = Door();
+  var carTyre = Tyre();
 
+  //Car(this.carEngine);
   void setRegistrationCertificate(RC rc) => carRc = rc;
   void setEngine(Engine engine) => carEngine = engine;
-  void setDoor(Door door) => carDoor = door;
+  void setDoor(List<Door> door) => doors = doors;
   void setTyre(List<Tyre> tyre) => tyres = tyre;
+
+  set carName(String carName) => _carName = carName;
+  String get carName => _carName.toString();
+
+  set carModel(String carModel) => _carModel = carModel;
+  String get carModel => _carModel.toString();
+
+  set carManufacturer(String carManufacturer) =>
+      _carManufacturerName = carManufacturer;
+  String get carManufacturer => _carManufacturerName.toString();
+
   void printCarDetails() {
     print('Details of the Given Car is Follows: ');
-    print('Name of the car : ' + carRc.carName);
-    print('Model of the Car : ' + carRc.carModel);
-    print('Manufacturer of the Car : ' + carRc.carManufacturer);
-
-    print('Details of the Given Car Registration certificate is Follows: ');
-    print('Name of RC Owner : ' + carRc.rcName);
-    print('Adress of RC owner: ' + carRc.rcAdress);
-
-    print('Engine Details Are Following . ');
-    print('Engine CC is : ' + carEngine.engineCC);
-    print('Engine Type is : ' + carEngine.engineType);
-
-    //print('Tyre Details are following');
-    //for (var i = 0; i <= tyres.length; i++) {
-    //print(tyres[i]);
-    // }
-    print('Details Of The Door and Seating of vehicle : ');
-    print('Number of Doors :' + carDoor.noofDoors);
-    print('Type of Door : ' + carDoor.doorType);
-    print('Number of seats Available : ' + carDoor.noofSeats);
+    print('Name of the car : ' + _carName.toString());
+    print('Model of the Car : ' + _carModel.toString());
+    print('Manufacturer of the Car : ' + _carManufacturerName.toString());
+    carEngine.printEngineDetails();
+    carRc.printRCDetails();
+    carDoor.printDoorDetails(doors);
+    carTyre.printTyreDetails(tyres);
   }
 }

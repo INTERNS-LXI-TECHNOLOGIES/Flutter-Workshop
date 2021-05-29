@@ -2,7 +2,7 @@ import 'dart:io';
 import './Car.dart';
 import './Door.dart';
 import './Engine.dart';
-//import './Tyre.dart';
+import './Tyre.dart';
 import './RC.dart';
 import 'Tyre.dart';
 
@@ -11,12 +11,14 @@ void main() {
 }
 
 void carDetails() {
-  var car = Car();
-  var engine = Engine();
-  var rc = RC();
-  var door = Door();
-  var tyre = Tyre();
+  //var setcar;
+  Car car = Car();
+  Engine engine = Engine();
+  RC rc = RC();
+  Door door = Door();
+  Tyre tyre = Tyre();
   var tyres = <Tyre>[];
+  var doors = <Door>[];
 
   print('Please Choose Any Option : ');
   print('1 - Enter The Details Of vehicle : ');
@@ -27,11 +29,11 @@ void carDetails() {
   if (options == 1) {
     print('Enter The Details of Car : ');
     print('Enter Name of the car : ');
-    rc.carName = stdin.readLineSync().toString();
+    car.carName = stdin.readLineSync().toString();
     print('Enter Model of the Car :');
-    rc.carModel = stdin.readLineSync().toString();
+    car.carModel = stdin.readLineSync().toString();
     print('Enter Manufacture of the Car : ');
-    rc.carManufacturer = stdin.readLineSync().toString();
+    car.carManufacturer = stdin.readLineSync().toString();
 
     print('Enter The RC Details : ');
     print('Enter The Name Of RC Owner :');
@@ -47,15 +49,6 @@ void carDetails() {
     engine.engineType = stdin.readLineSync().toString();
     car.setEngine(engine);
 
-    print('Enter the Details of Doors : ');
-    print('Enter The Number OF Doors : ');
-    door.noofDoors = stdin.readLineSync().toString();
-    print('Enter The Type Of Door : ');
-    door.doorType = stdin.readLineSync().toString();
-    print('Enter The Number Of Seats Available : ');
-    door.noofSeats = stdin.readLineSync().toString();
-    car.setDoor(door);
-
     for (var i = 1; i <= 4; i++) {
       print('Enter the Details of  Tyre : ');
       print('Enter The Size OF Tyre $i: ');
@@ -65,6 +58,18 @@ void carDetails() {
       tyres.add(tyre);
     }
     car.setTyre(tyres);
+    print('Enter the Details of Doors : ');
+    for (int i = 1; i <= 4; i++) {
+      print('Enter The Type Of Door $i : ');
+      door.doorType = stdin.readLineSync().toString();
+      print('Enter The Name Of Manufacturer');
+      door.doorManufacturer = stdin.readLineSync().toString();
+      doors.add(door);
+    }
+    print('Enter The Number Of Seats Available : ');
+    door.noofSeats = stdin.readLineSync().toString();
+    car.setDoor(doors);
+
     main();
   } else if (options == 2) {
     car.printCarDetails();

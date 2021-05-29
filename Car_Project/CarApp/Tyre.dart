@@ -7,4 +7,11 @@ class Tyre {
 
   set tyreSize(String tyreSize) => _tyreSize = tyreSize;
   String get tyreSize => _tyreSize.toString();
+
+  void printTyreDetails(List<Tyre> tyres) {
+    print('Tyre Details are following');
+    for (var i = 0; i <= tyres.length; i++) {
+      print(tyres[i]);
+    }
+  }
 }
