@@ -11,12 +11,16 @@ void main() {
 }
 
 void carDetails() {
-  //var setcar;
-  Car car = Car();
-  Engine engine = Engine();
-  RC rc = RC();
-  Door door = Door();
-  Tyre tyre = Tyre();
+  var tyreSize;
+  var tyreName;
+  var doorType;
+  var doorManufacturer;
+
+  var car = Car();
+  var engine = Engine();
+  var rc = RC();
+  var door = Door(doorType, doorManufacturer);
+  var tyre = Tyre(tyreName, tyreSize);
   var tyres = <Tyre>[];
   var doors = <Door>[];
 
@@ -55,24 +59,27 @@ void carDetails() {
       tyre.tyreSize = stdin.readLineSync().toString();
       print('Enter The Name Of Manufacture Of the Tyre $i: ');
       tyre.tyreName = stdin.readLineSync().toString();
-      tyres.add(tyre);
+      tyreName = tyre.tyreName;
+      tyreSize = tyre.tyreSize;
+      tyres.add(Tyre(tyreName, tyreSize));
     }
     car.setTyre(tyres);
     print('Enter the Details of Doors : ');
-    for (int i = 1; i <= 4; i++) {
+    for (int i = 1; i <= 2; i++) {
       print('Enter The Type Of Door $i : ');
       door.doorType = stdin.readLineSync().toString();
       print('Enter The Name Of Manufacturer');
       door.doorManufacturer = stdin.readLineSync().toString();
-      doors.add(door);
+      doorType = door.doorType;
+      doorManufacturer = door.doorManufacturer;
+      doors.add(Door(doorType, doorManufacturer));
     }
-    print('Enter The Number Of Seats Available : ');
-    door.noofSeats = stdin.readLineSync().toString();
     car.setDoor(doors);
 
     main();
   } else if (options == 2) {
     car.printCarDetails();
+
     main();
   } else {
     print('You are Entered A wrong Input. Please Try Again ::: ');
