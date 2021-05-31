@@ -24,11 +24,11 @@ class Door {
 
   void printDoor3details() {
     print('Details of Door 3 is printing: ');
-    print(doorsList.elementAt(1));
+    print(doorsList.elementAt(2));
   }
 
   void printDoor4details() {
     print('Details of Door 4 is printing: ');
-    print(doorsList.elementAt(1));
+    print(doorsList.elementAt(3));
   }
 }

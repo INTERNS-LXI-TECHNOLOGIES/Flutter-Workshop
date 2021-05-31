@@ -31,6 +31,6 @@ class Tyre {
 
   void printTyre4details() {
     print('Details of FrontTyre 1 their size and tyre is Printing: ');
-    print(tyreslist.elementAt(4));
+    print(tyreslist.elementAt(3));
   }
 }
