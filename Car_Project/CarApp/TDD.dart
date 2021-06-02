@@ -11,19 +11,18 @@ void main() {
 }
 
 void carDetails() {
-  var tyreSize;
-  var tyreName;
-  var doorType;
-  var doorManufacturer;
+  String? tyreSize;
+  String? tyreName;
+  String? doorType;
+  String? doorManufacturer;
 
-  var car = Car();
-  var engine = Engine();
-  var rc = RC();
-  var door = Door(doorType, doorManufacturer);
-  var tyre = Tyre(tyreName, tyreSize);
-  var tyres = <Tyre>[];
-  var doors = <Door>[];
-
+  Car car = new Car();
+  Engine engine = Engine();
+  RC rc = RC();
+  Door door = Door(doorType, doorManufacturer);
+  Tyre tyre = Tyre(tyreName, tyreSize);
+  List<Tyre> tyres = [];
+  List<Door> doors = [];
   print('Please Choose Any Option : ');
   print('1 - Enter The Details Of vehicle : ');
   print('2 - Print The Details Of Vehicle : ');

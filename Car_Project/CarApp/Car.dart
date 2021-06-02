@@ -5,31 +5,27 @@ import './RC.dart';
 import 'Tyre.dart';
 
 class Car {
-  var _carName;
-  var _carModel;
-  var _carManufacturerName;
-
+  String? _carName;
+  String? _carModel;
+  String? _carManufacturerName;
   var engine;
   var rc;
-  var doors = <Door>[];
-  var tyres = <Tyre>[];
-  var door;
-  var tyre;
-
-  void setRegistrationCertificate(RC rc1) => rc = rc1;
-  void setEngine(Engine engine1) => engine = engine1;
-  void setDoor(List<Door> door1) => doors = door1;
-  void setTyre(List<Tyre> tyre1) => tyres = tyre1;
+  List tyres = <Tyre>[];
+  List doors = <Door>[];
+  void setRegistrationCertificate(RC rc) => this.rc = rc;
+  void setEngine(Engine engine) => this.engine = engine;
+  void setDoor(List<Door> doors) => this.doors = doors;
+  void setTyre(List<Tyre> tyres) => this.tyres = tyres;
 
   set carName(String carName) => _carName = carName;
-  String get carName => _carName;
+  String get carName => _carName.toString();
 
   set carModel(String carModel) => _carModel = carModel;
-  String get carModel => _carModel;
+  String get carModel => _carModel.toString();
 
   set carManufacturer(String carManufacturer) =>
       _carManufacturerName = carManufacturer;
-  String get carManufacturer => _carManufacturerName;
+  String get carManufacturer => _carManufacturerName.toString();
 
   void printCarDetails() {
     print('Details of the Given Car is Follows: ');
@@ -38,13 +34,14 @@ class Car {
     print('Manufacturer of the Car : ' + _carManufacturerName.toString());
     engine.printEngineDetails();
     rc.printRCDetails();
-    door.setDoorList(doors);
-    door.printDoor1Details();
-    door.printDoor2Details();
-    tyre.setList(tyres);
-    tyre.printTyre1Details();
-    tyre.printTyre2Details();
-    tyre.printTyre3Details();
-    tyre.printTyre4Details();
+    for (int i = 0; i <= tyres.length; i++) {
+      print('Details of Tyre $i their size and tyre Manufactureris Printing: ');
+      print(tyres.elementAt(i));
+    }
+
+    for (int i = 0; i < doors.length; i++) {
+      print('Details of Door $i is printing: ');
+      print(doors.elementAt(i));
+    }
   }
 }

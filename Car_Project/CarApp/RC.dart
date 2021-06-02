@@ -1,16 +1,16 @@
 class RC {
-  var _rcName;
-  var _rcAdress;
+  String? _rcName;
+  String? _rcAdress;
 
   set rcName(String rcName) => _rcName = rcName;
-  String get rcName => _rcName;
+  String get rcName => _rcName.toString();
 
   set rcAdress(String rcAdress) => _rcAdress = rcAdress;
-  String get rcAdress => _rcAdress;
+  String get rcAdress => _rcAdress.toString();
 
   void printRCDetails() {
     print('Details of the Given Car Registration certificate is Follows: ');
-    print('Name of RC Owner : ' + _rcName);
-    print('Adress of RC owner: ' + _rcAdress);
+    print('Name of RC Owner : ' + _rcName.toString());
+    print('Adress of RC owner: ' + _rcAdress.toString());
   }
 }
