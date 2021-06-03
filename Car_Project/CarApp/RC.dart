@@ -10,7 +10,7 @@ class RC {
 
   void printRCDetails() {
     print('Details of the Given Car Registration certificate is Follows: ');
-    print('Name of RC Owner : ' + _rcName.toString());
-    print('Adress of RC owner: ' + _rcAdress.toString());
+    print('Name of RC Owner : ' + rcName);
+    print('Adress of RC owner: ' + rcAdress);
   }
 }

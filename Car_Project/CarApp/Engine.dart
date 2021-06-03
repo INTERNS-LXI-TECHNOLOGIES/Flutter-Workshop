@@ -1,6 +1,6 @@
 class Engine {
-  String? _engineCC;
   String? _engineType;
+  String? _engineCC;
 
   set engineCC(String engineCC) => _engineCC = engineCC;
   String get engineCC => _engineCC.toString();
@@ -10,7 +10,7 @@ class Engine {
 
   void printEngineDetails() {
     print('Engine Details Are Following . ');
-    print('Engine CC is : ' + _engineCC.toString());
-    print('Engine Type is : ' + _engineType.toString());
+    print('Engine CC is : ' + engineCC);
+    print('Engine Type is : ' + engineType);
   }
 }

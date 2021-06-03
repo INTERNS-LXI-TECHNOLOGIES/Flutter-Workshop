@@ -1,12 +1,11 @@
 class Tyre {
+  String? _tyreManufacturer;
   String? _tyreSize;
-  String? _tyreName;
-
-  set tyreName(String tyreName) => _tyreName = tyreName;
-  String get tyreName => _tyreName.toString();
 
   set tyreSize(String tyreSize) => _tyreSize = tyreSize;
   String get tyreSize => _tyreSize.toString();
 
-  Tyre(this._tyreSize, this._tyreName);
+  set tyreManufacturer(String tyreManufacturer) =>
+      _tyreManufacturer = tyreManufacturer;
+  String get tyreManufacturer => _tyreManufacturer.toString();
 }
