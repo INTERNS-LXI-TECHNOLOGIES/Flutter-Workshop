@@ -16,6 +16,7 @@ List doors = [];
 List tyres = [];
 
 void main() {
+  startUpLogo();
   mainMenu();
   //mainMenu();
 }
@@ -59,13 +60,10 @@ void userCarInputDetails() {
   rc.rcAdress = stdin.readLineSync().toString();
   car.setRegistrationCertificate(rc);
 
-  for (var i = 0; i <= 3; i++) {
+  for (var i = 1; i <= 4; i++) {
     print('Enter the Details of  Tyre : ');
-    print('Enter The Size OF Tyre $i: ');
-    tyre.tyreSize = stdin.readLineSync().toString();
-    print('Enter The Name Of Manufacture Of the Tyre $i: ');
+    print('Enter The Manufacturer OF Tyre $i: ');
     tyre.tyreManufacturer = stdin.readLineSync().toString();
-    tyres.add(tyre.tyreSize);
     tyres.add(tyre.tyreManufacturer);
   }
   car.setTyres(tyres);
@@ -75,14 +73,25 @@ void userCarInputDetails() {
   for (int i = 1; i <= numberOfDoors; i++) {
     print('Enter The Type Of Door $i : ');
     door.doorType = stdin.readLineSync().toString();
-    print('Enter The Name Of Manufacturer');
-    door.doorManufacturer = stdin.readLineSync().toString();
     doors.add(door.doorType);
-    doors.add(door.doorManufacturer);
   }
   car.setDoors(doors);
 }
 
 void printUserInput() {
   car.printCarDetails();
+}
+
+void startUpLogo() {
+  print('\t\t----------------------------------------------------');
+  print('\t\t----------------------------------------------------');
+  print('\t\t----------------------------------------------------');
+  print('\t\t----------------------------------------------------');
+  print('\t\t-------------- Car Manufacturing -------------------');
+  print('\t\t---------------------- And -------------------------');
+  print('\t\t------------- Certification Unit -------------------');
+  print('\t\t----------------------------------------------------');
+  print('\t\t----------------------------------------------------');
+  print('\t\t----------------------------------------------------');
+  print('\t\t----------------------------------------------------');
 }

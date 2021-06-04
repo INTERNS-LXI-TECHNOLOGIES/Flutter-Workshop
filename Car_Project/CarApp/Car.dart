@@ -1,6 +1,5 @@
 import 'Engine.dart';
 import 'RC.dart';
-import 'Tyre.dart';
 
 class Car {
   String? _carName;
@@ -33,12 +32,15 @@ class Car {
     print('Manufacturer of the Car : ' + carManufacturer);
     engine?.printEngineDetails();
     rc?.printRCDetails();
-    for (int i = 0; i < tyres.length; i++) {
-      print('Details of Tyre $i : ');
-      print('Size of tyre :' + tyres.elementAt(i));
-      print('Manufacturer of tyre $i :' + tyres.elementAt(i + 1));
 
-      //print(tyres[i]);
+    for (var i = 0; i < tyres.length; i++) {
+      print('Details of Tyre $i : ');
+      print('Size of tyre :' + tyres[i]);
+    }
+
+    for (var j = 0; j < doors.length; j++) {
+      print('Details of Door $j: ');
+      print('Type of Door $j :' + doors[j]);
     }
   }
 }
