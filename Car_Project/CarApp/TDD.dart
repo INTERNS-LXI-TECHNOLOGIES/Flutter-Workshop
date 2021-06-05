@@ -12,8 +12,8 @@ RC rc = RC();
 Tyre tyre = Tyre();
 Door door = Door();
 
-List doors = [];
-List tyres = [];
+List<Door> doors = <Door>[];
+List<Tyre> tyres = <Tyre>[];
 
 void main() {
   startUpLogo();
@@ -64,8 +64,11 @@ void userCarInputDetails() {
     print('Enter the Details of  Tyre : ');
     print('Enter The Manufacturer OF Tyre $i: ');
     tyre.tyreManufacturer = stdin.readLineSync().toString();
-    tyres.add(tyre.tyreManufacturer);
+    print('Enter the Size of Tyre');
+    tyre.tyreSize = stdin.readLineSync().toString();
+    tyres.add(tyre);
   }
+  //tyres.add(tyre);
   car.setTyres(tyres);
   print('Enter the Details of Doors : ');
   print('Enter the Number of Doors: ');
@@ -73,8 +76,12 @@ void userCarInputDetails() {
   for (int i = 1; i <= numberOfDoors; i++) {
     print('Enter The Type Of Door $i : ');
     door.doorType = stdin.readLineSync().toString();
-    doors.add(door.doorType);
+
+    print('Enter The Manufacturer of Door $i :');
+    door.doorManufacturer = stdin.readLineSync().toString();
+    doors.add(door);
   }
+
   car.setDoors(doors);
 }
 
