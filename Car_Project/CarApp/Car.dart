@@ -37,10 +37,10 @@ class Car {
     engine?.printEngineDetails();
     rc?.printRCDetails();
     for (var i = 0; i < tyres.length; i++) {
-      tyres[i].printTyreDetails(tyres[i]);
+      tyres[i].printTyreDetails();
     }
     for (var i = 0; i < doors.length; i++) {
-      doors[i].printDoorDetails(doors[i]);
+      doors[i].printDoorDetails();
     }
   }
 }

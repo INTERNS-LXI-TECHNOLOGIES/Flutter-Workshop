@@ -11,9 +11,9 @@ class Tyre {
   set tyreSize(String tyreSize) => _tyreSize = tyreSize;
   String get tyreSize => _tyreSize.toString();
 
-  void printTyreDetails(tyres) {
+  void printTyreDetails() {
     print('Details of Tyre is Following:');
-    print('Size of Tyre  : ' + tyres.tyreSize);
-    print('manufacture of Tyre : ' + tyres.tyreManufacturer);
+    print('Size of Tyre  : ' + tyreSize);
+    print('manufacture of Tyre : ' + tyreManufacturer);
   }
 }

@@ -9,9 +9,9 @@ class Door {
       _doorManufacturer = doorManufacturer;
   String get doorManufacturer => _doorManufacturer.toString();
 
-  void printDoorDetails(doors) {
+  void printDoorDetails() {
     print('Details of Door is  :');
-    print('Door Type :' + doors.doorType);
-    print('Door Manufacturer: ' + doors.doorManufacturer);
+    print('Door Type :' +doorType);
+    print('Door Manufacturer: ' +doorManufacturer);
   }
 }
