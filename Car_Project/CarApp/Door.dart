@@ -11,14 +11,7 @@ class Door {
 
   void printDoorDetails(doors) {
     print('Details of Door is  :');
-    for (var i = 0; i < doors.length; i++) {
-      print('Door Type :' + doors[i].doorType);
-      print('Door Manufacturer: ' + doors[i].doorManufacturer);
-    }
-    // doors.forEach((element) {
-    //   for (var i = 0; i < doors.length; i++) {
-    //     print('${doors[i]}');
-    //   }
-    // });
+    print('Door Type :' + doors.doorType);
+    print('Door Manufacturer: ' + doors.doorManufacturer);
   }
 }

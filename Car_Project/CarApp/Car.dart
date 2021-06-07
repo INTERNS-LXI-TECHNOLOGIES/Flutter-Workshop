@@ -2,7 +2,7 @@ import 'Engine.dart';
 import 'RC.dart';
 import 'Tyre.dart';
 import 'Door.dart';
-import 'car_project.dart';
+
 
 class Car {
   String? _carName;
@@ -36,7 +36,11 @@ class Car {
     print('Manufacturer of the Car : ' + carManufacturer);
     engine?.printEngineDetails();
     rc?.printRCDetails();
-    tyre.printTyreDetails(tyres);
-    door.printDoorDetails(doors);
+    for (var i = 0; i < tyres.length; i++) {
+      tyres[i].printTyreDetails(tyres[i]);
+    }
+    for (var i = 0; i < doors.length; i++) {
+      doors[i].printDoorDetails(doors[i]);
+    }
   }
 }

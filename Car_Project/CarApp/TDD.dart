@@ -68,7 +68,6 @@ void userCarInputDetails() {
     tyre.tyreSize = stdin.readLineSync().toString();
     tyres.add(tyre);
   }
-  //tyres.add(tyre);
   car.setTyres(tyres);
   print('Enter the Details of Doors : ');
   print('Enter the Number of Doors: ');

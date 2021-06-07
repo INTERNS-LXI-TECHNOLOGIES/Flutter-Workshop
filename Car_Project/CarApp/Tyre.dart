@@ -13,9 +13,7 @@ class Tyre {
 
   void printTyreDetails(tyres) {
     print('Details of Tyre is Following:');
-    for (var i = 0; i < tyres.length; i++) {
-      print('Size of Tyre $i : ' + tyres[i].tyreSize);
-      print('manufacture of Tyre $i: ' + tyres[i].tyreManufacturer);
-    }
+    print('Size of Tyre  : ' + tyres.tyreSize);
+    print('manufacture of Tyre : ' + tyres.tyreManufacturer);
   }
 }
