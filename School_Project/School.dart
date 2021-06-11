@@ -1,42 +1,52 @@
+import 'dart:math';
+import 'Division.dart';
 import 'Student.dart';
 import 'Teacher.dart';
-import 'dart:math';
 
 class School {
-  List<Student> students = [];
+  Division? division;
   List<Teacher> teachers = [];
-  int? limitValue;
-  int? _numberofStudents;
-  void classDivisionDetails() {
-    var randomNumber = Random().nextInt(5);
+  List<Student> students = [];
+  int? _numberOfStudents;
+
+  void classDivision() {
+    int randomNumber = Random().nextInt(5);
     teachers[randomNumber].printTeachersDetails();
-    for (var j = 0; j < limitValue!; j++) {
-      var studentRandomNumber = Random().nextInt(numberOfStudents);
-      students[studentRandomNumber].printStudentDeatils();
+    print('-----------------------------------------');
+    for (var j = 0; j < 2; j++) {
+      int randomStudents = Random().nextInt(numberOfStudents);
+      students[randomStudents].printStudentDeatils();
     }
+    print('-----------------------------------------');
+    print('-----------------------------------------');
+    print('-----------------------------------------');
   }
 
-  set numberOfStudents(int numberofStudents) =>
-      _numberofStudents = numberofStudents;
-  int get numberOfStudents => int.parse(_numberofStudents.toString());
+  set numberOfStudents(int numberOfStudents) =>
+      _numberOfStudents = numberOfStudents;
+  int get numberOfStudents => int.parse(_numberOfStudents.toString());
+
   void setStudents(List<Student> students) => this.students = students;
   void setTeachers(List<Teacher> teachers) => this.teachers = teachers;
-
-  void printStudetDetailswithClassTeacher() {
-    limitValue = 2;
-    print('Number of Students in a Class Is fixed as 2:');
-    limitValue = 2;
+  void setDivision(Division division) => this.division = division;
+  void printDetails() {
     if (numberOfStudents <= 6) {
-      for (var i = 0; i <= 3; i++) {
-        classDivisionDetails();
+      print('Number of Class Division is 3 with 2 Students in Each:');
+      for (var i = 0; i < 3; i++) {
+        division?.classDivision = i;
+        division?.printInstructions();
+        classDivision();
       }
     } else if (numberOfStudents <= 10) {
+      print('Number of Class Division is 5 with 2 Students in Each:');
       for (var i = 0; i < 5; i++) {
-        classDivisionDetails();
+        division?.printInstructions();
+        classDivision();
       }
     } else {
       print(
-          'Max Number of Student is Alloted is 10 students in class 10th \n please join Student in a New School ');
+          'Seats In The school for Class 10th is full Please contact school principal for further instruction regarding to the admission :');
+      print('ThankYou');
     }
   }
 }

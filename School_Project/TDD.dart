@@ -1,37 +1,26 @@
 import 'dart:io';
+
+import 'Division.dart';
 import 'School.dart';
 import 'Student.dart';
 import 'Teacher.dart';
 
-School school = School();
 Student student = Student();
 Teacher teacher = Teacher();
+School school = School();
+Division division = Division();
 List<Student> students = [];
 List<Teacher> teachers = [];
-
 void main() {
-  startUpLogo();
+  applicationMenu();
+}
+
+void applicationMenu() {
+  startUpScreen();
   mainMenu();
 }
 
-void mainMenu() {
-  print('Please Choose Any Option : ');
-  print('1 - Enter The Details Of Students : ');
-  print('2 - Print The Details Of Students : ');
-  int i = int.parse(stdin.readLineSync().toString());
-  var options = i;
-  if (options == 1) {
-    studentsDetails();
-    mainMenu();
-  } else if (options == 2) {
-    printStudentandTeachersDeatils();
-  } else {
-    print('You Are Entered A wrong Input');
-    mainMenu();
-  }
-}
-
-void startUpLogo() {
+void startUpScreen() {
   print('\t\t----------------------------------------------------');
   print('\t\t----------------------------------------------------');
   print('\t\t----------------------------------------------------');
@@ -45,10 +34,31 @@ void startUpLogo() {
   print('\t\t----------------------------------------------------');
 }
 
-void studentsDetails() {
+void mainMenu() {
+  print('Please Choose Any Option : ');
+  print('1 - Enter The Details Of Students : ');
+  print('2 - Print The Details Of Teachers : ');
+  print('3 - Generate Divisions : ');
+  int i = int.parse(stdin.readLineSync().toString());
+  var options = i;
+  if (options == 1) {
+    inputstudentDetails();
+  } else if (options == 2) {
+    inputTeacherDetails();
+  } else if (options == 3) {
+    printUserOutput();
+  } else {
+    print('You are entered a wrong input please try again');
+  }
+}
+
+void inputstudentDetails() {
   print('Enter the Number of Students:');
   int numberOfStudents = int.parse(stdin.readLineSync().toString());
-  //numberOfStudents = school.numberOfStudents;
+  school.numberOfStudents = numberOfStudents;
+  print('Enter The Number of Students In a Division :');
+  int numberofStudentsinaDivision = int.parse(stdin.readLineSync().toString());
+  division.numberofStudentsinaDivision = numberofStudentsinaDivision;
   for (var i = 1; i <= numberOfStudents; i++) {
     print('Enter Student Name :');
     student.studentName = stdin.readLineSync().toString();
@@ -57,21 +67,25 @@ void studentsDetails() {
     students.add(student);
   }
   school.setStudents(students);
+  school.setDivision(division);
   mainMenu();
 }
 
-void teacherDetails() {
+void inputTeacherDetails() {
   print('Enter The Number Of Teachers :');
   int numberOfTeachers = int.parse(stdin.readLineSync().toString());
+  teacher.noofTeachers = numberOfTeachers;
   for (var i = 0; i <= numberOfTeachers; i++) {
     print('Enter The Name Of Teacher : ');
     teacher.teacherName = stdin.readLineSync().toString();
     print('Enter the Subject of Teacher :');
-    teacher.teacherSubject = stdin.readByteSync().toString();
+    teacher.teacherSubject = stdin.readLineSync().toString();
+    teachers.add(teacher);
   }
   school.setTeachers(teachers);
+  mainMenu();
 }
 
-void printStudentandTeachersDeatils() {
-  school.printStudetDetailswithClassTeacher();
+void printUserOutput() {
+  school.printDetails();
 }
