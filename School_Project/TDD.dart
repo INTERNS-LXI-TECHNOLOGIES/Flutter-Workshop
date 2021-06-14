@@ -1,21 +1,27 @@
 import 'dart:io';
-
-import 'Division.dart';
 import 'School.dart';
+import 'SchoolClass.dart';
 import 'Student.dart';
 import 'Teacher.dart';
+import 'dart:math';
 
 Student student = Student();
 Teacher teacher = Teacher();
-School school = School();
-Division division = Division();
 List<Student> students = [];
 List<Teacher> teachers = [];
-void main() {
-  applicationMenu();
-}
+SchoolClass schoolclass = SchoolClass();
+School school = School();
+List subject = [
+  'Maths',
+  'Physics',
+  'Chemistry',
+  'Biology',
+  'Social Science',
+  'English',
+  'Malayalam'
+];
 
-void applicationMenu() {
+void main() {
   startUpScreen();
   mainMenu();
 }
@@ -35,57 +41,67 @@ void startUpScreen() {
 }
 
 void mainMenu() {
-  print('Please Choose Any Option : ');
-  print('1 - Enter The Details Of Students : ');
-  print('2 - Print The Details Of Teachers : ');
-  print('3 - Generate Divisions : ');
+  print('Enter the Numbers of Students to be added:');
+  int totalStudents = int.parse(stdin.readLineSync().toString());
+  school.totalNumberOfStudents = totalStudents;
+  print('Enter Number of classes :');
+  int numberofClasses = int.parse(stdin.readLineSync().toString());
+  schoolclass.numberOfClasses = numberofClasses;
+  print('Enter Number Of Students In A Class:');
+  int strength = int.parse(stdin.readLineSync().toString());
+  school.classStrength = strength;
+  print('Enter the Number Of Teachers to be Appointed: ');
+  int noofTeacher = int.parse(stdin.readLineSync().toString());
+  school.numberofTeachers = noofTeacher;
+  print('Press 1 to start Admission :');
   int i = int.parse(stdin.readLineSync().toString());
   var options = i;
   if (options == 1) {
-    inputstudentDetails();
+    generateStudents();
+    generateTeachers();
+    print('Admission Process hasbeen Completed: ');
+    print('ThankYou');
+    mainMenu();
   } else if (options == 2) {
-    inputTeacherDetails();
-  } else if (options == 3) {
-    printUserOutput();
+    school.printGeneratedClasses();
   } else {
-    print('You are entered a wrong input please try again');
+    print('You are Entered a Wrong Input');
   }
+  school.setClass(schoolclass);
+  school.setStudents(students);
+  school.setTeachers(teachers);
 }
 
-void inputstudentDetails() {
-  print('Enter the Number of Students:');
-  int numberOfStudents = int.parse(stdin.readLineSync().toString());
-  school.numberOfStudents = numberOfStudents;
-  print('Enter The Number of Students In a Division :');
-  int numberofStudentsinaDivision = int.parse(stdin.readLineSync().toString());
-  division.numberofStudentsinaDivision = numberofStudentsinaDivision;
-  for (var i = 1; i <= numberOfStudents; i++) {
-    print('Enter Student Name :');
-    student.studentName = stdin.readLineSync().toString();
-    print('Enter Student RegisterNumber : ');
-    student.studentRegisterNumber = stdin.readLineSync().toString();
+const chars = "zxcvbnmasdfghjklqwertyuiop0123456789";
+String randomString(int stringLength) {
+  var random = Random();
+  String result = "";
+  for (var i = 0; i < stringLength; i++) {
+    result += chars[random.nextInt(chars.length)];
+  }
+  return result;
+}
+
+void generateStudents() {
+  for (var i = 0; i < school.totalNumberOfStudents; i++) {
+    String name = randomString(10);
+    student.studentName = name;
+    int registerNumber = Random().nextInt(10);
+    student.studentRegisterNumber = registerNumber;
+    //print(name);
+    //print(registerNumber);
     students.add(student);
   }
-  school.setStudents(students);
-  school.setDivision(division);
-  mainMenu();
 }
 
-void inputTeacherDetails() {
-  print('Enter The Number Of Teachers :');
-  int numberOfTeachers = int.parse(stdin.readLineSync().toString());
-  teacher.noofTeachers = numberOfTeachers;
-  for (var i = 0; i <= numberOfTeachers; i++) {
-    print('Enter The Name Of Teacher : ');
-    teacher.teacherName = stdin.readLineSync().toString();
-    print('Enter the Subject of Teacher :');
-    teacher.teacherSubject = stdin.readLineSync().toString();
+void generateTeachers() {
+  for (var i = 0; i < 10; i++) {
+    String name = randomString(10);
+    teacher.teacherName = name;
+    int random = Random().nextInt(6);
+    teacher.teacherSubject = subject[random];
+    //print(name);
+    //print(subject[random]);
     teachers.add(teacher);
   }
-  school.setTeachers(teachers);
-  mainMenu();
-}
-
-void printUserOutput() {
-  school.printDetails();
 }

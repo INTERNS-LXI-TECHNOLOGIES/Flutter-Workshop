@@ -2,6 +2,7 @@ class Division {
   var division;
   int? classDivision;
   num? _numberofStudentsinaDivision;
+
   set numberofStudentsinaDivision(num numberofStudentsinaDivision) =>
       _numberofStudentsinaDivision = numberofStudentsinaDivision;
   num get numberofStudentsinaDivision =>
