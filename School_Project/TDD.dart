@@ -41,38 +41,24 @@ void startUpScreen() {
 }
 
 void mainMenu() {
-  print('Enter the Numbers of Students to be added:');
-  int totalStudents = int.parse(stdin.readLineSync().toString());
-  school.totalNumberOfStudents = totalStudents;
-  print('Enter Number of classes :');
-  int numberofClasses = int.parse(stdin.readLineSync().toString());
-  schoolclass.numberOfClasses = numberofClasses;
-  print('Enter Number Of Students In A Class:');
-  int strength = int.parse(stdin.readLineSync().toString());
-  school.classStrength = strength;
-  print('Enter the Number Of Teachers to be Appointed: ');
-  int noofTeacher = int.parse(stdin.readLineSync().toString());
-  school.numberofTeachers = noofTeacher;
-  print('Press 1 to start Admission :');
+  print('Select Any Options');
+  print('1 - Start Admission');
+  print('2 - View Admission Details');
   int i = int.parse(stdin.readLineSync().toString());
   var options = i;
   if (options == 1) {
-    generateStudents();
-    generateTeachers();
-    print('Admission Process hasbeen Completed: ');
-    print('ThankYou');
-    mainMenu();
+    startAdmission();
   } else if (options == 2) {
-    school.printGeneratedClasses();
+    school.generateClasseswithStudentsAndTeachers();
+
+    main();
   } else {
-    print('You are Entered a Wrong Input');
+    print('You are Entered A Wrong Input');
+    print('Please Try Again');
   }
-  school.setClass(schoolclass);
-  school.setStudents(students);
-  school.setTeachers(teachers);
 }
 
-const chars = "zxcvbnmasdfghjklqwertyuiop0123456789";
+const chars = "zxcvbnmasdfghjklqwertyuiop";
 String randomString(int stringLength) {
   var random = Random();
   String result = "";
@@ -104,4 +90,29 @@ void generateTeachers() {
     //print(subject[random]);
     teachers.add(teacher);
   }
+}
+
+void startAdmission() {
+  print('Enter the Numbers of Students to be added:');
+  //int totalStudents = int.parse(stdin.readLineSync().toString());
+  school.totalNumberOfStudents = int.parse(stdin.readLineSync().toString());
+  print('Enter Number of classes :');
+  //int numberofClasses = int.parse(stdin.readLineSync().toString());
+  schoolclass.numberOfClasses = num.parse(stdin.readLineSync().toString());
+  print('Enter Number Of Students In A Class:');
+  //int strength = int.parse(stdin.readLineSync().toString());
+  school.classStrength = int.parse(stdin.readLineSync().toString());
+
+  print('Enter the Number Of Teachers to be Appointed: ');
+  //int noofTeacher = int.parse(stdin.readLineSync().toString());
+  school.numberofTeachers = int.parse(stdin.readLineSync().toString());
+  generateStudents();
+  generateTeachers();
+  print('Admission Process hasbeen Completed: ');
+  print('ThankYou');
+
+  school.setClass(schoolclass);
+  school.setStudents(students);
+  school.setTeachers(teachers);
+  mainMenu();
 }

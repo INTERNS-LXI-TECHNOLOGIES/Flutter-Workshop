@@ -11,6 +11,7 @@ class Teacher {
 
   set noofTeachers(int noofTeachers) => _noofTeachers = noofTeachers;
   int get noofTeachers => int.parse(_noofTeachers.toString());
+
   void printTeachersDetails() {
     print('Details of Class Teacher Is Follows :');
     print('Name of Teacher :' + teacherName);

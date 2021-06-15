@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'SchoolClass.dart';
 import 'Student.dart';
 import 'TDD.dart';
@@ -30,9 +29,14 @@ class School {
   void setTeachers(List<Teacher> teachers) => this.teachers = teachers;
 
   void generateClasseswithStudentsAndTeachers() {
-    var numberOfClasses = schoolClass?.numberOfClasses;
-    for (var i = 0; i < numberOfClasses!; i++) {
+    num numberofClasses = schoolClass!.numberOfClasses;
+    for (var i = 0; i < numberofClasses; i++) {
+      print('');
+      print('---------------------------- ');
+      print('Class $i - Instructions :');
+      schoolClass?.printInstructions();
       teacher.printTeachersDetails();
+
       for (var j = 0; j < classStrength; j++) {
         int indexNumber = Random().nextInt(classStrength);
         students[indexNumber].printStudentDeatils();
@@ -40,7 +44,7 @@ class School {
     }
   }
 
-  void printGeneratedClasses() {
-    generateClasseswithStudentsAndTeachers();
-  }
+  // void printGeneratedClasses() {
+  //   generateClasseswithStudentsAndTeachers();
+  // }
 }
