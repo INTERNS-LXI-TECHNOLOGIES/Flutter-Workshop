@@ -1,7 +1,7 @@
 import 'Animal.dart';
-import 'Carnivorous.dart';
+//import 'Carnivorous.dart';
 
-class Lion extends Animal implements Carnivorous {
+class Lion extends Animal {
   @override
   void printnameOfAnimal() {
     print('Name of Animal is Lion');

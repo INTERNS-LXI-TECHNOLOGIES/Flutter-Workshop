@@ -1,5 +1,9 @@
 import 'dart:io';
 
+import 'Forest.dart';
+
+Forest forest = Forest();
+
 class AnimalGame {
   void mainMenu() {
     startUpScreen();
@@ -9,8 +13,13 @@ class AnimalGame {
       print(
           '\n\n1. Start Game \n\n2. Participants \n\n3. Credits \n\n Press 0 for Exit \n');
       choice = int.parse(stdin.readLineSync().toString());
-      if (choice == 1) {}
-      if (choice == 2) {}
+      if (choice == 1) {
+        forest.generateAnimals();
+        forest.printAnimal();
+      }
+      if (choice == 2) {
+        forest.printParticipantingAnimalsName();
+      }
       if (choice == 3) {
         printGamecredits();
       } else {

@@ -1,4 +1,4 @@
-abstract class Animal {
+class Animal {
   bool? _life;
   String? _name;
   int? _distance;
@@ -16,7 +16,7 @@ abstract class Animal {
   bool get animalLife => _life!;
 
   set animalName(String name) => _name = name;
-  String get animalName => _name!;
+  String get animalName => _name.toString();
 
   set distance(int distance) => _distance = distance;
   int get distance => _distance!;
