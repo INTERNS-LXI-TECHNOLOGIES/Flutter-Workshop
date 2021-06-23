@@ -1,15 +1,11 @@
 import 'HerbiVorous.dart';
 import 'Animal.dart';
+import 'WeakAnimal.dart';
 
-class Deer extends Animal implements Herbivorous {
+class Deer extends Animal implements Herbivorous, WeakAnimal {
   @override
-  void printnameOfAnimal() {
-    print('Name of Animal is Dear');
-    printTypeofFoodEatByAanimal();
-  }
-
-  @override
-  void printTypeofFoodEatByAanimal() {
-    print('Deer is a Wild Herbivour Animal and eats Grass');
+  String printAnimalDetails() {
+    String name = animalName;
+    return name;
   }
 }

@@ -1,1 +1,1 @@
-class Herbivorous {}
+abstract class Herbivorous {}

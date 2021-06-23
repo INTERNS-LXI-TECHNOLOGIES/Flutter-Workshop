@@ -1,15 +1,12 @@
-class Animal {
+abstract class Animal {
   bool? _life;
   String? _name;
   int? _distance;
   int? _strength;
 
-  void printTypeofFoodEatByAanimal() {
-    print('Eating Behaviour of Animal');
-  }
-
-  void printnameOfAnimal() {
-    print('---------- Name And Type Of Animal ------------');
+  String printAnimalDetails() {
+    String details = 'Details of Animal will be printed below ';
+    return details;
   }
 
   set animalLife(bool life) => _life = life;

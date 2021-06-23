@@ -15,9 +15,10 @@ class AnimalGame {
       choice = int.parse(stdin.readLineSync().toString());
       if (choice == 1) {
         forest.generateAnimals();
-        forest.printAnimal();
+        forest.startGame();
       }
       if (choice == 2) {
+        forest.generateAnimals();
         forest.printParticipantingAnimalsName();
       }
       if (choice == 3) {
