@@ -12,64 +12,73 @@ import 'GameLogic.dart';
 class Forest {
   List<Animal> animals = [];
   GameLogic gameLogic = GameLogic();
+  Animal lion1 = Lion();
+  Animal lion2 = Lion();
+  Animal tiger1 = Tiger();
+  Animal tiger2 = Tiger();
+  Animal elephant1 = Elephant();
+  Animal elephant2 = Elephant();
+  Animal bear = Bear();
+  Animal deer = Deer();
+  Animal rabit = Rabit();
 
   void generateAnimals() {
     print(
         'N.B :- you can choose upto 2 Animals FREE in each catagory! beyond that you have to purchase it ');
 
-    animals.add(new Lion());
-    animals[0].animalName = 'Indian Lion';
-    animals[0].strength = 96;
-    animals[0].animalLife = true;
-    animals[0].distance = 90;
+    lion1.animalName = 'Indian Lion';
+    lion1.strength = 96;
+    lion1.animalLife = true;
+    lion1.distance = 90;
+    animals.add(lion1);
 
-    animals.add(new Lion());
-    animals[1].animalName = 'African Lion';
-    animals[1].strength = 93;
-    animals[1].animalLife = true;
-    animals[1].distance = 70;
+    lion2.animalName = 'African Lion';
+    lion2.strength = 93;
+    lion2.animalLife = true;
+    lion2.distance = 70;
+    animals.add(lion2);
 
-    animals.add(new Tiger());
-    animals[2].animalName = 'Siberian Tiger';
-    animals[2].strength = 94;
-    animals[2].animalLife = true;
-    animals[2].distance = 50;
+    tiger1.animalName = 'Siberian Tiger';
+    tiger1.strength = 94;
+    tiger1.animalLife = true;
+    tiger1.distance = 50;
+    animals.add(tiger1);
 
-    animals.add(new Tiger());
-    animals[3].animalName = 'Indian Tiger';
-    animals[3].strength = 95;
-    animals[3].animalLife = true;
-    animals[3].distance = 78;
+    tiger2.animalName = 'Indian Tiger';
+    tiger2.strength = 95;
+    tiger2.animalLife = true;
+    tiger2.distance = 78;
+    animals.add(tiger2);
 
-    animals.add(new Elephant());
-    animals[4].animalName = 'Indian Lion';
-    animals[4].strength = 88;
-    animals[4].animalLife = true;
-    animals[4].distance = 65;
+    elephant1.animalName = 'Indian Elephant';
+    elephant1.strength = 88;
+    elephant1.animalLife = true;
+    elephant1.distance = 65;
+    animals.add(elephant1);
 
-    animals.add(new Elephant());
-    animals[5].animalName = 'Ancient Mamoth';
-    animals[5].strength = 92;
-    animals[5].animalLife = true;
-    animals[5].distance = 30;
+    elephant2.animalName = 'Ancient Mamoth';
+    elephant2.strength = 92;
+    elephant2.animalLife = true;
+    elephant2.distance = 30;
+    animals.add(elephant2);
 
-    animals.add(new Bear());
-    animals[6].animalName = 'Bear';
-    animals[6].strength = 80;
-    animals[6].animalLife = true;
-    animals[6].distance = 62;
+    bear.animalName = 'Bear';
+    bear.strength = 80;
+    bear.animalLife = true;
+    bear.distance = 62;
+    animals.add(bear);
 
-    animals.add(new Deer());
-    animals[7].animalName = 'Deer';
-    animals[7].strength = 50;
-    animals[7].animalLife = true;
-    animals[7].distance = 70;
+    deer.animalName = 'Deer';
+    deer.strength = 50;
+    deer.animalLife = true;
+    deer.distance = 70;
+    animals.add(deer);
 
-    animals.add(new Rabit());
-    animals[8].animalName = 'Rabit';
-    animals[8].strength = 30;
-    animals[8].animalLife = true;
-    animals[8].distance = 50;
+    rabit.animalName = 'Rabit';
+    rabit.strength = 30;
+    rabit.animalLife = true;
+    rabit.distance = 50;
+    animals.add(rabit);
   }
 
   void printParticipantingAnimalsName() {
@@ -121,21 +130,5 @@ class Forest {
       }
     }
     return count;
-  }
-
-  void printdiedAnimals() {
-    int i = 0;
-    print('\n|---The Animals died in the game are:---|');
-    print('|-Sl.No:-|--------Animal Names----------|');
-    for (i = 0; i < animals.length; i++) {
-      if (animals[i].animalLife == false) {
-        print('| ' +
-            (i + 1).toString() +
-            '\t  | \t ' +
-            animals[i].animalName +
-            '\t\t|');
-      }
-    }
-    print('|---------------------------------------|');
   }
 }

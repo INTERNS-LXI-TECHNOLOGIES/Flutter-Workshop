@@ -7,4 +7,8 @@ class Bear extends Animal implements Carnivorous {
     String name = animalName;
     return name;
   }
+
+  void behaviourOfAnimal() {
+    print('');
+  }
 }

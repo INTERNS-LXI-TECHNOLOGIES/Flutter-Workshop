@@ -1,23 +1,23 @@
 abstract class Animal {
-  bool? _life;
-  String? _name;
-  int? _distance;
-  int? _strength;
+  bool? _animalLife;
+  String? _animalName;
+  int? _animalDistance;
+  int? _animalStrength;
 
   String printAnimalDetails() {
     String details = 'Details of Animal will be printed below ';
     return details;
   }
 
-  set animalLife(bool life) => _life = life;
-  bool get animalLife => _life!;
+  set animalLife(bool animalLife) => _animalLife = animalLife;
+  bool get animalLife => _animalLife!;
 
-  set animalName(String name) => _name = name;
-  String get animalName => _name.toString();
+  set animalName(String animalName) => _animalName = animalName;
+  String get animalName => _animalName.toString();
 
-  set distance(int distance) => _distance = distance;
-  int get distance => _distance!;
+  set distance(int animalDistance) => _animalDistance = animalDistance;
+  int get distance => _animalDistance!;
 
-  set strength(int strength) => _strength = strength;
-  int get strength => _strength!;
+  set strength(int animalStrength) => _animalStrength = animalStrength;
+  int get strength => _animalStrength!;
 }
