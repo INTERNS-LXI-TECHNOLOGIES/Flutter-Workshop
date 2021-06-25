@@ -2,7 +2,6 @@ import 'dart:math';
 import 'Animals/Animal.dart';
 import 'Animals/Carnivorous.dart';
 import 'Animals/Herbivorous.dart';
-import 'Animals/WeakAnimal.dart';
 
 class GameLogic {
   void gamePlayLogic(int playerOne, int playerTwo, List<Animal> animals) {
@@ -42,13 +41,15 @@ class GameLogic {
             '\nPlayer One Strength :\t\t' +
             animals[playerOne].strength.toString() +
             '\n');
+        print(animals[playerOne].animalBehaviour);
         print('Player Two Name     :    ' +
             animals[playerTwo].animalName +
             '\nPlayer Two Strength :\t\t' +
             animals[playerTwo].strength.toString() +
             '\n');
+        print(animals[playerTwo].animalBehaviour);
         if (animals[playerOne].strength > animals[playerTwo].strength) {
-          if (animals[playerTwo] is WeakAnimal) {
+          if (animals[playerTwo].animalAttackingBehaviour == false) {
             if (luckyHerbivorous != 2) {
               print(
                   '\nWinner is Player One:\t' + animals[playerOne].animalName);
@@ -94,7 +95,9 @@ class GameLogic {
     bool result = checkArea(playerOne, playerTwo, animals);
     if (result == true) {
       print('Player One Name     :\t' + animals[playerOne].animalName);
+      print(animals[playerOne].animalAttackingBehaviour);
       print('Player Two Name     :\t' + animals[playerTwo].animalName);
+      print(animals[playerTwo].animalAttackingBehaviour);
       print('\nBoth are Herbivorus and they dont fight each other');
       print('-----------------------------------');
     }
@@ -105,18 +108,20 @@ class GameLogic {
     bool result = checkArea(playerOne, playerTwo, animals);
     if (result == true) {
       print(animals[playerOne].animalName +
-          'meets' +
+          ' meets ' +
           animals[playerTwo].animalName);
       print('Player One Name\t:' +
           animals[playerOne].animalName +
           '\nPlayer One Strength :\t\t' +
           animals[playerOne].strength.toString() +
           '\n');
+      print(animals[playerOne].animalAttackingBehaviour);
       print('Player Two Name\t:' +
           animals[playerTwo].animalName +
           '\nPlayer Two Strength :\t\t' +
           animals[playerTwo].strength.toString() +
           '\n');
+      print(animals[playerTwo].animalAttackingBehaviour);
       print('');
 
       if (animals[playerOne].strength > animals[playerTwo].strength) {
@@ -162,13 +167,15 @@ class GameLogic {
           '\nPlayer One Strength :\t\t' +
           animals[playerOne].strength.toString() +
           '\n');
+      print(animals[playerOne].animalAttackingBehaviour);
       print('Player Two Name\t:\t' +
           animals[playerTwo].animalName +
           '\nPlayer Two Strength :\t\t' +
           animals[playerTwo].strength.toString() +
           '\n');
+      print(animals[playerTwo].animalAttackingBehaviour);
       if (animals[playerOne].strength > animals[playerTwo].strength) {
-        if (animals[playerTwo] is WeakAnimal) {
+        if (animals[playerTwo].animalAttackingBehaviour == false) {
           if (luckyHerbivorous != 2) {
             print('\nWinner is Player One:\t' + animals[playerOne].animalName);
             animals[playerTwo].strength = animals[playerOne].strength - 10;

@@ -30,54 +30,63 @@ class Forest {
     lion1.strength = 96;
     lion1.animalLife = true;
     lion1.distance = 90;
+    lion1.animalAttackingBehaviour = true;
     animals.add(lion1);
 
     lion2.animalName = 'African Lion';
     lion2.strength = 93;
     lion2.animalLife = true;
-    lion2.distance = 70;
+    lion2.distance = 80;
+    lion2.animalAttackingBehaviour = true;
     animals.add(lion2);
 
     tiger1.animalName = 'Siberian Tiger';
     tiger1.strength = 94;
     tiger1.animalLife = true;
-    tiger1.distance = 50;
+    tiger1.distance = 90;
+    tiger1.animalAttackingBehaviour = true;
     animals.add(tiger1);
 
     tiger2.animalName = 'Indian Tiger';
     tiger2.strength = 95;
     tiger2.animalLife = true;
-    tiger2.distance = 78;
+    tiger2.distance = 88;
+    tiger2.animalAttackingBehaviour = true;
     animals.add(tiger2);
 
     elephant1.animalName = 'Indian Elephant';
     elephant1.strength = 88;
     elephant1.animalLife = true;
-    elephant1.distance = 65;
+    elephant1.distance = 85;
+    elephant1.animalAttackingBehaviour = true;
     animals.add(elephant1);
 
     elephant2.animalName = 'Ancient Mamoth';
     elephant2.strength = 92;
     elephant2.animalLife = true;
-    elephant2.distance = 30;
+    elephant2.distance = 90;
+    tiger2.animalAttackingBehaviour = false;
     animals.add(elephant2);
 
     bear.animalName = 'Bear';
     bear.strength = 80;
     bear.animalLife = true;
-    bear.distance = 62;
+    bear.distance = 92;
+    bear.animalAttackingBehaviour = true;
     animals.add(bear);
 
     deer.animalName = 'Deer';
     deer.strength = 50;
     deer.animalLife = true;
-    deer.distance = 70;
+    deer.distance = 80;
+    deer.animalAttackingBehaviour = false;
     animals.add(deer);
 
     rabit.animalName = 'Rabit';
     rabit.strength = 30;
     rabit.animalLife = true;
-    rabit.distance = 50;
+    rabit.distance = 88;
+    rabit.animalAttackingBehaviour = false;
     animals.add(rabit);
   }
 

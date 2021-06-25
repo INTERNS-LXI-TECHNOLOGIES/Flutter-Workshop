@@ -8,7 +8,16 @@ class Bear extends Animal implements Carnivorous {
     return name;
   }
 
-  void behaviourOfAnimal() {
-    print('');
+  @override
+  String animalBehaviour() {
+    String? bearAttackingBehaviour;
+    if (animalAttackingBehaviour == true) {
+      String attackingBehaviour = 'Bear has Attacking behaviour';
+      bearAttackingBehaviour = attackingBehaviour;
+    } else {
+      String attackingBehaviour = 'Bear not having attacking Behaviour';
+      bearAttackingBehaviour = attackingBehaviour;
+    }
+    return bearAttackingBehaviour;
   }
 }

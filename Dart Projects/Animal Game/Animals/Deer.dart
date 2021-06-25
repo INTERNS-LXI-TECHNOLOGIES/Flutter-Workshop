@@ -1,11 +1,23 @@
 import 'HerbiVorous.dart';
 import 'Animal.dart';
-import 'WeakAnimal.dart';
 
-class Deer extends Animal implements Herbivorous, WeakAnimal {
+class Deer extends Animal implements Herbivorous {
   @override
   String printAnimalDetails() {
     String name = animalName;
     return name;
+  }
+
+  @override
+  String animalBehaviour() {
+    String? dearAttackingBehaviour;
+    if (animalAttackingBehaviour == true) {
+      String attackingBehaviour = 'Deer has Attacking behaviour';
+      dearAttackingBehaviour = attackingBehaviour;
+    } else {
+      String attackingBehaviour = 'Deer not having attacking Behaviour';
+      dearAttackingBehaviour = attackingBehaviour;
+    }
+    return dearAttackingBehaviour;
   }
 }
