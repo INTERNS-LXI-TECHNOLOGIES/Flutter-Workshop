@@ -11,7 +11,7 @@ class Tiger extends Animal implements Carnivorous {
   @override
   String animalBehaviour() {
     String? tigerAttackingBehaviour;
-    if (animalAttackingBehaviour == true) {
+    if (isAnimalAlive == true) {
       String attackingBehaviour = 'Tiger has Attacking behaviour';
       tigerAttackingBehaviour = attackingBehaviour;
     } else {

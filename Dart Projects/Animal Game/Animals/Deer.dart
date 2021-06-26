@@ -11,7 +11,7 @@ class Deer extends Animal implements Herbivorous {
   @override
   String animalBehaviour() {
     String? dearAttackingBehaviour;
-    if (animalAttackingBehaviour == true) {
+    if (isAnimalAlive == true) {
       String attackingBehaviour = 'Deer has Attacking behaviour';
       dearAttackingBehaviour = attackingBehaviour;
     } else {

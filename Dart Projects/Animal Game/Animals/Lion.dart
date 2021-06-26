@@ -11,7 +11,7 @@ class Lion extends Animal {
   @override
   String animalBehaviour() {
     String? lionAttackingBehaviour;
-    if (animalAttackingBehaviour == true) {
+    if (isAnimalAlive == true) {
       String attackingBehaviour = 'Lion has Attacking behaviour';
       lionAttackingBehaviour = attackingBehaviour;
     } else {

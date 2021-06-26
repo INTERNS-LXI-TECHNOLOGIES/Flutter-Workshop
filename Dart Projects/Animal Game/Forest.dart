@@ -12,82 +12,82 @@ import 'GameLogic.dart';
 class Forest {
   List<Animal> animals = [];
   GameLogic gameLogic = GameLogic();
-  Animal lion1 = Lion();
-  Animal lion2 = Lion();
-  Animal tiger1 = Tiger();
-  Animal tiger2 = Tiger();
-  Animal elephant1 = Elephant();
-  Animal elephant2 = Elephant();
-  Animal bear = Bear();
-  Animal deer = Deer();
-  Animal rabit = Rabit();
+  Lion? lion1;
+  Lion? lion2;
+  Tiger? tiger1;
+  Tiger? tiger2;
+  Elephant? elephant1;
+  Elephant? elephant2;
+  Bear? bear;
+  Rabit? rabit;
+  Deer? deer;
 
   void generateAnimals() {
     print(
         'N.B :- you can choose upto 2 Animals FREE in each catagory! beyond that you have to purchase it ');
 
-    lion1.animalName = 'Indian Lion';
-    lion1.strength = 96;
-    lion1.animalLife = true;
-    lion1.distance = 90;
-    lion1.animalAttackingBehaviour = true;
-    animals.add(lion1);
+    lion1?.animalName = 'Indian Lion';
+    lion1?.strength = 96;
+    lion1?.isAnimalAlive = true;
+    lion1?.distance = 90;
+    lion1?.isAnimalAttacktive = true;
+    animals.add(lion1!);
 
-    lion2.animalName = 'African Lion';
-    lion2.strength = 93;
-    lion2.animalLife = true;
-    lion2.distance = 80;
-    lion2.animalAttackingBehaviour = true;
-    animals.add(lion2);
+    lion2?.animalName = 'African Lion';
+    lion2?.strength = 93;
+    lion2?.isAnimalAlive = true;
+    lion2?.distance = 80;
+    lion2?.isAnimalAttacktive = true;
+    animals.add(lion2!);
 
-    tiger1.animalName = 'Siberian Tiger';
-    tiger1.strength = 94;
-    tiger1.animalLife = true;
-    tiger1.distance = 90;
-    tiger1.animalAttackingBehaviour = true;
-    animals.add(tiger1);
+    tiger1?.animalName = 'Siberian Tiger';
+    tiger1?.strength = 94;
+    tiger1?.isAnimalAlive = true;
+    tiger1?.distance = 90;
+    tiger1?.isAnimalAttacktive = true;
+    animals.add(tiger1!);
 
-    tiger2.animalName = 'Indian Tiger';
-    tiger2.strength = 95;
-    tiger2.animalLife = true;
-    tiger2.distance = 88;
-    tiger2.animalAttackingBehaviour = true;
-    animals.add(tiger2);
+    tiger2?.animalName = 'Indian Tiger';
+    tiger2?.strength = 95;
+    tiger2?.isAnimalAlive = true;
+    tiger2?.distance = 88;
+    tiger2?.isAnimalAttacktive = true;
+    animals.add(tiger2!);
 
-    elephant1.animalName = 'Indian Elephant';
-    elephant1.strength = 88;
-    elephant1.animalLife = true;
-    elephant1.distance = 85;
-    elephant1.animalAttackingBehaviour = true;
-    animals.add(elephant1);
+    elephant1?.animalName = 'Indian Elephant';
+    elephant1?.strength = 88;
+    elephant1?.isAnimalAlive = true;
+    elephant1?.distance = 85;
+    elephant1?.isAnimalAttacktive = true;
+    animals.add(elephant1!);
 
-    elephant2.animalName = 'Ancient Mamoth';
-    elephant2.strength = 92;
-    elephant2.animalLife = true;
-    elephant2.distance = 90;
-    tiger2.animalAttackingBehaviour = false;
-    animals.add(elephant2);
+    elephant2?.animalName = 'Ancient Mamoth';
+    elephant2?.strength = 92;
+    elephant2?.isAnimalAlive = true;
+    elephant2?.distance = 90;
+    elephant2?.isAnimalAttacktive = false;
+    animals.add(elephant2!);
 
-    bear.animalName = 'Bear';
-    bear.strength = 80;
-    bear.animalLife = true;
-    bear.distance = 92;
-    bear.animalAttackingBehaviour = true;
-    animals.add(bear);
+    bear?.animalName = 'Bear';
+    bear?.strength = 80;
+    bear?.isAnimalAlive = true;
+    bear?.distance = 92;
+    bear?.isAnimalAttacktive = true;
+    animals.add(bear!);
 
-    deer.animalName = 'Deer';
-    deer.strength = 50;
-    deer.animalLife = true;
-    deer.distance = 80;
-    deer.animalAttackingBehaviour = false;
-    animals.add(deer);
+    deer?.animalName = 'Deer';
+    deer?.strength = 50;
+    deer?.isAnimalAlive = true;
+    deer?.distance = 80;
+    deer?.isAnimalAttacktive = false;
+    animals.add(deer!);
 
-    rabit.animalName = 'Rabit';
-    rabit.strength = 30;
-    rabit.animalLife = true;
-    rabit.distance = 88;
-    rabit.animalAttackingBehaviour = false;
-    animals.add(rabit);
+    rabit?.animalName = 'Rabit';
+    rabit?.strength = 30;
+    rabit?.isAnimalAlive = true;
+    rabit?.distance = 88;
+    rabit?.isAnimalAttacktive = false;
+    animals.add(rabit!);
   }
 
   void printParticipantingAnimalsName() {
@@ -111,8 +111,8 @@ class Forest {
       int playerOne = Random().nextInt(animals.length);
       int playerTwo = Random().nextInt(animals.length);
       if (playerOne != playerTwo) {
-        if (animals[playerOne].animalLife == true &&
-            animals[playerTwo].animalLife == true) ;
+        if (animals[playerOne].isAnimalAlive == true &&
+            animals[playerTwo].isAnimalAlive == true) ;
         {
           gameLogic.gamePlayLogic(playerOne, playerTwo, animals);
         }
@@ -123,7 +123,7 @@ class Forest {
 
   void printFinalWinner() {
     for (int i = 0; i < animals.length; i++) {
-      if (animals[i].animalLife == true) {
+      if (animals[i].isAnimalAlive == true) {
         print('|---------The FinalWinnner of Forest Champianship ---------|');
         print('\t' + animals[i].animalName + '\t');
         print('|----------------------------------------------------------|');
@@ -134,7 +134,7 @@ class Forest {
   int loop() {
     int count = 0;
     for (int i = 0; i < animals.length; i++) {
-      if (animals[i].animalLife == true) {
+      if (animals[i].isAnimalAlive == true) {
         count++;
       }
     }

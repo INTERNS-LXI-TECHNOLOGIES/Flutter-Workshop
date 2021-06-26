@@ -1,9 +1,9 @@
 abstract class Animal {
-  bool? _animalLife;
+  bool? _isAnimalAlive;
   String? _animalName;
   int? _animalDistance;
   int? _animalStrength;
-  bool? _animalAttackingbehaviour;
+  bool? _isAnimalattacktive;
 
   String printAnimalDetails() {
     String details = 'Details of Animal will be printed below ';
@@ -15,12 +15,12 @@ abstract class Animal {
     return attackingBehaviour;
   }
 
-  set animalAttackingBehaviour(bool animalAttackingBehaviour) =>
-      _animalAttackingbehaviour = animalAttackingBehaviour;
-  bool get animalAttackingBehaviour => _animalAttackingbehaviour!;
+  set isAnimalAttacktive(bool isAnimalAttacktive) =>
+      _isAnimalattacktive = isAnimalAttacktive;
+  bool get isAnimalAttacktive => _isAnimalattacktive!;
 
-  set animalLife(bool animalLife) => _animalLife = animalLife;
-  bool get animalLife => _animalLife!;
+  set isAnimalAlive(bool isAnimalaAlive) => _isAnimalAlive = isAnimalaAlive;
+  bool get isAnimalAlive => _isAnimalAlive!;
 
   set animalName(String animalName) => _animalName = animalName;
   String get animalName => _animalName.toString();

@@ -11,7 +11,7 @@ class Horse extends Animal implements Herbivorous {
   @override
   String animalBehaviour() {
     String? horseAttackingBehaviour;
-    if (animalAttackingBehaviour == true) {
+    if (isAnimalAlive == true) {
       String attackingBehaviour = 'Horse has Attacking behaviour';
       horseAttackingBehaviour = attackingBehaviour;
     } else {

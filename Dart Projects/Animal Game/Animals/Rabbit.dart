@@ -11,7 +11,7 @@ class Rabit extends Animal implements Herbivorous {
   @override
   String animalBehaviour() {
     String? rabitAttackingBehaviour;
-    if (animalAttackingBehaviour == true) {
+    if (isAnimalAlive == true) {
       String attackingBehaviour = 'Rabit has Attacking behaviour';
       rabitAttackingBehaviour = attackingBehaviour;
     } else {

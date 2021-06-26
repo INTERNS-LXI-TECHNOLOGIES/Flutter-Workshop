@@ -5,8 +5,8 @@ import 'Animals/Herbivorous.dart';
 
 class GameLogic {
   void gamePlayLogic(int playerOne, int playerTwo, List<Animal> animals) {
-    if (animals[playerOne].animalLife == true &&
-        animals[playerTwo].animalLife == true) {
+    if (animals[playerOne].isAnimalAlive == true &&
+        animals[playerTwo].isAnimalAlive == true) {
       if (animals[playerOne] is Carnivorous &&
           animals[playerTwo] is Herbivorous) {
         gameplayLogicBetweenCarbivorousVsHerbivorous(
@@ -49,14 +49,14 @@ class GameLogic {
             '\n');
         print(animals[playerTwo].animalBehaviour);
         if (animals[playerOne].strength > animals[playerTwo].strength) {
-          if (animals[playerTwo].animalAttackingBehaviour == false) {
+          if (animals[playerTwo].isAnimalAttacktive == false) {
             if (luckyHerbivorous != 2) {
               print(
                   '\nWinner is Player One:\t' + animals[playerOne].animalName);
               animals[playerOne].strength = animals[playerOne].strength - 10;
               print('\nWinners New Strength:\t' +
                   animals[playerOne].strength.toString());
-              animals[playerTwo].animalLife = false;
+              animals[playerTwo].isAnimalAlive = false;
               print('\nLoser is Player Two:' + animals[playerTwo].animalName);
               animals[playerTwo].strength = animals[playerTwo].strength - 15;
               print("\nLosser's New Strength:\t" +
@@ -68,7 +68,7 @@ class GameLogic {
               animals[playerTwo].strength = animals[playerTwo].strength - 10;
               print("\nWinner's New Strength:\t" +
                   animals[playerTwo].strength.toString());
-              animals[playerTwo].animalLife = false;
+              animals[playerTwo].isAnimalAlive = false;
               print('\nLoser is Player Two:' + animals[playerOne].animalName);
               animals[playerOne].strength = animals[playerOne].strength - 15;
               print('--------------------------------------');
@@ -78,7 +78,7 @@ class GameLogic {
             animals[playerTwo].strength = animals[playerTwo].strength - 10;
             print("\nWinner's New Strength:\t" +
                 animals[playerTwo].strength.toString());
-            animals[playerTwo].animalLife = false;
+            animals[playerTwo].isAnimalAlive = false;
             print('\nLoser is Player Two:' + animals[playerOne].animalName);
             animals[playerOne].strength = animals[playerOne].strength - 15;
             print("\nLosser's New Strength:\t" +
@@ -95,9 +95,9 @@ class GameLogic {
     bool result = checkArea(playerOne, playerTwo, animals);
     if (result == true) {
       print('Player One Name     :\t' + animals[playerOne].animalName);
-      print(animals[playerOne].animalAttackingBehaviour);
+      print(animals[playerOne].isAnimalAttacktive);
       print('Player Two Name     :\t' + animals[playerTwo].animalName);
-      print(animals[playerTwo].animalAttackingBehaviour);
+      print(animals[playerTwo].isAnimalAttacktive);
       print('\nBoth are Herbivorus and they dont fight each other');
       print('-----------------------------------');
     }
@@ -115,13 +115,13 @@ class GameLogic {
           '\nPlayer One Strength :\t\t' +
           animals[playerOne].strength.toString() +
           '\n');
-      print(animals[playerOne].animalAttackingBehaviour);
+      print(animals[playerOne].isAnimalAttacktive);
       print('Player Two Name\t:' +
           animals[playerTwo].animalName +
           '\nPlayer Two Strength :\t\t' +
           animals[playerTwo].strength.toString() +
           '\n');
-      print(animals[playerTwo].animalAttackingBehaviour);
+      print(animals[playerTwo].isAnimalAttacktive);
       print('');
 
       if (animals[playerOne].strength > animals[playerTwo].strength) {
@@ -134,7 +134,7 @@ class GameLogic {
         print('\nNew strength of Looser:\t' +
             animals[playerTwo].strength.toString());
         if (animals[playerTwo].strength <= 30) {
-          animals[playerTwo].animalLife = false;
+          animals[playerTwo].isAnimalAlive = false;
           print('\nDied animal:\t  ' + animals[playerTwo].animalName);
         }
         print('--------------------------------------');
@@ -148,7 +148,7 @@ class GameLogic {
         print('\nNew strength of Looser:\t' +
             animals[playerOne].strength.toString());
         if (animals[playerOne].strength <= 30) {
-          animals[playerOne].animalLife = false;
+          animals[playerOne].isAnimalAlive = false;
           print('\nDied animal:-\t' + animals[playerOne].animalName);
         } else {}
 
@@ -167,21 +167,21 @@ class GameLogic {
           '\nPlayer One Strength :\t\t' +
           animals[playerOne].strength.toString() +
           '\n');
-      print(animals[playerOne].animalAttackingBehaviour);
+      print(animals[playerOne].isAnimalAttacktive);
       print('Player Two Name\t:\t' +
           animals[playerTwo].animalName +
           '\nPlayer Two Strength :\t\t' +
           animals[playerTwo].strength.toString() +
           '\n');
-      print(animals[playerTwo].animalAttackingBehaviour);
+      print(animals[playerTwo].isAnimalAttacktive);
       if (animals[playerOne].strength > animals[playerTwo].strength) {
-        if (animals[playerTwo].animalAttackingBehaviour == false) {
+        if (animals[playerTwo].isAnimalAttacktive == false) {
           if (luckyHerbivorous != 2) {
             print('\nWinner is Player One:\t' + animals[playerOne].animalName);
             animals[playerTwo].strength = animals[playerOne].strength - 10;
             print("\nWinner's New Strength:\t" +
                 animals[playerOne].strength.toString());
-            animals[playerTwo].animalLife = false;
+            animals[playerTwo].isAnimalAlive = false;
             print('\nLoser is Player Two:' + animals[playerTwo].animalName);
             animals[playerTwo].strength = animals[playerTwo].strength - 15;
             print('------------------------------------');
@@ -191,7 +191,7 @@ class GameLogic {
           animals[playerTwo].strength = animals[playerTwo].strength - 10;
           print("\nWinner's New Strength:" +
               animals[playerTwo].strength.toString());
-          animals[playerOne].animalLife = false;
+          animals[playerOne].isAnimalAlive = false;
           print('\nLoser is Player One:' + animals[playerOne].animalName);
           animals[playerTwo].strength = animals[playerOne].strength - 15;
           print('-----------------------------------');

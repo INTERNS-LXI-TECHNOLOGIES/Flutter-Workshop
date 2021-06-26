@@ -11,7 +11,7 @@ class Bear extends Animal implements Carnivorous {
   @override
   String animalBehaviour() {
     String? bearAttackingBehaviour;
-    if (animalAttackingBehaviour == true) {
+    if (isAnimalAlive == true) {
       String attackingBehaviour = 'Bear has Attacking behaviour';
       bearAttackingBehaviour = attackingBehaviour;
     } else {

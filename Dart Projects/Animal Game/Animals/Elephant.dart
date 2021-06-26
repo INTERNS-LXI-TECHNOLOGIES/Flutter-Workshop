@@ -11,7 +11,7 @@ class Elephant extends Animal implements Herbivorous {
   @override
   String animalBehaviour() {
     String? elephantAttackingBehaviour;
-    if (animalAttackingBehaviour == true) {
+    if (isAnimalAlive == true) {
       String attackingBehaviour = 'Elepjant has Attacking behaviour';
       elephantAttackingBehaviour = attackingBehaviour;
     } else {
