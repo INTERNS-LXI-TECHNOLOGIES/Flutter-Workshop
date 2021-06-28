@@ -4,12 +4,14 @@ abstract class Animal {
   int? _animalDistance;
   int? _animalStrength;
   bool? _isAnimalattacktive;
-  String? name;
-  bool? isAttacktive;
-  bool? isAlive;
-  int? distance;
-  int? strength;
-  Animal(name, isAttacktive, isAlive, distance, strength);
+  Animal(String name, bool isAttacktive, bool isAlive, int animalDistance,
+      int animalStrength) {
+    isAnimalAlive = isAlive;
+    animalName = name;
+    distance = animalDistance;
+    isAnimalAttacktive = isAlive;
+    strength = animalStrength;
+  }
 
   String printAnimalDetails() {
     String details = 'Details of Animal will be printed below ';
