@@ -2,5 +2,5 @@ import 'AnimalGame.dart';
 
 AnimalGame animalGame = AnimalGame();
 void main() {
-  animalGame.mainMenu();
+  animalGame.printMainMenu();
 }

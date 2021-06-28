@@ -41,13 +41,13 @@ class GameLogic {
             '\nPlayer One Strength :\t\t' +
             animals[playerOne].strength.toString() +
             '\n');
-        print(animals[playerOne].animalBehaviour);
+        print(animals[playerOne].printanimalBehaviour);
         print('Player Two Name     :    ' +
             animals[playerTwo].animalName +
             '\nPlayer Two Strength :\t\t' +
             animals[playerTwo].strength.toString() +
             '\n');
-        print(animals[playerTwo].animalBehaviour);
+        print(animals[playerTwo].printanimalBehaviour);
         if (animals[playerOne].strength > animals[playerTwo].strength) {
           if (animals[playerTwo].isAnimalAttacktive == false) {
             if (luckyHerbivorous != 2) {

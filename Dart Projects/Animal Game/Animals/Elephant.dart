@@ -2,6 +2,11 @@ import 'Animal.dart';
 import 'HerbiVorous.dart';
 
 class Elephant extends Animal implements Herbivorous {
+  Elephant(String animalName, bool isAnimalAttacktive, bool isAnimalAlive,
+      int animalDistance, int animalStrength)
+      : super(animalName, isAnimalAttacktive, isAnimalAlive, animalDistance,
+            animalStrength);
+
   @override
   String printAnimalDetails() {
     String name = animalName;

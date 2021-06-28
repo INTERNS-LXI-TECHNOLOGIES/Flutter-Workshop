@@ -2,6 +2,11 @@ import 'Animal.dart';
 import 'Carnivorous.dart';
 
 class Bear extends Animal implements Carnivorous {
+  Bear(String animalName, bool isAnimalAttacktive, bool isAnimalAlive,
+      int animalDistance, int animalStrength)
+      : super(animalName, isAnimalAttacktive, isAnimalAlive, animalDistance,
+            animalStrength);
+
   @override
   String printAnimalDetails() {
     String name = animalName;

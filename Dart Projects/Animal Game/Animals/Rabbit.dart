@@ -2,6 +2,11 @@ import 'HerbiVorous.dart';
 import 'Animal.dart';
 
 class Rabit extends Animal implements Herbivorous {
+  Rabit(String animalName, bool isAnimalAttacktive, bool isAnimalAlive,
+      int animalDistance, int animalStrength)
+      : super(animalName, isAnimalAttacktive, isAnimalAlive, animalDistance,
+            animalStrength);
+
   @override
   String printAnimalDetails() {
     String name = animalName;

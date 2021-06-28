@@ -5,8 +5,8 @@ import 'Forest.dart';
 Forest forest = Forest();
 
 class AnimalGame {
-  void mainMenu() {
-    startUpScreen();
+  void printMainMenu() {
+    printstartUpScreen();
     int choice = 0;
     do {
       print('\n________________________');
@@ -18,6 +18,7 @@ class AnimalGame {
         forest.startGame();
       }
       if (choice == 2) {
+        forest.generateAnimals();
         forest.printParticipantingAnimalsName();
       }
       if (choice == 3) {
@@ -28,7 +29,7 @@ class AnimalGame {
     } while (choice > 0);
   }
 
-  void startUpScreen() {
+  void printstartUpScreen() {
     {
       print(
           '                ---------------------------------------------------');
