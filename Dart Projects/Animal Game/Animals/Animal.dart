@@ -38,4 +38,8 @@ abstract class Animal {
 
   set strength(int animalStrength) => _animalStrength = animalStrength;
   int get strength => _animalStrength!;
+
+  void startFight() {
+    if (strength >= 70) {}
+  }
 }
