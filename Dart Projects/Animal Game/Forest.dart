@@ -12,8 +12,6 @@ import 'Animals/Tiger.dart';
 
 class Forest {
   List<Animal> animals = [];
-  Animal animal = Animal(
-      '', false, false, 0, 0, false, false, false, false, false, false, false);
   void generateAnimals() {
     print(
         'N.B :- you can choose upto 2 Animals FREE in each catagory! beyond that you have to purchase it ');
@@ -81,7 +79,7 @@ class Forest {
                   ' Vs ' +
                   playerTwo.animalName +
                   '');
-              animal.startFight(playerOne, playerTwo);
+              playerOne.startFight(playerTwo);
             }
           }
           print('');
