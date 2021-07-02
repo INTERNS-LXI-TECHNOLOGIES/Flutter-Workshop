@@ -1,5 +1,3 @@
-//import 'dart:math';
-
 class Animal {
   bool? _isAnimalAlive;
   String? _animalName;
@@ -32,13 +30,13 @@ class Animal {
     distance = animalDistance;
     isAnimalAttacktive = isAlive;
     strength = animalStrength;
-    tornadoDoubleFlip = canPerformDoubleFlipKick;
-    tornadoSmash = canPerformTornadoSmash;
-    doubleFlipKick = canPerformDoubleFlipKick;
-    flipBackkick = canPerformFlipBackkick;
-    smash = canPerformSmash;
-    legKick = canPerformLegKick;
-    handKick = canPerformhandKick;
+    canPerformTornadoDoubleFlip = tornadoDoubleFlip;
+    canPerformTornadoSmash = tornadoSmash;
+    canPerformDoubleFlipKick = doubleFlipKick;
+    canPerformFlipBackkick = flipBackkick;
+    canPerformSmash = smash;
+    canPerformLegKick = legKick;
+    canPerformhandKick = handKick;
   }
 
   String printAnimalDetails() {
@@ -110,40 +108,35 @@ class Animal {
     playerTwo.performerLegKick();
     playerOne.performhandKick();
     playerTwo.performhandKick();
-    checkLifeStatusOfPlayerOne(playerOne, playerTwo);
+
     if (playerOne.strength > playerTwo.strength) {
-      print('\n-------------------------------------------');
-      print('-------------------------------------------\n');
-      print(playerOne.animalName + ' is Won in this Round\n');
-      print('-------------------------------------------');
-      print('-------------------------------------------');
-      print('\n-------------------------------------------');
-      print('-------------------------------------------\n');
-      print(playerTwo.animalName + ' is failed in this Round\n');
-      print('-------------------------------------------');
-      print('-------------------------------------------');
+      print('\nWinner is Player One:\t' + playerOne.animalName);
+      playerTwo.strength = playerOne.strength - 10;
+      print("\nWinner's New Strength:\t" + playerOne.strength.toString());
+      playerTwo.isAnimalAlive = false;
+      print('\nLoser is Player Two:' + playerTwo.animalName);
+      playerTwo.strength = playerTwo.strength - 15;
+      print('------------------------------------');
     } else {
-      print('\n-------------------------------------------');
-      print('-------------------------------------------\n');
-      print(playerTwo.animalName + ' is Won in this Round\n');
-      print('-------------------------------------------');
-      print('-------------------------------------------');
-      print('\n-------------------------------------------');
-      print('-------------------------------------------\n');
-      print(playerTwo.animalName + ' is failed in this Round\n');
-      print('-------------------------------------------');
-      print('-------------------------------------------');
+      print('\nWinner is Player Two:\t' + playerTwo.animalName);
+      playerTwo.strength = playerTwo.strength - 10;
+      print("\nWinner's New Strength:" + playerTwo.strength.toString());
+      playerOne.isAnimalAlive = false;
+      print('\nLoser is Player One:' + playerOne.animalName);
+      playerTwo.strength = playerOne.strength - 15;
+      print('-----------------------------------');
     }
+    checkLifeStatusOfPlayerOne(playerOne, playerTwo);
   }
 
   String performTornadoDoubleFlip() {
     String? tornadoDoubleFlip;
     if (canPerformDoubleFlipKick == true) {
-      strength = strength + 2;
+      strength = strength + 15;
       tornadoDoubleFlip =
           animalName + ' Performed Tornado Double Flip and Attacked ';
     } else {
-      strength = strength - 4;
+      strength = strength - 16;
       tornadoDoubleFlip =
           animalName + ' has been kicked (Tornado Double Flip Attack)';
     }
@@ -153,11 +146,11 @@ class Animal {
   String performTornadoSmash() {
     String? performTornadoSmash;
     if (canPerformTornadoSmash == true) {
-      strength = strength + 3;
+      strength = strength + 15;
       performTornadoSmash =
           animalName + ' Performed Perform Tornado Smash and Attacked ';
     } else {
-      strength = strength - 5;
+      strength = strength - 25;
       performTornadoSmash =
           animalName + ' has been kicked (Perform Tornado Smash)';
     }
@@ -167,11 +160,11 @@ class Animal {
   String performDoubleFlipKick() {
     String? performDoubleFlipKick;
     if (canPerformDoubleFlipKick == true) {
-      strength = strength + 2;
+      strength = strength + 20;
       performDoubleFlipKick =
           animalName + ' Performed Perform Double Flip Kick and Attacked ';
     } else {
-      strength = strength - 4;
+      strength = strength - 20;
       performDoubleFlipKick =
           animalName + ' has been kicked (Perform Double Flip Kick)';
     }
@@ -181,11 +174,11 @@ class Animal {
   String performFlipBackkick() {
     String? performFlipBackkick;
     if (canPerformFlipBackkick == true) {
-      strength = strength + 2;
+      strength = strength + 12;
       performFlipBackkick =
           animalName + ' Performed Perform Flip Back kick and Attacked ';
     } else {
-      strength = strength - 4;
+      strength = strength - 22;
       performFlipBackkick =
           animalName + ' has been kicked (Perform Flip Back kick)';
     }
@@ -195,10 +188,10 @@ class Animal {
   String performSmash() {
     String? performSmash;
     if (canPerformSmash == true) {
-      strength = strength + 2;
+      strength = strength + 8;
       performSmash = animalName + ' Performed Perform Smash and Attacked ';
     } else {
-      strength = strength - 4;
+      strength = strength - 18;
       performSmash = animalName + ' has been kicked (Perform Smash)';
     }
     return performSmash;
@@ -207,10 +200,10 @@ class Animal {
   String performerLegKick() {
     String? performLegKick;
     if (canPerformLegKick == true) {
-      strength = strength + 2;
+      strength = strength + 8;
       performLegKick = animalName + ' Performed Leg Kick and Attacked ';
     } else {
-      strength = strength - 4;
+      strength = strength - 15;
       performLegKick = animalName + ' has been kicked (Leg Kick Attack)';
     }
     return performLegKick;
@@ -219,10 +212,10 @@ class Animal {
   String performhandKick() {
     String? performhandKick;
     if (canPerformhandKick == true) {
-      strength = strength + 2;
+      strength = strength + 10;
       performhandKick = animalName + ' Performed Hand Kick and Attacked ';
     } else {
-      strength = strength - 4;
+      strength = strength - 10;
       performhandKick =
           animalName + ' has been kicked (Tornado Double Flip Attack)';
     }
@@ -230,11 +223,15 @@ class Animal {
   }
 
   void checkLifeStatusOfPlayerOne(Animal playerOne, Animal playerTwo) {
-    if (playerOne.strength <= 25) {
+    if (playerOne.strength <= 30 && playerTwo.strength > 30) {
       playerOne.isAnimalAlive = false;
       print(playerOne.animalName + ' is dead');
+      print(playerTwo.animalName + 'Is Survived');
+    } else if (playerTwo.strength <= 30 && playerOne.strength > 30) {
+      print(playerOne.animalName + ' is Survived');
+      print(playerTwo.animalName + 'is Dead');
     } else {
-      print(playerTwo.animalName + ' is not dead');
+      print('');
     }
   }
 }

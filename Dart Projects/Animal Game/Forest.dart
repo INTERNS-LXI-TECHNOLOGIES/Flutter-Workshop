@@ -12,8 +12,8 @@ import 'Animals/Tiger.dart';
 
 class Forest {
   List<Animal> animals = [];
-  // Animal animal = Animal(
-  //     '', false, false, 0, 0, false, false, false, false, false, false, false);
+  Animal animal = Animal(
+      '', false, false, 0, 0, false, false, false, false, false, false, false);
   void generateAnimals() {
     print(
         'N.B :- you can choose upto 2 Animals FREE in each catagory! beyond that you have to purchase it ');
@@ -48,7 +48,7 @@ class Forest {
       print('|---' +
           (i + 1).toString() +
           '----|  -----' +
-          animals[i].printAnimalDetails() +
+          animals[i].animalName +
           '----------');
     }
     print('|---------------------------------------|\n');
@@ -81,7 +81,7 @@ class Forest {
                   ' Vs ' +
                   playerTwo.animalName +
                   '');
-              playerOne.startFight(playerOne, playerTwo);
+              animal.startFight(playerOne, playerTwo);
             }
           }
           print('');
@@ -113,32 +113,31 @@ class Forest {
     return count;
   }
 
-  bool checkArea(var playerOne, var playerTwo) {
+  bool checkArea(Animal playerOne, Animal playerTwo) {
     print('\t TERRITORY DETAILS ');
     print('-----------------------------------');
     print('\n' +
-        animals[playerOne].animalName +
+        playerOne.animalName +
         '\t Range =' +
-        animals[playerOne].distance.toString());
+        playerOne.distance.toString());
     print('\n' +
-        animals[playerTwo].animalName +
+        playerTwo.animalName +
         '\t Range =' +
-        animals[playerTwo].distance.toString());
-    int distance =
-        (animals[playerOne].distance) - (animals[playerTwo].distance);
+        playerTwo.distance.toString());
+    int distance = (playerOne.distance) - (playerTwo.distance);
     int radius = 30;
     if (distance < radius) {
       print('\n\t\t=> ' +
-          animals[playerOne].animalName +
+          playerOne.animalName +
           ' AND ' +
-          animals[playerTwo].animalName +
+          playerTwo.animalName +
           ' are in SAME TERRITORY \n');
       return true;
     } else {
       print('\n\t\t=>' +
-          animals[playerOne].animalName +
+          playerOne.animalName +
           ' AND ' +
-          animals[playerTwo].animalName +
+          playerTwo.animalName +
           ' are not in SAME TERRITORY \n');
       return false;
     }

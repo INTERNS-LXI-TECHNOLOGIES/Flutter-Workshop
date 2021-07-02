@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'HerbiVorous.dart';
 import 'Animal.dart';
 
@@ -30,21 +32,9 @@ class Rabit extends Animal implements Herbivorous {
             handKick);
 
   @override
-  String printAnimalDetails() {
-    String name = animalName;
-    return name;
-  }
-
-  @override
-  String animalBehaviour() {
-    String? rabitAttackingBehaviour;
-    if (isAnimalAlive == true) {
-      String attackingBehaviour = 'Rabit has Attacking behaviour';
-      rabitAttackingBehaviour = attackingBehaviour;
-    } else {
-      String attackingBehaviour = 'Rabit not having attacking Behaviour';
-      rabitAttackingBehaviour = attackingBehaviour;
-    }
-    return rabitAttackingBehaviour;
+  void performSpecialFightingSkills() {
+    print(animalName + ' Performed Jumb front Kick the opponent');
+    strength = strength + 1;
+    print('New Energy after the Trumb Kick is' + strength.toString());
   }
 }
