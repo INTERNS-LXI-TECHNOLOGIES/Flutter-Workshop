@@ -30,11 +30,4 @@ class Rabit extends Animal implements Herbivorous {
             smash,
             legKick,
             handKick);
-
-  @override
-  void performSpecialFightingSkills() {
-    print(animalName + ' Performed Jumb front Kick the opponent');
-    strength = strength + 1;
-    print('New Energy after the Trumb Kick is' + strength.toString());
-  }
 }

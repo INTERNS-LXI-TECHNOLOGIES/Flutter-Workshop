@@ -28,23 +28,4 @@ class Horse extends Animal implements Herbivorous {
             smash,
             legKick,
             handKick);
-
-  @override
-  String printAnimalDetails() {
-    String name = animalName;
-    return name;
-  }
-
-  @override
-  String animalBehaviour() {
-    String? horseAttackingBehaviour;
-    if (isAnimalAlive == true) {
-      String attackingBehaviour = 'Horse has Attacking behaviour';
-      horseAttackingBehaviour = attackingBehaviour;
-    } else {
-      String attackingBehaviour = 'Horse not having attacking Behaviour';
-      horseAttackingBehaviour = attackingBehaviour;
-    }
-    return horseAttackingBehaviour;
-  }
 }

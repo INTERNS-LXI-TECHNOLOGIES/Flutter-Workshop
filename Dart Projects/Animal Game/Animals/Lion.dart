@@ -30,24 +30,4 @@ class Lion extends Animal {
             smash,
             legKick,
             handKick);
-
-  @override
-  void performSpecialFightingSkills() {
-    int skill = Random().nextInt(2);
-    if (skill == 0) {
-      print(animalName +
-          ' Performed Tornado Double Flip and kicked the opponent');
-      strength = strength + 3;
-      print('New Energy after the Tornado Double Flip Kick is' +
-          strength.toString());
-    } else if (skill == 1) {
-      print(animalName + ' Performed Tornado Smash and kicked the opponent');
-      strength = strength + 3;
-      print('New Energy after the Tornado Smash Kick is' + strength.toString());
-    } else {
-      print(animalName + ' Performed handKick ');
-      strength = strength + 2;
-      print('New energy after handKick ' + strength.toString());
-    }
-  }
 }

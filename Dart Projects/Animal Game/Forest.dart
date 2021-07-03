@@ -79,7 +79,9 @@ class Forest {
                   ' Vs ' +
                   playerTwo.animalName +
                   '');
-              playerOne.startFight(playerTwo);
+              print(
+                  'Winner of this Round is' + playerOne.startFight(playerTwo));
+              playerOne.checkLifeStatusOfPlayerOne(playerTwo);
             }
           }
           print('');

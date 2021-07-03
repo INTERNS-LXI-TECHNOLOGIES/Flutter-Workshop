@@ -83,7 +83,8 @@ class Animal {
       _canPerformhandKick = canPerformhandKick;
   bool get canPerformhandKick => _canPerformhandKick!;
 
-  void startFight(Animal playerTwo) {
+  String startFight(Animal playerTwo) {
+    String? winner;
     performTornadoDoubleFlip();
     playerTwo.performTornadoDoubleFlip();
     performDoubleFlipKick();
@@ -100,23 +101,19 @@ class Animal {
     playerTwo.performhandKick();
 
     if (strength > playerTwo.strength) {
-      print('\nWinner is Player One:\t' + animalName);
+      String? winnerInGame;
       playerTwo.strength = strength - 10;
-      print("\nWinner's New Strength:\t" + strength.toString());
       playerTwo.isAnimalAlive = false;
-      print('\nLoser is Player Two:' + playerTwo.animalName);
       playerTwo.strength = playerTwo.strength - 15;
-      print('------------------------------------');
+      winner = winnerInGame;
     } else {
-      print('\nWinner is Player Two:\t' + playerTwo.animalName);
+      String? winnerInGame;
       playerTwo.strength = playerTwo.strength - 10;
-      print("\nWinner's New Strength:" + playerTwo.strength.toString());
       isAnimalAlive = false;
-      print('\nLoser is Player One:' + animalName);
       strength = strength - 15;
-      print('-----------------------------------');
+      winner = winnerInGame;
     }
-    checkLifeStatusOfPlayerOne(playerTwo);
+    return winner!;
   }
 
   String performTornadoDoubleFlip() {

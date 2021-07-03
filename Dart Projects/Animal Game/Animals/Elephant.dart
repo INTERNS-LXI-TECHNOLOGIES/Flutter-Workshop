@@ -28,23 +28,4 @@ class Elephant extends Animal implements Herbivorous {
             smash,
             legKick,
             handKick);
-
-  @override
-  String printAnimalDetails() {
-    String name = animalName;
-    return name;
-  }
-
-  @override
-  String animalBehaviour() {
-    String? elephantAttackingBehaviour;
-    if (isAnimalAlive == true) {
-      String attackingBehaviour = 'Elepjant has Attacking behaviour';
-      elephantAttackingBehaviour = attackingBehaviour;
-    } else {
-      String attackingBehaviour = 'Elephant not having attacking Behaviour';
-      elephantAttackingBehaviour = attackingBehaviour;
-    }
-    return elephantAttackingBehaviour;
-  }
 }
