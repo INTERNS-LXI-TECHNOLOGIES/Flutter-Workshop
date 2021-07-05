@@ -101,19 +101,19 @@ class Animal {
     playerTwo.performhandKick();
 
     if (strength > playerTwo.strength) {
-      String? winnerInGame;
+      String winnerInGame = animalName;
       playerTwo.strength = strength - 10;
       playerTwo.isAnimalAlive = false;
       playerTwo.strength = playerTwo.strength - 15;
       winner = winnerInGame;
     } else {
-      String? winnerInGame;
+      String winnerInGame = playerTwo.animalName;
       playerTwo.strength = playerTwo.strength - 10;
       isAnimalAlive = false;
       strength = strength - 15;
       winner = winnerInGame;
     }
-    return winner!;
+    return winner;
   }
 
   String performTornadoDoubleFlip() {

@@ -1,1 +1,3 @@
-abstract class Herbivorous {}
+abstract class Herbivorous {
+  void printAnimalBehaviour();
+}

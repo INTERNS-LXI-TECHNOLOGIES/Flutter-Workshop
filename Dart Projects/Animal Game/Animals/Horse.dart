@@ -28,4 +28,10 @@ class Horse extends Animal implements Herbivorous {
             smash,
             legKick,
             handKick);
+
+  @override
+  void printAnimalBehaviour() {
+    print('Since animal is Herbivourous Horse tries to escape');
+    strength = strength - 10;
+  }
 }

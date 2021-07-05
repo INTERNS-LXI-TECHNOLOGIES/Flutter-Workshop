@@ -1,5 +1,5 @@
 import 'Animal.dart';
-import 'HerbiVorous.dart';
+import 'Herbivorous.dart';
 
 class Elephant extends Animal implements Herbivorous {
   Elephant(
@@ -28,4 +28,10 @@ class Elephant extends Animal implements Herbivorous {
             smash,
             legKick,
             handKick);
+  @override
+  void printAnimalBehaviour() {
+    print(
+        'Since animal is Herbivourous Elephant tries to fight but eventually it will tries to escape');
+    strength = strength - 5;
+  }
 }

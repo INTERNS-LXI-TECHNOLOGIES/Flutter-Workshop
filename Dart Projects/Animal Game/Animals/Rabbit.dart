@@ -1,6 +1,4 @@
-import 'dart:math';
-
-import 'HerbiVorous.dart';
+import 'Herbivorous.dart';
 import 'Animal.dart';
 
 class Rabit extends Animal implements Herbivorous {
@@ -30,4 +28,10 @@ class Rabit extends Animal implements Herbivorous {
             smash,
             legKick,
             handKick);
+
+  @override
+  void printAnimalBehaviour() {
+    print('Since animal is Herbivourous rabit tries to escape');
+    strength = strength - 10;
+  }
 }

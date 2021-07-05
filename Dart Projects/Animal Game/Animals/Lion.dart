@@ -1,9 +1,7 @@
-import 'dart:math';
-
 import 'Animal.dart';
-//import 'Carnivorous.dart';
+import 'Carnivorous.dart';
 
-class Lion extends Animal {
+class Lion extends Animal implements Carnivorous {
   Lion(
       String name,
       bool isAttacktive,
@@ -30,4 +28,10 @@ class Lion extends Animal {
             smash,
             legKick,
             handKick);
+  @override
+  void printAnimalBehaviour() {
+    print(
+        'Since Lion is a carnivorous Animal it Tries to figth and kill opponent');
+    strength = strength + 10;
+  }
 }

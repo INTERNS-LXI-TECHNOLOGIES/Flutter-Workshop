@@ -28,4 +28,9 @@ class Bear extends Animal implements Carnivorous {
             smash,
             legKick,
             handKick);
+  @override
+  void printAnimalBehaviour() {
+    print('since Bear is a Carnivorous animal it Tries to kill opponent');
+    strength = strength + 10;
+  }
 }

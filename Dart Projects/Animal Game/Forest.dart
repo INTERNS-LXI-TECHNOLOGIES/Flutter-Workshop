@@ -67,6 +67,7 @@ class Forest {
             playerOne,
             playerTwo,
           );
+
           if (result == true) {
             if (playerOne is Herbivorous && playerTwo is Herbivorous) {
               print(playerOne.animalName +
