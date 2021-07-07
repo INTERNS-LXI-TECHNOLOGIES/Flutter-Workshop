@@ -4,5 +4,4 @@ abstract class Herbivorous {
   String performLegKick();
   String trytoEscape();
   String performUnderDrift();
-  String startFight();
 }

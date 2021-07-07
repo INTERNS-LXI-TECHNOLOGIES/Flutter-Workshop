@@ -17,13 +17,6 @@ class Lion extends Animal implements Carnivorous {
         );
 
   @override
-  String performFlipBackkick() {
-    String flipBackKick = "Lion doesn't perform FlipKickBack";
-    strength = strength - 8;
-    return flipBackKick;
-  }
-
-  @override
   String performSmash() {
     String flipBackKick = "Lion doesn't perform FlipKickBack";
     strength = strength - 5;

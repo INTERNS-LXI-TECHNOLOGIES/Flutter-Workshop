@@ -35,35 +35,8 @@ abstract class Animal {
   set strength(int animalStrength) => _animalStrength = animalStrength;
   int get strength => _animalStrength!;
 
-  String printWinner(Animal playerTwo) {
-    String? winner;
-    if (strength > playerTwo.strength) {
-      String winnerInGame = animalName;
-      playerTwo.strength = strength - 10;
-      playerTwo.isAnimalAlive = false;
-      playerTwo.strength = playerTwo.strength - 15;
-      winner = winnerInGame;
-    } else {
-      String winnerInGame = playerTwo.animalName;
-      playerTwo.strength = playerTwo.strength - 10;
-      isAnimalAlive = false;
-      strength = strength - 15;
-      winner = winnerInGame;
-    }
-
-    return winner;
-  }
-
-  void checkLifeStatusOfPlayerOne(Animal playerTwo) {
-    if (strength <= 30 && playerTwo.strength > 30) {
-      isAnimalAlive = false;
-      print(animalName + ' is dead');
-      print(playerTwo.animalName + 'Is Survived');
-    } else if (playerTwo.strength <= 30 && strength > 30) {
-      print(animalName + ' is Survived');
-      print(playerTwo.animalName + 'is Dead');
-    } else {
-      print('');
-    }
+  String startFight() {
+    String fight = 'Animals Starts Fight';
+    return fight;
   }
 }

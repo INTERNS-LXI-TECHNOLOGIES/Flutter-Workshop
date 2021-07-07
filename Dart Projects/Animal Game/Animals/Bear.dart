@@ -20,14 +20,6 @@ class Bear extends Animal implements Carnivorous {
   //   print('since Bear is a Carnivorous animal it Tries to kill opponent');
   //   strength = strength + 10;
   // }
-  @override
-  String performFlipBackkick() {
-    String? performFlipBackkick;
-    strength = strength + 12;
-    performFlipBackkick =
-        animalName + ' Performed Perform Flip Back kick and Attacked ';
-    return performFlipBackkick;
-  }
 
   @override
   String performSmash() {
@@ -91,17 +83,4 @@ class Bear extends Animal implements Carnivorous {
     performTornadoSmash();
     return fight;
   }
-
-  // @override
-  // String startFight() {
-  //   String fight = 'Bear starts fighting';
-  //   performHandKick();
-  //   performLegKick();
-  //   performDoubleFlipKick();
-  //   performFlipBackKick();
-  //   performSmash();
-  //   performTornadoDoubleFlip();
-  //   performTornadoSmash();
-  //   return fight;
-  // }
 }

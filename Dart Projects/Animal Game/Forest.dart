@@ -13,6 +13,7 @@ import 'Animals/Tiger.dart';
 
 class Forest {
   List<Animal> animals = [];
+
   void generateAnimals() {
     print(
         'N.B :- you can choose upto 2 Animals FREE in each catagory! beyond that you have to purchase it ');
@@ -50,6 +51,7 @@ class Forest {
   }
 
   void startGame() {
+    String? winner;
     int count = loop();
     while (count > 1) {
       count = loop();
@@ -134,9 +136,22 @@ class Forest {
                 }
                 rabit!.startFight();
               }
-              print(
-                  'Winner of this Round is' + playerOne.printWinner(playerTwo));
-              playerOne.checkLifeStatusOfPlayerOne(playerTwo);
+
+              if (playerOne.strength > playerTwo.strength) {
+                String winnerInGame = playerOne.animalName;
+                playerTwo.strength = playerOne.strength - 10;
+                playerTwo.isAnimalAlive = false;
+                playerTwo.strength = playerTwo.strength - 15;
+                winner = winnerInGame;
+              } else {
+                String winnerInGame = playerTwo.animalName;
+                playerTwo.strength = playerTwo.strength - 10;
+                playerOne.isAnimalAlive = false;
+                playerOne.strength = playerOne.strength - 15;
+                winner = winnerInGame;
+              }
+              print('Winner of this Round is' + winner);
+              checkLifeStatusOfPlayerOne(playerOne, playerTwo);
             }
           }
         }
@@ -201,5 +216,16 @@ class Forest {
   int luck() {
     int luckfactor = Random().nextInt(3);
     return luckfactor;
+  }
+
+  void checkLifeStatusOfPlayerOne(Animal playerOne, Animal playerTwo) {
+    if (playerOne.strength <= 30 && playerTwo.strength > 30) {
+      playerOne.isAnimalAlive = false;
+      print(playerOne.animalName + ' is dead');
+      print(playerTwo.animalName + 'Is Survived');
+    } else if (playerTwo.strength <= 30 && playerOne.strength > 30) {
+      print(playerOne.animalName + ' is Survived');
+      print(playerTwo.animalName + 'is Dead');
+    }
   }
 }
