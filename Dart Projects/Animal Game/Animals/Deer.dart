@@ -3,34 +3,59 @@ import 'Animal.dart';
 
 class Deer extends Animal implements Herbivorous {
   Deer(
-      String name,
-      bool isAttacktive,
-      bool isAlive,
-      int animalDistance,
-      int animalStrength,
-      bool tornadoDoubleFlip,
-      bool tornadoSmash,
-      bool doubleFlipKick,
-      bool flipBackkick,
-      bool smash,
-      bool legKick,
-      bool handKick)
-      : super(
-            name,
-            isAttacktive,
-            isAlive,
-            animalDistance,
-            animalStrength,
-            tornadoDoubleFlip,
-            tornadoSmash,
-            doubleFlipKick,
-            flipBackkick,
-            smash,
-            legKick,
-            handKick);
+    String name,
+    bool isAttacktive,
+    bool isAlive,
+    int animalDistance,
+    int animalStrength,
+  ) : super(
+          name,
+          isAttacktive,
+          isAlive,
+          animalDistance,
+          animalStrength,
+        );
+
   @override
-  void printAnimalBehaviour() {
-    print('Since animal is Herbivourous Deer tries to escape');
+  String performHandKick() {
+    String handKick = 'Deer Tries to Escape';
+    strength = strength - 1;
+    return handKick;
+  }
+
+  @override
+  String performLegKick() {
+    String legKick = 'Deer Performed Leg Kick';
+    strength = strength + 4;
+    return legKick;
+  }
+
+  @override
+  String performUnderDrift() {
+    String underDrift = "Deer doesn't Perform Under Drift";
     strength = strength - 10;
+    return underDrift;
+  }
+
+  @override
+  String trytoEscape() {
+    String trytoEscape = 'Deer Tries to Escape';
+    strength = strength - 1;
+    return trytoEscape;
+  }
+
+  // @override
+  // void printAnimalBehaviour() {
+  //   print('Since animal is Herbivourous Deer tries to escape');
+  //   strength = strength - 10;
+  // }
+  @override
+  String startFight() {
+    String fight = 'Deer starts fight';
+    performHandKick();
+    performLegKick();
+    performUnderDrift();
+    trytoEscape();
+    return fight;
   }
 }

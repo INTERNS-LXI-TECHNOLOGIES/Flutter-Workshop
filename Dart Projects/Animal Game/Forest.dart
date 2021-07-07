@@ -1,6 +1,7 @@
-import 'dart:core';
 import 'dart:math';
 import 'Animals/Bear.dart';
+//import 'Animals/Carnivorous.dart';
+import 'Animals/Carnivorous.dart';
 import 'Animals/Deer.dart';
 import 'Animals/Elephant.dart';
 import 'Animals/Herbivorous.dart';
@@ -16,26 +17,22 @@ class Forest {
     print(
         'N.B :- you can choose upto 2 Animals FREE in each catagory! beyond that you have to purchase it ');
 
-    animals.add(Lion('Indian Lion', true, true, 80, 95, true, true, false,
-        false, false, false, true));
-    animals.add(Lion('African Lion', true, true, 85, 91, false, false, true,
-        false, true, false, false));
-    animals.add(Tiger('Indian Tiger', true, true, 75, 88, false, true, false,
-        true, false, false, false));
-    animals.add(Tiger('African Tiger', true, true, 90, 89, true, false, false,
-        false, true, true, false));
-    animals.add(Bear('Bear', true, true, 78, 70, false, false, false, false,
-        true, true, false));
-    animals.add(Elephant('Elephant', true, true, 72, 80, false, false, false,
-        false, true, true, false));
-    animals.add(Elephant('Elephant', true, true, 75, 77, false, true, false,
-        false, true, false, false));
-    animals.add(Rabit('Rabit', true, true, 65, 35, false, true, false, false,
-        false, false, false));
-    animals.add(Horse('Horse', true, true, 60, 48, false, false, false, true,
-        true, false, true));
-    animals.add(Deer('Deer', true, true, 60, 40, false, false, false, false,
-        false, true, true));
+    animals.add(Lion(
+      'Indian Lion',
+      true,
+      true,
+      80,
+      95,
+    ));
+    animals.add(Lion('African Lion', true, true, 85, 91));
+    animals.add(Tiger('Indian Tiger', true, true, 75, 88));
+    animals.add(Tiger('African Tiger', true, true, 90, 89));
+    animals.add(Bear('Bear', true, true, 78, 70));
+    animals.add(Elephant('Elephant', true, true, 72, 80));
+    animals.add(Elephant('Elephant', true, true, 75, 77));
+    animals.add(Rabit('Rabit', true, true, 65, 35));
+    animals.add(Horse('Horse', true, true, 60, 48));
+    animals.add(Deer('Deer', true, true, 60, 40));
   }
 
   void printParticipantingAnimalsName() {
@@ -80,13 +77,70 @@ class Forest {
                   ' Vs ' +
                   playerTwo.animalName +
                   '');
+              Lion? lion;
+              Tiger? tiger;
+              Bear? bear;
+              Elephant? elephant;
+              Horse? horse;
+              Deer? deer;
+              Rabit? rabit;
+              if (playerOne is Lion || playerTwo is Lion) {
+                if (playerOne is Lion) {
+                  lion = playerOne;
+                } else if (playerTwo is Lion) {
+                  lion = playerTwo;
+                }
+                lion!.startFight();
+              } else if (playerOne is Tiger || playerTwo is Tiger) {
+                if (playerOne is Tiger) {
+                  tiger = playerOne;
+                } else if (playerTwo is Tiger) {
+                  tiger = playerTwo;
+                }
+                tiger!.startFight();
+              } else if (playerOne is Bear || playerTwo is Bear) {
+                if (playerOne is Bear) {
+                  bear = playerOne;
+                } else if (playerTwo is Bear) {
+                  bear = playerTwo;
+                }
+                bear!.startFight();
+              } else if (playerOne is Deer || playerTwo is Deer) {
+                if (playerOne is Deer) {
+                  deer = playerOne;
+                } else if (playerTwo is Deer) {
+                  deer = playerTwo;
+                }
+                deer!.startFight();
+              } else if (playerOne is Elephant || playerTwo is Elephant) {
+                if (playerOne is Elephant) {
+                  elephant = playerOne;
+                } else if (playerTwo is Elephant) {
+                  elephant = playerTwo;
+                }
+                elephant!.startFight();
+              } else if (playerOne is Horse || playerTwo is Horse) {
+                if (playerOne is Horse) {
+                  horse = playerOne;
+                } else if (playerTwo is Horse) {
+                  horse = playerTwo;
+                }
+                horse!.startFight();
+              } else if (playerOne is Rabit || playerTwo is Rabit) {
+                if (playerOne is Rabit) {
+                  rabit = playerOne;
+                } else if (playerTwo is Rabit) {
+                  rabit = playerTwo;
+                }
+                rabit!.startFight();
+              }
               print(
-                  'Winner of this Round is' + playerOne.startFight(playerTwo));
+                  'Winner of this Round is' + playerOne.printWinner(playerTwo));
               playerOne.checkLifeStatusOfPlayerOne(playerTwo);
             }
           }
-          print('');
         }
+        print('');
       } else {
         print('No player Is available to Play');
       }

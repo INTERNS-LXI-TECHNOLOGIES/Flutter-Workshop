@@ -1,3 +1,9 @@
 abstract class Carnivorous {
-  void printAnimalBehaviour();
+  String performTornadoDoubleFlip();
+  String performTornadoSmash();
+  String performDoubleFlipKick();
+  String performFlipBackKick();
+  String performSmash();
+  String performLegKick();
+  String performHandKick();
 }

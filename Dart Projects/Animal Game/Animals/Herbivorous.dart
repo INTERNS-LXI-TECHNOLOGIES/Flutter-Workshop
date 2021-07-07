@@ -1,3 +1,8 @@
 abstract class Herbivorous {
-  void printAnimalBehaviour();
+  //  void printAnimalBehaviour();
+  String performHandKick();
+  String performLegKick();
+  String trytoEscape();
+  String performUnderDrift();
+  String startFight();
 }

@@ -3,35 +3,54 @@ import 'Animal.dart';
 
 class Rabit extends Animal implements Herbivorous {
   Rabit(
-      String name,
-      bool isAttacktive,
-      bool isAlive,
-      int animalDistance,
-      int animalStrength,
-      bool tornadoDoubleFlip,
-      bool tornadoSmash,
-      bool doubleFlipKick,
-      bool flipBackkick,
-      bool smash,
-      bool legKick,
-      bool handKick)
-      : super(
-            name,
-            isAttacktive,
-            isAlive,
-            animalDistance,
-            animalStrength,
-            tornadoDoubleFlip,
-            tornadoSmash,
-            doubleFlipKick,
-            flipBackkick,
-            smash,
-            legKick,
-            handKick);
+    String name,
+    bool isAttacktive,
+    bool isAlive,
+    int animalDistance,
+    int animalStrength,
+  ) : super(
+          name,
+          isAttacktive,
+          isAlive,
+          animalDistance,
+          animalStrength,
+        );
 
   @override
-  void printAnimalBehaviour() {
-    print('Since animal is Herbivourous rabit tries to escape');
-    strength = strength - 10;
+  String performHandKick() {
+    String handKick = 'Rabbit Tries to Escape';
+    strength = strength - 1;
+    return handKick;
+  }
+
+  @override
+  String performLegKick() {
+    String legKick = 'Rabit Performed Leg Kick';
+    strength = strength + 4;
+    return legKick;
+  }
+
+  @override
+  String performUnderDrift() {
+    String underDrift = "Rabit performs UnderDrift";
+    strength = strength + 3;
+    return underDrift;
+  }
+
+  @override
+  String trytoEscape() {
+    String trytoEscape = 'Rabit Tries to Escape';
+    strength = strength - 1;
+    return trytoEscape;
+  }
+
+  @override
+  String startFight() {
+    String fight = 'Lion starts Fight';
+    performHandKick();
+    performLegKick();
+    performUnderDrift();
+    trytoEscape();
+    return fight;
   }
 }
