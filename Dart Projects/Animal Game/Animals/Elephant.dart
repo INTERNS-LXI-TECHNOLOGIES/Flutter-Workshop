@@ -44,12 +44,16 @@ class Elephant extends Animal implements Herbivorous {
   }
 
   @override
-  String startFight() {
+  String startFight(Animal playerTwo) {
+    if (playerTwo.strength < 70) {
+      performHandKick();
+      performLegKick();
+      performUnderDrift();
+    } else {
+      performUnderDrift();
+      trytoEscape();
+    }
     String fight = 'Elephant starts fight';
-    performHandKick();
-    performLegKick();
-    performUnderDrift();
-    trytoEscape();
     return fight;
   }
 }

@@ -79,9 +79,7 @@ class Forest {
                   ' Vs ' +
                   playerTwo.animalName +
                   '');
-
-              playerOne.startFight();
-              playerTwo.startFight();
+              playerOne.startFight(playerTwo);
 
               if (playerOne.strength > playerTwo.strength) {
                 String winnerInGame = playerOne.animalName;

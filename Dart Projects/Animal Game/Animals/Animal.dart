@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 abstract class Animal {
   bool? _isAnimalAlive;
   String? _animalName;
@@ -35,7 +37,7 @@ abstract class Animal {
   set strength(int animalStrength) => _animalStrength = animalStrength;
   int get strength => _animalStrength!;
 
-  String startFight() {
+  String startFight(Animal playerTwo) {
     String fight = 'Animals Starts Fight';
     return fight;
   }

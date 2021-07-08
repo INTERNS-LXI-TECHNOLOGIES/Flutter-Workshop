@@ -45,12 +45,15 @@ class Rabit extends Animal implements Herbivorous {
   }
 
   @override
-  String startFight() {
-    String fight = 'Lion starts Fight';
-    performHandKick();
-    performLegKick();
-    performUnderDrift();
-    trytoEscape();
+  String startFight(Animal playerTwo) {
+    if (playerTwo.strength < 70) {
+      performHandKick();
+      performLegKick();
+      performUnderDrift();
+    } else {
+      trytoEscape();
+    }
+    String fight = 'Rabit starts fight';
     return fight;
   }
 }

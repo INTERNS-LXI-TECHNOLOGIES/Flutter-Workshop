@@ -1,9 +1,9 @@
 abstract class Carnivorous {
-  String performTornadoDoubleFlip();
-  String performTornadoSmash();
-  String performDoubleFlipKick();
-  String performFlipBackKick();
-  String performSmash();
-  String performLegKick();
-  String performHandKick();
+  bool? canPerformTornadoDoubleFlip;
+  bool? canPerformTornadoSmash;
+  bool? canPerformDoubleFlipKick;
+  bool? canPerformFlipBackKick;
+  bool? canPerformSmash;
+  bool? canPerformLegKick;
+  bool? canPerformHandKick;
 }

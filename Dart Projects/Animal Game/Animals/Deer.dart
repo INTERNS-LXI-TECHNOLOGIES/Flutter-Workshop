@@ -50,12 +50,15 @@ class Deer extends Animal implements Herbivorous {
   //   strength = strength - 10;
   // }
   @override
-  String startFight() {
+  String startFight(Animal playerTwo) {
+    if (playerTwo.strength < 70) {
+      performHandKick();
+      performLegKick();
+    } else {
+      performUnderDrift();
+      trytoEscape();
+    }
     String fight = 'Deer starts fight';
-    performHandKick();
-    performLegKick();
-    performUnderDrift();
-    trytoEscape();
     return fight;
   }
 }

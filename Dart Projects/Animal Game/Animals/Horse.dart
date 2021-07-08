@@ -45,12 +45,15 @@ class Horse extends Animal implements Herbivorous {
   }
 
   @override
-  String startFight() {
-    String fight = 'Horse Starts Fight';
-    performHandKick();
-    performLegKick();
-    performUnderDrift();
-    trytoEscape();
+  String startFight(Animal playerTwo) {
+    if (playerTwo.strength < 70) {
+      performHandKick();
+      performLegKick();
+      performUnderDrift();
+    } else {
+      trytoEscape();
+    }
+    String fight = 'Horse starts fight';
     return fight;
   }
 }

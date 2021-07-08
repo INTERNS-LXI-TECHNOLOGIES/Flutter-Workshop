@@ -17,68 +17,75 @@ class Lion extends Animal implements Carnivorous {
         );
 
   @override
-  String performSmash() {
-    String flipBackKick = "Lion doesn't perform FlipKickBack";
-    strength = strength - 5;
-    return flipBackKick;
+  String startFight(Animal playerTwo) {
+    String participants =
+        animalName + playerTwo.animalName + ' are starts fight';
+    if (playerTwo.strength < 50) {
+      canPerformDoubleFlipKick = true;
+      strength = strength + 20;
+    } else if (playerTwo.strength > 50 && playerTwo.strength < 70) {
+      canPerformSmash = true;
+      canPerformLegKick = true;
+    } else if (playerTwo.strength > 70) {
+      canPerformSmash = true;
+      canPerformLegKick = true;
+      canPerformDoubleFlipKick = true;
+      canPerformTornadoSmash = true;
+      canPerformTornadoDoubleFlip = true;
+    }
+    return participants;
   }
 
   @override
-  String performFlipBackKick() {
-    String? tornadoDoubleFlip;
-    strength = strength + 15;
-    tornadoDoubleFlip = animalName + ' Performed  Flip Back kick and Attacked ';
-    return tornadoDoubleFlip;
-  }
+  bool? canPerformDoubleFlipKick;
 
   @override
-  String performHandKick() {
-    String handKick = "Lion doesn't perform Hand Kick";
-    strength = strength - 5;
-    return handKick;
-  }
+  bool? canPerformFlipBackKick;
 
   @override
-  String performLegKick() {
-    String legKick = "Lion doesn't perform Leg Kick";
-    strength = strength - 6;
-    return legKick;
-  }
+  bool? canPerformHandKick;
 
   @override
-  String performDoubleFlipKick() {
-    String? doubleFlipKick;
-    strength = strength + 20;
-    doubleFlipKick = animalName + ' Performed Double Flip Kick and Attacked ';
-    return doubleFlipKick;
-  }
+  bool? canPerformLegKick;
 
   @override
-  String performTornadoDoubleFlip() {
-    String? tornadoDoubleFlip;
-    strength = strength + 15;
-    tornadoDoubleFlip =
-        animalName + ' Performed Perform Tornado Double Flip and Attacked ';
-    return tornadoDoubleFlip;
-  }
+  bool? canPerformSmash;
 
   @override
-  String performTornadoSmash() {
-    String legKick = "Lion doesn't perform Tornado Smash";
-    strength = strength - 11;
-    return legKick;
-  }
+  bool? canPerformTornadoDoubleFlip;
 
   @override
-  String startFight() {
-    String fight = 'Lion starts fights';
-    performDoubleFlipKick();
-    performFlipBackKick();
-    performHandKick();
-    performLegKick();
-    performSmash();
-    performTornadoDoubleFlip();
-    performTornadoSmash();
-    return fight;
+  bool? canPerformTornadoSmash;
+  void printGamingStategy() {
+    if (canPerformDoubleFlipKick == true) {
+      print(animalName + 'performed DoubleFlipKick');
+      strength = strength + 10;
+    }
+    if (canPerformFlipBackKick == true) {
+      print(animalName + 'performed FlipBackKick');
+      strength = strength + 11;
+    }
+    if (canPerformHandKick == true) {
+      print(animalName + 'performed Hand Kick');
+      strength = strength + 5;
+    }
+    if (canPerformLegKick == true) {
+      print(animalName + 'performed Leg Kick');
+      strength = strength + 8;
+    }
+    if (canPerformSmash == true) {
+      print(animalName + 'performed Smash');
+      strength = strength + 10;
+    }
+    if (canPerformTornadoDoubleFlip == true) {
+      print(animalName + 'performed Tornado Double Flip');
+      strength = strength + 25;
+    }
+    if (canPerformTornadoSmash == true) {
+      print(animalName + 'performed Tornado Smash');
+      strength = strength + 20;
+    } else {
+      strength = strength - 8;
+    }
   }
 }
