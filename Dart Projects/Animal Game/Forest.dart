@@ -79,63 +79,9 @@ class Forest {
                   ' Vs ' +
                   playerTwo.animalName +
                   '');
-              Lion? lion;
-              Tiger? tiger;
-              Bear? bear;
-              Elephant? elephant;
-              Horse? horse;
-              Deer? deer;
-              Rabit? rabit;
-              if (playerOne is Lion || playerTwo is Lion) {
-                if (playerOne is Lion) {
-                  lion = playerOne;
-                } else if (playerTwo is Lion) {
-                  lion = playerTwo;
-                }
-                lion!.startFight();
-              } else if (playerOne is Tiger || playerTwo is Tiger) {
-                if (playerOne is Tiger) {
-                  tiger = playerOne;
-                } else if (playerTwo is Tiger) {
-                  tiger = playerTwo;
-                }
-                tiger!.startFight();
-              } else if (playerOne is Bear || playerTwo is Bear) {
-                if (playerOne is Bear) {
-                  bear = playerOne;
-                } else if (playerTwo is Bear) {
-                  bear = playerTwo;
-                }
-                bear!.startFight();
-              } else if (playerOne is Deer || playerTwo is Deer) {
-                if (playerOne is Deer) {
-                  deer = playerOne;
-                } else if (playerTwo is Deer) {
-                  deer = playerTwo;
-                }
-                deer!.startFight();
-              } else if (playerOne is Elephant || playerTwo is Elephant) {
-                if (playerOne is Elephant) {
-                  elephant = playerOne;
-                } else if (playerTwo is Elephant) {
-                  elephant = playerTwo;
-                }
-                elephant!.startFight();
-              } else if (playerOne is Horse || playerTwo is Horse) {
-                if (playerOne is Horse) {
-                  horse = playerOne;
-                } else if (playerTwo is Horse) {
-                  horse = playerTwo;
-                }
-                horse!.startFight();
-              } else if (playerOne is Rabit || playerTwo is Rabit) {
-                if (playerOne is Rabit) {
-                  rabit = playerOne;
-                } else if (playerTwo is Rabit) {
-                  rabit = playerTwo;
-                }
-                rabit!.startFight();
-              }
+
+              playerOne.startFight();
+              playerTwo.startFight();
 
               if (playerOne.strength > playerTwo.strength) {
                 String winnerInGame = playerOne.animalName;
