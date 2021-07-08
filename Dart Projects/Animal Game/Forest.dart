@@ -73,35 +73,43 @@ class Forest {
                   ' ' +
                   playerTwo.animalName +
                   'Both are Herbivorous animals they wont Fight Together');
-            } else {
-              print('fight start between ' +
-                  playerOne.animalName +
-                  ' Vs ' +
-                  playerTwo.animalName +
-                  '');
-              playerOne.startFight(playerTwo);
+            } else if (playerOne is Herbivorous || playerTwo is Herbivorous) {
+              if (luck() == 2) {
+                print('fight start between ' +
+                    playerOne.animalName +
+                    ' Vs ' +
+                    playerTwo.animalName +
+                    '');
+                print('Herbivorous animal run away by luck factor');
+              } else if (luck() != 2) {
+                print('fight start between ' +
+                    playerOne.animalName +
+                    ' Vs ' +
+                    playerTwo.animalName +
+                    '');
 
-              if (playerOne.strength > playerTwo.strength) {
-                String winnerInGame = playerOne.animalName;
-                playerTwo.strength = playerOne.strength - 10;
-                playerTwo.isAnimalAlive = false;
-                playerTwo.strength = playerTwo.strength - 15;
-                winner = winnerInGame;
-              } else {
-                String winnerInGame = playerTwo.animalName;
-                playerTwo.strength = playerTwo.strength - 10;
-                playerOne.isAnimalAlive = false;
-                playerOne.strength = playerOne.strength - 15;
-                winner = winnerInGame;
+                playerOne.startFight(playerTwo);
+
+                if (playerOne.strength > playerTwo.strength) {
+                  String winnerInGame = playerOne.animalName;
+                  playerTwo.strength = playerOne.strength - 10;
+                  playerTwo.isAnimalAlive = false;
+                  playerTwo.strength = playerTwo.strength - 15;
+                  winner = winnerInGame;
+                } else {
+                  String winnerInGame = playerTwo.animalName;
+                  playerTwo.strength = playerTwo.strength - 10;
+                  playerOne.isAnimalAlive = false;
+                  playerOne.strength = playerOne.strength - 15;
+                  winner = winnerInGame;
+                }
+                print('Winner of this Round is' + winner);
+                updatePlayerStatus(playerOne, playerTwo);
               }
-              print('Winner of this Round is' + winner);
-              checkLifeStatusOfPlayerOne(playerOne, playerTwo);
             }
           }
+          print('');
         }
-        print('');
-      } else {
-        print('No player Is available to Play');
       }
     }
     printFinalWinner();
@@ -158,11 +166,11 @@ class Forest {
   }
 
   int luck() {
-    int luckfactor = Random().nextInt(3);
+    int luckfactor = Random().nextInt(2);
     return luckfactor;
   }
 
-  void checkLifeStatusOfPlayerOne(Animal playerOne, Animal playerTwo) {
+  void updatePlayerStatus(Animal playerOne, Animal playerTwo) {
     if (playerOne.strength <= 30 && playerTwo.strength > 30) {
       playerOne.isAnimalAlive = false;
       print(playerOne.animalName + ' is dead');
