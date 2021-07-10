@@ -35,6 +35,16 @@ class _MyHomePageState extends State<MyHomePage> {
       print(_counter);
       _counter = _counter * 2;
     });
+    // void _decrementCounter() {
+    //   setState(() {
+    //     print(_counter);
+    //     if (_counter < 0) {
+    //       print(0);
+    //     } else {
+    //       _counter = _counter * 2 - _counter;
+    //     }
+    //   });
+    // }
   }
 
   @override
@@ -57,11 +67,33 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
+      floatingActionButton: Column(
+        cross
+        children: [
+          FloatingActionButton(
+            onPressed: _incrementCounter,
+            tooltip: 'Increment',
+            child: Icon(Icons.add),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          FloatingActionButton(
+            onPressed: () {
+              print(_counter);
+              if (_counter < 0) {
+                print(0);
+              } else {
+                _counter = _counter * 2 - _counter;
+              }
+            },
+            tooltip: 'Decrement',
+            child: Icon(Icons.remove),
+          )
+        ],
       ),
     );
   }
 }
+
+// class _decrementCounter {}
