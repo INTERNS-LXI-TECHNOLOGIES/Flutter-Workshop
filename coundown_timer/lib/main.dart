@@ -21,13 +21,13 @@ class MyHome extends StatefulWidget {
 
 class _MyHomeState extends State {
   double _counterValue = 1;
-  int? _userInput;
-
+  double? _userInput;
+  final userInputController = TextEditingController();
   void _getIncrementValue() {
     setState(() {
       _counterValue = _counterValue * 2;
     });
-  }
+  } //incrementCounter
 
   void _getDecrementValue() {
     setState(() {
@@ -37,10 +37,12 @@ class _MyHomeState extends State {
         _counterValue = _counterValue - (_counterValue / 2);
       }
     });
+  } //decrementCounter
 
-    void _getUserInput() {
-      setState(() {});
-    }
+  void _setUserInput() {
+    setState(() {
+      _counterValue = userInputController;
+    });
   }
 
   @override
@@ -69,11 +71,12 @@ class _MyHomeState extends State {
           ),
           Container(
             margin: EdgeInsets.only(top: 50),
-            padding: EdgeInsets.all(10),
+            padding: EdgeInsets.only(left: 10, right: 10, top: 20),
             alignment: Alignment.topCenter,
             child: TextField(
+              controller: userInputController,
               keyboardType: TextInputType.number,
-              enabled: false,
+              enabled: true,
               decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(
@@ -83,11 +86,10 @@ class _MyHomeState extends State {
                   borderRadius: BorderRadius.circular(10),
                 ),
                 suffix: ElevatedButton(
-                  onPressed: () {
-                    // _userInput=
-                  },
+                  onPressed: _setUserInput,
                   child: Text('GO'),
                 ),
+                hintText: 'Enter the Counter Value',
               ),
             ),
           ),
@@ -97,7 +99,6 @@ class _MyHomeState extends State {
             ),
           ),
           Container(
-            // color: Colors.black,
             height: 1200,
             width: 400,
             margin: EdgeInsets.only(top: 100),
