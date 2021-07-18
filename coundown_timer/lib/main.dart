@@ -21,7 +21,7 @@ class MyHome extends StatefulWidget {
 
 class _MyHomeState extends State {
   double _counterValue = 1;
-  double? _userInput;
+
   final userInputController = TextEditingController();
   void _getIncrementValue() {
     setState(() {
@@ -41,13 +41,16 @@ class _MyHomeState extends State {
 
   void _setUserInput() {
     setState(() {
-      _counterValue = userInputController;
+      _counterValue = double.parse(userInputController.text);
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('CountDown Timer'),
+      ),
       body: Stack(
         children: [
           Container(
@@ -73,23 +76,29 @@ class _MyHomeState extends State {
             margin: EdgeInsets.only(top: 50),
             padding: EdgeInsets.only(left: 10, right: 10, top: 20),
             alignment: Alignment.topCenter,
-            child: TextField(
-              controller: userInputController,
-              keyboardType: TextInputType.number,
-              enabled: true,
-              decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Colors.blue,
-                    width: 5,
+            child: Card(
+              elevation: 5,
+              child: Container(
+                padding: EdgeInsets.all(10),
+                child: TextField(
+                  controller: userInputController,
+                  keyboardType: TextInputType.number,
+                  enabled: true,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Colors.blue,
+                        width: 5,
+                      ),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    suffix: ElevatedButton(
+                      onPressed: _setUserInput,
+                      child: Text('GO'),
+                    ),
+                    hintText: 'Enter the Counter Value',
                   ),
-                  borderRadius: BorderRadius.circular(10),
                 ),
-                suffix: ElevatedButton(
-                  onPressed: _setUserInput,
-                  child: Text('GO'),
-                ),
-                hintText: 'Enter the Counter Value',
               ),
             ),
           ),
