@@ -27,17 +27,21 @@ class _MyHomeState extends State {
   void _getIncrementValue() {
     setState(() {
       _numberOfTimesButtonpressed += 1;
-      _userInputValue *= _numberOfTimesButtonpressed;
       _counterValue *= _userInputValue;
-      for (int i = 0; i < _numberOfTimesButtonpressed; i++) {
-        _counterValue = _userInputValue * _userInputValue;
-      }
     });
   } //incrementCounter
 
   void _getDecrementValue() {
     setState(() {
-     
+      if (_counterValue < 0 || _numberOfTimesButtonpressed <= 0) {
+        _numberOfTimesButtonpressed = 0;
+        _counterValue = 0;
+        print(0);
+      } else {
+        _numberOfTimesButtonpressed -= 1;
+        _counterValue /= _userInputValue;
+      }
+    });
   } //decrementCounter
 
   void _setUserInput() {
