@@ -20,30 +20,33 @@ class MyHome extends StatefulWidget {
 }
 
 class _MyHomeState extends State {
-  double _counterValue = 1;
-
+  double _counterValue = 0;
+  int _numberOfTimesButtonpressed = 0;
+  double _userInputValue = 0;
   final userInputController = TextEditingController();
   void _getIncrementValue() {
     setState(() {
-      _counterValue = _counterValue * 2;
+      _numberOfTimesButtonpressed += 1;
+      _userInputValue *= _numberOfTimesButtonpressed;
+      _counterValue *= _userInputValue;
+      for (int i = 0; i < _numberOfTimesButtonpressed; i++) {
+        _counterValue = _userInputValue * _userInputValue;
+      }
     });
   } //incrementCounter
 
   void _getDecrementValue() {
     setState(() {
-      if (_counterValue < 0) {
-        print(0);
-      } else {
-        _counterValue = _counterValue - (_counterValue / 2);
-      }
-    });
+     
   } //decrementCounter
 
   void _setUserInput() {
     setState(() {
-      _counterValue = double.parse(userInputController.text);
+      _numberOfTimesButtonpressed = 0;
+      _userInputValue = double.parse(userInputController.text);
+      _counterValue = 1;
     });
-  }
+  } //elevated button
 
   @override
   Widget build(BuildContext context) {
@@ -113,7 +116,8 @@ class _MyHomeState extends State {
             margin: EdgeInsets.only(top: 100),
             alignment: Alignment.center,
             child: Text(
-              '${_counterValue.toInt()}',
+              '${_counterValue.toInt()}(' +
+                  '${_userInputValue.toInt()}^$_numberOfTimesButtonpressed)',
               style: TextStyle(
                 color: Colors.grey,
                 fontSize: 40,
