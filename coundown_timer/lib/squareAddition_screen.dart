@@ -4,7 +4,7 @@ class SquareAddition extends StatefulWidget {
   _SquareAdditionState createState() => _SquareAdditionState();
 }
 
-class _SquareAdditionState extends State<SquareAddition> {
+class _SquareAdditionState extends State {
   double _counterValue = 0;
   int _numberOfTimesButtonpressed = 0;
   double _userInputValue = 0;

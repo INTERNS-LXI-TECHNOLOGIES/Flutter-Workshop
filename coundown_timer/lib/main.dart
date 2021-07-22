@@ -10,7 +10,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: StartUpScreen(),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Countdown Timer'),
+        ),
+        body: StartUpScreen(),
+      ),
       debugShowCheckedModeBanner: false,
     );
   }
