@@ -7,15 +7,35 @@ class ArithematicProgression extends StatefulWidget {
 class _ArithematicProgressionState extends State {
   final _commonDifferenceController = TextEditingController();
   final _firstTermController = TextEditingController();
+  final _numberofTermsController = TextEditingController();
 
-  int _firstTerm = 0;
-  int _commonDifference = 0;
-  int _generatedAP = 0;
+  num _firstTerm = 0;
+  num _commonDifference = 0;
+  num _generatedAP = 0;
+  num _numberofTerms = 0;
   void _generateArithematicProgression() {
     setState(() {
-      _firstTerm = int.parse(_firstTermController.text);
-      _commonDifference = int.parse(_commonDifferenceController.text);
-      _generatedAP = _firstTerm + (n - 1) * d;
+      _firstTerm = num.parse(_firstTermController.text);
+      _commonDifference = num.parse(_commonDifferenceController.text);
+      _numberofTerms = num.parse(_numberofTermsController.text);
+
+      _generatedAP = _firstTerm + ((_numberofTerms - 1) * _commonDifference);
+    });
+  }
+
+  void _incrementAP() {
+    setState(() {
+      _generatedAP += _commonDifference;
+    });
+  }
+
+  void _decrementAP() {
+    setState(() {
+      if (_generatedAP <= 0) {
+        _generatedAP = 0;
+      } else {
+        _generatedAP -= _commonDifference;
+      }
     });
   }
 
@@ -28,7 +48,7 @@ class _ArithematicProgressionState extends State {
       body: Stack(
         children: [
           Container(
-            height: 230,
+            height: 300,
             width: 400,
             margin: EdgeInsets.only(top: 10),
             child: Card(
@@ -46,11 +66,29 @@ class _ArithematicProgressionState extends State {
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(
                             color: Colors.blue,
-                            width: 5,
+                            width: 2,
                           ),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         hintText: 'Enter the First Value',
+                      ),
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.all(10),
+                    child: TextField(
+                      controller: _numberofTermsController,
+                      keyboardType: TextInputType.number,
+                      enabled: true,
+                      decoration: InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.blue,
+                            width: 2,
+                          ),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        hintText: 'Enter The Number of Terms',
                       ),
                     ),
                   ),
@@ -64,7 +102,7 @@ class _ArithematicProgressionState extends State {
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(
                             color: Colors.blue,
-                            width: 5,
+                            width: 2,
                           ),
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -84,8 +122,7 @@ class _ArithematicProgressionState extends State {
             ),
           ),
           Container(
-            // height: 200,
-            // width: 400,
+            margin: EdgeInsets.only(top: 100),
             alignment: Alignment.center,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -105,7 +142,13 @@ class _ArithematicProgressionState extends State {
                 ),
                 Container(
                   child: Text(
-                    ' AP Value :',
+                    'Number of Terms : $_numberofTerms',
+                    style: TextStyle(fontSize: 18, color: Colors.blueGrey),
+                  ),
+                ),
+                Container(
+                  child: Text(
+                    'Ap Value',
                     style: TextStyle(fontSize: 18, color: Colors.blueGrey),
                   ),
                 ),
@@ -113,10 +156,18 @@ class _ArithematicProgressionState extends State {
             ),
           ),
           Container(
+            margin: EdgeInsets.only(top: 280),
+            alignment: Alignment.center,
+            child: Text(
+              '$_generatedAP',
+              style: TextStyle(fontSize: 50, color: Colors.blueGrey),
+            ),
+          ),
+          Container(
             alignment: Alignment.bottomRight,
             padding: EdgeInsets.all(12),
             child: FloatingActionButton(
-              onPressed: () {},
+              onPressed: _incrementAP,
               child: Icon(Icons.add),
               elevation: 10,
             ),
@@ -125,7 +176,7 @@ class _ArithematicProgressionState extends State {
             alignment: Alignment.bottomLeft,
             padding: EdgeInsets.all(12),
             child: FloatingActionButton(
-              onPressed: () {},
+              onPressed: _decrementAP,
               child: Icon(Icons.remove),
               elevation: 10,
             ),

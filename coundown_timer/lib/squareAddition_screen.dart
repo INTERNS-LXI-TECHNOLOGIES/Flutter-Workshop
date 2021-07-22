@@ -52,7 +52,6 @@ class _SquareAdditionState extends State {
               onPressed: _getIncrementValue,
               child: Icon(Icons.add),
               elevation: 10,
-              hoverColor: Colors.amber,
             ),
           ),
           Container(
@@ -80,7 +79,7 @@ class _SquareAdditionState extends State {
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
                         color: Colors.blue,
-                        width: 5,
+                        width: 2,
                       ),
                       borderRadius: BorderRadius.circular(10),
                     ),
