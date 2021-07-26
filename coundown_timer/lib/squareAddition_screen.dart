@@ -39,80 +39,89 @@ class _SquareAdditionState extends State {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('CountDown Timer'),
-      ),
-      body: Stack(
-        children: [
-          Container(
-            alignment: Alignment.bottomRight,
-            padding: EdgeInsets.all(12),
-            child: FloatingActionButton(
-              onPressed: _getIncrementValue,
-              child: Icon(Icons.add),
-              elevation: 10,
+    return GestureDetector(
+      onTap: () {
+        FocusScopeNode currentFocus = FocusScope.of(context);
+
+        if (!currentFocus.hasPrimaryFocus) {
+          currentFocus.unfocus();
+        }
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('CountDown Timer'),
+        ),
+        body: Stack(
+          children: [
+            Container(
+              alignment: Alignment.bottomRight,
+              padding: EdgeInsets.all(12),
+              child: FloatingActionButton(
+                onPressed: _getIncrementValue,
+                child: Icon(Icons.add),
+                elevation: 10,
+              ),
             ),
-          ),
-          Container(
-            alignment: Alignment.bottomLeft,
-            padding: EdgeInsets.all(12),
-            child: FloatingActionButton(
-              onPressed: _getDecrementValue,
-              child: Icon(Icons.remove),
-              elevation: 10,
+            Container(
+              alignment: Alignment.bottomLeft,
+              padding: EdgeInsets.all(12),
+              child: FloatingActionButton(
+                onPressed: _getDecrementValue,
+                child: Icon(Icons.remove),
+                elevation: 10,
+              ),
             ),
-          ),
-          Container(
-            margin: EdgeInsets.only(top: 50),
-            padding: EdgeInsets.only(left: 10, right: 10, top: 20),
-            alignment: Alignment.topCenter,
-            child: Card(
-              elevation: 5,
-              child: Container(
-                padding: EdgeInsets.all(10),
-                child: TextField(
-                  controller: userInputController,
-                  keyboardType: TextInputType.number,
-                  enabled: true,
-                  decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.blue,
-                        width: 2,
+            Container(
+              margin: EdgeInsets.only(top: 50),
+              padding: EdgeInsets.only(left: 10, right: 10, top: 20),
+              alignment: Alignment.topCenter,
+              child: Card(
+                elevation: 5,
+                child: Container(
+                  padding: EdgeInsets.all(10),
+                  child: TextField(
+                    controller: userInputController,
+                    keyboardType: TextInputType.number,
+                    enabled: true,
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.blue,
+                          width: 2,
+                        ),
+                        borderRadius: BorderRadius.circular(10),
                       ),
-                      borderRadius: BorderRadius.circular(10),
+                      suffix: ElevatedButton(
+                        onPressed: _setUserInput,
+                        child: Text('GO'),
+                      ),
+                      hintText: 'Enter the Counter Value',
                     ),
-                    suffix: ElevatedButton(
-                      onPressed: _setUserInput,
-                      child: Text('GO'),
-                    ),
-                    hintText: 'Enter the Counter Value',
                   ),
                 ),
               ),
             ),
-          ),
-          Container(
-            child: Center(
-              child: Text('Counter Value is '),
-            ),
-          ),
-          Container(
-            height: 1200,
-            width: 400,
-            margin: EdgeInsets.only(top: 100),
-            alignment: Alignment.center,
-            child: Text(
-              '${_counterValue.toInt()}(' +
-                  '${_userInputValue.toInt()}^$_numberOfTimesButtonpressed)',
-              style: TextStyle(
-                color: Colors.grey,
-                fontSize: 40,
+            Container(
+              child: Center(
+                child: Text('Counter Value is '),
               ),
             ),
-          )
-        ],
+            Container(
+              height: 1200,
+              width: 400,
+              margin: EdgeInsets.only(top: 100),
+              alignment: Alignment.center,
+              child: Text(
+                '${_counterValue.toInt()}(' +
+                    '${_userInputValue.toInt()}^$_numberOfTimesButtonpressed)',
+                style: TextStyle(
+                  color: Colors.grey,
+                  fontSize: 40,
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
