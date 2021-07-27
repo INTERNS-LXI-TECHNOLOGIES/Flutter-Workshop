@@ -13,12 +13,13 @@ class _ArithematicProgressionState extends State {
   num _commonDifference = 0;
   num _generatedAP = 0;
   num _numberOfTerms = 0;
+  num _nthTerm = 0;
   void _generateArithematicProgression() {
     setState(() {
       _firstTerm = num.parse(_firstTermController.text);
       _commonDifference = num.parse(_commonDifferenceController.text);
       _numberOfTerms = num.parse(_numberofTermsController.text);
-
+      _nthTerm = _numberOfTerms;
       _generatedAP = _firstTerm + ((_numberOfTerms - 1) * _commonDifference);
       _ap = _generatedAP;
     });
@@ -29,8 +30,10 @@ class _ArithematicProgressionState extends State {
       var _maxVlaue = _ap;
       if (_generatedAP >= _maxVlaue) {
         _generatedAP = _maxVlaue;
+        _nthTerm = _numberOfTerms;
       } else {
         _generatedAP += _commonDifference;
+        _nthTerm++;
       }
     });
   }
@@ -39,8 +42,10 @@ class _ArithematicProgressionState extends State {
     setState(() {
       if (_generatedAP <= _firstTerm) {
         _generatedAP = _firstTerm;
+        _nthTerm = 1;
       } else {
         _generatedAP -= _commonDifference;
+        _nthTerm--;
       }
     });
   }
@@ -139,7 +144,7 @@ class _ArithematicProgressionState extends State {
                 child: Column(
                   children: <Widget>[
                     Container(
-                      padding: EdgeInsets.only(top: 50),
+                      padding: EdgeInsets.only(top: 20),
                       child: Text(
                         'First Value : $_firstTerm',
                         style: TextStyle(
@@ -160,6 +165,15 @@ class _ArithematicProgressionState extends State {
                     Container(
                       child: Text(
                         'Common Difference : $_commonDifference',
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.blueGrey,
+                        ),
+                      ),
+                    ),
+                    Container(
+                      child: Text(
+                        'Position Of Term : $_nthTerm',
                         style: TextStyle(
                           fontSize: 18,
                           color: Colors.blueGrey,

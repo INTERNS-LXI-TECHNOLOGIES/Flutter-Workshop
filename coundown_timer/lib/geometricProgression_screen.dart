@@ -14,6 +14,7 @@ class _GeometricProgressionState extends State {
   num _initialTerm = 0;
   num _commonRatio = 0;
   num _numberOfTerms = 0;
+  num _nthTerm = 0;
 
   void _generateGeometricProgression() {
     setState(() {
@@ -25,6 +26,7 @@ class _GeometricProgressionState extends State {
       }
       _gp = _initialTerm * (pow(_commonRatio, _numberOfTerms));
       _maxGP = _gp;
+      _nthTerm = _numberOfTerms + 1;
       _initialTermController.clear();
       _commonRatioController.clear();
       _numberOfTermsController.clear();
@@ -36,8 +38,10 @@ class _GeometricProgressionState extends State {
       var _maxValue = _maxGP;
       if (_gp >= _maxValue) {
         _gp = _maxValue;
+        _nthTerm = _numberOfTerms + 1;
       } else {
         _gp *= _commonRatio;
+        _nthTerm++;
       }
     });
   }
@@ -46,8 +50,10 @@ class _GeometricProgressionState extends State {
     setState(() {
       if (_gp <= _initialTerm) {
         _gp = _initialTerm;
+        _nthTerm = 1;
       } else {
         _gp /= _commonRatio;
+        _nthTerm--;
       }
     });
   }
@@ -170,6 +176,15 @@ class _GeometricProgressionState extends State {
                     Container(
                       child: Text(
                         'Common Ratio : $_commonRatio',
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.blueGrey,
+                        ),
+                      ),
+                    ),
+                    Container(
+                      child: Text(
+                        'Position of Term : $_nthTerm',
                         style: TextStyle(
                           fontSize: 18,
                           color: Colors.blueGrey,
