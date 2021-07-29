@@ -1,6 +1,19 @@
+import 'package:enewspaper/apidata_manager.dart';
+import 'package:enewspaper/newsdata.dart';
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  Future<NewsData> _newsData;
+  void initState() {
+    _newsData = APIData_Manager().getNews();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,18 +89,28 @@ class HomeScreen extends StatelessWidget {
                 // color: Colors.black,
                 width: double.infinity,
                 height: 400,
-                child: ListView.builder(itemBuilder: (ctx, index) {
-                  return Card(
-                    elevation: 5,
-                    margin: EdgeInsets.symmetric(vertical: 8, horizontal: 5),
-                    child: ListTile(
-                      leading: Padding(
-                        padding: EdgeInsets.all(2),
-                        child: Text('sample'),
-                      ),
-                    ),
-                  );
-                }),
+                child: FutureBuilder<NewsData>(
+                    future: _newsData,
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        return ListView.builder(
+                            itemCount: snapshot.data.totalResults,
+                            itemBuilder: (context, index) {
+                              var article = snapshot.data.results[index];
+                              return Container(
+                                height: 100,
+                                child: Row(
+                                  children: [
+                                    Text(article.title),
+                                    // Text(article.keywords[index]),
+                                    // Image.network(article.imageUrl),
+                                  ],
+                                ),
+                              );
+                            });
+                      }
+                      // return;
+                    }),
               )
             ],
           ),
