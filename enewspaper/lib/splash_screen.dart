@@ -19,16 +19,16 @@ class _BodyState extends State<Body> {
   int currentPage = 0;
   List<Map<String, String>> splashData = [
     {
-      'caption': 'News As You Wish',
+      'caption': 'Get Live News ',
       'images': 'assets/images/splash_1.png',
     },
     {
-      'caption': 'News As You Wish',
+      'caption': 'News Analytics with experts Review about it.',
       'images': 'assets/images/splash_2.png',
     },
     {
-      'caption': 'News As You Wish',
-      'images': 'assets/images/splash_3.png',
+      'caption': 'Anytime, AnyWhere',
+      'images': 'assets/images/pic1.jpg',
     },
   ];
   @override
