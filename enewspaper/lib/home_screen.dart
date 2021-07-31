@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'package:enewspaper/apidata_manager.dart';
 import 'package:enewspaper/news_page.dart';
 import 'package:enewspaper/newsdata.dart';
@@ -17,6 +18,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Random randomImageNumber = Random();
+    int imageNumber = randomImageNumber.nextInt(15);
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -62,26 +65,39 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 20,
             ),
             Container(
+              // color: Colors.black,
+              height: 150,
+              width: double.infinity,
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
-                child: Row(children: [
-                  SizedBox(
-                    width: 242,
-                    height: 100,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
-                      child: Image.asset('assets/images/splash_1.png'),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 242,
-                    height: 100,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
-                      child: Image.asset('assets/images/splash_1.png'),
-                    ),
-                  ),
-                ]),
+                child: FutureBuilder<NewsData>(
+                    future: _newsData,
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        return ListView.builder(
+                            itemCount: 5,
+                            itemBuilder: (context, index) {
+                              return Row(children: [
+                                SizedBox(
+                                  width: 242,
+                                  height: 100,
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(20),
+                                    child: Image.network(snapshot
+                                        .data.results[imageNumber].imageUrl),
+                                  ),
+                                ),
+                              ]);
+                            });
+                      } else {
+                        Text('An Error Occured');
+                      }
+                      return Center(
+                        child: Padding(
+                            padding: EdgeInsets.only(left: 180),
+                            child: CircularProgressIndicator()),
+                      );
+                    }),
               ),
             ),
             SizedBox(
