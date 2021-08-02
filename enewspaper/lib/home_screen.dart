@@ -11,6 +11,13 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   Future<NewsData> _newsData;
+  var image;
+  List<NewsData> newsList;
+  var pubDate;
+  var title;
+  var content;
+  var creator;
+
   void initState() {
     _newsData = APIData_Manager().fetchNewsData();
     super.initState();
@@ -77,14 +84,14 @@ class _HomeScreenState extends State<HomeScreen> {
                         return ListView.builder(
                             itemCount: 5,
                             itemBuilder: (context, index) {
+                              image = snapshot.data.results[index].imageUrl;
                               return Row(children: [
                                 SizedBox(
                                   width: 242,
                                   height: 100,
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(20),
-                                    child: Image.network(snapshot
-                                        .data.results[imageNumber].imageUrl),
+                                    child: Image.network(image),
                                   ),
                                 ),
                               ]);
@@ -118,15 +125,27 @@ class _HomeScreenState extends State<HomeScreen> {
                             margin: EdgeInsets.symmetric(
                                 vertical: 8, horizontal: 5),
                             child: ListTile(
-                              leading: Padding(
-                                padding: EdgeInsets.all(2),
-                                child: CircleAvatar(
-                                  child: Text('01'),
-                                ),
-                              ),
+                              // leading: Padding(
+                              //   padding: EdgeInsets.all(2),
+                              // child: CircleAvatar(
+                              //   child: Text('data'),),
+                              // ),
                               title: Text(snapshot.data.results[index].title),
                               subtitle: Text(
                                   snapshot.data.results[index].description),
+                              onTap: () {
+                                Navigator.of(context)
+                                    .push(MaterialPageRoute(builder: (context) {
+                                  var articles = snapshot.data.results[index];
+                                  image = articles.imageUrl;
+                                  pubDate = articles.pubDate;
+                                  content = articles.content;
+                                  title = articles.title;
+                                  creator = articles.creator[index];
+                                  return NewsPage(
+                                      title, image, content, creator, pubDate);
+                                }));
+                              },
                             ),
                           );
                         },
