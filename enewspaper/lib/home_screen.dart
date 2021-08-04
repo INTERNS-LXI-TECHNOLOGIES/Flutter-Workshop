@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'package:enewspaper/apidata_manager.dart';
 import 'package:enewspaper/news_page.dart';
 import 'package:enewspaper/newsdata.dart';
@@ -12,7 +11,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   Future<NewsData> _newsData;
   var image;
-  List<NewsData> newsList;
   var pubDate;
   var title;
   var content;
@@ -25,8 +23,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Random randomImageNumber = Random();
-    int imageNumber = randomImageNumber.nextInt(15);
+    // Random randomImageNumber = Random();
+    // int imageNumber = randomImageNumber.nextInt(15);
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -40,7 +38,18 @@ class _HomeScreenState extends State<HomeScreen> {
               width: double.infinity,
               height: 90,
               decoration: BoxDecoration(
-                  color: Colors.blue, borderRadius: BorderRadius.circular(20)),
+                  color: Colors.deepOrangeAccent,
+                  borderRadius: BorderRadius.circular(20)),
+              child: Stack(
+                children: [
+                  Container(
+                    child: Image.network(
+                        'https://www.freepnglogos.com/uploads/fox-news-png-logo/news-live-png-logo-27.png'),
+                    alignment: Alignment.center,
+                    // child: Text('sample'),
+                  ),
+                ],
+              ),
             ),
             SizedBox(
               height: 30,
@@ -71,44 +80,58 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(
               height: 20,
             ),
-            Container(
-              // color: Colors.black,
-              height: 150,
-              width: double.infinity,
-              child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: FutureBuilder<NewsData>(
-                    future: _newsData,
-                    builder: (context, snapshot) {
-                      if (snapshot.hasData) {
-                        return ListView.builder(
-                            itemCount: 5,
-                            itemBuilder: (context, index) {
-                              image = snapshot.data.results[index].imageUrl;
-                              return Row(children: [
-                                SizedBox(
-                                  width: 242,
-                                  height: 100,
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(20),
-                                    child: Image.network(image),
-                                  ),
-                                ),
-                              ]);
-                            });
-                      } else {
-                        Text('An Error Occured');
-                      }
-                      return Center(
-                        child: Padding(
-                            padding: EdgeInsets.only(left: 180),
-                            child: CircularProgressIndicator()),
-                      );
-                    }),
-              ),
-            ),
+            // FutureBuilder<NewsData>(builder: (context, snapshot) {
+            //   return SingleChildScrollView(
+            //       scrollDirection: Axis.horizontal,
+            //       child: ListView.builder(itemBuilder: (context, index) {
+            //         return Row(
+            //           children: [
+            //             SizedBox(
+            //               width: 242,
+            //               height: 150,
+            //               child: ClipRRect(
+            //                 borderRadius: BorderRadius.circular(20),
+            //                 child: Stack(children: [
+            //                   Image.asset(
+            //                     'assets/images/pic1.jpg',
+            //                     fit: BoxFit.fill,
+            //                   ),
+            //                   Container(
+            //                     decoration: BoxDecoration(
+            //                         gradient: LinearGradient(colors: [
+            //                       Color(0xFF343434).withOpacity(0.4),
+            //                       Color(0xFF343434).withOpacity(0.15)
+            //                     ])),
+            //                   ),
+            //                   Padding(
+            //                     padding: EdgeInsets.symmetric(
+            //                         horizontal: 15, vertical: 10),
+            //                     child: Text.rich(
+            //                       TextSpan(children: [
+            //                         TextSpan(
+            //                             style: TextStyle(
+            //                                 fontSize: 18,
+            //                                 fontWeight: FontWeight.bold,
+            //                                 color: Colors.white),
+            //                             text: 'Tech News\n'),
+            //                         TextSpan(
+            //                             style: TextStyle(
+            //                                 fontSize: 16,
+            //                                 fontWeight: FontWeight.bold,
+            //                                 color: Colors.white),
+            //                             text: 'Tech News'),
+            //                       ]),
+            //                     ),
+            //                   ),
+            //                 ]),
+            //               ),
+            //             ),
+            //           ],
+            //         );
+            //       }));
+            // }),
             SizedBox(
-              height: 50,
+              height: 20,
             ),
             Container(
               // color: Colors.black,
@@ -120,28 +143,33 @@ class _HomeScreenState extends State<HomeScreen> {
                       return ListView.builder(
                         itemCount: snapshot.data.totalResults,
                         itemBuilder: (context, index) {
+                          // int arrayIndex = 0;
+                          // List<int> newsIndex = [arrayIndex++];
                           return Card(
                             elevation: 5,
                             margin: EdgeInsets.symmetric(
                                 vertical: 8, horizontal: 5),
                             child: ListTile(
-                              // leading: Padding(
-                              //   padding: EdgeInsets.all(2),
-                              // child: CircleAvatar(
-                              //   child: Text('data'),),
-                              // ),
+                              leading: Padding(
+                                padding: EdgeInsets.all(2),
+                                child: CircleAvatar(
+                                    // child: Text(newsIndex.toString()),
+                                    ),
+                              ),
                               title: Text(snapshot.data.results[index].title),
                               subtitle: Text(
-                                  snapshot.data.results[index].description),
+                                  '${snapshot.data.results[index].description}'),
                               onTap: () {
                                 Navigator.of(context)
                                     .push(MaterialPageRoute(builder: (context) {
-                                  var articles = snapshot.data.results[index];
-                                  image = articles.imageUrl;
-                                  pubDate = articles.pubDate;
-                                  content = articles.content;
-                                  title = articles.title;
-                                  creator = articles.creator[index];
+                                  image = snapshot.data.results[index].imageUrl;
+                                  pubDate =
+                                      snapshot.data.results[index].pubDate;
+                                  content =
+                                      snapshot.data.results[index].content;
+                                  title = snapshot.data.results[index].title;
+                                  creator =
+                                      snapshot.data.results[index].creator;
                                   return NewsPage(
                                       title, image, content, creator, pubDate);
                                 }));

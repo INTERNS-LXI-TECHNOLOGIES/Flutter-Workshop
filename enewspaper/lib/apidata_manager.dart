@@ -39,6 +39,7 @@ class APIData_Manager {
   Future<NewsData> fetchNewsData() async {
     var url =
         'https://newsdata.io/api/1/news?apikey=pub_6555c8e594aa52f948a54f505b72c2f473e&q=vaccination&country=in';
+
     final response = await http.get(Uri.parse(url));
     if (response.statusCode == 200) {
       return NewsData.fromJson(jsonDecode(response.body));

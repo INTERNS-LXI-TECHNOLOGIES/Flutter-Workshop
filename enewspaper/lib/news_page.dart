@@ -5,13 +5,11 @@ import 'package:intl/intl.dart';
 
 class NewsPage extends StatelessWidget {
   final String imageurl;
-  // final List newslist;
   final title;
   final content;
   final pubDate;
   final List<String> creator;
   NewsPage(this.title, this.imageurl, this.content, this.creator, this.pubDate);
-  // void function(int index) {}
 
   @override
   Widget build(BuildContext context) {
