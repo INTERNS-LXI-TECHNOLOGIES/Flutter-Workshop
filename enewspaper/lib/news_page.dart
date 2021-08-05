@@ -5,11 +5,21 @@ import 'package:intl/intl.dart';
 
 class NewsPage extends StatelessWidget {
   final String imageurl;
-  final title;
-  final content;
-  final pubDate;
-  final List<String> creator;
+  final String title;
+  final String content;
+  final DateTime pubDate;
+  final String creator;
   NewsPage(this.title, this.imageurl, this.content, this.creator, this.pubDate);
+
+  String printImage() {
+    if (imageurl != null) {
+      return imageurl;
+    } else {
+      String tempImageUrl =
+          'https://www.ecpgr.cgiar.org/fileadmin/templates/ecpgr.org/Assets/images/No_Image_Available.jpg';
+      return tempImageUrl;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +43,7 @@ class NewsPage extends StatelessWidget {
           child: Container(
             child: Column(
               children: [
-                Image.network(imageurl),
+                Image.network(printImage()),
                 SizedBox(
                   height: 30,
                 ),
