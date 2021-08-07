@@ -1,4 +1,5 @@
 import 'package:enewspaper/apidata_manager.dart';
+import 'package:enewspaper/catagorypage.dart';
 import 'package:enewspaper/news_page.dart';
 import 'package:enewspaper/newsdata.dart';
 import 'package:flutter/material.dart';
@@ -198,7 +199,13 @@ class _HomeScreenState extends State {
               color: Colors.redAccent,
             ),
           ),
-          Text('See More!'),
+          GestureDetector(
+            onTap: () {
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => CatagoryPage()));
+            },
+            child: Text('See More!'),
+          ),
         ],
       ),
     );
