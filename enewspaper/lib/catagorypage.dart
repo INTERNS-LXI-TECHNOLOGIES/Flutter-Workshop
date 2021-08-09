@@ -1,3 +1,4 @@
+import 'package:enewspaper/CatagoryMainPage.dart';
 import 'package:flutter/material.dart';
 
 class CatagoryPage extends StatelessWidget {
@@ -8,6 +9,11 @@ class CatagoryPage extends StatelessWidget {
     String imageUrl = 'assets/images/Image Banner 2.png';
     String title = 'title\n';
     String subTitle = 'subTitle';
+    Function _pageRoute() {
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => CatagoryMainPage()));
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text('E-News'),
@@ -24,7 +30,7 @@ class CatagoryPage extends StatelessWidget {
               style: TextStyle(fontFamily: 'Muli', fontSize: 25),
             ),
           ),
-          catagorySection(height, width, imageUrl, title, subTitle),
+          catagorySection(height, width, imageUrl, title, subTitle, _pageRoute),
           Divider(
             height: 100,
             thickness: 20,
@@ -35,23 +41,25 @@ class CatagoryPage extends StatelessWidget {
   }
 
   Container catagorySection(double height, double width, String imageUrl,
-      String title, String subTitle) {
+      String title, String subTitle, Function pageRoute) {
     return Container(
       child: Column(
         children: [
           Row(
             children: [
-              catagoryImages(height, width, imageUrl, title, subTitle),
+              catagoryImages(
+                  height, width, imageUrl, title, subTitle, pageRoute),
               catagoryImages(height, width, 'assets/images/Image Banner 2.png',
-                  'title', 'subTitle'),
+                  'title', 'subTitle', pageRoute),
             ],
           ),
           SizedBox(height: 20),
           Row(
             children: [
-              catagoryImages(height, width, imageUrl, title, subTitle),
+              catagoryImages(
+                  height, width, imageUrl, title, subTitle, pageRoute),
               catagoryImages(height, width, 'assets/images/Image Banner 2.png',
-                  'title', 'subTitle'),
+                  'title', 'subTitle', pageRoute),
             ],
           ),
           SizedBox(
@@ -59,9 +67,10 @@ class CatagoryPage extends StatelessWidget {
           ),
           Row(
             children: [
-              catagoryImages(height, width, imageUrl, title, subTitle),
+              catagoryImages(
+                  height, width, imageUrl, title, subTitle, pageRoute),
               catagoryImages(height, width, 'assets/images/Image Banner 2.png',
-                  'title', 'subTitle'),
+                  'title', 'subTitle', pageRoute),
             ],
           )
         ],
@@ -69,18 +78,14 @@ class CatagoryPage extends StatelessWidget {
     );
   }
 
-  Container catagoryImages(
-    double height,
-    double width,
-    String imageUrl,
-    String title,
-    String subTitle,
-  ) {
+  Container catagoryImages(double height, double width, String imageUrl,
+      String title, String subTitle, Function pageRoute) {
     return Container(
       margin: EdgeInsets.only(left: 5, right: 5),
       height: height * .12,
       width: width * .47,
       child: GestureDetector(
+        onTap: pageRoute,
         child: ClipRRect(
           borderRadius: BorderRadius.circular(50),
           child: Stack(
