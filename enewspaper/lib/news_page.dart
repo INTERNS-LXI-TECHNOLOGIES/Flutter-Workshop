@@ -7,7 +7,7 @@ class NewsPage extends StatelessWidget {
   final String imageurl;
   final String title;
   final String content;
-  final DateTime pubDate;
+  var pubDate;
   final String creator;
   NewsPage(this.title, this.imageurl, this.content, this.creator, this.pubDate);
 

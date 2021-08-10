@@ -9,7 +9,7 @@ class CatagoryPage extends StatelessWidget {
     String imageUrl = 'assets/images/Image Banner 2.png';
     String title = 'title\n';
     String subTitle = 'subTitle';
-    Function _pageRoute() {
+    void _pageRoute() {
       Navigator.of(context)
           .push(MaterialPageRoute(builder: (context) => CatagoryMainPage()));
     }
@@ -18,22 +18,63 @@ class CatagoryPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('E-News'),
       ),
-      body: Column(
-        children: [
-          Divider(
-            thickness: 20,
-          ),
-          Container(
-            height: 50,
-            child: Text(
-              'By Category',
-              style: TextStyle(fontFamily: 'Muli', fontSize: 25),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Divider(
+              thickness: 20,
             ),
+            Container(
+              height: 50,
+              child: Text(
+                'By Category',
+                style: TextStyle(fontFamily: 'Muli', fontSize: 25),
+              ),
+            ),
+            catagorySection(
+                height, width, imageUrl, title, subTitle, _pageRoute),
+            Divider(
+              height: 100,
+              thickness: 20,
+            ),
+            Container(
+              height: 50,
+              child: Text(
+                'By Media',
+                style: TextStyle(fontFamily: 'Muli', fontSize: 25),
+              ),
+            ),
+            mdeiaSection(height, width, imageUrl, title, subTitle, _pageRoute),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Container mdeiaSection(double height, double width, String imageUrl,
+      String title, String subTitle, void _pageRoute()) {
+    return Container(
+      child: Column(
+        children: [
+          Row(
+            children: [
+              catagoryImages(
+                  height, width, imageUrl, 'India Today', '', _pageRoute),
+              catagoryImages(height, width, 'assets/images/Image Banner 2.png',
+                  'The Guardian', '', _pageRoute),
+            ],
           ),
-          catagorySection(height, width, imageUrl, title, subTitle, _pageRoute),
-          Divider(
-            height: 100,
-            thickness: 20,
+          SizedBox(height: 20),
+          Row(
+            children: [
+              catagoryImages(
+                  height, width, imageUrl, 'The Verge', '', _pageRoute),
+              catagoryImages(height, width, 'assets/images/Image Banner 2.png',
+                  'NDTV', '', _pageRoute),
+            ],
+          ),
+          SizedBox(
+            height: 20,
           ),
         ],
       ),
@@ -48,18 +89,18 @@ class CatagoryPage extends StatelessWidget {
           Row(
             children: [
               catagoryImages(
-                  height, width, imageUrl, title, subTitle, pageRoute),
+                  height, width, imageUrl, 'Sports\n', 'latest', pageRoute),
               catagoryImages(height, width, 'assets/images/Image Banner 2.png',
-                  'title', 'subTitle', pageRoute),
+                  'Business', '', pageRoute),
             ],
           ),
           SizedBox(height: 20),
           Row(
             children: [
               catagoryImages(
-                  height, width, imageUrl, title, subTitle, pageRoute),
+                  height, width, imageUrl, 'Politics', '', pageRoute),
               catagoryImages(height, width, 'assets/images/Image Banner 2.png',
-                  'title', 'subTitle', pageRoute),
+                  'Economics', '', pageRoute),
             ],
           ),
           SizedBox(
@@ -68,9 +109,9 @@ class CatagoryPage extends StatelessWidget {
           Row(
             children: [
               catagoryImages(
-                  height, width, imageUrl, title, subTitle, pageRoute),
+                  height, width, imageUrl, 'Current Affairs', '', pageRoute),
               catagoryImages(height, width, 'assets/images/Image Banner 2.png',
-                  'title', 'subTitle', pageRoute),
+                  'Technology\n', 'latest Trends', pageRoute),
             ],
           )
         ],
@@ -124,7 +165,6 @@ class CatagoryPage extends StatelessWidget {
             ],
           ),
         ),
-        // onTap: tapLink,
       ),
     );
   }
