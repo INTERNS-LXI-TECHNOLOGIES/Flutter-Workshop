@@ -51,11 +51,19 @@ flutter:
     - assets/images/splash_1.png
     - assets/images/splash_2.png
     - assets/images/pic1.jpg
-    - assets/images/noImageAvailable.png
+    - assets/images/business.jpg
+    - assets/images/Current-Affairs.jpg
+    - assets/images/Entertainment.jpg
+    - assets/images/Hindustan-Times.jpg
     - assets/images/Image Banner 2.png
     - assets/images/Image Banner 3.png
-    - assets/images/Sport Banner.jpg
-
+    - assets/images/IndianExpress.jpg
+    - assets/images/India-Today.jpg
+    - assets/images/Politics.jpg
+    - assets/images/Sports.jpg
+    - assets/images/Technology.jpg
+    - assets/images/TheHansIndia.jpg
+    - assets/images/waiting.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

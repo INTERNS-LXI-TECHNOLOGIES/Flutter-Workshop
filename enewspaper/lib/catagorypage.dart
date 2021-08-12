@@ -7,12 +7,6 @@ class CatagoryPage extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     String imageUrl = 'assets/images/Image Banner 2.png';
-    String title = 'title\n';
-    String subTitle = 'subTitle';
-    void _pageRoute() {
-      Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => CatagoryMainPage()));
-    }
 
     return Scaffold(
       appBar: AppBar(
@@ -31,8 +25,8 @@ class CatagoryPage extends StatelessWidget {
                 style: TextStyle(fontFamily: 'Muli', fontSize: 25),
               ),
             ),
-            catagorySection(
-                height, width, imageUrl, title, subTitle, _pageRoute),
+            // catagorySection(height, width, imageUrl, title, subTitle, () {}),
+            catagorySection(height, width, imageUrl, context),
             Divider(
               height: 100,
               thickness: 20,
@@ -44,76 +38,132 @@ class CatagoryPage extends StatelessWidget {
                 style: TextStyle(fontFamily: 'Muli', fontSize: 25),
               ),
             ),
-            mdeiaSection(height, width, imageUrl, title, subTitle, _pageRoute),
+            mediaSection(height, width, imageUrl, context),
           ],
         ),
       ),
     );
   }
 
-  Container mdeiaSection(double height, double width, String imageUrl,
-      String title, String subTitle, void _pageRoute()) {
+  Container catagorySection(
+      double height, double width, String imageUrl, BuildContext context) {
     return Container(
       child: Column(
         children: [
           Row(
             children: [
               catagoryImages(
-                  height, width, imageUrl, 'India Today', '', _pageRoute),
-              catagoryImages(height, width, 'assets/images/Image Banner 2.png',
-                  'The Guardian', '', _pageRoute),
+                  height, width, 'assets/images/Sports.jpg', 'Sports', '', () {
+                String catagoryKeyword = 'sports';
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => CatagoryMainPage(
+                        catagoryKeyword, 'assets/images/Sports.jpg')));
+              }),
+              catagoryImages(
+                  height, width, 'assets/images/Business.jpg', 'Business', '',
+                  () {
+                String catagoryKeyword = 'business';
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => CatagoryMainPage(
+                        catagoryKeyword, 'assets/images/Business.jpg')));
+              }),
             ],
           ),
           SizedBox(height: 20),
           Row(
             children: [
               catagoryImages(
-                  height, width, imageUrl, 'The Verge', '', _pageRoute),
-              catagoryImages(height, width, 'assets/images/Image Banner 2.png',
-                  'NDTV', '', _pageRoute),
+                  height, width, 'assets/images/Politics.jpg', 'Politics', '',
+                  () {
+                String catagoryKeyword = 'politics';
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => CatagoryMainPage(
+                        catagoryKeyword, 'assets/images/Politics.jpg')));
+              }),
+              catagoryImages(height, width, 'assets/images/Entertainment.jpg',
+                  'Entertainment', '', () {
+                String catagoryKeyword = 'Entertainment';
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => CatagoryMainPage(
+                        catagoryKeyword, 'assets/images/Entertainment.jpg')));
+              }),
             ],
           ),
           SizedBox(
             height: 20,
           ),
+          Row(
+            children: [
+              catagoryImages(height, width, 'assets/images/Current-Affairs.jpg',
+                  'Current Affairs', '', () {
+                String catagoryKeyword = 'currentaffairs';
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => CatagoryMainPage(
+                        catagoryKeyword, 'assets/images/Current-Affairs.jpg')));
+              }),
+              catagoryImages(height, width, 'assets/images/Technology.jpg',
+                  'Technology', '', () {
+                String catagoryKeyword = 'technology';
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => CatagoryMainPage(
+                        catagoryKeyword, 'assets/images/Technology.jpg')));
+              }),
+            ],
+          )
         ],
       ),
     );
   }
 
-  Container catagorySection(double height, double width, String imageUrl,
-      String title, String subTitle, Function pageRoute) {
+  Container mediaSection(
+      double height, double width, String imageUrl, BuildContext context) {
     return Container(
       child: Column(
         children: [
           Row(
             children: [
-              catagoryImages(
-                  height, width, imageUrl, 'Sports\n', 'latest', pageRoute),
-              catagoryImages(height, width, 'assets/images/Image Banner 2.png',
-                  'Business', '', pageRoute),
+              catagoryImages(height, width, 'assets/images/India-Today.jpg',
+                  'India Today', '', () {
+                String catagoryKeyword = 'indiatoday';
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => CatagoryMainPage(
+                        catagoryKeyword, 'assets/images/India-Today.jpg')));
+              }),
+              catagoryImages(height, width, 'assets/images/Hindustan-Times.jpg',
+                  'Hindustan Times', '', () {
+                String catagoryKeyword = 'hindsutantime';
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => CatagoryMainPage(
+                          catagoryKeyword,
+                          'assets/images/Hindustan-Times.jpg',
+                        )));
+              }),
             ],
           ),
           SizedBox(height: 20),
           Row(
             children: [
-              catagoryImages(
-                  height, width, imageUrl, 'Politics', '', pageRoute),
-              catagoryImages(height, width, 'assets/images/Image Banner 2.png',
-                  'Economics', '', pageRoute),
+              catagoryImages(height, width, 'assets/images/IndianExpress.jpg',
+                  'Indian Express', '', () {
+                String catagoryKeyword = 'indianexpress';
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => CatagoryMainPage(
+                          catagoryKeyword,
+                          'assets/images/IndianExpress.jpg',
+                        )));
+              }),
+              catagoryImages(height, width, 'assets/images/TheHansIndia.jpg',
+                  'The Hans India', '', () {
+                String catagoryKeyword = 'thehansindia';
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => CatagoryMainPage(
+                        catagoryKeyword, 'assets/images/TheHansIndia.jpg')));
+              }),
             ],
           ),
           SizedBox(
             height: 20,
           ),
-          Row(
-            children: [
-              catagoryImages(
-                  height, width, imageUrl, 'Current Affairs', '', pageRoute),
-              catagoryImages(height, width, 'assets/images/Image Banner 2.png',
-                  'Technology\n', 'latest Trends', pageRoute),
-            ],
-          )
         ],
       ),
     );

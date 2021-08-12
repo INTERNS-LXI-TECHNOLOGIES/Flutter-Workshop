@@ -1,3 +1,4 @@
+import 'package:enewspaper/CatagoryMainPage.dart';
 import 'package:enewspaper/apidata_manager.dart';
 import 'package:enewspaper/catagorypage.dart';
 import 'package:enewspaper/news_page.dart';
@@ -24,21 +25,9 @@ class _HomeScreenState extends State {
 
   @override
   Widget build(BuildContext context) {
-    String techCatagoryImage = 'assets/images/Image Banner 2.png';
-    String techTile = 'Tech News\n';
-    String techSubtitle = 'Tech News\n';
-
-    String politics = 'assets/images/Image Banner 3.png';
-    String politicsTitle = 'Fashion News';
-    String politicsSubtitle = 'Fashion news';
-
-    String economics = 'assets/images/splash_2.png';
-    String economicsTitle = 'Economics news';
-    String economicsSubtitle = 'Economics News';
-
-    String sportsNews = 'assets/images/Sport Banner.jpg';
-    String sportsNewsTitle = 'Sports News\n';
-    String sportsSubtitle = 'sports news';
+    var catagoryKeyword;
+    var catagoryImage;
+    var subtitle;
 
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
@@ -61,12 +50,24 @@ class _HomeScreenState extends State {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    catagorySection(techCatagoryImage, techTile, techSubtitle),
-                    catagorySection(politics, politicsTitle, politicsSubtitle),
-                    catagorySection(
-                        sportsNews, sportsNewsTitle, sportsSubtitle),
-                    catagorySection(
-                        economics, economicsTitle, economicsSubtitle)
+                    SizedBox(
+                      width: 20,
+                    ),
+                    catagorySection(context, 'Sports',
+                        'assets/images/Sports.jpg', 'Sports', ''),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    catagorySection(context, 'Entertainment',
+                        'assets/images/Entertainment.jpg', 'Entertainment', ''),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    catagorySection(context, 'Business',
+                        'assets/images/business.jpg', 'Business', ''),
+                    SizedBox(
+                      width: 20,
+                    ),
                   ],
                 ),
               ),
@@ -81,52 +82,107 @@ class _HomeScreenState extends State {
     );
   }
 
-  Row catagorySection(String catagoryImage, String title, String subtitle) {
-    return Row(
-      children: [
-        SizedBox(
-          height: 100,
-          width: 242,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(20),
-            child: Stack(children: [
-              Image.asset(
-                catagoryImage,
-                fit: BoxFit.fill,
-              ),
-              Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(colors: [
-                    Color(0xFF343434).withOpacity(0.4),
-                    Color(0xFF343434).withOpacity(0.15)
-                  ]),
+  GestureDetector catagorySection(BuildContext context, catagoryKeyword,
+      catagoryImage, catagorytitle, subtitle) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) =>
+                CatagoryMainPage(catagoryKeyword, catagoryImage)));
+      },
+      child: Row(
+        children: [
+          SizedBox(
+            height: 100,
+            width: 242,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Stack(children: [
+                Image.asset(
+                  catagoryImage,
+                  fit: BoxFit.fill,
                 ),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                child: Text.rich(
-                  TextSpan(children: [
-                    TextSpan(
-                        style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white),
-                        text: title),
-                    TextSpan(
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white),
-                        text: subtitle),
-                  ]),
+                Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(colors: [
+                      Color(0xFF343434).withOpacity(0.4),
+                      Color(0xFF343434).withOpacity(0.15)
+                    ]),
+                  ),
                 ),
-              ),
-            ]),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                  child: Text.rich(
+                    TextSpan(children: [
+                      TextSpan(
+                          style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white),
+                          text: catagorytitle),
+                      TextSpan(
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white),
+                          text: subtitle),
+                    ]),
+                  ),
+                ),
+              ]),
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
+
+  // Row catagorySection(String catagoryImage, String title, String subtitle) {
+  //   return Row(
+  //     children: [
+  //       SizedBox(
+  //         height: 100,
+  //         width: 242,
+  //         child: ClipRRect(
+  //           borderRadius: BorderRadius.circular(20),
+  //           child: Stack(children: [
+  //             Image.asset(
+  //               catagoryImage,
+  //               fit: BoxFit.fill,
+  //             ),
+  //             Container(
+  //               decoration: BoxDecoration(
+  //                 gradient: LinearGradient(colors: [
+  //                   Color(0xFF343434).withOpacity(0.4),
+  //                   Color(0xFF343434).withOpacity(0.15)
+  //                 ]),
+  //               ),
+  //             ),
+  //             Padding(
+  //               padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+  //               child: Text.rich(
+  //                 TextSpan(children: [
+  //                   TextSpan(
+  //                       style: TextStyle(
+  //                           fontSize: 18,
+  //                           fontWeight: FontWeight.bold,
+  //                           color: Colors.white),
+  //                       text: title),
+  //                   TextSpan(
+  //                       style: TextStyle(
+  //                           fontSize: 16,
+  //                           fontWeight: FontWeight.bold,
+  //                           color: Colors.white),
+  //                       text: subtitle),
+  //                 ]),
+  //               ),
+  //             ),
+  //           ]),
+  //         ),
+  //       ),
+  //     ],
+  //   );
+  // }
 
   SingleChildScrollView newsViewerSection(double height, double width) {
     return SingleChildScrollView(
@@ -147,7 +203,7 @@ class _HomeScreenState extends State {
                           leading: ClipRRect(
                             borderRadius: BorderRadius.circular(20),
                             child: Container(
-                              color: Colors.blue,
+                              color: Colors.deepOrangeAccent,
                               height: height * .1,
                               width: width * 0.3,
                               // child: Image.network(
