@@ -1,7 +1,12 @@
 import 'package:enewspaper/CatagoryMainPage.dart';
 import 'package:flutter/material.dart';
 
-class CatagoryPage extends StatelessWidget {
+class CatagoryPage extends StatefulWidget {
+  @override
+  _CatagoryPageState createState() => _CatagoryPageState();
+}
+
+class _CatagoryPageState extends State<CatagoryPage> {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -60,12 +65,12 @@ class CatagoryPage extends StatelessWidget {
                         catagoryKeyword, 'assets/images/Sports.jpg')));
               }),
               catagoryImages(
-                  height, width, 'assets/images/Business.jpg', 'Business', '',
+                  height, width, 'assets/images/business.jpg', 'Business', '',
                   () {
                 String catagoryKeyword = 'business';
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => CatagoryMainPage(
-                        catagoryKeyword, 'assets/images/Business.jpg')));
+                        catagoryKeyword, 'assets/images/business.jpg')));
               }),
             ],
           ),

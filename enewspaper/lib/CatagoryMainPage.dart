@@ -17,6 +17,7 @@ class _CatagoryMainPageState extends State<CatagoryMainPage> {
   Future<NewsDataCatagory> _newsDataCatagory;
   final String imageUrl;
   final String catagoryKeyword;
+
   _CatagoryMainPageState(this.catagoryKeyword, this.imageUrl);
   void initState() {
     _newsDataCatagory = APIData_Manager().fetchNewsCatagoryData();
@@ -27,6 +28,7 @@ class _CatagoryMainPageState extends State<CatagoryMainPage> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
+    var catagory;
     return Scaffold(
       appBar: AppBar(
         title: Text('E-News'),
@@ -52,51 +54,79 @@ class _CatagoryMainPageState extends State<CatagoryMainPage> {
                 future: _newsDataCatagory,
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
-                    return ListView.builder(
-                      itemCount: 5,
-                      itemBuilder: (context, index) {
-                        if (snapshot.data.results[index].keywords[index] ==
-                            catagoryKeyword) {
-                          return Card(
-                            elevation: 5,
-                            child: ListTile(
-                              leading: Padding(
-                                padding: EdgeInsets.all(2),
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(10),
-                                  child: Container(
-                                    color: Colors.deepOrangeAccent,
-                                    height: 50,
-                                    width: 50,
+                    for (var index = 0;
+                        index <= snapshot.data.results[index].keywords.length;
+                        index++) {
+                      var data = snapshot.data.results[index];
+                      var title;
+                      var imageurl;
+                      var content;
+                      var creator;
+                      var pubDate;
+                      if (data.keywords != null) {
+                        if (data.keywords[index] == catagoryKeyword) {
+                          Container(
+                            child: Card(
+                              elevation: 5,
+                              child: ListTile(
+                                leading: Padding(
+                                  padding: EdgeInsets.all(5),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(10),
+                                    child: Container(
+                                      color: Colors.deepOrangeAccent,
+                                      height: 50,
+                                      width: 50,
+                                    ),
                                   ),
                                 ),
+                                title: Text(data.title),
+                                subtitle: Text(data.description),
+                                onTap: () {
+                                  title = data.title;
+                                  content = data.description;
+                                  creator = data.sourceId;
+                                  pubDate = data.pubDate;
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) => NewsPage(title,
+                                          imageurl, content, creator, pubDate),
+                                    ),
+                                  );
+                                },
                               ),
-                              title:
-                                  Text('${snapshot.data.results[index].title}'),
-                              subtitle: Text(
-                                  '${snapshot.data.results[index].description}'),
-                              onTap: () {
-                                var data = snapshot.data.results[index];
-                                var title = data.title;
-                                var imageUrl = data.imageUrl;
-                                var content = data.description;
-                                var creator = data.sourceId;
-                                var pubDate = data.pubDate;
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => NewsPage(title,
-                                        imageUrl, content, creator, pubDate)));
-                              },
                             ),
                           );
                         } else {
-                          return Image.asset('assets/images/waiting.png');
+                          return Container();
                         }
-                      },
-                    );
+                      } else {
+                        return Column(
+                          children: [
+                            Text(
+                              'No Data Available on Server',
+                              style: TextStyle(
+                                fontFamily: 'Muli',
+                                fontWeight: FontWeight.bold,
+                                fontSize: 26,
+                                color: Colors.grey[800],
+                              ),
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            Image.asset(
+                              'assets/images/waiting.png',
+                              scale: 2.5,
+                            ),
+                          ],
+                        );
+                      }
+                    }
+                    return Center(child: CircularProgressIndicator());
                   } else {
-                    // throw Exception('Failed to Load Data');
+                    throw Exception('${snapshot.error}');
                   }
-                  return Center(child: CircularProgressIndicator());
                 }),
           ),
         ],
