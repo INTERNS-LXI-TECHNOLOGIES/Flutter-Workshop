@@ -26,6 +26,8 @@ class _CatagoryMainPageState extends State<CatagoryMainPage> {
 
   @override
   Widget build(BuildContext context) {
+    int num = 0;
+    int index = num++;
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     var catagory;
@@ -131,81 +133,148 @@ class _CatagoryMainPageState extends State<CatagoryMainPage> {
           //         }
           //       }),
           // ),
+          // Container(
+          //   height: height * .59,
+          //   width: double.infinity,
+          //   child: FutureBuilder<NewsDataCatagory>(
+          //     future: _newsDataCatagory,
+          //     builder: (context, snapshot) {
+          //       if (snapshot.hasData) {
+          //         for (int index = 0; index < 5; index++) {
+          //           var data = snapshot.data.results[index];
+          //           var title;
+          //           var imageurl;
+          //           var pubDate;
+          //           var content;
+          //           var creator;
+          //           if (snapshot.data.results[index].keywords[index] != null) {
+          //             Container(
+          //               child: Card(
+          //                 child: ListTile(
+          //                   leading: Padding(
+          //                     padding: EdgeInsets.all(5),
+          //                     child: ClipRRect(
+          //                       borderRadius: BorderRadius.circular(10),
+          //                       child: Container(
+          //                         color: Colors.deepOrangeAccent,
+          //                         height: 50,
+          //                         width: 50,
+          //                       ),
+          //                     ),
+          //                   ),
+          //                   title: Text(data.title),
+          //                   subtitle: Text(data.description),
+          //                   onTap: () {
+          //                     title = data.title;
+          //                     content = data.description;
+          //                     creator = data.sourceId;
+          //                     pubDate = data.pubDate;
+          //                     Navigator.of(context).push(
+          //                       MaterialPageRoute(
+          //                         builder: (context) => NewsPage(title,
+          //                             imageurl, content, creator, pubDate),
+          //                       ),
+          //                     );
+          //                   },
+          //                 ),
+          //               ),
+          //             );
+          //           }
+          //         }
+          //       } else {
+          //         return Column(
+          //           children: [
+          //             Text(
+          //               'No Data Available on Server',
+          //               style: TextStyle(
+          //                 fontFamily: 'Muli',
+          //                 fontWeight: FontWeight.bold,
+          //                 fontSize: 26,
+          //                 color: Colors.grey[800],
+          //               ),
+          //             ),
+          //             SizedBox(
+          //               height: 20,
+          //             ),
+          //             Image.asset(
+          //               'assets/images/waiting.png',
+          //               scale: 2.5,
+          //             ),
+          //           ],
+          //         );
+          //       }
+          //       return Center(
+          //         child: CircularProgressIndicator(),
+          //       );
+          //     },
+          //   ),
+          // )
           Container(
             height: height * .59,
-            width: double.infinity,
+            width: width * 1,
             child: FutureBuilder<NewsDataCatagory>(
-              future: _newsDataCatagory,
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  for (int index = 0; index < 5; index++) {
+                future: _newsDataCatagory,
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    int num2 = 0;
+                    int j = num2++;
                     var data = snapshot.data.results[index];
                     var title;
                     var imageurl;
                     var pubDate;
                     var content;
                     var creator;
-                    if (snapshot.data.results[index].keywords[index] != null) {
-                      Container(
-                        child: Card(
+                    if (snapshot.data.results[index].keywords[j] ==
+                            catagoryKeyword ||
+                        snapshot.data.results[index].sourceId ==
+                            catagoryKeyword) {
+                      return ListView.builder(
+                        itemCount: index,
+                        itemBuilder: (context, index) {
+                          return Card(
                             child: ListTile(
-                          leading: Padding(
-                            padding: EdgeInsets.all(5),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(10),
-                              child: Container(
-                                color: Colors.deepOrangeAccent,
-                                height: 50,
-                                width: 50,
+                              leading: Padding(
+                                padding: EdgeInsets.all(5),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(10),
+                                  child: Container(
+                                    color: Colors.deepOrangeAccent,
+                                    height: 50,
+                                    width: 50,
+                                  ),
+                                ),
                               ),
+                              title: Text(data.title),
+                              subtitle: Text(data.description),
+                              onTap: () {
+                                title = data.title;
+                                content = data.description;
+                                creator = data.sourceId;
+                                pubDate = data.pubDate;
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) => NewsPage(title,
+                                        imageurl, content, creator, pubDate),
+                                  ),
+                                );
+                              },
                             ),
-                          ),
-                          title: Text(data.title),
-                          subtitle: Text(data.description),
-                          onTap: () {
-                            title = data.title;
-                            content = data.description;
-                            creator = data.sourceId;
-                            pubDate = data.pubDate;
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) => NewsPage(
-                                    title, imageurl, content, creator, pubDate),
-                              ),
-                            );
-                          },
-                        )),
+                          );
+                        },
                       );
                     }
-                  }
-                } else {
-                  return Column(
-                    children: [
-                      Text(
-                        'No Data Available on Server',
-                        style: TextStyle(
+                  } else {
+                    Text(
+                      'Currently NO Data Available !. \n try Again Later',
+                      style: TextStyle(
                           fontFamily: 'Muli',
-                          fontWeight: FontWeight.bold,
                           fontSize: 26,
-                          color: Colors.grey[800],
-                        ),
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Image.asset(
-                        'assets/images/waiting.png',
-                        scale: 2.5,
-                      ),
-                    ],
-                  );
-                }
-                return Center(
-                  child: CircularProgressIndicator(),
-                );
-              },
-            ),
-          )
+                          fontWeight: FontWeight.bold),
+                    );
+                  }
+                  return Center(child: CircularProgressIndicator.adaptive());
+                }),
+          ),
         ],
       ),
     );
