@@ -3,34 +3,32 @@ import 'package:enewspaper/news_page.dart';
 import 'package:enewspaper/newsdata.dart';
 import 'package:flutter/material.dart';
 
-class CatagoryMainPage extends StatefulWidget {
+class MediaCatagoryMainPage extends StatefulWidget {
   final String catagoryKeyword;
   final String imageUrl;
-  CatagoryMainPage(this.catagoryKeyword, this.imageUrl);
+  MediaCatagoryMainPage(this.catagoryKeyword, this.imageUrl);
+
   @override
-  _CatagoryMainPageState createState() =>
-      _CatagoryMainPageState(catagoryKeyword, imageUrl);
+  _MediaCatagoryMainPageState createState() =>
+      _MediaCatagoryMainPageState(catagoryKeyword, imageUrl);
 }
 
-class _CatagoryMainPageState extends State<CatagoryMainPage> {
-  final String catagoryKeyword;
+class _MediaCatagoryMainPageState extends State<MediaCatagoryMainPage> {
+  Future<NewsData> _newsData;
   final String imageUrl;
-  _CatagoryMainPageState(this.catagoryKeyword, this.imageUrl);
+  final String catagoryKeyword;
 
-  Future<NewsData> _newsMedia;
+  _MediaCatagoryMainPageState(this.catagoryKeyword, this.imageUrl);
+
   void initState() {
-    if (catagoryKeyword == 'business') {
-      _newsMedia = APIData_Manager().fetchBusinessNews();
-    } else if (catagoryKeyword == 'sports') {
-      _newsMedia = APIData_Manager().fetchSportsNews();
-    } else if (catagoryKeyword == 'entertainment') {
-      _newsMedia = APIData_Manager().fetchEntertainmentNews();
-    } else if (catagoryKeyword == 'currentaffairs') {
-      _newsMedia = APIData_Manager().fetchNewsData();
-    } else if (catagoryKeyword == 'technology') {
-      _newsMedia = APIData_Manager().fetchTechnologyNews();
-    } else if (catagoryKeyword == 'politics') {
-      _newsMedia = APIData_Manager().fetchPoliticsNews();
+    if (catagoryKeyword == 'indiatoday') {
+      _newsData = APIData_Manager().fetchMedia1News();
+    } else if (catagoryKeyword == 'thehansindia') {
+      _newsData = APIData_Manager().fetchMedia2News();
+    } else if (catagoryKeyword == 'indianexpress') {
+      _newsData = APIData_Manager().fetchMedia3News();
+    } else if (catagoryKeyword == 'hindustantimes') {
+      _newsData = APIData_Manager().fetchMedia4News();
     }
     super.initState();
   }
@@ -59,21 +57,23 @@ class _CatagoryMainPageState extends State<CatagoryMainPage> {
             height: 20,
           ),
           Container(
-            width: width * 1,
             height: height * .59,
+            width: width * 1,
             child: FutureBuilder<NewsData>(
-              future: _newsMedia,
+              future: _newsData,
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   return ListView.builder(
-                      itemCount: 10,
-                      itemBuilder: (context, index) {
-                        var data = snapshot.data.results[index];
-                        var title;
-                        var imageurl;
-                        var pubDate;
-                        var content;
-                        var creator;
+                    itemCount: 10,
+                    itemBuilder: (context, index) {
+                      var data = snapshot.data.results[index];
+                      var title;
+                      var imageurl;
+                      var pubDate;
+                      var content;
+                      var creator;
+                      if (snapshot.data.results[index].sourceId ==
+                          catagoryKeyword) {
                         return Card(
                           elevation: 10,
                           child: ListTile(
@@ -84,7 +84,7 @@ class _CatagoryMainPageState extends State<CatagoryMainPage> {
                                 child: Container(
                                   height: 100,
                                   width: 50,
-                                  // color: Colors.deepOrangeAccent,
+                                  // color: Colors.deepOrangeAccent
                                   child: data.imageUrl != null
                                       ? Image.network(
                                           '${data.imageUrl}',
@@ -101,12 +101,11 @@ class _CatagoryMainPageState extends State<CatagoryMainPage> {
                             subtitle: Text(data.description),
                             selectedTileColor: Colors.grey,
                             onTap: () {
-                              title = data.description;
+                              title = data.title;
                               content = data.description;
                               creator = data.sourceId;
-                              imageurl = data.imageUrl;
                               pubDate = data.pubDate;
-
+                              imageurl = data.imageUrl;
                               Navigator.of(context).push(
                                 MaterialPageRoute(
                                   builder: (context) => NewsPage(title,
@@ -116,10 +115,12 @@ class _CatagoryMainPageState extends State<CatagoryMainPage> {
                             },
                           ),
                         );
-                      });
-                } else {
-                  print('${snapshot.error}');
-                }
+                      } else {
+                        return Text('NO Data Available');
+                      }
+                    },
+                  );
+                } else {}
                 return Center(child: CircularProgressIndicator());
               },
             ),

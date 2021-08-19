@@ -1,4 +1,5 @@
-import 'package:enewspaper/CatagoryMainPage.dart';
+import 'package:enewspaper/catagoryMainPage.dart';
+import 'package:enewspaper/mediaCatagoryMainPage.dart';
 import 'package:flutter/material.dart';
 
 class CatagoryPage extends StatefulWidget {
@@ -87,7 +88,7 @@ class _CatagoryPageState extends State<CatagoryPage> {
               }),
               catagoryImages(height, width, 'assets/images/Entertainment.jpg',
                   'Entertainment', '', () {
-                String catagoryKeyword = 'Entertainment';
+                String catagoryKeyword = 'entertainment';
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => CatagoryMainPage(
                         catagoryKeyword, 'assets/images/Entertainment.jpg')));
@@ -131,14 +132,14 @@ class _CatagoryPageState extends State<CatagoryPage> {
                   'India Today', '', () {
                 String catagoryKeyword = 'indiatoday';
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => CatagoryMainPage(
+                    builder: (context) => MediaCatagoryMainPage(
                         catagoryKeyword, 'assets/images/India-Today.jpg')));
               }),
               catagoryImages(height, width, 'assets/images/Hindustan-Times.jpg',
                   'Hindustan Times', '', () {
-                String catagoryKeyword = 'hindsutantime';
+                String catagoryKeyword = 'hindsutantimes';
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => CatagoryMainPage(
+                    builder: (context) => MediaCatagoryMainPage(
                           catagoryKeyword,
                           'assets/images/Hindustan-Times.jpg',
                         )));
@@ -152,7 +153,7 @@ class _CatagoryPageState extends State<CatagoryPage> {
                   'Indian Express', '', () {
                 String catagoryKeyword = 'indianexpress';
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => CatagoryMainPage(
+                    builder: (context) => MediaCatagoryMainPage(
                           catagoryKeyword,
                           'assets/images/IndianExpress.jpg',
                         )));
@@ -161,7 +162,7 @@ class _CatagoryPageState extends State<CatagoryPage> {
                   'The Hans India', '', () {
                 String catagoryKeyword = 'thehansindia';
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => CatagoryMainPage(
+                    builder: (context) => MediaCatagoryMainPage(
                         catagoryKeyword, 'assets/images/TheHansIndia.jpg')));
               }),
             ],

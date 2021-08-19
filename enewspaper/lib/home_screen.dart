@@ -1,5 +1,5 @@
-import 'package:enewspaper/CatagoryMainPage.dart';
 import 'package:enewspaper/apidata_manager.dart';
+import 'package:enewspaper/catagoryMainPage.dart';
 import 'package:enewspaper/catagorypage.dart';
 import 'package:enewspaper/news_page.dart';
 import 'package:enewspaper/newsdata.dart';
@@ -133,53 +133,6 @@ class _HomeScreenState extends State {
     );
   }
 
-  // Row catagorySection(String catagoryImage, String title, String subtitle) {
-  //   return Row(
-  //     children: [
-  //       SizedBox(
-  //         height: 100,
-  //         width: 242,
-  //         child: ClipRRect(
-  //           borderRadius: BorderRadius.circular(20),
-  //           child: Stack(children: [
-  //             Image.asset(
-  //               catagoryImage,
-  //               fit: BoxFit.fill,
-  //             ),
-  //             Container(
-  //               decoration: BoxDecoration(
-  //                 gradient: LinearGradient(colors: [
-  //                   Color(0xFF343434).withOpacity(0.4),
-  //                   Color(0xFF343434).withOpacity(0.15)
-  //                 ]),
-  //               ),
-  //             ),
-  //             Padding(
-  //               padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-  //               child: Text.rich(
-  //                 TextSpan(children: [
-  //                   TextSpan(
-  //                       style: TextStyle(
-  //                           fontSize: 18,
-  //                           fontWeight: FontWeight.bold,
-  //                           color: Colors.white),
-  //                       text: title),
-  //                   TextSpan(
-  //                       style: TextStyle(
-  //                           fontSize: 16,
-  //                           fontWeight: FontWeight.bold,
-  //                           color: Colors.white),
-  //                       text: subtitle),
-  //                 ]),
-  //               ),
-  //             ),
-  //           ]),
-  //         ),
-  //       ),
-  //     ],
-  //   );
-  // }
-
   SingleChildScrollView newsViewerSection(double height, double width) {
     return SingleChildScrollView(
       child: Container(
@@ -199,12 +152,16 @@ class _HomeScreenState extends State {
                           leading: ClipRRect(
                             borderRadius: BorderRadius.circular(20),
                             child: Container(
-                              color: Colors.deepOrangeAccent,
-                              height: height * .1,
-                              width: width * 0.3,
-                              // child: Image.network(
-                              // snapshot.data.results[index].imageUrl),
-                            ),
+                                // color: Colors.deepOrangeAccent,
+                                height: height * .1,
+                                width: width * 0.3,
+                                child: snapshot.data.results[index].imageUrl !=
+                                        null
+                                    ? Image.network(
+                                        snapshot.data.results[index].imageUrl,
+                                        fit: BoxFit.scaleDown,
+                                      )
+                                    : Image.asset('assets/images/noimg.png')),
                           ),
                           title: Text(snapshot.data.results[index].title),
                           subtitle:
