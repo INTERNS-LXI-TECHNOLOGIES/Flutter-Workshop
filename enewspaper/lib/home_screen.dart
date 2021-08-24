@@ -20,7 +20,7 @@ class _HomeScreenState extends State {
   var title;
 
   void initState() {
-    _newsData = APIData_Manager().fetchNewsData();
+    _newsData = ApiDataManager().fetchNewsData();
     super.initState();
   }
 
@@ -54,7 +54,7 @@ class _HomeScreenState extends State {
               ),
               SizedBox(height: 20),
               hotNewsSection(width, context),
-              SizedBox(height: 10),
+              // SizedBox(height: 10),
               Container(
                 height: height * .2,
                 child: SingleChildScrollView(
@@ -175,8 +175,8 @@ class _HomeScreenState extends State {
       child: Row(
         children: [
           SizedBox(
-            height: 100,
-            width: 242,
+            height: MediaQuery.of(context).copyWith().size.height * .1,
+            width: MediaQuery.of(context).copyWith().size.width * .5,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
               child: Stack(children: [

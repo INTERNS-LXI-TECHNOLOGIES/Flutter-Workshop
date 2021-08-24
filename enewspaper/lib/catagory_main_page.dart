@@ -19,7 +19,7 @@ class _CatagoryMainPageState extends State<CatagoryMainPage> {
 
   Future<NewsData> _newsData;
   void initState() {
-    _newsData = APIData_Manager().fetchCatagoryNewsData(catagoryKeyword);
+    _newsData = ApiDataManager().fetchNewsDataByCatagory(catagoryKeyword);
 
     super.initState();
   }

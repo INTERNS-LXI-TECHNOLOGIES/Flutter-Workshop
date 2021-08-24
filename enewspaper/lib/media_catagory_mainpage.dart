@@ -21,7 +21,7 @@ class _MediaCatagoryMainPageState extends State<MediaCatagoryMainPage> {
   _MediaCatagoryMainPageState(this.catagoryKeyword, this.imageUrl);
 
   void initState() {
-    _newsData = APIData_Manager().fetchMediaNewsData(catagoryKeyword);
+    _newsData = ApiDataManager().fetchNewsDataByMedia(catagoryKeyword);
     super.initState();
   }
 

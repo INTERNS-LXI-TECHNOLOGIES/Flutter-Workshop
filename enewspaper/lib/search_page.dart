@@ -15,7 +15,7 @@ class _SearchPageState extends State<SearchPage> {
   _SearchPageState(this.searchText);
   Future _newsData;
   void initState() {
-    _newsData = APIData_Manager().fetchSearchData(searchText);
+    _newsData = ApiDataManager().fetchNewsDataBySearch(searchText);
     super.initState();
   }
 
