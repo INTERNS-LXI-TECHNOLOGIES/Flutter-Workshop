@@ -23,6 +23,7 @@ environment:
 dependencies:
   intl: ^0.17.0
   http: ^0.13.3
+  material_floating_search_bar: ^0.2.6
   flutter:
     sdk: flutter
 
@@ -65,6 +66,7 @@ flutter:
     - assets/images/TheHansIndia.jpg
     - assets/images/waiting.png
     - assets/images/noimg.png
+    - assets/images/enews_logo.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
