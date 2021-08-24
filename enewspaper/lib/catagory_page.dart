@@ -1,5 +1,5 @@
-import 'package:enewspaper/catagoryMainPage.dart';
-import 'package:enewspaper/mediaCatagoryMainPage.dart';
+import 'package:enewspaper/catagory_main_page.dart';
+import 'package:enewspaper/media_catagory_mainpage.dart';
 import 'package:flutter/material.dart';
 
 class CatagoryPage extends StatefulWidget {

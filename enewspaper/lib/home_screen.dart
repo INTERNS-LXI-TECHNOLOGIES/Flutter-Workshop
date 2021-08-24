@@ -1,9 +1,9 @@
 import 'package:enewspaper/apidata_manager.dart';
-import 'package:enewspaper/catagoryMainPage.dart';
-import 'package:enewspaper/catagorypage.dart';
+import 'package:enewspaper/catagory_main_page.dart';
+import 'package:enewspaper/catagory_page.dart';
 import 'package:enewspaper/news_page.dart';
 import 'package:enewspaper/newsdata.dart';
-import 'package:enewspaper/searchPage.dart';
+import 'package:enewspaper/search_page.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -53,7 +53,7 @@ class _HomeScreenState extends State {
                 ],
               ),
               SizedBox(height: 20),
-              hotNewstitleSection(),
+              hotNewsSection(width, context),
               SizedBox(height: 10),
               Container(
                 height: height * .2,
@@ -95,6 +95,41 @@ class _HomeScreenState extends State {
             ],
           ),
         )),
+      ),
+    );
+  }
+
+  Container hotNewsSection(double width, BuildContext context) {
+    return Container(
+      width: width * 1,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Padding(
+            padding: EdgeInsets.only(left: 20),
+            child: Row(
+              children: [
+                Text('HotNews'),
+                Padding(
+                  padding: EdgeInsets.only(right: 20),
+                  child: Icon(
+                    Icons.whatshot,
+                    color: Colors.redAccent,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          GestureDetector(
+              onTap: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => CatagoryPage()));
+              },
+              child: Padding(
+                padding: const EdgeInsets.only(right: 20),
+                child: Text('See More!'),
+              )),
+        ],
       ),
     );
   }
@@ -184,89 +219,70 @@ class _HomeScreenState extends State {
     );
   }
 
-  SingleChildScrollView newsViewerSection(double height, double width) {
-    return SingleChildScrollView(
-      child: Container(
-        height: height * 0.4,
-        child: FutureBuilder<NewsData>(
-          future: _newsData,
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              return ListView.builder(
-                  itemCount: 10,
-                  itemBuilder: (context, index) {
-                    return Container(
-                      child: Card(
-                        elevation: 5,
-                        // margin: EdgeInsets.all(5),
-                        child: ListTile(
-                          leading: ClipRRect(
-                            borderRadius: BorderRadius.circular(20),
-                            child: Container(
-                                // color: Colors.deepOrangeAccent,
-                                height: height * .1,
-                                width: width * 0.3,
-                                child: snapshot.data.results[index].imageUrl !=
-                                        null
-                                    ? Image.network(
-                                        snapshot.data.results[index].imageUrl,
-                                        fit: BoxFit.scaleDown,
-                                      )
-                                    : Image.asset('assets/images/noimg.png')),
-                          ),
-                          title: Text(snapshot.data.results[index].title),
-                          subtitle:
-                              Text(snapshot.data.results[index].description),
-                          onTap: () {
-                            var newsData = snapshot.data.results[index];
-                            image = newsData.imageUrl;
-                            title = newsData.title;
-                            pubDate = newsData.pubDate;
-
-                            creator = newsData.sourceId;
-                            content = newsData.description;
-
-                            return Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => NewsPage(
-                                    title, image, content, creator, pubDate)));
-                          },
-                        ),
-                      ),
-                    );
-                  });
-            } else {
-              print('${snapshot.error}');
-            }
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          },
-        ),
-      ),
-    );
-  }
-
-  Container hotNewstitleSection() {
+  Container newsViewerSection(double height, double width) {
     return Container(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Padding(padding: EdgeInsets.only(left: 10), child: Text('HotNews')),
-          Padding(
-            padding: EdgeInsets.only(right: 220),
-            child: Icon(
-              Icons.whatshot,
-              color: Colors.redAccent,
-            ),
-          ),
-          GestureDetector(
-            onTap: () {
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => CatagoryPage()));
-            },
-            child: Text('See More!'),
-          ),
-        ],
+      height: height * 0.72,
+      child: FutureBuilder<NewsData>(
+        future: _newsData,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return ListView.builder(
+                itemCount: 10,
+                itemBuilder: (context, index) {
+                  return Container(
+                    child: Card(
+                      elevation: 5,
+                      // margin: EdgeInsets.all(5),
+                      child: ListTile(
+                        leading: ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
+                          child: Container(
+                              // color: Colors.deepOrangeAccent,
+                              height: height * .1,
+                              width: width * 0.3,
+                              child:
+                                  snapshot.data.results[index].imageUrl != null
+                                      ? Image.network(
+                                          snapshot.data.results[index].imageUrl,
+                                          fit: BoxFit.scaleDown,
+                                        )
+                                      : Image.asset('assets/images/noimg.png')),
+                        ),
+                        title: Text(snapshot.data.results[index].title),
+                        subtitle: Text(
+                            snapshot.data.results[index].description != null
+                                ? snapshot.data.results[index].description
+                                            .length >
+                                        100
+                                    ? snapshot.data.results[index].description
+                                            .substring(0, 100) +
+                                        '...'
+                                    : snapshot.data.results[index].description
+                                : ''),
+                        onTap: () {
+                          var newsData = snapshot.data.results[index];
+                          image = newsData.imageUrl;
+                          title = newsData.title;
+                          pubDate = newsData.pubDate;
+
+                          creator = newsData.sourceId;
+                          content = newsData.description;
+
+                          return Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => NewsPage(
+                                  title, image, content, creator, pubDate)));
+                        },
+                      ),
+                    ),
+                  );
+                });
+          } else {
+            print('${snapshot.error}');
+          }
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        },
       ),
     );
   }

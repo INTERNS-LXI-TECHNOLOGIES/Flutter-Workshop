@@ -21,15 +21,7 @@ class _MediaCatagoryMainPageState extends State<MediaCatagoryMainPage> {
   _MediaCatagoryMainPageState(this.catagoryKeyword, this.imageUrl);
 
   void initState() {
-    if (catagoryKeyword == 'indiatoday') {
-      _newsData = APIData_Manager().fetchMedia1News();
-    } else if (catagoryKeyword == 'thehansindia') {
-      _newsData = APIData_Manager().fetchMedia2News();
-    } else if (catagoryKeyword == 'indianexpress') {
-      _newsData = APIData_Manager().fetchMedia3News();
-    } else if (catagoryKeyword == 'hindustantimes') {
-      _newsData = APIData_Manager().fetchMedia4News();
-    }
+    _newsData = APIData_Manager().fetchMediaNewsData(catagoryKeyword);
     super.initState();
   }
 
@@ -84,7 +76,6 @@ class _MediaCatagoryMainPageState extends State<MediaCatagoryMainPage> {
                                 child: Container(
                                   height: 100,
                                   width: 50,
-                                  // color: Colors.deepOrangeAccent
                                   child: data.imageUrl != null
                                       ? Image.network(
                                           '${data.imageUrl}',

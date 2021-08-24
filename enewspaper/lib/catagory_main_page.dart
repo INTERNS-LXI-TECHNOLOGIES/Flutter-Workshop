@@ -17,21 +17,10 @@ class _CatagoryMainPageState extends State<CatagoryMainPage> {
   final String imageUrl;
   _CatagoryMainPageState(this.catagoryKeyword, this.imageUrl);
 
-  Future<NewsData> _newsMedia;
+  Future<NewsData> _newsData;
   void initState() {
-    if (catagoryKeyword == 'business') {
-      _newsMedia = APIData_Manager().fetchBusinessNews();
-    } else if (catagoryKeyword == 'sports') {
-      _newsMedia = APIData_Manager().fetchSportsNews();
-    } else if (catagoryKeyword == 'entertainment') {
-      _newsMedia = APIData_Manager().fetchEntertainmentNews();
-    } else if (catagoryKeyword == 'currentaffairs') {
-      _newsMedia = APIData_Manager().fetchNewsData();
-    } else if (catagoryKeyword == 'technology') {
-      _newsMedia = APIData_Manager().fetchTechnologyNews();
-    } else if (catagoryKeyword == 'politics') {
-      _newsMedia = APIData_Manager().fetchPoliticsNews();
-    }
+    _newsData = APIData_Manager().fetchCatagoryNewsData(catagoryKeyword);
+
     super.initState();
   }
 
@@ -62,7 +51,7 @@ class _CatagoryMainPageState extends State<CatagoryMainPage> {
             width: width * 1,
             height: height * .59,
             child: FutureBuilder<NewsData>(
-              future: _newsMedia,
+              future: _newsData,
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   return ListView.builder(
@@ -84,7 +73,6 @@ class _CatagoryMainPageState extends State<CatagoryMainPage> {
                                 child: Container(
                                   height: 100,
                                   width: 50,
-                                  // color: Colors.deepOrangeAccent,
                                   child: data.imageUrl != null
                                       ? Image.network(
                                           '${data.imageUrl}',
@@ -98,7 +86,17 @@ class _CatagoryMainPageState extends State<CatagoryMainPage> {
                               ),
                             ),
                             title: Text(data.title),
-                            subtitle: Text(data.description),
+                            subtitle: Text(snapshot
+                                        .data.results[index].description !=
+                                    null
+                                ? snapshot.data.results[index].description
+                                            .length >
+                                        100
+                                    ? snapshot.data.results[index].description
+                                            .substring(0, 100) +
+                                        '...'
+                                    : snapshot.data.results[index].description
+                                : ''),
                             selectedTileColor: Colors.grey,
                             onTap: () {
                               title = data.description;
