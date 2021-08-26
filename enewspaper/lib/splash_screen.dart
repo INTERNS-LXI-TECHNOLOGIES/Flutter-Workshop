@@ -83,7 +83,7 @@ class _BodyState extends State<Body> {
               ),
             ),
             Expanded(
-              flex: 2,
+              flex: 1,
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20),
                 child: Column(children: <Widget>[
@@ -95,7 +95,7 @@ class _BodyState extends State<Body> {
                     ),
                   ),
                   Spacer(
-                    flex: 3,
+                    flex: 2,
                   ),
                   SizedBox(
                     width: double.infinity,

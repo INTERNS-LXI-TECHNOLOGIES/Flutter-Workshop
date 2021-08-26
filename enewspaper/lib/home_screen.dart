@@ -52,45 +52,37 @@ class _HomeScreenState extends State {
                   searchBar(width, context)
                 ],
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 10),
               hotNewsSection(width, context),
-              // SizedBox(height: 10),
               Container(
-                height: height * .2,
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      SizedBox(
-                        width: 20,
-                      ),
-                      catagorySection(context, 'sports',
-                          'assets/images/Sports.jpg', 'Sports', ''),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      catagorySection(
-                          context,
-                          'entertainment',
-                          'assets/images/Entertainment.jpg',
-                          'Entertainment',
-                          ''),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      catagorySection(context, 'business',
-                          'assets/images/business.jpg', 'Business', ''),
-                      SizedBox(
-                        width: 20,
-                      ),
-                    ],
-                  ),
+                height: height * .1,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    SizedBox(
+                      width: 20,
+                    ),
+                    catagorySection(context, 'sports',
+                        'assets/images/Sports.jpg', 'Sports', ''),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    catagorySection(context, 'entertainment',
+                        'assets/images/Entertainment.jpg', 'Entertainment', ''),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    catagorySection(context, 'business',
+                        'assets/images/business.jpg', 'Business', ''),
+                    SizedBox(
+                      width: 10,
+                    ),
+                  ],
                 ),
               ),
-              SizedBox(
-                height: 20,
-              ),
+              // SizedBox(
+              //   height: 1,
+              // ),
               newsViewerSection(height, width),
             ],
           ),
@@ -175,14 +167,14 @@ class _HomeScreenState extends State {
       child: Row(
         children: [
           SizedBox(
-            height: MediaQuery.of(context).copyWith().size.height * .1,
-            width: MediaQuery.of(context).copyWith().size.width * .5,
+            height: MediaQuery.of(context).copyWith().size.height * .06,
+            width: MediaQuery.of(context).copyWith().size.width * .27,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
               child: Stack(children: [
                 Image.asset(
                   catagoryImage,
-                  fit: BoxFit.fill,
+                  fit: BoxFit.fitHeight,
                 ),
                 Container(
                   decoration: BoxDecoration(
@@ -198,7 +190,7 @@ class _HomeScreenState extends State {
                     TextSpan(children: [
                       TextSpan(
                           style: TextStyle(
-                              fontSize: 18,
+                              fontSize: 15,
                               fontWeight: FontWeight.bold,
                               color: Colors.white),
                           text: catagorytitle),
@@ -221,7 +213,7 @@ class _HomeScreenState extends State {
 
   Container newsViewerSection(double height, double width) {
     return Container(
-      height: height * 0.72,
+      height: height * 0.82,
       child: FutureBuilder<NewsData>(
         future: _newsData,
         builder: (context, snapshot) {
@@ -293,7 +285,7 @@ class _HomeScreenState extends State {
         children: [
           Container(
             margin: EdgeInsets.only(left: 20),
-            height: height * 0.15,
+            height: height * 0.1,
             width: width * .3,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
