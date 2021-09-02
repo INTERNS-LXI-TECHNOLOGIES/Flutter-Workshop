@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:recharge_app/screens/home_screen.dart';
+import 'package:recharge_app/screens/main_screen.dart';
 // import 'package:splashscreen/splashscreen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -14,7 +14,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Timer(
         Duration(seconds: 2),
         () => Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => HomeScreen(),
+              builder: (context) => MainScreen(),
             )));
   }
 
