@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:recharge_app/screens/recharge_screen.dart';
 
 class TariffPlanScreen extends StatefulWidget {
   final String operatorName;
@@ -55,6 +57,31 @@ class _TariffPlanScreenState extends State<TariffPlanScreen> {
                 children: [
                   SizedBox(
                     height: 20,
+                  ),
+                  Card(
+                    child: GestureDetector(
+                      onTap: () {
+                        RechargeScreen();
+                      },
+                      child: ListTile(
+                        leading: CircleAvatar(
+                          backgroundColor: Colors.amber[500],
+                          radius: 30,
+                          child: Padding(
+                            padding: EdgeInsets.all(6),
+                            child: FittedBox(
+                              child: Text(
+                                '\u{20B9} 365',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ),
+                          ),
+                        ),
+                        title: Text('Title'),
+                        subtitle: Text('validity'),
+                        contentPadding: EdgeInsets.all(10),
+                      ),
+                    ),
                   ),
                 ],
               ),

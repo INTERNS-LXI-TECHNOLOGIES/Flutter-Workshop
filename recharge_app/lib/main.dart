@@ -14,6 +14,11 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         body: SplashScreen(),
       ),
+      theme: ThemeData(
+        canvasColor: Colors.yellow,
+        cursorColor: Colors.yellow,
+        // bannerTheme: MaterialBannerTheme.of(context).
+      ),
     );
   }
 }

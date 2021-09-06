@@ -34,6 +34,11 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  razorpay_flutter: ^1.2.3
+  toast: ^0.1.5
+  contacts_service: ^0.6.1
+
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
