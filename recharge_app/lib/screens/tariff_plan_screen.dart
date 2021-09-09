@@ -1,6 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:recharge_app/screens/recharge_screen.dart';
+import 'package:recharge_app/screens/home_screen.dart';
+
+import 'package:recharge_app/services/recharge_plan_api.dart';
+import 'package:recharge_app/services/recharge_plan_data.dart';
+
+// import 'package:recharge_app/screens/recharge_screen.dart';
 
 class TariffPlanScreen extends StatefulWidget {
   final String operatorName;
@@ -13,6 +18,13 @@ class TariffPlanScreen extends StatefulWidget {
 class _TariffPlanScreenState extends State<TariffPlanScreen> {
   final String operatorName;
   _TariffPlanScreenState(this.operatorName);
+  Future<RechargePlanData> _operatorPlans;
+  var operatorCode;
+  void initState() {
+    super.initState();
+    _operatorPlans = RechargeApi().fetchOperatorPlanDetails(operatorCode);
+  }
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -58,31 +70,39 @@ class _TariffPlanScreenState extends State<TariffPlanScreen> {
                   SizedBox(
                     height: 20,
                   ),
-                  Card(
-                    child: GestureDetector(
-                      onTap: () {
-                        RechargeScreen();
-                      },
-                      child: ListTile(
-                        leading: CircleAvatar(
-                          backgroundColor: Colors.amber[500],
-                          radius: 30,
-                          child: Padding(
-                            padding: EdgeInsets.all(6),
-                            child: FittedBox(
-                              child: Text(
-                                '\u{20B9} 365',
-                                style: TextStyle(color: Colors.white),
+                  FutureBuilder(
+                    builder: (context, snapshot) {
+                      return ListView.builder(
+                        itemBuilder: (context, index) {
+                          return Card(
+                            child: GestureDetector(
+                              onTap: () {
+                                HomeScreen();
+                              },
+                              child: ListTile(
+                                leading: CircleAvatar(
+                                  backgroundColor: Colors.amber[500],
+                                  radius: 30,
+                                  child: Padding(
+                                    padding: EdgeInsets.all(6),
+                                    child: FittedBox(
+                                      child: Text(
+                                        '\u{20B9} 365',
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                title: Text('${snapshot.data}'),
+                                subtitle: Text('validity'),
+                                contentPadding: EdgeInsets.all(10),
                               ),
                             ),
-                          ),
-                        ),
-                        title: Text('Title'),
-                        subtitle: Text('validity'),
-                        contentPadding: EdgeInsets.all(10),
-                      ),
-                    ),
-                  ),
+                          );
+                        },
+                      );
+                    },
+                  )
                 ],
               ),
             ),

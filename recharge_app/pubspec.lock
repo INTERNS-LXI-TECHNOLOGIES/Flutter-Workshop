@@ -44,7 +44,7 @@ packages:
     source: hosted
     version: "1.15.0"
   contacts_service:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: contacts_service
       url: "https://pub.dartlang.org"
@@ -131,7 +131,7 @@ packages:
     source: hosted
     version: "3.0.1"
   razorpay_flutter:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: razorpay_flutter
       url: "https://pub.dartlang.org"
@@ -192,7 +192,7 @@ packages:
     source: hosted
     version: "0.4.2"
   toast:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: toast
       url: "https://pub.dartlang.org"

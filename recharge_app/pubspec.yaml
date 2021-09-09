@@ -25,6 +25,9 @@ dependencies:
     sdk: flutter
   splashscreen: ^1.3.5
   http: ^0.13.3
+  razorpay_flutter: ^1.2.3
+  toast: ^0.1.5
+  contacts_service: ^0.6.1
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -34,9 +37,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  razorpay_flutter: ^1.2.3
-  toast: ^0.1.5
-  contacts_service: ^0.6.1
+  
+  
 
 
 
