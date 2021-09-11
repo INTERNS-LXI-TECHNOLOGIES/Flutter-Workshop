@@ -28,6 +28,8 @@ dependencies:
   razorpay_flutter: ^1.2.3
   toast: ^0.1.5
   contacts_service: ^0.6.1
+  permission_handler: ^8.1.4+2
+  dio: ^4.0.0
 
 
   # The following adds the Cupertino Icons font to your application.

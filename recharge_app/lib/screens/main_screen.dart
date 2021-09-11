@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recharge_app/screens/contactspage.dart';
 import 'package:recharge_app/screens/home_screen.dart';
+import 'package:recharge_app/screens/sample.dart';
 import 'package:recharge_app/screens/tariff_plan_screen.dart';
 
 class MainScreen extends StatefulWidget {
@@ -10,7 +11,7 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   int _currentIndex = 0;
-  final tabs = [HomeScreen(), TariffPlanScreen(''), ContactPage()];
+  final tabs = [HomeScreen(), TariffPlanScreen(''), Sample()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(

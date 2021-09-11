@@ -1,132 +1,65 @@
-import 'dart:convert';
+class RechargeApiData {
+  bool _success;
+  String _hitCredit;
+  String _apiStarted;
+  String _apiExpiry;
+  String _operator;
+  String _circle;
+  String _message;
 
-RechargePlanData rechargePlanDataFromJson(String str) =>
-    RechargePlanData.fromJson(json.decode(str));
+  RechargeApiData({
+    bool success,
+    String hitCredit,
+    String apiStarted,
+    String apiExpiry,
+    String operator,
+    String circle,
+    String message,
+  }) {
+    this._success = success;
+    this._hitCredit = hitCredit;
+    this._apiStarted = apiStarted;
+    this._apiExpiry = apiExpiry;
+    this._operator = operator;
+    this._circle = circle;
+    this._message = message;
+  }
 
-String rechargePlanDataToJson(RechargePlanData data) =>
-    json.encode(data.toJson());
+  bool get success => _success;
+  set success(bool success) => _success = success;
+  String get hitCredit => _hitCredit;
+  set hitCredit(String hitCredit) => _hitCredit = hitCredit;
+  String get apiStarted => _apiStarted;
+  set apiStarted(String apiStarted) => _apiStarted = apiStarted;
+  String get apiExpiry => _apiExpiry;
+  set apiExpiry(String apiExpiry) => _apiExpiry = apiExpiry;
+  String get operator => _operator;
+  set operator(String operator) => _operator = operator;
+  String get circle => _circle;
+  set circle(String circle) => _circle = circle;
+  String get message => _message;
+  set message(String message) => _message = message;
 
-class RechargePlanData {
-  RechargePlanData({
-    this.response,
-  });
+  RechargeApiData.fromJson(Map<String, dynamic> json) {
+    _success = json['success'];
+    _hitCredit = json['hit_credit'];
+    _apiStarted = json['api_started'];
+    _apiExpiry = json['api_expiry'];
+    _operator = json['operator'];
+    _circle = json['circle'];
+    _message = json['message'];
+  }
 
-  List<Response> response;
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['success'] = this._success;
+    data['hit_credit'] = this._hitCredit;
+    data['api_started'] = this._apiStarted;
+    data['api_expiry'] = this._apiExpiry;
+    data['operator'] = this._operator;
+    data['circle'] = this._circle;
+    data['message'] = this._message;
 
-  factory RechargePlanData.fromJson(Map<String, dynamic> json) =>
-      RechargePlanData(
-        response: List<Response>.from(
-            json["response"].map((x) => Response.fromJson(x))),
-      );
-
-  Map<String, dynamic> toJson() => {
-        "response": List<dynamic>.from(response.map((x) => x.toJson())),
-      };
-}
-
-class Response {
-  Response({
-    this.operatorName,
-    this.operatorId,
-    this.serviceType,
-    this.status,
-    this.billFetch,
-    this.bbpsEnabled,
-    this.message,
-    this.description,
-    this.amountMinimum,
-    this.amountMaximum,
-  });
-
-  String operatorName;
-  String operatorId;
-  ServiceType serviceType;
-  String status;
-  BbpsEnabled billFetch;
-  BbpsEnabled bbpsEnabled;
-  String message;
-  String description;
-  String amountMinimum;
-  String amountMaximum;
-
-  factory Response.fromJson(Map<String, dynamic> json) => Response(
-        operatorName: json["operator_name"],
-        operatorId: json["operator_id"],
-        serviceType: serviceTypeValues.map[json["service_type"]],
-        status: json["status"],
-        billFetch: bbpsEnabledValues.map[json["bill_fetch"]],
-        bbpsEnabled: bbpsEnabledValues.map[json["bbps_enabled"]],
-        message: json["message"],
-        description: json["description"],
-        amountMinimum: json["amount_minimum"],
-        amountMaximum: json["amount_maximum"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "operator_name": operatorName,
-        "operator_id": operatorId,
-        "service_type": serviceTypeValues.reverse[serviceType],
-        "status": status,
-        "bill_fetch": bbpsEnabledValues.reverse[billFetch],
-        "bbps_enabled": bbpsEnabledValues.reverse[bbpsEnabled],
-        "message": message,
-        "description": description,
-        "amount_minimum": amountMinimum,
-        "amount_maximum": amountMaximum,
-      };
-}
-
-enum BbpsEnabled { NO, YES, EMPTY }
-
-final bbpsEnabledValues = EnumValues(
-    {"": BbpsEnabled.EMPTY, "NO": BbpsEnabled.NO, "YES": BbpsEnabled.YES});
-
-enum ServiceType {
-  PREPAID,
-  DTH,
-  POSTPAID,
-  DATACARD,
-  ELC,
-  MONEY_TRANSFER,
-  PAN,
-  GAS,
-  WATER,
-  LANDLINE,
-  BROADBAND,
-  INSURANCE,
-  SERVICE_TYPE_GAS,
-  PAYMENTS,
-  FASTAG
-}
-
-final serviceTypeValues = EnumValues({
-  "Broadband": ServiceType.BROADBAND,
-  "DATACARD": ServiceType.DATACARD,
-  "DTH": ServiceType.DTH,
-  "ELC": ServiceType.ELC,
-  "Fastag": ServiceType.FASTAG,
-  "GAS": ServiceType.GAS,
-  "Insurance": ServiceType.INSURANCE,
-  "Landline": ServiceType.LANDLINE,
-  "Money Transfer": ServiceType.MONEY_TRANSFER,
-  "PAN": ServiceType.PAN,
-  "PAYMENTS": ServiceType.PAYMENTS,
-  "Postpaid": ServiceType.POSTPAID,
-  "Prepaid": ServiceType.PREPAID,
-  "Gas": ServiceType.SERVICE_TYPE_GAS,
-  "Water": ServiceType.WATER
-});
-
-class EnumValues<T> {
-  Map<String, T> map;
-  Map<T, String> reverseMap;
-
-  EnumValues(this.map);
-
-  Map<T, String> get reverse {
-    if (reverseMap == null) {
-      reverseMap = map.map((k, v) => new MapEntry(v, k));
-    }
-    return reverseMap;
+    return data;
   }
 }
