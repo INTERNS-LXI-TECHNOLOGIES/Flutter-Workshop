@@ -46,27 +46,28 @@ class _ContactPageState extends State<ContactPage> {
 
   Widget build(BuildContext context) {
     return SafeArea(
-        child: Container(
-            // child: Column(
-            //   children: [
-            //     Text('The real Fun begins'),
-            //     ListView.builder(
-            //       shrinkWrap: true,
-            //       itemCount: contact.length,
-            //       itemBuilder: (context, index) {
-            //         return Card(
-            //           child: ListTile(
-            //             leading: CircleAvatar(
-            //               backgroundColor: Colors.amber[900],
-            //             ),
-            //             title: Text(contact[index].displayName),
-            //             subtitle: Text(contact[index].phones.elementAt(0).value),
-            //           ),
-            //         );
-            //       },
-            //     )
-            //   ],
-            // ),
-            ));
+      child: Container(
+          // child: Column(
+          //   children: [
+          //     Text('The real Fun begins'),
+          //     ListView.builder(
+          //       shrinkWrap: true,
+          //       itemCount: contact.length,
+          //       itemBuilder: (context, index) {
+          //         return Card(
+          //           child: ListTile(
+          //             leading: CircleAvatar(
+          //               backgroundColor: Colors.amber[900],
+          //             ),
+          //             title: Text(contact[index].displayName),
+          //             subtitle: Text(contact[index].phones.elementAt(0).value),
+          //           ),
+          //         );
+          //       },
+          //     )
+          //   ],
+          // ),
+          ),
+    );
   }
 }

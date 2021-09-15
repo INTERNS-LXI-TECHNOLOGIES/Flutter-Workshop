@@ -3,6 +3,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:recharge_app/screens/home_screen.dart';
+import 'package:recharge_app/services/recharge_plan_api.dart';
+import 'package:recharge_app/services/recharge_plan_data.dart';
 // import 'package:recharge_app/services/recharge_plan_api.dart';
 // import 'package:recharge_app/services/recharge_plan_data.dart';
 
@@ -19,43 +21,16 @@ class TariffPlanScreen extends StatefulWidget {
 class _TariffPlanScreenState extends State<TariffPlanScreen> {
   final String operatorName;
   _TariffPlanScreenState(this.operatorName);
-  Future _operatorPlans;
+
   var operatorCode;
+  Future<RechargePlanData> _operatorPlans;
   void initState() {
+    _operatorPlans = RechargeApi().fetchRechargePlans();
+
     super.initState();
-    _operatorPlans = fetchRechargePlans();
   }
 
   @override
-  String mockStringData;
-  Future fetchRechargePlans() async {
-    var dio = Dio();
-    final String url =
-        'https://topups.reloadly.com/operators?page=1&size=2&includeBundles=true&includeData=true&includePin=true&simplified=false&suggestedAmounts=true&suggestedAmountsMap=true';
-
-    dio.interceptors.add(InterceptorsWrapper(onRequest: (options, handler) {
-      var headers = {
-        'Accept': 'Application/json',
-        'Authorization': 'Bearer qhl429KPwvPqmVhOkxYE6Z5P72WMZcvz',
-        'Content-Type': 'application/json;charset-UTF-8',
-      };
-
-      options.headers.addAll(headers);
-      handler.next(options);
-      return options.data;
-    }));
-
-    Response response = await dio.get(url);
-    setState(() {
-      mockStringData = response.data;
-    });
-    return response.data;
-  }
-
-  // Future decodeData() async {
-  //   final Map parsedData = json.decode(mockStringData);
-  //   print(parsedData[''][]
-  // }
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
@@ -97,10 +72,11 @@ class _TariffPlanScreenState extends State<TariffPlanScreen> {
               height: height * .8,
               child: Column(
                 children: [
-                  RaisedButton(onPressed: () async {
-                    await fetchRechargePlans().then((value) {
-                      print(value);
-                    });
+                  RaisedButton(onPressed: () {
+                    // await fetchRechargePlans().then((value) {
+                    //   print(value);
+                    // }
+                    //   );
                   }),
                   SizedBox(
                     height: 20,
@@ -108,41 +84,39 @@ class _TariffPlanScreenState extends State<TariffPlanScreen> {
                   FutureBuilder(
                     future: _operatorPlans,
                     builder: (context, snapshot) {
-                      // snapshot.hasData
-                      // ?
-                      ListView.builder(
-                        itemBuilder: (context, index) {
-                          return Card(
-                            child: GestureDetector(
-                              onTap: () {
-                                HomeScreen();
-                              },
-                              child: ListTile(
-                                leading: CircleAvatar(
-                                  backgroundColor: Colors.amber[500],
-                                  radius: 30,
-                                  child: Padding(
-                                    padding: EdgeInsets.all(6),
-                                    child: FittedBox(
-                                      child: Text(
-                                        '\u{20B9} ${snapshot.data}',
-                                        style: TextStyle(color: Colors.white),
+                      snapshot.hasData
+                          ? ListView.builder(
+                              itemBuilder: (context, index) {
+                                return Card(
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      HomeScreen();
+                                    },
+                                    child: ListTile(
+                                      leading: CircleAvatar(
+                                        backgroundColor: Colors.amber[500],
+                                        radius: 30,
+                                        child: Padding(
+                                          padding: EdgeInsets.all(6),
+                                          child: FittedBox(
+                                            child: Text(
+                                              '\u{20B9} ${snapshot.data}',
+                                              style: TextStyle(
+                                                  color: Colors.white),
+                                            ),
+                                          ),
+                                        ),
                                       ),
+                                      title: Text('${snapshot.data}'),
+                                      subtitle: Text('validity'),
+                                      contentPadding: EdgeInsets.all(10),
                                     ),
                                   ),
-                                ),
-                                title: Text('${snapshot.data}'),
-                                subtitle: Text('validity'),
-                                contentPadding: EdgeInsets.all(10),
-                              ),
-                            ),
-                          );
-                        },
-                      );
-                      // :
-                      //  Text('No Data Available');
-                      // return CircularProgressIndicator();
-                      return SizedBox();
+                                );
+                              },
+                            )
+                          : Text('No Data Available');
+                      return CircularProgressIndicator();
                     },
                   )
                 ],

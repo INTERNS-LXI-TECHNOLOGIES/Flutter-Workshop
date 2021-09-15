@@ -1,6 +1,10 @@
+import 'dart:convert';
+import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+// import 'package:recharge_app/services/recharge_plan_api.dart';
+import 'package:recharge_app/services/recharge_plan_data.dart';
 
 class Sample extends StatefulWidget {
   @override
@@ -8,95 +12,70 @@ class Sample extends StatefulWidget {
 }
 
 class _SampleState extends State<Sample> {
-  Dio dio = Dio();
-  // Future postData() async {
-  //   final String pathUrl = 'https://www.kwikapi.com/api/v2/recharge_plans.php';
-  //   var data = {
-  //     'api_key': '4ddf5d-cd6575-4822b1-46c431-a28d4b',
-  //     'state_code': '14',
-  //     'opid': '1'
-  //   };
-  //   var response = await dio.post(pathUrl,
-  //       data: data,
-  //       options: Options(headers: {
-  //         'Content-type': 'application/x-www-form-urlencoded',
-  //         'Accept': 'Application/json'
-  //       }));
-  //   return response.data;
-  // }
-  // void postData() async {
-  //   var headers = {};
-  //   var request = http.MultipartRequest(
-  //       'POST', Uri.parse('https://www.kwikapi.com/api/v2/recharge_plans.php'));
-  //   request.fields.addAll({
-  //     'api_key': '4ddf5d-cd6575-4822b1-46c431-a28d4b',
-  //     'state_code': '1',
-  //     'opid': '1'
-  //   });
+  String mockStringData;
+  List<dynamic> allModel;
+  @override
+  void initState() {
+    getData().whenComplete(() async {
+      await decodeData();
+    });
+    super.initState();
+  }
 
-  //   request.headers.addAll(headers);
-
-  //   http.StreamedResponse response = await request.send();
-
-  //   if (response.statusCode == 200) {
-  //     print(await response.stream.bytesToString());
-  //   } else {
-  //     print(response.reasonPhrase);
-  //   }
-  // }
-  // Future postData() async {
-  //   String url =
-  //       "https://topups.reloadly.com/operators?page=1&size=2&includeBundles=true&includeData=true&includePin=true&simplified=false&suggestedAmounts=true&suggestedAmountsMap=true";
-  //   var request = http.MultipartRequest('GET', Uri.parse(url));
-  //   request.fields.addAll({
-  //     'Authorization': 'Bearer YOUR_ACCESS_TOKEN_HERE',
-  //     'Accept': 'application/com.reloadly.topups-v1+json',
-  //   });
-  //   http.StreamedResponse response = await request.send();
-  //   if (response.statusCode == 200) {
-  //     print(await response.stream.bytesToString());
-  //   } else {
-  //     print(response.reasonPhrase);
-  //   }
-  // }
-
-  Future fetchRechargePlans() async {
-    var mockStringData;
+  Future getData() async {
     var dio = Dio();
-    final String url =
-        'https://topups.reloadly.com/operators?page=1&size=2&includeBundles=true&includeData=true&includePin=true&simplified=false&suggestedAmounts=true&suggestedAmountsMap=true';
-
-    dio.interceptors.add(InterceptorsWrapper(onRequest: (options, handler) {
+    dio.interceptors
+        .add(InterceptorsWrapper(onRequest: (RequestOptions options, handler) {
       var headers = {
-        'Accept': 'Application/json',
-        'Authorization': 'Bearer qhl429KPwvPqmVhOkxYE6Z5P72WMZcvz',
-        'Content-Type': 'application/json;charset-UTF-8',
+        'Authorization':
+            'Bearer eyJraWQiOiIwMDA1YzFmMC0xMjQ3LTRmNmUtYjU2ZC1jM2ZkZDVmMzhhOTIiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI5MDE5IiwiaXNzIjoiaHR0cHM6Ly9yZWxvYWRseS5hdXRoMC5jb20vIiwiaHR0cHM6Ly9yZWxvYWRseS5jb20vc2FuZGJveCI6ZmFsc2UsImh0dHBzOi8vcmVsb2FkbHkuY29tL3ByZXBhaWRVc2VySWQiOiI5MDE5IiwiZ3R5IjoiY2xpZW50LWNyZWRlbnRpYWxzIiwiYXVkIjoiaHR0cHM6Ly90b3B1cHMtaHMyNTYucmVsb2FkbHkuY29tIiwibmJmIjoxNjMxNDY0MDYzLCJhenAiOiI5MDE5Iiwic2NvcGUiOiJzZW5kLXRvcHVwcyByZWFkLW9wZXJhdG9ycyByZWFkLXByb21vdGlvbnMgcmVhZC10b3B1cHMtaGlzdG9yeSByZWFkLXByZXBhaWQtYmFsYW5jZSByZWFkLXByZXBhaWQtY29tbWlzc2lvbnMiLCJleHAiOjE2MzY2NTE2NjMsImh0dHBzOi8vcmVsb2FkbHkuY29tL2p0aSI6ImVhY2M0NzI4LTMyMTktNGNjYS05YzAyLWRkYzdlZmNjN2FlNiIsImlhdCI6MTYzMTQ2NDA2MywianRpIjoiZmQwNDNmYWMtYTVjZi00MmEyLThlMTAtMTllMzM1NjFlMzcwIn0.yddrTkPbolnUYq0dOD9EBRJjTnLoyY_V6U7rEF4rot0',
+        'Accept': 'application/com.reloadly.topups-v1+json',
+        'Content-Type': 'application/json;charset=UTF-8',
       };
-
       options.headers.addAll(headers);
-      handler.next(options);
       return options.data;
     }));
 
-    Response response = await dio.get(url);
+    Response response = await dio.get(
+        'https://topups.reloadly.com/operators?page=1&size=2&includeBundles=true&includeData=true&includePin=true&simplified=false&suggestedAmounts=true&suggestedAmountsMap=true');
     setState(() {
-      mockStringData = response.data;
+      mockStringData = response.toString();
     });
     return response.data;
   }
 
-  @override
+  Future decodeData() async {
+    final Map parsedData = await json.decode(mockStringData);
+    setState(() {
+      allModel = parsedData['id']['geographicalRechargePlans'];
+    });
+    print(allModel);
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
           child: Center(
-        child: MaterialButton(
-            color: Colors.black,
-            onPressed: () async {
-              await fetchRechargePlans().then((value) {
-                print(value);
-              });
-            }),
+        child: Column(
+          children: [
+            MaterialButton(
+                color: Colors.black,
+                onPressed: () {
+                  print('Getting the Data....');
+                  getData();
+                }),
+            FutureBuilder(
+              future: getData().whenComplete(() async {
+                await decodeData();
+              }),
+              builder: (context, snapshot) {
+                return ListTile(
+                  title: Text('${snapshot.data}'),
+                );
+              },
+            )
+          ],
+        ),
       )),
     );
   }
