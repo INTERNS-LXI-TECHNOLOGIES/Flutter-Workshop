@@ -5,18 +5,28 @@ import 'package:recharge_app/screens/Widgets/textbox_widget.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 
 class HomeScreen extends StatefulWidget {
+  final String phoneNumber;
+  HomeScreen(this.phoneNumber);
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _HomeScreenState createState() => _HomeScreenState(phoneNumber);
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final String phoneNumber;
+  _HomeScreenState(this.phoneNumber);
   final Razorpay razorpay = Razorpay();
+  TextEditingController phoneNumberController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController amountController = TextEditingController();
   @override
   void initState() {
-    super.initState();
     razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, paymentSucessHandler);
     razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, paymentSucessHandler);
     razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, externalWalletsHandler);
+    if (phoneNumber.isNotEmpty) {
+      phoneNumberController.text = phoneNumber;
+    }
+    super.initState();
   }
 
   void paymentSucessHandler(PaymentSuccessResponse response) {
@@ -46,10 +56,13 @@ class _HomeScreenState extends State<HomeScreen> {
   void openCheckout() async {
     var options = {
       'key': 'rzp_test_VbGQpHcXTYzLhG',
-      'amount': 100 * 100,
-      'name': '<SOME NAME>',
+      'amount': amountController.text * 100,
+      'name': '${emailController.text}',
       'description': 'Test',
-      'prefill': {'contact': '123465', 'email': 'far@gmail.com'},
+      'prefill': {
+        'contact': '${phoneNumberController.text}',
+        'email': '${emailController.text}'
+      },
       'external': {
         'wallets': ['paytm']
       }
@@ -76,9 +89,6 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Stack(
           children: [
             Container(
-              color: Colors.yellow,
-              height: height * .27,
-              width: width * 1,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -118,20 +128,17 @@ class _HomeScreenState extends State<HomeScreen> {
                       SizedBox(
                         height: 20,
                       ),
-                      TextBox(
-                        '1234-567-890',
-                        'Phone Number',
-                        'number',
-                      ),
+                      TextBox('1234-567-890', 'Phone Number', 'number',
+                          phoneNumberController),
                       SizedBox(
                         height: 20,
                       ),
-                      TextBox('Eg:- 299', 'Amount', 'number'),
+                      TextBox('Eg:- 299', 'Amount', 'number', amountController),
                       SizedBox(
                         height: 30,
                       ),
-                      TextBox(
-                          'example@example.com', 'Mail - Id', 'emailAddress'),
+                      TextBox('example@example.com', 'Mail - Id',
+                          'emailAddress', emailController),
                       SizedBox(
                         height: 20,
                       ),

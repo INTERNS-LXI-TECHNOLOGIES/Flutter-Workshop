@@ -4,23 +4,22 @@ class TextBox extends StatefulWidget {
   final String label;
   final String hintText;
   final String type;
+  final TextEditingController textController;
 
-  TextBox(this.hintText, this.label, this.type);
+  TextBox(this.hintText, this.label, this.type, this.textController);
 
   @override
-  _TextBoxState createState() => _TextBoxState(
-        label,
-        hintText,
-        type,
-      );
+  _TextBoxState createState() =>
+      _TextBoxState(label, hintText, type, this.textController);
 }
 
 // Final TextEditController
 class _TextBoxState extends State<TextBox> {
-  _TextBoxState(this.label, this.hintText, this.type);
+  _TextBoxState(this.label, this.hintText, this.type, this.textController);
   final String label;
   final String hintText;
   final String type;
+  final TextEditingController textController;
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +32,7 @@ class _TextBoxState extends State<TextBox> {
       child: Padding(
         padding: const EdgeInsets.only(right: 30),
         child: TextField(
+          controller: textController,
           enabled: true,
           decoration: InputDecoration(
               focusedBorder: UnderlineInputBorder(

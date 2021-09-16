@@ -1,18 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:recharge_app/screens/contactspage.dart';
 import 'package:recharge_app/screens/home_screen.dart';
-import 'package:recharge_app/screens/sample.dart';
+
+import 'package:recharge_app/screens/tariff_plan_screen.dart';
 
 class MainScreen extends StatefulWidget {
+  final String phoneNumber;
+  MainScreen(this.phoneNumber);
   @override
-  _MainScreenState createState() => _MainScreenState();
+  _MainScreenState createState() => _MainScreenState(phoneNumber);
 }
 
 class _MainScreenState extends State<MainScreen> {
+  final String phoneNumber;
+  _MainScreenState(this.phoneNumber);
   int _currentIndex = 0;
-  final tabs = [HomeScreen(), Sample(), ContactPage()];
+
   @override
   Widget build(BuildContext context) {
+    final tabs = [HomeScreen(phoneNumber), TariffPlanScreen(''), ContactPage()];
     return Scaffold(
       body: tabs[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
@@ -27,12 +33,12 @@ class _MainScreenState extends State<MainScreen> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.money),
-            label: 'Recharge',
+            label: 'Plans',
             backgroundColor: Colors.greenAccent,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.pages),
-            label: 'Plans',
+            label: 'Contacts',
           ),
         ],
         onTap: (index) {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:recharge_app/screens/tariff_plan_screen.dart';
 
 class TelecomeOperatorHeader extends StatelessWidget {
@@ -13,18 +14,22 @@ class TelecomeOperatorHeader extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          telecomAvatar('assets/images/Jio_logo.png', 'jio'),
-          telecomAvatar('assets/images/Vi_logo.png', 'vi'),
-          telecomAvatar('assets/images/Airtel_logo.png', 'airtel'),
-          telecomAvatar('assets/images/BSNL.png', 'bsnl'),
+          telecomAvatar('assets/images/Jio_logo.png', 'jio', context),
+          telecomAvatar('assets/images/Vi_logo.png', 'vi', context),
+          telecomAvatar('assets/images/Airtel_logo.png', 'airtel', context),
+          telecomAvatar('assets/images/BSNL.png', 'bsnl', context),
         ],
       ),
     );
   }
 
-  GestureDetector telecomAvatar(String operatorLogo, String operatorNames) {
+  GestureDetector telecomAvatar(
+      String operatorLogo, String operatorNames, BuildContext context) {
     return GestureDetector(
-      onTap: () => TariffPlanScreen(operatorNames),
+      onTap: () {
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => TariffPlanScreen(operatorNames)));
+      },
       child: Container(
         child: CircleAvatar(
           backgroundColor: Colors.white,

@@ -1,9 +1,8 @@
-import 'dart:convert';
-import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:recharge_app/screens/Widgets/telecom_operator_header.dart';
 import 'package:recharge_app/screens/home_screen.dart';
-import 'package:recharge_app/services/recharge_plan_api.dart';
+import 'package:http/http.dart' as http;
 import 'package:recharge_app/services/recharge_plan_data.dart';
 // import 'package:recharge_app/services/recharge_plan_api.dart';
 // import 'package:recharge_app/services/recharge_plan_data.dart';
@@ -21,11 +20,21 @@ class TariffPlanScreen extends StatefulWidget {
 class _TariffPlanScreenState extends State<TariffPlanScreen> {
   final String operatorName;
   _TariffPlanScreenState(this.operatorName);
+  Future fetchRechargePlans() async {
+    String url =
+        'https://www.nixinfo.in/api/recharge-tariff-plans-api.php?status=1&emailid=FarisBackar@gmail.com&ctrlkey=711a73cfb5b40b822cbb260976ecb1f7106c1726536926791&cc=14&oc=1&pc=TUP';
+    final response = await http.get(Uri.parse(url));
+    if (response.statusCode == 200) {
+      print(response.body.toString());
+    } else {
+      throw Exception('e');
+    }
+  }
 
   var operatorCode;
-  Future<RechargePlanData> _operatorPlans;
+  Future _operatorPlans;
   void initState() {
-    _operatorPlans = RechargeApi().fetchRechargePlans();
+    _operatorPlans = fetchRechargePlans();
 
     super.initState();
   }
@@ -72,53 +81,57 @@ class _TariffPlanScreenState extends State<TariffPlanScreen> {
               height: height * .8,
               child: Column(
                 children: [
-                  RaisedButton(onPressed: () {
-                    // await fetchRechargePlans().then((value) {
-                    //   print(value);
-                    // }
-                    //   );
-                  }),
                   SizedBox(
                     height: 20,
                   ),
-                  FutureBuilder(
-                    future: _operatorPlans,
-                    builder: (context, snapshot) {
-                      snapshot.hasData
-                          ? ListView.builder(
-                              itemBuilder: (context, index) {
-                                return Card(
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      HomeScreen();
-                                    },
-                                    child: ListTile(
-                                      leading: CircleAvatar(
-                                        backgroundColor: Colors.amber[500],
-                                        radius: 30,
-                                        child: Padding(
-                                          padding: EdgeInsets.all(6),
-                                          child: FittedBox(
-                                            child: Text(
-                                              '\u{20B9} ${snapshot.data}',
-                                              style: TextStyle(
-                                                  color: Colors.white),
+                  TelecomeOperatorHeader(),
+                  operatorName.isNotEmpty
+                      ? FutureBuilder(
+                          future: _operatorPlans,
+                          builder: (context, snapshot) {
+                            snapshot.hasData
+                                ? ListView.builder(
+                                    itemBuilder: (context, index) {
+                                      return Card(
+                                        child: GestureDetector(
+                                          onTap: () {
+                                            HomeScreen('');
+                                          },
+                                          child: ListTile(
+                                            leading: CircleAvatar(
+                                              backgroundColor:
+                                                  Colors.amber[500],
+                                              radius: 30,
+                                              child: Padding(
+                                                padding: EdgeInsets.all(6),
+                                                child: FittedBox(
+                                                  child: Text(
+                                                    '\u{20B9} ${snapshot.data}',
+                                                    style: TextStyle(
+                                                        color: Colors.white),
+                                                  ),
+                                                ),
+                                              ),
                                             ),
+                                            title: Text('${snapshot.data}'),
+                                            subtitle: Text('validity'),
+                                            contentPadding: EdgeInsets.all(10),
                                           ),
                                         ),
-                                      ),
-                                      title: Text('${snapshot.data}'),
-                                      subtitle: Text('validity'),
-                                      contentPadding: EdgeInsets.all(10),
-                                    ),
-                                  ),
-                                );
-                              },
-                            )
-                          : Text('No Data Available');
-                      return CircularProgressIndicator();
-                    },
-                  )
+                                      );
+                                    },
+                                  )
+                                : Text('No Data Available');
+                            return CircularProgressIndicator();
+                          },
+                        )
+                      : Container(
+                          margin: EdgeInsets.only(top: 50),
+                          child: Center(
+                            child: Text(
+                                'Press Any Operator From Above to get The Plans'),
+                          ),
+                        )
                 ],
               ),
             ),
