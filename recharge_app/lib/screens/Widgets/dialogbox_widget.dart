@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class DialogBox extends StatefulWidget {
-  Color color;
-  IconData icon;
-  String id;
-  String message;
+  final Color color;
+  final IconData icon;
+  final String id;
+  final String message;
   DialogBox({this.color, this.icon, this.id, this.message});
   @override
   _DialogResponsesState createState() => _DialogResponsesState();

@@ -1,13 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:recharge_app/model/rechargeplandata.dart';
 import 'package:recharge_app/screens/Widgets/telecom_operator_header.dart';
 import 'package:recharge_app/screens/home_screen.dart';
-import 'package:http/http.dart' as http;
-import 'package:recharge_app/services/recharge_plan_data.dart';
-// import 'package:recharge_app/services/recharge_plan_api.dart';
-// import 'package:recharge_app/services/recharge_plan_data.dart';
-
-// import 'package:recharge_app/screens/recharge_screen.dart';
+import 'package:recharge_app/services/recharge_plan_api.dart';
 
 class TariffPlanScreen extends StatefulWidget {
   final String operatorName;
@@ -20,22 +16,20 @@ class TariffPlanScreen extends StatefulWidget {
 class _TariffPlanScreenState extends State<TariffPlanScreen> {
   final String operatorName;
   _TariffPlanScreenState(this.operatorName);
-  Future fetchRechargePlans() async {
-    String url =
-        'https://www.nixinfo.in/api/recharge-tariff-plans-api.php?status=1&emailid=FarisBackar@gmail.com&ctrlkey=711a73cfb5b40b822cbb260976ecb1f7106c1726536926791&cc=14&oc=1&pc=TUP';
-    final response = await http.get(Uri.parse(url));
-    if (response.statusCode == 200) {
-      print(response.body.toString());
-    } else {
-      throw Exception('e');
-    }
-  }
 
   var operatorCode;
-  Future _operatorPlans;
+  Future<RechargePlanData> _operatorPlans;
   void initState() {
-    _operatorPlans = fetchRechargePlans();
-
+    if (operatorName == 'jio') {
+      operatorCode = 11;
+    } else if (operatorName == 'bsnl') {
+      operatorCode = 2;
+    } else if (operatorName == 'vi') {
+      operatorCode = 23;
+    } else if (operatorName == 'airtel') {
+      operatorCode = 2;
+    }
+    _operatorPlans = RechargeApi().fetchOperatorPlans();
     super.initState();
   }
 
@@ -86,16 +80,18 @@ class _TariffPlanScreenState extends State<TariffPlanScreen> {
                   ),
                   TelecomeOperatorHeader(),
                   operatorName.isNotEmpty
-                      ? FutureBuilder(
+                      ? FutureBuilder<RechargePlanData>(
                           future: _operatorPlans,
                           builder: (context, snapshot) {
                             snapshot.hasData
                                 ? ListView.builder(
+                                    itemCount: snapshot
+                                        .data.geographicalRechargePlans.length,
                                     itemBuilder: (context, index) {
                                       return Card(
                                         child: GestureDetector(
                                           onTap: () {
-                                            HomeScreen('');
+                                            HomeScreen(operatorCode);
                                           },
                                           child: ListTile(
                                             leading: CircleAvatar(
@@ -106,7 +102,7 @@ class _TariffPlanScreenState extends State<TariffPlanScreen> {
                                                 padding: EdgeInsets.all(6),
                                                 child: FittedBox(
                                                   child: Text(
-                                                    '\u{20B9} ${snapshot.data}',
+                                                    '\u{20B9} ${snapshot.data.geographicalRechargePlans[index].localAmounts}',
                                                     style: TextStyle(
                                                         color: Colors.white),
                                                   ),
