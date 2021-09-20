@@ -62,6 +62,7 @@ flutter:
     - assets/images/BSNL.png
     - assets/images/Jio_logo.png
     - assets/images/Vi_logo.png
+    - assets/images/PayitLogo.png
     - assets/json/vidata.json
   
 

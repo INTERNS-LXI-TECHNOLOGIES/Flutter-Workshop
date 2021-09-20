@@ -81,8 +81,7 @@ class _ContactPageState extends State<ContactPage> {
                     padding: EdgeInsets.all(20),
                     child: CircleAvatar(
                       radius: 30,
-
-                      // child: Image.asset('FlutterLogoStyle'),
+                      child: Image.asset('assets/images/PayitLogo.png'),
                     ),
                   ),
                   IconButton(
@@ -144,7 +143,7 @@ class _ContactPageState extends State<ContactPage> {
                                       contact.phones.elementAt(0).value;
                                   Navigator.of(context).push(MaterialPageRoute(
                                     builder: (context) =>
-                                        MainScreen(phoneNumber),
+                                        MainScreen(phoneNumber, 0),
                                   ));
                                 });
                           },

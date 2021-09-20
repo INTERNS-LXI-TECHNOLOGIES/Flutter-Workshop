@@ -9,20 +9,32 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  int value;
   void initState() {
     super.initState();
     Timer(
         Duration(seconds: 2),
         () => Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => MainScreen(''),
+              builder: (context) => MainScreen('', value),
             )));
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.blueAccent,
       height: MediaQuery.of(context).size.height * 1,
+      child: Center(
+          child: Container(
+        height: 200,
+        width: 200,
+        child: CircleAvatar(
+          backgroundColor: Colors.white,
+          child: Image.asset(
+            'assets/images/PayitLogo.png',
+            fit: BoxFit.cover,
+          ),
+        ),
+      )),
     );
   }
 }

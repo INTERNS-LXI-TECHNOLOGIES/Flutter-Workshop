@@ -6,14 +6,16 @@ import 'package:razorpay_flutter/razorpay_flutter.dart';
 
 class HomeScreen extends StatefulWidget {
   final String phoneNumber;
-  HomeScreen(this.phoneNumber);
+  final int amount;
+  HomeScreen(this.phoneNumber, this.amount);
   @override
-  _HomeScreenState createState() => _HomeScreenState(phoneNumber);
+  _HomeScreenState createState() => _HomeScreenState(phoneNumber, this.amount);
 }
 
 class _HomeScreenState extends State<HomeScreen> {
   final String phoneNumber;
-  _HomeScreenState(this.phoneNumber);
+  final int amount;
+  _HomeScreenState(this.phoneNumber, this.amount);
   final Razorpay razorpay = Razorpay();
   TextEditingController phoneNumberController = TextEditingController();
   TextEditingController emailController = TextEditingController();
@@ -25,6 +27,9 @@ class _HomeScreenState extends State<HomeScreen> {
     razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, externalWalletsHandler);
     if (phoneNumber.isNotEmpty) {
       phoneNumberController.text = phoneNumber;
+    }
+    if (amount != null) {
+      amountController.text = amount.toString();
     }
     super.initState();
   }
@@ -54,9 +59,10 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void openCheckout() async {
+    // int amount = amountController.text;
     var options = {
       'key': 'rzp_test_VbGQpHcXTYzLhG',
-      'amount': amountController.text * 100,
+      'amount': num.parse(amountController.text) * 100,
       'name': '${emailController.text}',
       'description': 'Test',
       'prefill': {
@@ -89,6 +95,8 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Stack(
           children: [
             Container(
+              height: height * .27,
+              width: width * 1,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -96,7 +104,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     padding: EdgeInsets.all(20),
                     child: CircleAvatar(
                       radius: 30,
-                      child: Image.asset('FlutterLogoStyle'),
+                      backgroundColor: Colors.white,
+                      child: Image.asset('assets/images/PayitLogo.png'),
                     ),
                   ),
                   IconButton(
@@ -144,7 +153,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       Container(
                         margin: EdgeInsets.only(right: 30),
-                        child: RaisedButton(
+                        child: MaterialButton(
                           color: Colors.amber[600],
                           splashColor: Colors.amber[900],
                           animationDuration: Duration(milliseconds: 20),
