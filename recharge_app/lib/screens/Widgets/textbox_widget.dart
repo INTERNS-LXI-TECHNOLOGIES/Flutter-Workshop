@@ -31,8 +31,17 @@ class _TextBoxState extends State<TextBox> {
       height: height * 0.1,
       child: Padding(
         padding: const EdgeInsets.only(right: 30),
-        child: TextField(
+        child: TextFormField(
           controller: textController,
+          onChanged: (String newValue) {
+            _username = newValue;
+          },
+          validator: (String submittedValue) {
+            if (submittedValue.isEmpty) {
+              return '';
+            }
+            return null;
+          },
           enabled: true,
           decoration: InputDecoration(
               focusedBorder: UnderlineInputBorder(
