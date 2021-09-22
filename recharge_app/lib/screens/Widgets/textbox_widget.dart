@@ -47,7 +47,7 @@ class _TextBoxState extends State<TextBox> {
               hintText: hintText,
               alignLabelWithHint: true,
               labelText: label),
-          maxLength: type == 'number' ? 10 : 100,
+          maxLength: type == 'number' ? 13 : 100,
           cursorHeight: 30,
           keyboardType: type != 'Null'
               ? type == 'Number'
