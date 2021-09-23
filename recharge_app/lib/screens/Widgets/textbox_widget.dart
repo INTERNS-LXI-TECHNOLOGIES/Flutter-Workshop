@@ -34,7 +34,7 @@ class _TextBoxState extends State<TextBox> {
         child: TextFormField(
           controller: textController,
           onChanged: (String newValue) {
-            _username = newValue;
+            // _username = newValue;
           },
           validator: (String submittedValue) {
             if (submittedValue.isEmpty) {

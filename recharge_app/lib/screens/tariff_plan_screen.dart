@@ -133,7 +133,9 @@ class _TariffPlanScreenState extends State<TariffPlanScreen> {
                                     },
                                   );
                                 } else {
-                                  return Text('No Data Available');
+                                  return Center(
+                                    child: CircularProgressIndicator(),
+                                  );
                                 }
                                 // return Center(child: CircularProgressIndicator());
                               },
