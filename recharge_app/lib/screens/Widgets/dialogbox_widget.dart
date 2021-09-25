@@ -15,6 +15,7 @@ class _DialogResponsesState extends State<DialogBox> {
   Widget build(BuildContext context) {
     return Dialog(
       elevation: 0,
+
       backgroundColor: Colors.transparent, //this right here
       child: Container(
         height: 200,

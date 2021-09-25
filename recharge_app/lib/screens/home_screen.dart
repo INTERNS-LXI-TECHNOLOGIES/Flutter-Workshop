@@ -1,5 +1,8 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:recharge_app/screens/Widgets/amount_textbox.dart';
 import 'package:recharge_app/screens/Widgets/dialogbox_widget.dart';
+import 'package:recharge_app/screens/Widgets/email_textbox.dart';
 import 'package:recharge_app/screens/Widgets/telecom_operator_header.dart';
 import 'package:recharge_app/screens/Widgets/textbox_widget.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
@@ -142,12 +145,13 @@ class _HomeScreenState extends State<HomeScreen> {
                       SizedBox(
                         height: 20,
                       ),
-                      TextBox('Eg:- 299', 'Amount', 'number', amountController),
+                      AmountTextBox(amountController),
                       SizedBox(
                         height: 30,
                       ),
-                      TextBox('example@example.com', 'Mail - Id',
-                          'emailAddress', emailController),
+                      EmailTextBox(
+                        emailController: emailController,
+                      ),
                       SizedBox(
                         height: 20,
                       ),
@@ -158,7 +162,19 @@ class _HomeScreenState extends State<HomeScreen> {
                           splashColor: Colors.amber[900],
                           animationDuration: Duration(milliseconds: 20),
                           onPressed: () {
-                            openCheckout();
+                            final bool _isEmailValid =
+                                EmailValidator.validate(emailController.text);
+                            if (_isEmailValid == true) {
+                              openCheckout();
+                            } else {
+                              return Scaffold.of(context).showSnackBar(
+                                SnackBar(
+                                  content:
+                                      Text('You Are Entered A Wrong Email...'),
+                                  duration: Duration(seconds: 4),
+                                ),
+                              );
+                            }
                           },
                           child: Text('Recharge'),
                         ),

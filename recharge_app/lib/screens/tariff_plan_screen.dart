@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:recharge_app/model/rechargeplandata.dart';
-import 'package:recharge_app/screens/Widgets/tab_bar_widget.dart';
 import 'package:recharge_app/screens/Widgets/telecom_operator_header.dart';
 
 import 'package:recharge_app/screens/main_screen.dart';
