@@ -3,62 +3,45 @@ import 'package:recharge_app/model/rechargeplandata.dart';
 import 'package:recharge_app/services/recharge_plan_api.dart';
 
 class AmountDialogueBox extends StatefulWidget {
+  final String operatorName;
   final String amount;
-  AmountDialogueBox(this.amount);
+  AmountDialogueBox({this.amount, this.operatorName});
   @override
-  _AmountDialogueBoxState createState() => _AmountDialogueBoxState(amount);
+  _AmountDialogueBoxState createState() =>
+      _AmountDialogueBoxState(amount, operatorName);
 }
 
 class _AmountDialogueBoxState extends State<AmountDialogueBox> {
+  final String operatorName;
   final String amount;
-  _AmountDialogueBoxState(this.amount);
+  _AmountDialogueBoxState(this.amount, this.operatorName);
+  var operatorCode;
   Future<RechargePlanData> _operatorPlans;
 
-  void initstate() {
-    _operatorPlans = RechargeApi().fetchRechargePlans(2);
+  void initState() {
+    if (operatorName == 'jio') {
+      operatorCode = 11;
+    } else if (operatorName == 'bsnl') {
+      operatorCode = 2;
+    } else if (operatorName == 'vi') {
+      operatorCode = 23;
+    } else if (operatorName == 'airtel') {
+      operatorCode = 2;
+    }
+    _operatorPlans = RechargeApi().fetchRechargePlans(operatorCode);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    int tariffAmount;
-    String tariffDescription;
     return Container(
-        child: FutureBuilder<RechargePlanData>(
-      future: _operatorPlans,
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          for (var index = 0; index < snapshot.data.rdata.length; index++) {
-            if (int.parse(amount) == snapshot.data.rdata["FULLTT"][index].rs) {
-              tariffAmount = snapshot.data.rdata["FULLTT"][index].rs;
-              tariffDescription = snapshot.data.rdata["FULLTT"][index].desc;
-            } else {
-              tariffDescription =
-                  'No Plan details available for this price \n please check your amount and try again';
-            }
-          }
-          AlertDialog(
-            title: Text('$tariffAmount'),
-            content: Text('$tariffDescription'),
-            actions: [
-              TextButton(
-                onPressed: () {},
-                child: Text('NO'),
-              ),
-              TextButton(
-                onPressed: () {},
-                child: Text('YES'),
-              ),
-            ],
-            elevation: 24,
-          );
-        } else {
-          AlertDialog(
-            title: Text('No Plans Found'),
-          );
-        }
-        return Center(child: CircularProgressIndicator());
-      },
-    ));
+      child: FutureBuilder<RechargePlanData>(
+        future: _operatorPlans,
+        builder: (context, snapshot) {
+          print('${snapshot.data.rdata['FULLTT'][0].desc}');
+          return SizedBox();
+        },
+      ),
+    );
   }
 }

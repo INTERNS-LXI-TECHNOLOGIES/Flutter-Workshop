@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:recharge_app/screens/Widgets/amount_textbox.dart';
 import 'package:recharge_app/screens/Widgets/dialogbox_widget.dart';
 import 'package:recharge_app/screens/Widgets/email_textbox.dart';
+import 'package:recharge_app/screens/Widgets/operator_dropdown_menu.dart';
 import 'package:recharge_app/screens/Widgets/telecom_operator_header.dart';
 import 'package:recharge_app/screens/Widgets/textbox_widget.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
@@ -69,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
       'name': '${emailController.text}',
       'description': 'Test',
       'prefill': {
-        'contact': '${phoneNumberController.text}',
+        'contact': '91${phoneNumberController.text}',
         'email': '${emailController.text}'
       },
       'external': {
@@ -145,6 +146,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       SizedBox(
                         height: 20,
                       ),
+                      OperatorDropDownMenu(),
+                      SizedBox(
+                        height: 20,
+                      ),
                       AmountTextBox(amountController),
                       SizedBox(
                         height: 30,
@@ -164,13 +169,41 @@ class _HomeScreenState extends State<HomeScreen> {
                           onPressed: () {
                             final bool _isEmailValid =
                                 EmailValidator.validate(emailController.text);
-                            if (_isEmailValid == true) {
+                            if (_isEmailValid == true &&
+                                phoneNumberController.text.isNotEmpty &&
+                                amountController.text.isNotEmpty) {
                               openCheckout();
-                            } else {
+                            } else if (_isEmailValid == false) {
                               return Scaffold.of(context).showSnackBar(
                                 SnackBar(
                                   content:
                                       Text('You Are Entered A Wrong Email...'),
+                                  duration: Duration(seconds: 4),
+                                ),
+                              );
+                            } else if (phoneNumberController.text.isEmpty) {
+                              if (phoneNumberController.text.length != 10) {
+                                return Scaffold.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                        'Please Enter a Valid Phone Number...'),
+                                    duration: Duration(seconds: 4),
+                                  ),
+                                );
+                              } else if (phoneNumberController.text.length >
+                                  13) {
+                                return Scaffold.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                        'Please Enter a Valid Phone Number...'),
+                                    duration: Duration(seconds: 4),
+                                  ),
+                                );
+                              }
+                            } else if (amountController.text.isEmpty) {
+                              return Scaffold.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text('Plz Enter An Amount...'),
                                   duration: Duration(seconds: 4),
                                 ),
                               );

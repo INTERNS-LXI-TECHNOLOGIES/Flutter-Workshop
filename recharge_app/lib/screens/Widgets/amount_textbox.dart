@@ -30,7 +30,8 @@ class _AmountTextBoxState extends State<AmountTextBox> {
                 onPressed: () {
                   showDialog(
                       context: context,
-                      builder: (_) => AmountDialogueBox(amountController.text));
+                      builder: (_) =>
+                          AmountDialogueBox(amount: amountController.text));
                 },
                 icon: Icon(Icons.price_check_rounded)),
             focusedBorder: UnderlineInputBorder(
