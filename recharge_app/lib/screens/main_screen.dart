@@ -6,21 +6,24 @@ import 'package:recharge_app/screens/tariff_plan_screen.dart';
 class MainScreen extends StatefulWidget {
   final String phoneNumber;
   final int amount;
-  MainScreen(this.phoneNumber, this.amount);
+  final String operator;
+  MainScreen(this.phoneNumber, this.amount, this.operator);
   @override
-  _MainScreenState createState() => _MainScreenState(phoneNumber, amount);
+  _MainScreenState createState() =>
+      _MainScreenState(phoneNumber, amount, operator);
 }
 
 class _MainScreenState extends State<MainScreen> {
   final String phoneNumber;
   final int amount;
-  _MainScreenState(this.phoneNumber, this.amount);
+  final String operatorName;
+  _MainScreenState(this.phoneNumber, this.amount, this.operatorName);
   int _currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     final tabs = [
-      HomeScreen(phoneNumber, amount),
+      HomeScreen(phoneNumber, amount, operatorName),
       TariffPlanScreen(''),
       ContactPage()
     ];

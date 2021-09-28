@@ -3,15 +3,17 @@ import 'package:recharge_app/screens/Widgets/amount_dialogue_box.dart';
 
 class AmountTextBox extends StatefulWidget {
   final TextEditingController amountController;
-  AmountTextBox(this.amountController);
+  final String operator;
+  AmountTextBox({this.amountController, this.operator});
   @override
-  _AmountTextBoxState createState() => _AmountTextBoxState(amountController);
+  _AmountTextBoxState createState() =>
+      _AmountTextBoxState(amountController, operator);
 }
 
 class _AmountTextBoxState extends State<AmountTextBox> {
   final TextEditingController amountController;
-
-  _AmountTextBoxState(this.amountController);
+  final String operator;
+  _AmountTextBoxState(this.amountController, this.operator);
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +32,10 @@ class _AmountTextBoxState extends State<AmountTextBox> {
                 onPressed: () {
                   showDialog(
                       context: context,
-                      builder: (_) =>
-                          AmountDialogueBox(amount: amountController.text));
+                      builder: (_) => AmountDialogueBox(
+                            amount: amountController.text,
+                            operatorName: operator,
+                          ));
                 },
                 icon: Icon(Icons.price_check_rounded)),
             focusedBorder: UnderlineInputBorder(

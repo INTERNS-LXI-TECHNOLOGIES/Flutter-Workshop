@@ -11,15 +11,18 @@ import 'package:razorpay_flutter/razorpay_flutter.dart';
 class HomeScreen extends StatefulWidget {
   final String phoneNumber;
   final int amount;
-  HomeScreen(this.phoneNumber, this.amount);
+  final String operatorNames;
+  HomeScreen(this.phoneNumber, this.amount, this.operatorNames);
   @override
-  _HomeScreenState createState() => _HomeScreenState(phoneNumber, this.amount);
+  _HomeScreenState createState() =>
+      _HomeScreenState(phoneNumber, amount, operatorNames);
 }
 
 class _HomeScreenState extends State<HomeScreen> {
   final String phoneNumber;
   final int amount;
-  _HomeScreenState(this.phoneNumber, this.amount);
+  final String operatorNames;
+  _HomeScreenState(this.phoneNumber, this.amount, this.operatorNames);
   final Razorpay razorpay = Razorpay();
   TextEditingController phoneNumberController = TextEditingController();
   TextEditingController emailController = TextEditingController();
@@ -35,6 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
     if (amount != null) {
       amountController.text = amount.toString();
     }
+
     super.initState();
   }
 
@@ -146,11 +150,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       SizedBox(
                         height: 20,
                       ),
-                      OperatorDropDownMenu(),
+                      OperatorDropDownMenu(operatorNames),
                       SizedBox(
                         height: 20,
                       ),
-                      AmountTextBox(amountController),
+                      AmountTextBox(
+                        amountController: amountController,
+                        operator: operatorNames,
+                      ),
                       SizedBox(
                         height: 30,
                       ),

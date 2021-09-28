@@ -28,18 +28,44 @@ class _AmountDialogueBoxState extends State<AmountDialogueBox> {
     } else if (operatorName == 'airtel') {
       operatorCode = 2;
     }
-    _operatorPlans = RechargeApi().fetchRechargePlans(operatorCode);
+    _operatorPlans = RechargeApi().fetchRechargePlans(2);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return Container(
+      height: height * .58,
+      width: width * 1,
       child: FutureBuilder<RechargePlanData>(
         future: _operatorPlans,
         builder: (context, snapshot) {
-          print('${snapshot.data.rdata['FULLTT'][0].desc}');
-          return SizedBox();
+          if (snapshot.hasData) {
+            var operatorPlanRs;
+            var operatorPlanDescription;
+            for (var index = 0; index < snapshot.data.rdata.length; index++) {
+              if (int.parse(amount) ==
+                  snapshot.data.rdata['FULLTT'][index].rs) {
+                operatorPlanRs = snapshot.data.rdata['FULLTT'][index].rs;
+                operatorPlanDescription =
+                    snapshot.data.rdata['FULLTT'][index].desc;
+              }
+            }
+            return AlertDialog(
+              title: Text(' \u{20B9} $operatorPlanRs'),
+              content: Text('$operatorPlanDescription'),
+            );
+          } else {
+            return AlertDialog(
+              title: Text('Loading....'),
+              content: Center(
+                child: CircularProgressIndicator(),
+              ),
+            );
+          }
+          // return Center(child: CircularProgressIndicator());
         },
       ),
     );

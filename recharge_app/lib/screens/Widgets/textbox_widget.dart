@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recharge_app/screens/contactspage.dart';
 
 class TextBox extends StatefulWidget {
   final String label;
@@ -48,6 +49,14 @@ class _TextBoxState extends State<TextBox> {
                 borderSide: BorderSide(
                   color: Colors.yellow,
                 ),
+              ),
+              suffix: IconButton(
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => ContactPage(),
+                  ));
+                },
+                icon: Icon(Icons.contact_page),
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),

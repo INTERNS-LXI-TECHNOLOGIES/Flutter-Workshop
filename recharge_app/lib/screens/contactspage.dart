@@ -143,7 +143,7 @@ class _ContactPageState extends State<ContactPage> {
                                       contact.phones.elementAt(0).value;
                                   Navigator.of(context).push(MaterialPageRoute(
                                     builder: (context) =>
-                                        MainScreen(phoneNumber, 0),
+                                        MainScreen(phoneNumber, 0, ''),
                                   ));
                                 });
                           },

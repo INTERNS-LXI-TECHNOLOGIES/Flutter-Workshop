@@ -104,7 +104,8 @@ class _TariffPlanScreenState extends State<TariffPlanScreen> {
                                                     MainScreen(
                                                         '',
                                                         data['FULLTT'][index]
-                                                            .rs),
+                                                            .rs,
+                                                        '$operatorName'),
                                               ),
                                             );
                                           },
