@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:recharge_app/screens/contactspage.dart';
 import 'package:recharge_app/screens/home_screen.dart';
 import 'package:recharge_app/screens/tariff_plan_screen.dart';
 
@@ -25,7 +24,6 @@ class _MainScreenState extends State<MainScreen> {
     final tabs = [
       HomeScreen(phoneNumber, amount, operatorName),
       TariffPlanScreen(''),
-      ContactPage()
     ];
     return Scaffold(
       body: tabs[_currentIndex],
@@ -43,10 +41,6 @@ class _MainScreenState extends State<MainScreen> {
             icon: Icon(Icons.money),
             label: 'Plans',
             backgroundColor: Colors.greenAccent,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.pages),
-            label: 'Contacts',
           ),
         ],
         onTap: (index) {

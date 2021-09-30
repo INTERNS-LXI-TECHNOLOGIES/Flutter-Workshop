@@ -103,7 +103,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Stack(
           children: [
             Container(
-              height: height * .27,
+              height: height * .26,
               width: width * 1,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
