@@ -188,7 +188,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   duration: Duration(seconds: 4),
                                 ),
                               );
-                            } else if (phoneNumberController.text.isEmpty) {
+                            } else if (phoneNumberController.text.isNotEmpty) {
                               if (phoneNumberController.text.length != 10) {
                                 return Scaffold.of(context).showSnackBar(
                                   SnackBar(
@@ -207,6 +207,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ),
                                 );
                               }
+                            } else if (phoneNumberController.text.isEmpty) {
+                              return Scaffold.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                      'Please Enter a Valid Phone Number...'),
+                                  duration: Duration(seconds: 4),
+                                ),
+                              );
                             } else if (amountController.text.isEmpty) {
                               return Scaffold.of(context).showSnackBar(
                                 SnackBar(

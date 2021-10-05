@@ -37,37 +37,47 @@ class _AmountDialogueBoxState extends State<AmountDialogueBox> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Container(
-      height: height * .58,
-      width: width * 1,
-      child: FutureBuilder<RechargePlanData>(
-        future: _operatorPlans,
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            var operatorPlanRs;
-            var operatorPlanDescription;
-            for (var index = 0; index < snapshot.data.rdata.length; index++) {
-              if (int.parse(amount) ==
-                  snapshot.data.rdata['FULLTT'][index].rs) {
-                operatorPlanRs = snapshot.data.rdata['FULLTT'][index].rs;
-                operatorPlanDescription =
-                    snapshot.data.rdata['FULLTT'][index].desc;
-              }
-            }
-            return AlertDialog(
-              title: Text(' \u{20B9} $operatorPlanRs'),
-              content: Text('$operatorPlanDescription'),
-            );
-          } else {
-            return AlertDialog(
-              title: Text('Loading....'),
-              content: Center(
-                child: CircularProgressIndicator(),
-              ),
-            );
-          }
-          // return Center(child: CircularProgressIndicator());
-        },
-      ),
-    );
+        height: height * .58,
+        width: width * 1,
+        child: amount.isNotEmpty
+            ? FutureBuilder<RechargePlanData>(
+                future: _operatorPlans,
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    var operatorPlanRs;
+                    var operatorPlanDescription;
+                    for (var index = 0;
+                        index < snapshot.data.rdata.length;
+                        index++) {
+                      if (int.parse(amount) ==
+                          snapshot.data.rdata['FULLTT'][index].rs) {
+                        operatorPlanRs =
+                            snapshot.data.rdata['FULLTT'][index].rs;
+                        operatorPlanDescription =
+                            snapshot.data.rdata['FULLTT'][index].desc;
+                      }
+                    }
+                    return AlertDialog(
+                      title: operatorPlanRs != null
+                          ? Text(' \u{20B9} $operatorPlanRs')
+                          : Text(
+                              'You Are Entered a Wrong Amount \n please Check the Amount'),
+                      content: operatorPlanRs != null
+                          ? Text('$operatorPlanDescription')
+                          : Text(' please Check the Amount'),
+                    );
+                  } else {
+                    return AlertDialog(
+                      title: Text('Loading....'),
+                      content: Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                    );
+                  }
+                },
+              )
+            : AlertDialog(
+                title: Text('Please Enter A Valid Amount'),
+              ));
   }
 }
