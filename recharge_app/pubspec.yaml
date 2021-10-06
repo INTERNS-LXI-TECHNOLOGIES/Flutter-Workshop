@@ -22,13 +22,13 @@ environment:
 
 dependencies:
   build_runner: ^2.1.2
-  contacts_plugin: ^0.0.3
   contacts_service: ^0.6.1
   cupertino_icons: ^1.0.2
   dio: ^4.0.0
   email_validator: ^2.0.1
   flutter:
     sdk: flutter
+  flutter_contact: ^0.9.1+7
   http: ^0.13.3
   permission_handler: ^8.1.4+2
   razorpay_flutter: ^1.2.3
@@ -46,7 +46,7 @@ dev_dependencies:
 flutter:
 
   # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
+  # included with your application, so th a t   y o u can use the icons in
   # the material Icons class.
   uses-material-design: true
 

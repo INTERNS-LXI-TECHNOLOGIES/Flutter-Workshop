@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:recharge_app/screens/contactspage.dart';
+
+import 'package:recharge_app/screens/contacts_page.dart';
 
 class TextBox extends StatefulWidget {
   final String label;
@@ -44,7 +45,7 @@ class _TextBoxState extends State<TextBox> {
               suffix: IconButton(
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => ContactPage(),
+                    builder: (context) => ContactsPage(),
                   ));
                 },
                 icon: Icon(Icons.contact_page),
