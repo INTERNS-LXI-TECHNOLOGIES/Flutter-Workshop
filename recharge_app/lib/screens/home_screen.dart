@@ -126,6 +126,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             Container(
+              height: height * .75,
               margin: EdgeInsets.only(top: 160),
               child: ClipRRect(
                 borderRadius: BorderRadius.only(
@@ -134,7 +135,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Container(
                   width: width * 1,
                   color: Colors.cyan[50],
-                  height: height * .8,
+                  // height: height * .8,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [

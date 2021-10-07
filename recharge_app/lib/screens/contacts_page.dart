@@ -12,14 +12,13 @@ class _ContactsPageState extends State<ContactsPage> {
   List<Contact> contactList = [];
   final TextEditingController searchController = TextEditingController();
   List<Contact> filteredContacts = [];
+
   @override
   void initState() {
     super.initState();
     requestPermission();
-    // contactList = [];
     readContacts();
     searchController.addListener(() {
-      // filteredContacts = [];
       filterContacts();
     });
   }
@@ -122,7 +121,7 @@ class _ContactsPageState extends State<ContactsPage> {
                                     return Card(
                                       child: ListTile(
                                         leading: CircleAvatar(
-                                          backgroundColor: Colors.green,
+                                          backgroundColor: Colors.yellow,
                                           child: Center(
                                             child: (contact.avatar != null)
                                                 ? Image.memory(
@@ -156,7 +155,7 @@ class _ContactsPageState extends State<ContactsPage> {
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
                                       CircularProgressIndicator(
-                                        backgroundColor: Colors.red,
+                                        backgroundColor: Colors.yellow,
                                       ),
                                       Text("reading Contacts...")
                                     ],
@@ -186,7 +185,9 @@ class _ContactsPageState extends State<ContactsPage> {
       });
     }
 
-    return Contacts.streamContacts(bufferSize: 100);
+    return Contacts.streamContacts(
+      bufferSize: 100,
+    );
   }
 
   void requestPermission() async {
@@ -197,18 +198,31 @@ class _ContactsPageState extends State<ContactsPage> {
   }
 
   void filterContacts() {
-    List<Contact> _contact = [];
-    _contact.addAll(contactList);
-    if (searchController.text.isNotEmpty) {
-      _contact.retainWhere((contact) {
-        String searchTerm = searchController.text;
-        String contactName = contact.displayName;
-        return contactName.contains(searchTerm);
-      });
-      setState(() {
-        filteredContacts = _contact;
-      });
-    }
+    // Contacts.streamContacts(query: searchController.text.toLowerCase())
+    //     .forEach((contact) {
+    //   print("${contact.displayName}");
+    //   setState(() {
+    //     filteredContacts.add(contact);
+    // });
+    // });
+    // setState(() {
+    //   filteredContacts;
+    // });
+    List<Contact> _contacts = [];
+    Contacts.streamContacts(query: searchController.text).forEach((contacts) {
+      _contacts.add(contacts);
+
+      if (searchController.text.isNotEmpty) {
+        _contacts.retainWhere((contact) {
+          String searchTerm = searchController.text.toLowerCase();
+          String contactName = contact.displayName.toLowerCase();
+          return contactName.contains(searchTerm);
+        });
+      }
+    });
+    setState(() {
+      filteredContacts = _contacts;
+    });
   }
 
   Future<PermissionStatus> _getPermission() async {
