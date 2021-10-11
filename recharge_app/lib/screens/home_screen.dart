@@ -67,14 +67,15 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void openCheckout() async {
-    // int amount = amountController.text;
     var options = {
       'key': 'rzp_test_VbGQpHcXTYzLhG',
       'amount': num.parse(amountController.text) * 100,
       'name': '${emailController.text}',
       'description': 'Test',
       'prefill': {
-        'contact': '91${phoneNumberController.text}',
+        'contact': phoneNumberController.text.length >= 13
+            ? '${phoneNumberController.text}'
+            : '91${phoneNumberController.text}',
         'email': '${emailController.text}'
       },
       'external': {
@@ -135,7 +136,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Container(
                   width: width * 1,
                   color: Colors.cyan[50],
-                  // height: height * .8,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
@@ -151,7 +151,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       SizedBox(
                         height: 20,
                       ),
-                      OperatorDropDownMenu(operatorNames),
+                      OperatorDropDownMenu(),
                       SizedBox(
                         height: 20,
                       ),
@@ -181,26 +181,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                 phoneNumberController.text.isNotEmpty &&
                                 amountController.text.isNotEmpty) {
                               openCheckout();
-                            } else if (_isEmailValid == false) {
-                              return Scaffold.of(context).showSnackBar(
-                                SnackBar(
-                                  content:
-                                      Text('You Are Entered A Wrong Email...'),
-                                  duration: Duration(seconds: 4),
-                                ),
-                              );
                             } else if (phoneNumberController.text.isNotEmpty) {
                               if (phoneNumberController.text.length != 10) {
-                                return Scaffold.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text(
-                                        'Please Enter a Valid Phone Number...'),
-                                    duration: Duration(seconds: 4),
-                                  ),
-                                );
                               } else if (phoneNumberController.text.length >
                                   13) {
-                                return Scaffold.of(context).showSnackBar(
+                                return ScaffoldMessenger.of(context)
+                                    .showSnackBar(
                                   SnackBar(
                                     content: Text(
                                         'Please Enter a Valid Phone Number...'),
@@ -209,7 +195,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 );
                               }
                             } else if (phoneNumberController.text.isEmpty) {
-                              return Scaffold.of(context).showSnackBar(
+                              return ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                   content: Text(
                                       'Please Enter a Valid Phone Number...'),
@@ -217,9 +203,17 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                               );
                             } else if (amountController.text.isEmpty) {
-                              return Scaffold.of(context).showSnackBar(
+                              return ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                   content: Text('Plz Enter An Amount...'),
+                                  duration: Duration(seconds: 4),
+                                ),
+                              );
+                            } else if (_isEmailValid == false) {
+                              return ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content:
+                                      Text('You Are Entered A Wrong Email...'),
                                   duration: Duration(seconds: 4),
                                 ),
                               );

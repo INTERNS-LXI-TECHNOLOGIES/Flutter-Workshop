@@ -17,7 +17,6 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         canvasColor: Colors.yellow,
         cursorColor: Colors.yellow,
-        // bannerTheme: MaterialBannerTheme.of(context).
       ),
     );
   }

@@ -1,23 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:recharge_app/screens/Widgets/amount_dialogue_box.dart';
+
 import 'package:recharge_app/screens/Widgets/amount_textbox.dart';
 
 class OperatorDropDownMenu extends StatefulWidget {
-  final String operatorNames;
-  OperatorDropDownMenu(this.operatorNames);
   @override
-  _OperatorDropDownMenu createState() => _OperatorDropDownMenu(operatorNames);
+  _OperatorDropDownMenu createState() => _OperatorDropDownMenu();
 }
 
 class _OperatorDropDownMenu extends State<OperatorDropDownMenu> {
-  final String operatorName;
-  _OperatorDropDownMenu(this.operatorName);
   String chosenValue;
+  String operatorName;
 
   String selectJioOperator() {
     AmountTextBox(
       operator: 'jio',
     );
+    operatorName = 'jio';
     return 'JIO';
   }
 
@@ -25,6 +23,7 @@ class _OperatorDropDownMenu extends State<OperatorDropDownMenu> {
     AmountTextBox(
       operator: 'airtel',
     );
+    operatorName = 'airtel';
     return 'Airtel';
   }
 
@@ -32,6 +31,7 @@ class _OperatorDropDownMenu extends State<OperatorDropDownMenu> {
     AmountTextBox(
       operator: 'vi',
     );
+    operatorName = 'vi';
     return 'VI';
   }
 
@@ -39,6 +39,7 @@ class _OperatorDropDownMenu extends State<OperatorDropDownMenu> {
     AmountTextBox(
       operator: 'bsnl',
     );
+    operatorName = 'bsnl';
     return 'BSNL';
   }
 
@@ -92,7 +93,6 @@ class _OperatorDropDownMenu extends State<OperatorDropDownMenu> {
             onChanged: (String value) {
               setState(() {
                 chosenValue = value;
-                AmountDialogueBox(operatorName: chosenValue);
               });
             }),
       ),

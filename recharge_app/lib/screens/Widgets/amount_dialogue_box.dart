@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recharge_app/model/rechargeplandata.dart';
+import 'package:recharge_app/screens/tariff_plan_screen.dart';
 import 'package:recharge_app/services/recharge_plan_api.dart';
 
 class AmountDialogueBox extends StatefulWidget {
@@ -28,7 +29,7 @@ class _AmountDialogueBoxState extends State<AmountDialogueBox> {
     } else if (operatorName == 'airtel') {
       operatorCode = 2;
     }
-    _operatorPlans = RechargeApi().fetchRechargePlans(operatorCode);
+    _operatorPlans = RechargeApi().fetchRechargePlans(23);
     super.initState();
   }
 
@@ -37,47 +38,76 @@ class _AmountDialogueBoxState extends State<AmountDialogueBox> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Container(
-        height: height * .58,
-        width: width * 1,
-        child: amount.isNotEmpty
-            ? FutureBuilder<RechargePlanData>(
-                future: _operatorPlans,
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    var operatorPlanRs;
-                    var operatorPlanDescription;
-                    for (var index = 0;
-                        index < snapshot.data.rdata.length;
-                        index++) {
-                      if (int.parse(amount) ==
-                          snapshot.data.rdata['FULLTT'][index].rs) {
-                        operatorPlanRs =
-                            snapshot.data.rdata['FULLTT'][index].rs;
-                        operatorPlanDescription =
-                            snapshot.data.rdata['FULLTT'][index].desc;
-                      }
+      height: height * .58,
+      width: width * 1,
+      child: amount.isNotEmpty
+          ? FutureBuilder<RechargePlanData>(
+              future: _operatorPlans,
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  var operatorPlanRs;
+                  var operatorPlanDescription;
+                  for (var index = 0;
+                      index < snapshot.data.rdata.length;
+                      index++) {
+                    if (int.parse(amount) ==
+                        snapshot.data.rdata['FULLTT'][index].rs) {
+                      operatorPlanRs = snapshot.data.rdata['FULLTT'][index].rs;
+                      operatorPlanDescription =
+                          snapshot.data.rdata['FULLTT'][index].desc;
                     }
+                  }
+                  if (operatorPlanRs != null) {
                     return AlertDialog(
-                      title: operatorPlanRs != null
-                          ? Text(' \u{20B9} $operatorPlanRs')
-                          : Text(
-                              'You Are Entered a Wrong Amount \n please Check the Amount'),
-                      content: operatorPlanRs != null
-                          ? Text('$operatorPlanDescription')
-                          : Text(' please Check the Amount'),
+                      title: Text(' \u{20B9} $operatorPlanRs'),
+                      content: Text('$operatorPlanDescription'),
                     );
                   } else {
                     return AlertDialog(
-                      title: Text('Loading....'),
-                      content: Center(
-                        child: CircularProgressIndicator(),
-                      ),
+                      title: Text('Please Enter a Valid Amount'),
+                      content: Text(
+                          'No Plans Are Found for The Amount You are Entered \nPlease check the Amount you are Entered'),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    TariffPlanScreen(operatorName),
+                              ),
+                            );
+                          },
+                          child: Text('View Plans'),
+                        )
+                      ],
                     );
                   }
-                },
-              )
-            : AlertDialog(
-                title: Text('Please Enter A Valid Amount'),
-              ));
+                } else {
+                  return AlertDialog(
+                    title: Text('Loading....'),
+                    content: Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  );
+                }
+              },
+            )
+          : AlertDialog(
+              title: Text('Please Enter A Valid Amount'),
+              actions: [
+                MaterialButton(
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => TariffPlanScreen(operatorName),
+                      ),
+                    );
+                  },
+                  child: Text('View Plans'),
+                  color: Colors.amber[700],
+                ),
+              ],
+            ),
+    );
   }
 }
