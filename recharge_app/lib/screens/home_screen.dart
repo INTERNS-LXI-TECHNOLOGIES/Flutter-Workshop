@@ -219,7 +219,10 @@ class _HomeScreenState extends State<HomeScreen> {
                               );
                             }
                           },
-                          child: Text('Recharge'),
+                          child: Text(
+                            'Recharge',
+                            style: TextStyle(color: Colors.white),
+                          ),
                         ),
                       ),
                     ],

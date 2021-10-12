@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recharge_app/screens/Widgets/amount_dialogue_box.dart';
+import 'package:recharge_app/screens/tariff_plan_screen.dart';
 
 class AmountTextBox extends StatefulWidget {
   final TextEditingController amountController;
@@ -25,19 +26,34 @@ class _AmountTextBoxState extends State<AmountTextBox> {
       child: Padding(
         padding: const EdgeInsets.only(right: 30),
         child: TextFormField(
-          controller: amountController,
-          enabled: true,
-          decoration: InputDecoration(
-            suffix: IconButton(
-                onPressed: () {
+          onEditingComplete: amountController.text.isNotEmpty
+              ? () {
                   showDialog(
                       context: context,
                       builder: (_) => AmountDialogueBox(
                             amount: amountController.text,
                             operatorName: operator,
                           ));
-                },
-                icon: Icon(Icons.price_check_rounded)),
+                }
+              : Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => TariffPlanScreen(operator),
+                  ),
+                ),
+          controller: amountController,
+          enabled: true,
+          decoration: InputDecoration(
+            suffix: MaterialButton(
+              onPressed: () {
+                showDialog(
+                    context: context,
+                    builder: (_) => AmountDialogueBox(
+                          amount: amountController.text,
+                          operatorName: operator,
+                        ));
+              },
+              child: Text('View Plans'),
+            ),
             focusedBorder: UnderlineInputBorder(
               borderSide: BorderSide(
                 color: Colors.yellow,
