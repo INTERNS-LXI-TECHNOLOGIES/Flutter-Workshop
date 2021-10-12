@@ -29,7 +29,7 @@ class _AmountDialogueBoxState extends State<AmountDialogueBox> {
     } else if (operatorName == 'airtel') {
       operatorCode = 2;
     }
-    _operatorPlans = RechargeApi().fetchRechargePlans(23);
+    _operatorPlans = RechargeApi().fetchRechargePlans(operatorCode);
     super.initState();
   }
 
